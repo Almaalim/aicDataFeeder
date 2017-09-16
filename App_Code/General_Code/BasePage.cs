@@ -21,12 +21,12 @@ public class BasePage : System.Web.UI.Page
         base.OnPreInit(e);
         if (Session["MyTheme"] == null)
         {
-            Session.Add("MyTheme", "ThemeEn");
-            Page.Theme = Session["MyTheme"].ToString();
+            Session.Add("MetroStyle", "MetroStyle");
+            Page.Theme = Session["MetroStyle"].ToString();
         }
         else
         {
-            Page.Theme = Session["MyTheme"].ToString();
+            Page.Theme = Session["MetroStyle"].ToString();
         }
     }
 

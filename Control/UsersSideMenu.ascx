@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="UsersSideMenu.ascx.cs" Inherits="UsersSideMenu" %>
 
-<script type="text/javascript" src="../JScript/sdmenu.js"></script>
+
 
 <div style="float: left; width:150px" id="my_menu" class="sdmenu1" onclick="loadfun('my_menu');">
     <%--Users--%>

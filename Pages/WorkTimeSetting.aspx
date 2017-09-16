@@ -88,7 +88,7 @@
                                 </tr>
                                 <%--<tr>
                                     <td>
-                                        <span class="RequiredRedStar">*</span>
+                                        <span class="RequiredField">*</span>
                                         <asp:Label ID="lblUsrStartDate" runat="server" Text="Start Date :"></asp:Label>
                                     </td>
                                     <td class="td2Allalign">
@@ -106,7 +106,7 @@
                                         </table>
                                     </td>
                                     <td>
-                                        <span class="RequiredRedStar">*</span>
+                                        <span class="RequiredField">*</span>
                                         <asp:Label ID="lblUsrEndDate" runat="server" Text="End Date :"></asp:Label>
                                     </td>
                                     <td class="td2Allalign">

@@ -21,7 +21,7 @@
                                             <table cellspacing="10" dir="ltr" style="border: thick double #800000; height: 21px; width: 470px;" bgcolor="#FFFBD6">
                                                 <tr>
                                                     <th>
-                                                        <span class="RequiredRedStar">*</span>
+                                                        <span class="RequiredField">*</span>
                                                         <asp:Label ID="lblCurrentPass" runat="server" Text="Current Password : " CssClass="label" ForeColor="#990000"></asp:Label>
                                                     </th>
                                 
@@ -36,7 +36,7 @@
                        
                                                 <tr>
                                                     <th>
-                                                        <span class="RequiredRedStar">*</span>
+                                                        <span class="RequiredField">*</span>
                                                         <asp:Label ID="lblNewPass" runat="server" Text="New Password :" CssClass="label" ForeColor="#990000"></asp:Label>
                                                     </th>
                                                     <td align="left">
@@ -50,7 +50,7 @@
                              
                                                 <tr>
                                                     <th>
-                                                    <span class="RequiredRedStar">*</span>
+                                                    <span class="RequiredField">*</span>
                                                         <asp:Label ID="lblConfirmPass" runat="server" Text="Confirm Password :" CssClass="label" ForeColor="#990000"></asp:Label>
                                                     </th>
                                                     <td align="left">

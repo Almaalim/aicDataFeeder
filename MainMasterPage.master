@@ -2,151 +2,522 @@
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
-<%@ Register src="~/Control/Header.ascx" tagname="Header" tagprefix="uc1" %>
-<%@ Register src="~/Control/Footer.ascx" tagname="Footer" tagprefix="uc4" %>
+<%@ Register Src="~/Control/Header.ascx" TagName="Header" TagPrefix="uc1" %>
+<%@ Register Src="~/Control/Footer.ascx" TagName="Footer" TagPrefix="uc4" %>
 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title></title>
-    <meta http-equiv="X-UA-Compatible" content="IE=9" /> 
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+      <link href="CSS/Metro/Metro.css" rel="stylesheet" />
+  <script type="text/javascript" src="../Scripts/jquery-1.7.1.min.js"></script>
     <script type="text/javascript" src="../JScript/Grid.js"></script>
     <script type="text/javascript" src="../JScript/CheckKey.js"></script>
+     <script type="text/javascript">
+        function PostbackFunction() {
+            (function () {
+                // Load the script
+                var script = document.createElement("SCRIPT");
+                script.src = '../Script/jquery-ui-1.8.17.custom.min.js';
+                script.type = 'text/javascript';
+                script.onload = function () {
+                    var $ = window.jQuery;
+                    // Use $ here...
+                };
+                document.getElementsByTagName("head")[0].appendChild(script);
+            })();
+            $(document).click(function (event) {
+                if ($('.flyOutDiv').css('opacity') == '1') {
+                    $('.flyOutDiv').css('display', 'none');
+                    //tooltipPopup.parent('.flyOutDiv').addClass("hide");
+                }
+            });
+            $("[id*='iFrame']").load(function () {
 
+                $(this).height($(this).contents().find("html").height());
+
+            });
+            $("[id*='ifrm']").load(function () {
+
+                $(this).height(($(this).contents().find("html").height()) - 30);
+
+            });
+
+            MobileListResize();
+        }
+        function MobileListResize() {
+            //$("div[class*='col']>span[id*='lbl']").each(function (i, obj) {
+            //    labelh = $(this).height();
+
+            //    if ((labelh > 32) && (!$(window).width() < 1012)) {
+            //        $(this).css("white-space", "nowrap");
+            //        var parentDiv = $(this).parent().attr('class');
+            //        parentDiv = ("." + parentDiv);
+            //        lblW = $(this).width();
+            //        $(parentDiv).css("width", lblW);
+            //        //$(this).parent("div[class*='col']").css("width", "auto");
+            //    }
+            //    else
+            //    {
+            //        $(this).css("white-space", "");
+            //        $(this).parent("div[class*='col']").css("width", "");
+            //    }
+
+            //});
+            var Notifi = $(".NotificationsPopup");
+            if ($(window).width() < 874) {
+                $(".NotificationsPopup").addClass("NotificationsMobile");
+
+                $(".NotificationsWrapper").after(Notifi);
+            }
+            else {
+                $(".NotificationsPopup").removeClass("NotificationsMobile");
+                $("#aspnetForm").prepend(Notifi);
+            }
+            $("[id*='iFrame']").load(function () {
+                $(this).height($(this).contents().find("html").height());
+            });
+            $('input').bind('blur', function (e) {
+
+                e.preventDefault();
+                $(this).focus();
+
+            });
+            $("a.level2.dynamic").each(function (index) {
+                var str1 = $(this).attr('title');
+
+                str1 = str1.replace(/\s/g, '').replace(/[_\W]+/g, "");
+
+                $(this).addClass(str1);
+            });
+            $('a.static').click(function (e) {
+                return false;
+            });
+            $("li>a.folder>span").each(function (index) {
+                var linkwidth = $(this).width();
+                if (linkwidth > 74) {
+                    $(this).addClass("longlinkfolder")
+                }
+            });
+            $('img').each(function () {
+                if ($(this).attr("src") == '../images/Exclamation.gif') {
+                    $(this).parents("span:first").addClass('CustomValidator');
+                }
+            });
+            
+            //$(".flyOutDiv").each(function () {
+            //    var peraH = $(this).find("p").height();
+            //    $(this).height(peraH);
+            //});
+            $("a.nextStep").each(function () {
+                if ($(this).attr('title') == "  ") {
+                    $(this).hide();
+                }
+            });
+            if ($(".GridTable").width() > $(".row").width()) {
+                //                $(".GridTable").prepend("<thead></thead>");
+                //                var GridHead = $(".GridHeaderStyle");
+                //                $(".GridTable thead").append(GridHead);
+                $(".GridTable").parent().addClass("GridDiv");
+
+                $('.sub-list>li>a').each(function () {
+                    var widthMenu = $(this).width();
+                    //alert(widthMenu);
+                    $(this).height(widthMenu);
+
+                });
+
+                $("a").each(function (index) {
+                    if ($(this).is('[disabled=disabled]')) {
+                        $(this).addClass("disabled");
+
+                    }
+
+                });
+                
+               
+            }
+
+            $("div[class*='col']").each(function () {
+               
+                if ($(this).children(".RequiredField").length > 0) {
+
+                    $(this).addClass("RequiredFieldDiv");
+
+                }
+                var $this = $(this);
+
+                $this.html($this.html().replace(/&nbsp;/g, ''));
+
+            });
+            
+            var colors = ["009ad7", "ffaa31", "68af27", "c22439", "005683", "622695", "d13f2a"];
+
+            $('.rp_servlnk2').each(function (i) {
+                $(this).css('background-color', '#' + colors[i % colors.length]);
+            });
+            $('.monthSummaryDiv').each(function (i) {
+                $(this).css('background-color', '#' + colors[i % colors.length]);
+            });
+            $('.GapSummeryDiv').each(function (i) {
+                $(this).css('background-color', '#' + colors[i % colors.length]);
+            });
+            $("a.SideMenuItem").each(function (i) {
+                $(this).css('background-color', '#' + colors[i % colors.length]);
+            });
+            $(".apps li a").each(function (i) {
+                $(this).addClass('color' + colors[i % colors.length]);
+            });
+            $(".ReportBtns").each(function (i) {
+                $(this).css('background-color', '#' + colors[i % colors.length]);
+            });
+            $("ul.level2.dynamic").each(function (i) {
+                $(this).css('background-color', '#' + colors[i % colors.length]);
+            });
+            
+            $("ul.level1.static>li").each(function (i) {
+                $(this).css('background-color', '#' + colors[i % colors.length]);
+            });
+            $('[data-popup-close]').on('click', function (e) {
+                var targeted_popup_class = jQuery(this).attr('data-popup-close');
+                $('[data-popup="' + targeted_popup_class + '"]').fadeOut(350);
+
+                e.preventDefault();
+            });
+            $(".NotificationsIcon").on('click', function (e) {
+                $(".NotificationsPopup").addClass("NotificationsActive");
+
+            });
+            $(".NotificationsPopupClose").on('click', function (e) {
+                $(".NotificationsPopup").removeClass("NotificationsActive");
+
+            });
+        }
+        $(document).click(function (e) {
+            var container = $(".taptap-menu-active, .taptap-main-wrapper-active, .NotificationsPopup");
+            if (!container.is(e.target) && container.has(e.target).length === 0) {
+                $(".taptap-menu-active").removeClass("taptap-menu-active");
+                $(".NotificationsPopup").removeClass("NotificationsActive");
+                $(".taptap-main-wrapper").removeClass("taptap-main-wrapper-active");
+                $("body").css("overflow", "auto");
+            }
+        });
+        $(window).ready(function () {
+            // Animate loader off screen
+            $(".LoadingWrapper").delay(1500).fadeOut("slow", 0);
+
+        });
+        $(document).ready(function () {
+
+            //$("a.level2.dynamic").each(function (index) {
+            //    var str1 = $(this).attr('title');
+
+            //    str1 = str1.replace(/\s/g, '').replace(/[_\W]+/g, "");
+
+            //    $(this).addClass(str1);
+
+
+            //});
+            //$("a.SideMenuItem").each(function (index) {
+            //    var str1 = $(this).attr('title');
+
+            //    str1 = str1.replace(/\s/g, '').replace(/[_\W]+/g, "");
+
+            //    $(this).addClass(str1);
+
+
+            //});
+
+            //$(".headerExpand").click(function () {
+
+            //    $header = $(this);
+            //    //getting the next element
+            //    $content = $header.next();
+            //    //open up the content needed - toggle the slide- if visible, slide up, if not slidedown.
+            //    $content.slideToggle(200);
+
+            //});
+            $(function ($) {
+                var num_cols = 15,
+                    container = $(".taptap-contents-wrapper>ul>li>ul"),
+                    listItem = "li",
+                    listClass = "sub-list";
+                container.each(function () {
+                    var items_per_col = new Array(),
+                        items = $(this).find(listItem),
+                        min_items_per_col = Math.floor(items.length / num_cols),
+                        difference = items.length - min_items_per_col * num_cols;
+                    for (var i = 0; i < num_cols; i++) {
+                        if (i < difference) {
+                            items_per_col[i] = min_items_per_col + 1;
+                        } else {
+                            items_per_col[i] = min_items_per_col;
+                        }
+                    }
+                    for (var i = 0; i < num_cols; i++) {
+                        $(this).append($("<div ></div>").addClass(listClass));
+                        for (var j = 0; j < items_per_col[i]; j++) {
+                            var pointer = 0;
+                            for (var k = 0; k < i; k++) {
+                                pointer += items_per_col[k];
+                            }
+                            $(this).find("." + listClass).last().append(items[j + pointer]);
+
+                        }
+                    }
+                });
+
+            });
+
+
+
+            //var menuDoc = $("#ctl00_Menu1").html();
+            //$(".taptap-contents-wrapper").append(menuDoc);
+
+            $("a.level1.static").each(function (index) {
+                var str = $(this).attr("title");
+                str = str.replace('/', '');
+
+                $(this).addClass(str);
+                $(this).parent().addClass(str + "list")
+                //debugger;
+            });
+            $("a").each(function (index) {
+                if ($(this).is('[disabled=disabled]')) {
+                    $(this).addClass("disabled");
+                }
+            });
+
+
+            jQuery(".taptap-menu-button-wrapper").on('click', function (e) {
+
+
+                if ($(this).hasClass("taptap-menu-active")) {
+                    $(this).removeClass("taptap-menu-active");
+                    $(".taptap-main-wrapper").removeClass("taptap-main-wrapper-active");
+                    $("body").css("overflow", "auto");
+
+                }
+
+                else {
+                    $(this).addClass("taptap-menu-active");
+                    $(".taptap-main-wrapper").addClass("taptap-main-wrapper-active");
+                    $("body").css("overflow", "hidden");
+
+
+
+
+                }
+
+            })
+
+            //$(function () {
+
+            //    $(".taptap-main-inner").mousewheel(function (event, delta) {
+
+            //        this.scrollLeft -= (delta * 100);
+
+            //        event.preventDefault();
+
+            //    });
+
+            //});
+
+
+
+        });
+        $(document).ready(MobileListResize);
+        var w = 0;
+
+        $(window).load(function () {
+
+            w = $(window).width();
+
+        });
+        $(window).resize(function () {
+            if (w != $(window).width()) {
+                MobileListResize();
+            }
+        });
+        // $(window).resize(MobileListResize);
+    </script>
     <%--style--%>
-    <link href="../Css/style.css" rel="stylesheet" type="text/css" />
-    <link href="../Css/Global.css" rel="stylesheet" type="text/css" />
-    <link href="../Css/QuestionForm.css" rel="stylesheet" type="text/css" />
-    <link href="CSS/progressCss.css" rel="stylesheet" type="text/css" />
+    <style>
+        .tdMenuHeader table
+        {
+            float:left;
+        }
+    </style>
     <%--style--%>
 </head>
-<body class="BODY" >
-    <form id="form1" runat="server" >
-        <div id="MainDiv" runat="Server" >
-            <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                <tr >
-                    <td valign="top" align="center">
-                        <table width="1200px" border="0" cellspacing="0" cellpadding="0">
-                            <tr>
-                                <td valign="top" class="HeaderTotal">
-                                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                                        <tr>
-                                            <td valign="top">
-                                                <asp:Panel runat="server" CssClass="TabStripBottom" ID="divTab8">
-                                                    <table width="100%" border="0" cellspacing="0" cellpadding="0" >
-                                                        <tr>
-                                                            <td>
-                                                                <uc1:Header ID="MyHeader" runat="server" />
-                                                            </td>
-                                                        </tr>
-                                                    </table>
-                                                </asp:Panel>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <table width="100%" >
-                                        <tr>
-                                            <td width="15%" valign="top" >
-                                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                                    <tr>
-                                                        <td class="Body_TL"><img src="../Images/icon/spacer.gif" alt=""/></td>
-                                                        <td class="Body_T"><img src="../Images/icon/spacer.gif" alt=""/></td>
-                                                        <td class="Body_TR"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="Body_L"></td>
-                                                        <td valign="top" class="Body_BG">
-                                                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                                                <tr>
-                                                                    <td id="menuTd" runat="server" valign="top" align="left" height="800">
-                                                                        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
-                                                                            <!--SideMenu-->
-                                                                        </asp:ContentPlaceHolder>
-                                                                    </td>
-                                                                </tr>
-                                                            </table> 
-                                                        </td>
-                                                        <td class="Body_R"><img src="../Images/icon/spacer.gif" alt=""/></td>
-                                                    </tr>   
-                                                    <tr>
-                                                        <td class="Body_BL"><img src="../Images/icon/spacer.gif" alt=""/></td>
-                                                        <td class="Body_B"><img src="../Images/icon/spacer.gif" alt=""/></td>
-                                                        <td class="Body_BR"><img src="../Images/icon/spacer.gif" alt=""/></td>
-                                                    </tr>
-                                                </table> 
-                                            </td>
-
-                                            <td valign="top" width="85%">
-                                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                                    <tr>
-                                                        <td class="Body_TL"><img src="../Images/icon/spacer.gif" alt=""/></td>
-                                                        <td class="Body_T">
-                                                            <center>
-                                                                <asp:Label ID="lblHeading" runat="server" Font-Size="Medium" ></asp:Label>
-                                                            </center>
-                                                        </td>
-                                                        <td class="Body_TR"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td width="5%" class="Body_L"> &nbsp; </td>
-                                                        <td id="ContantTd" runat="server" valign="top" class="Body_BG" height="800">
-                                                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                                                <tr>
-                                                                    <td valign="top" align="center">
-                                                                        <%--<asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                                                                            <ContentTemplate>--%>
-                                                                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                                                                    <tr>
-                                                                                        <td>
-                                                                                            <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center">
-                                                                                                <tr><td height="5px"></td></tr>
-                                                                                                <tr>
-                                                                                                    <td class="Body_BG" valign="top">
-                                                                                                        <asp:ContentPlaceHolder id="ContentPlaceHolder2" runat="server">
-                                                                                                        
-                                                                                                        </asp:ContentPlaceHolder>
-                                                                                                    </td>
-                                                                                                </tr>
-                                                                                            </table>
-                                                                                        </td>
-                                                                                    </tr>
-                                                                                </table>
-                                                                            <%--</ContentTemplate>
-                                                                        </asp:UpdatePanel>--%>
-                                                                    </td>
-                                                                </tr>
-                                                            </table>
-                                                        </td>
-                                                        <td width="5%" class="Body_R"> <img src="../Images/icon/spacer.gif" alt="" /> </td>
-                                                    </tr>
-                
-                                                    <tr>
-                                                        <td class="Body_BL"><img src="../Images/icon/spacer.gif" alt=""/></td>
-                                                        <td class="Body_B"><img src="../Images/icon/spacer.gif" alt=""/></td>
-                                                        <td class="Body_BR"><img src="../Images/icon/spacer.gif" alt=""/></td>
-                                                    </tr>
-                                                </table>
-                                            </td>
-                                        </tr> 
-                                    </table>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td valign="top"> 
-                                    <uc4:footer ID="Footer1" runat="server" />
-                                </td> 
-                            </tr> 
-                        </table> 
-                    </td>
-                </tr>
-            </table>
+<body class="BODY">
+    <form id="form1" runat="server">
+        <div id="divNotifications" runat="server" class="NotificationsPopup">
         </div>
+         <%--side Menu--%>
+        <div class="taptap-main-wrapper">
+            <div class="taptap-main-inner">
+                <div class="taptap-main">
+                    <div class="taptap-main-inner-inner">
+                        <div class="taptap-contents-wrapper">
+                            <div class="NotificationsWrapper">
+                                <asp:Image ID="UserImg" runat="server" ImageUrl="~/CSS/Metro/Images/UserImg.png" CssClass="UserImg" />
+                                <asp:Label ID="lblWelcome" runat="server" Text="Welcome" meta:resourcekey="lblWelcomeResource1" Visible="false"></asp:Label>
+
+                                <asp:Label ID="lblUserName" runat="server" meta:resourcekey="lblUserNameResource1"></asp:Label>
+                                <div class="NotificationsIcon">
+                                    <span id="spnNotificationsNo" runat="server" class="NotificationsNumber">999</span>
+                                </div>
+                            </div>
+                            <div class="UserDetails">
+
+                                <div class="clearfix"></div>
+
+                                <asp:LinkButton ID="lnkSetting" runat="server" CssClass="SettingBtn" Visible="false"></asp:LinkButton>
+                                <asp:Label ID="Label2" runat="server" Text="Label" CssClass="menu-subtitle">QuickLinks</asp:Label>
+
+                                <%--Menu Left Shortcuts--%>
+                                <ul id="FavForm" runat="server" class="apps">
+                                </ul>
+                                <%--Menu Left Shortcuts--%>
+                            </div>
+                            <div id="divSideMenu" runat="server" class="menu-grid">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%--side Menu--%>
+       
+            <div id="MainDiv" runat="Server" class="wrapper">
+                <div class="Header">
+                    <div id="divCustLogo" runat="server" class="Logo">
+                            <div class="wrap-title">
+                                <div class="icon">
+                                    <span class="ico-arrow-right"></span>
+                                </div>
+                                <h1>Attendance Management System</h1>
+                            </div>
+                        </div>
+                    <div id="divMenu" runat="server">
+                         <asp:Panel runat="server" CssClass="TabStripBottom" ID="divTab8">
+
+                    <uc1:Header ID="MyHeader" runat="server" />
+
+                </asp:Panel>
+                        </div>
+                        <div class="taptap-menu-button-wrapper">
+                            <div class="taptap-main-menu-button">
+                                <div class="taptap-main-menu-button-middle"></div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+
+
+                    </div>
+               <div id="divLogo" runat="server" class="tp_logobgHomeEN">
+
+
+                        <div class="UtilityEN">
+
+                            <div class="breadcrumb glyphicon glyphicon-home">
+                               
+                            </div>
+
+                            <div class="UtilityLinks">
+                                <asp:LinkButton ID="LnkChangePassword" runat="server"  
+                                     >Change Password</asp:LinkButton>
+
+                                <asp:LinkButton ID="lnkShortcut" runat="server"   Style="color: #C3D8D5; text-decoration: none;"
+                                     >Add Quick Link</asp:LinkButton>
+                                <%--<asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                                            <ContentTemplate>--%>
+                                <asp:LinkButton ID="lnkHelp" runat="server"  Style="color: #C3D8D5; text-decoration: none;"
+                                     >Help</asp:LinkButton>
+                                <%--</ContentTemplate>
+                                        </asp:UpdatePanel>--%>
+
+                                <asp:LinkButton ID="LnkLogout" runat="server"  Style="color: #C3D8D5; text-decoration: none;"
+                                    >Logout</asp:LinkButton>
+
+                                <asp:LinkButton ID="lnkLanguage" runat="server" Style="color: #C3D8D5; text-decoration: none;" >Language</asp:LinkButton>
+
+                            </div>
+
+                        </div>
+                        <hr class="Sep" />
+                    </div>
+                 <div class="container">
+                        <h1 class="pageTitle">
+
+                            </h1>
+                     <div id="menuTd1" runat="server" >
+                         <div style="display:none">
+                            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                                <!--SideMenu-->
+                            </asp:ContentPlaceHolder></div>
+                       
+                    
+                <asp:Label ID="lblHeading" runat="server" Font-Size="Medium"></asp:Label>
+                 
+                                                                <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+                                                                </asp:ContentPlaceHolder>
+                                    </div>  
+                        </div>
+               
+                         
+                <div id="ft_padd" class="footer">                     
+                <uc4:Footer ID="Footer1" runat="server" />
+                    </div>
+            </div>
+        
     </form>
+    <script type="text/javascript">
+
+                $(document).ready(function () {
+                    $('.sub-square>a').hover(function () {
+                        // Hover over code
+                        var title = $(this).attr('title');
+                        $(this).data('tipText', title).removeAttr('title');
+                        $('<div class="tooltipSmall"></div>')
+
+                        .text(title)
+                        .appendTo("body")
+                        .fadeIn('slow');
+                    }, function () {
+                        // Hover out code
+                        $(this).attr('title', $(this).data('tipText'));
+                        $('.tooltipSmall').remove();
+                    }).mousemove(function (e) {
+                        var mousex = e.pageX - 50; //Get X coordinates
+                        var mousey = e.pageY - 50; //Get Y coordinates
+                        $('.tooltipSmall')
+                        .css({ top: mousey, left: mousex })
+                    });
+                    if ("ontouchstart" in document.documentElement) {
+                        document.addEventListener('contextmenu', function (e) {
+                            e.preventDefault();
+                        }, false);
+                    }
+
+
+                });
+            </script>
+    <div class="LoadingWrapper">
+        <div class="Loader">
+           <!-- <div class="OuterCircle"></div>
+            <div class="MiddleCircle"></div>
+            <div class="InnerCircle"></div>
+            <div class="MinHand"></div>
+            <div class="HourHand"></div>-->
+
+        </div>
+
+    </div>
 </body>
 </html>

@@ -1,16 +1,16 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="PermissionsCtl.ascx.cs"
     Inherits="PermissionsCtl" %>
-<table border="1" cellspacing="0" cellpadding="0">
+<table border="0" cellspacing="0" cellpadding="0">
     <tr>
         <td colspan="2">
             <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
                     <td align="center" class=".Logout">
-                        <h4>
-                            <bold>
-                                <asp:Label ID="Label3" runat="server" Text="Permissions" meta:resourcekey="Label3Resource1" ></asp:Label>
-                            <bold>
-                        </h4>
+                      
+                            
+                                <asp:Label ID="Label3" runat="server" Text="Permissions" meta:resourcekey="Label3Resource1" CssClass="h4" ></asp:Label>
+                           
+                        
                     </td>
                 </tr>
                 <%--<div id="divRole" runat="server" visible="false">
