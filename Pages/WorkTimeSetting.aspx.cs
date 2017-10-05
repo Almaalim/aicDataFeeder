@@ -23,6 +23,7 @@ public partial class Pages_WorkTimeSetting : BasePage
     WorktimePro ProClass = new WorktimePro();
     WorktimeSql SqlClass = new WorktimeSql();
 
+    string MainPer = "SetWorktime";
     string MainQuery = "SELECT * FROM WorkingTime ";
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -30,88 +31,56 @@ public partial class Pages_WorkTimeSetting : BasePage
     {
         //--Common Code----------------------------------------------------------------- //
         FormSession.FillSession("Settings", pageDiv);
+        FormCtrl.RefreshGridEmpty(ref grdData, 20, "No Data Found", "لا توجد بيانات");
         //--Common Code----------------------------------------------------------------- //
 
         if (!IsPostBack)
         {
-            PopulateUI(MainQuery);
+            btnAdd.Enabled = FormSession.PermUsr.Contains("U" + MainPer);
+            pnlSearch.Enabled = grdData.Enabled = FormSession.PermUsr.Contains("U" + MainPer);
+            //PopulateData(MainQuery);
         }
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    void PopulateUI(string Query)
+    void ClearItem()
     {
-        try
-        {
-            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
-            TextTimeServerControl.TextTime.TimeTypeEnum Seconds = TextTimeServerControl.TextTime.TimeTypeEnum.Seconds;
-
-            dt = DBFun.FetchData(Query);
-            if (!DBFun.IsNullOrEmpty(dt))
-            {
-                chkEwrSat.Checked = Convert.ToBoolean(dt.Rows[0]["WktSat"]);
-                chkEwrSun.Checked = Convert.ToBoolean(dt.Rows[0]["WktSun"]);
-                chkEwrMon.Checked = Convert.ToBoolean(dt.Rows[0]["WktMon"]);
-                chkEwrTue.Checked = Convert.ToBoolean(dt.Rows[0]["WktTue"]);
-                chkEwrWed.Checked = Convert.ToBoolean(dt.Rows[0]["WktWed"]);
-                chkEwrThu.Checked = Convert.ToBoolean(dt.Rows[0]["WktThu"]);
-                chkEwrFri.Checked = Convert.ToBoolean(dt.Rows[0]["WktFri"]);
-
-                calStartDate.setDBDate(dt.Rows[0]["WktStartDate"], "S");
-                calEndDate.setDBDate(dt.Rows[0]["WktEndDate"], "S");
-
-                //Shift 1
-                txtShift1NameAr.Text = dt.Rows[0]["WktShift1NameAr"].ToString();
-                txtShift1NameEn.Text = dt.Rows[0]["WktShift1NameEn"].ToString();
-                if (dt.Rows[0]["WktShift1From"] != DBNull.Value) { tpShift1In.SetTime(Convert.ToDateTime(dt.Rows[0]["WktShift1From"])); }
-                if (dt.Rows[0]["WktShift1To"] != DBNull.Value) { tpShift1Out.SetTime(Convert.ToDateTime(dt.Rows[0]["WktShift1To"])); }
-                if (dt.Rows[0]["WktShift1Duration"] != DBNull.Value) { txtShift1Duration.SetTime(Convert.ToInt32(dt.Rows[0]["WktShift1Duration"]), Seconds); }
-                if (dt.Rows[0]["WktShift1Grace"] != DBNull.Value) { txtShift1GraceIn.SetTime(Convert.ToInt32(dt.Rows[0]["WktShift1Grace"]), Seconds); }
-
-                //Shift 2
-                if (chkShift2Set.Checked)
-                {
-                    txtShift2NameAr.Text = dt.Rows[0]["WktShift2NameAr"].ToString();
-                    txtShift2NameEn.Text = dt.Rows[0]["WktShift2NameEn"].ToString();
-                    if (dt.Rows[0]["WktShift2From"] != DBNull.Value) { tpShift2In.SetTime(Convert.ToDateTime(dt.Rows[0]["WktShift2From"])); }
-                    if (dt.Rows[0]["WktShift2To"] != DBNull.Value) { tpShift2Out.SetTime(Convert.ToDateTime(dt.Rows[0]["WktShift2To"])); }
-                    if (dt.Rows[0]["WktShift2Duration"] != DBNull.Value) { txtShift2Duration.SetTime(Convert.ToInt32(dt.Rows[0]["WktShift2Duration"]), Seconds); }
-                    if (dt.Rows[0]["WktShift2Grace"] != DBNull.Value) { txtShift2GraceIn.SetTime(Convert.ToInt32(dt.Rows[0]["WktShift2Grace"]), Seconds); }
-                }
-                //Shift 3
-                if (chkShift2Set.Checked)
-                {
-                    txtShift3NameAr.Text = dt.Rows[0]["WktShift3NameAr"].ToString();
-                    txtShift3NameEn.Text = dt.Rows[0]["WktShift3NameEn"].ToString();
-                    if (dt.Rows[0]["WktShift3From"] != DBNull.Value) { tpShift3In.SetTime(Convert.ToDateTime(dt.Rows[0]["WktShift3From"])); }
-                    if (dt.Rows[0]["WktShift3To"] != DBNull.Value) { tpShift3Out.SetTime(Convert.ToDateTime(dt.Rows[0]["WktShift3To"])); }
-                    if (dt.Rows[0]["WktShift3Duration"] != DBNull.Value) { txtShift3Duration.SetTime(Convert.ToInt32(dt.Rows[0]["WktShift3Duration"]), Seconds); }
-                    if (dt.Rows[0]["WktShift3Grace"] != DBNull.Value) { txtShift3GraceIn.SetTime(Convert.ToInt32(dt.Rows[0]["WktShift3Grace"]), Seconds); }
-                }
-
-            }
-        }
-        catch (Exception Ex) { }
+        grdData.SelectedIndex = -1;
+        //FillInfoLabel("", "");
+        DataItemEnabled(false, false, false); ;
+        ButtonAction(true, "10000");
+        ClearData();
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /*##############################################################################################################################*/
+    /*##############################################################################################################################*/
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    #region DataItem Events
+
     void FillPropeties()
     {
         //ProClass.DateFormat = dateType;
         //if (pAction == "Insert" || pAction == "Update")
         //{
-        System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
-
         try
         {
+            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
+
+            if (ViewState["CommandName"].ToString() == "Edit") { ProClass.WktID = txtWktID.Text; }
+
             ProClass.WktSat = chkEwrSat.Checked;
-            ProClass.WktSun = chkEwrSat.Checked;
-            ProClass.WktMon = chkEwrSat.Checked;
-            ProClass.WktTue = chkEwrSat.Checked;
-            ProClass.WktWed = chkEwrSat.Checked;
-            ProClass.WktThu = chkEwrSat.Checked;
-            ProClass.WktFri = chkEwrSat.Checked;
-            
+            ProClass.WktSun = chkEwrSun.Checked;
+            ProClass.WktMon = chkEwrMon.Checked;
+            ProClass.WktTue = chkEwrTue.Checked;
+            ProClass.WktWed = chkEwrWed.Checked;
+            ProClass.WktThu = chkEwrThu.Checked;
+            ProClass.WktFri = chkEwrFri.Checked;
+
+            ProClass.WktIsActive = chkWktStatus.Checked;
             ProClass.WktStartDate = calStartDate.getDate();
             ProClass.WktEndDate = calEndDate.getDate();
             ProClass.WktShiftCount = FindShiftCount();
@@ -152,19 +121,77 @@ public partial class Pages_WorkTimeSetting : BasePage
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    void ClearMainItem()
+    {
+        grdData.SelectedIndex = -1;
+        //FillInfoLabel("", "");
+        DataItemEnabled(false, false, false);
+        ButtonAction(true, "10000");
+        ClearData();
+    }
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     void ClearData()
     {
-        //txtEmailServer.Text = "";
-        //txtEmailPort.Text = "";
-        //txtSendEmailFrom.Text = "";
-        //txtPassword.Text = "";
+        System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
 
-        //ViewState["CommandName"] = "";
+        txtWktID.Text = "";
+
+        chkEwrSat.Checked = false;
+        chkEwrSun.Checked = false;
+        chkEwrMon.Checked = false;
+        chkEwrTue.Checked = false;
+        chkEwrWed.Checked = false;
+        chkEwrThu.Checked = false;
+        chkEwrFri.Checked = false;
+
+        chkWktStatus.Checked = false;
+        calStartDate.ClearDate();
+        calEndDate.ClearDate();
+
+        ////Shift 1
+        txtShift1NameAr.Text = "";
+        txtShift1NameEn.Text = "";
+        tpShift1In.ClearTime();
+        tpShift1Out.ClearTime();
+        txtShift1Duration.ClearTime();
+        txtShift1GraceIn.ClearTime();
+
+        ////Shift 2
+        txtShift2NameAr.Text = "";
+        txtShift2NameEn.Text = "";
+        tpShift2In.ClearTime();
+        tpShift2Out.ClearTime();
+        txtShift2Duration.ClearTime();
+        txtShift2GraceIn.ClearTime();
+
+        ////Shift 3
+        txtShift3NameAr.Text = "";
+        txtShift3NameEn.Text = "";
+        tpShift3In.ClearTime();
+        tpShift3Out.ClearTime();
+        txtShift3Duration.ClearTime();
+        txtShift3GraceIn.ClearTime();
+
+        ViewState["CommandName"] = "";
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public void DataItemEnabled(bool pStatus, bool pShift2, bool pShift3)
     {
+        chkEwrSat.Enabled = pStatus;
+        chkEwrSun.Enabled = pStatus;
+        chkEwrMon.Enabled = pStatus;
+        chkEwrTue.Enabled = pStatus;
+        chkEwrWed.Enabled = pStatus;
+        chkEwrThu.Enabled = pStatus;
+        chkEwrFri.Enabled = pStatus;
+
+        chkWktStatus.Enabled = pStatus;
+        calStartDate.setEnabled(pStatus);
+        calEndDate.setEnabled(pStatus);
+        FindShiftCount();
+
         chkShift2Set.Enabled = pStatus;
         chkShift3Set.Enabled = pStatus;
 
@@ -192,6 +219,343 @@ public partial class Pages_WorkTimeSetting : BasePage
         txtShift3GraceIn.Enabled = pShift3;
         txtShift3Duration.Enabled = pShift3;
     }
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    #endregion
+    /*##############################################################################################################################*/
+    /*##############################################################################################################################*/
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /*##############################################################################################################################*/
+    /*##############################################################################################################################*/
+    #region SearchItem Events
+
+    public void SearchItemStatus(bool pBtn, bool pFiltered, string pTxtMark)
+    {
+        btnSearch.Enabled = pBtn;
+        txtSearch.Enabled = pBtn;
+        eWatermarkSearch.WatermarkText = pTxtMark;
+        eFilteredSearch.Enabled = pFiltered;
+    }
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    protected void ddlSearch_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        txtSearch.Text = "";
+
+        if (ddlSearch.SelectedValue == "[none]")
+        {
+            SearchItemStatus(false, false, "can't type");
+            Search();
+        }
+        else
+        {
+            if (ddlSearch.SelectedValue == "WktNameAr") { SearchItemStatus(true, false, "Type Worktime Name (Ar) here"); }
+            if (ddlSearch.SelectedValue == "WktNameEn") { SearchItemStatus(true, false, "Type Worktime Name (En) here"); }
+
+            ClearItem();
+            FillGrid(MainQuery + "  WktID = '@@@@'");
+        }
+    }
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    protected void btnSearch_Click(object sender, EventArgs e)
+    {
+        if (ddlSearch.SelectedIndex > 0)
+        {
+            if (!Page.IsValid) { return; }
+            ClearItem();
+        }
+
+        Search();
+    }
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    protected void Search()
+    {
+        StringBuilder SQ = new StringBuilder();
+        SQ.Append(MainQuery);
+        if (ddlSearch.SelectedIndex > 0)
+        {
+            if (ddlSearch.SelectedValue == "WktNameAr") { SQ.Append(" AND WktNameAr LIKE '%" + txtSearch.Text + "%'"); }
+            if (ddlSearch.SelectedValue == "WktNameEn") { SQ.Append(" AND WktNameEn LIKE '%" + txtSearch.Text + "%'"); }
+        }
+
+        FillGrid(SQ.ToString());
+    }
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    void ClearSearch()
+    {
+        txtSearch.Text = "";
+        ddlSearch.SelectedIndex = -1;
+    }
+
+    #endregion
+    /*##############################################################################################################################*/
+    /*##############################################################################################################################*/
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /*##############################################################################################################################*/
+    /*##############################################################################################################################*/
+    #region GridView Events
+
+    protected void grdData_DataBound(object sender, EventArgs e) { }
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    protected void grdData_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        try
+        {
+            GridViewRow gridrow = grdData.SelectedRow;
+            if (FormCtrl.isGridEmpty(gridrow.Cells[0].Text))
+            {
+                FormCtrl.FillGridEmpty(ref grdData, 20, "No Data Found", "لا توجد بيانات");
+            }
+            else
+            {
+                PopulateData(gridrow.Cells[2].Text);
+            }
+        }
+        catch (Exception e1) { }
+    }
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    protected void PopulateData(string pID)
+    {
+        try
+        {
+            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
+            TextTimeServerControl.TextTime.TimeTypeEnum Seconds = TextTimeServerControl.TextTime.TimeTypeEnum.Seconds;
+
+            dt = DBFun.FetchData(MainQuery + " AND WktID = " + pID + "");
+            if (DBFun.IsNullOrEmpty(dt)) { return; }
+
+            txtWktID.Text = dt.Rows[0]["WktID"].ToString();
+            chkWktStatus.Checked = Convert.ToBoolean(dt.Rows[0]["WktIsActive"]);
+
+            chkEwrSat.Checked = Convert.ToBoolean(dt.Rows[0]["WktSat"]);
+            chkEwrSun.Checked = Convert.ToBoolean(dt.Rows[0]["WktSun"]);
+            chkEwrMon.Checked = Convert.ToBoolean(dt.Rows[0]["WktMon"]);
+            chkEwrTue.Checked = Convert.ToBoolean(dt.Rows[0]["WktTue"]);
+            chkEwrWed.Checked = Convert.ToBoolean(dt.Rows[0]["WktWed"]);
+            chkEwrThu.Checked = Convert.ToBoolean(dt.Rows[0]["WktThu"]);
+            chkEwrFri.Checked = Convert.ToBoolean(dt.Rows[0]["WktFri"]);
+
+            calStartDate.setDBDate(dt.Rows[0]["WktStartDate"], "S");
+            calEndDate.setDBDate(dt.Rows[0]["WktEndDate"], "S");
+
+            //Shift 1
+            txtShift1NameAr.Text = dt.Rows[0]["WktShift1NameAr"].ToString();
+            txtShift1NameEn.Text = dt.Rows[0]["WktShift1NameEn"].ToString();
+            if (dt.Rows[0]["WktShift1From"] != DBNull.Value) { tpShift1In.SetTime(Convert.ToDateTime(dt.Rows[0]["WktShift1From"])); }
+            if (dt.Rows[0]["WktShift1To"] != DBNull.Value) { tpShift1Out.SetTime(Convert.ToDateTime(dt.Rows[0]["WktShift1To"])); }
+            if (dt.Rows[0]["WktShift1Duration"] != DBNull.Value) { txtShift1Duration.SetTime(Convert.ToInt32(dt.Rows[0]["WktShift1Duration"]), Seconds); }
+            if (dt.Rows[0]["WktShift1Grace"] != DBNull.Value) { txtShift1GraceIn.SetTime(Convert.ToInt32(dt.Rows[0]["WktShift1Grace"]), Seconds); }
+
+            //Shift 2
+            if (chkShift2Set.Checked)
+            {
+                txtShift2NameAr.Text = dt.Rows[0]["WktShift2NameAr"].ToString();
+                txtShift2NameEn.Text = dt.Rows[0]["WktShift2NameEn"].ToString();
+                if (dt.Rows[0]["WktShift2From"] != DBNull.Value) { tpShift2In.SetTime(Convert.ToDateTime(dt.Rows[0]["WktShift2From"])); }
+                if (dt.Rows[0]["WktShift2To"] != DBNull.Value) { tpShift2Out.SetTime(Convert.ToDateTime(dt.Rows[0]["WktShift2To"])); }
+                if (dt.Rows[0]["WktShift2Duration"] != DBNull.Value) { txtShift2Duration.SetTime(Convert.ToInt32(dt.Rows[0]["WktShift2Duration"]), Seconds); }
+                if (dt.Rows[0]["WktShift2Grace"] != DBNull.Value) { txtShift2GraceIn.SetTime(Convert.ToInt32(dt.Rows[0]["WktShift2Grace"]), Seconds); }
+            }
+            //Shift 3
+            if (chkShift2Set.Checked)
+            {
+                txtShift3NameAr.Text = dt.Rows[0]["WktShift3NameAr"].ToString();
+                txtShift3NameEn.Text = dt.Rows[0]["WktShift3NameEn"].ToString();
+                if (dt.Rows[0]["WktShift3From"] != DBNull.Value) { tpShift3In.SetTime(Convert.ToDateTime(dt.Rows[0]["WktShift3From"])); }
+                if (dt.Rows[0]["WktShift3To"] != DBNull.Value) { tpShift3Out.SetTime(Convert.ToDateTime(dt.Rows[0]["WktShift3To"])); }
+                if (dt.Rows[0]["WktShift3Duration"] != DBNull.Value) { txtShift3Duration.SetTime(Convert.ToInt32(dt.Rows[0]["WktShift3Duration"]), Seconds); }
+                if (dt.Rows[0]["WktShift3Grace"] != DBNull.Value) { txtShift3GraceIn.SetTime(Convert.ToInt32(dt.Rows[0]["WktShift3Grace"]), Seconds); }
+            }
+
+            ButtonAction(true, "11100");
+        }
+        catch (Exception Ex) { }
+    }
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public void FillGrid(string Q)
+    {
+        dt = DBFun.FetchData(Q);
+        if (!DBFun.IsNullOrEmpty(dt) && FormSession.PermUsr.Contains("U" + MainPer))
+        {
+            grdData.DataSource = (DataTable)dt;
+            grdData.DataBind();
+        }
+        else
+        {
+            FormCtrl.FillGridEmpty(ref grdData, 20, "No Data Found", "لا توجد بيانات");
+        }
+    }
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    protected void grdData_RowDataBound(object sender, GridViewRowEventArgs e) { FormCtrl.GridSelectedRow(this, this.grdData, e.Row); }
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //protected void FillInfoLabel(string pID, string pName)
+    //{
+    //    if (String.IsNullOrEmpty(pID) == false) { pID = "              ID : " + pID + "-----------"; }
+    //    if (String.IsNullOrEmpty(pName) == false) { pName = "            Name : " + pName + "           "; }
+
+    //    epnlData.CollapsedText = pID + pName + "(Show Details...)";
+    //    epnlData.ExpandedText = pID + pName + "(Hide Details)";
+    //}
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    protected void grdData_PageIndexChanging(object sender, GridViewPageEventArgs e)
+    {
+        grdData.PageIndex = e.NewPageIndex;
+        ClearItem();
+        Search();
+    }
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    protected void grdData_Sorting(object sender, GridViewSortEventArgs e)
+    {
+        //grdData.SelectedIndex = -1;
+        //ClearData();
+        //ButtonAction(true,"10000");
+        //FillInfoLabel("", "");  
+    }
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    protected void grdData_RowCreated(object sender, GridViewRowEventArgs e)
+    {
+        try
+        {
+            //e.Row.Cells[5].Visible = false; //To hide ID column in grid view
+            //e.Row.Cells[6].Visible = false;
+        }
+        catch { }
+    }
+
+    #endregion
+    /*##############################################################################################################################*/
+    /*##############################################################################################################################*/
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /*##############################################################################################################################*/
+    /*##############################################################################################################################*/
+    #region ButtonAction Events
+
+    protected void btnSave_Click(object sender, EventArgs e)
+    {
+        if (!Page.IsValid)
+        {
+            ValidatorCollection ValidatorColl = Page.Validators;
+            for (int k = 0; k < ValidatorColl.Count; k++)
+            {
+                if (!ValidatorColl[k].IsValid && !String.IsNullOrEmpty(ValidatorColl[k].ErrorMessage)) { vsSave.ShowSummary = true; return; }
+                vsSave.ShowSummary = false;
+            }
+            return;
+        }
+
+        try
+        {
+            FillPropeties();
+
+            if (ViewState["CommandName"].ToString() == "Add")
+            {
+                SqlClass.Insert(ProClass);
+                MessageFun.ShowMsg(this, MessageFun.TypeMsg.Success, General.Msg("Worktime added successfully", "تمت إضافة وقت العمل بنجاح"));
+            }
+
+            if (ViewState["CommandName"].ToString() == "Edit")
+            {
+                SqlClass.Update(ProClass);
+                MessageFun.ShowMsg(this, MessageFun.TypeMsg.Success, General.Msg("Worktime updated successfully", "تم تعديل وقت العمل بنجاح"));
+            }
+
+            ClearItem();
+            Search();
+        }
+        catch (Exception Ex) { MessageFun.ShowAdminMsg(this, Ex.Message); }
+    }
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    protected void btnAdd_Click(object sender, EventArgs e)
+    {
+        ClearItem();
+        DataItemEnabled(true, chkShift2Set.Checked, chkShift3Set.Checked);
+        ButtonAction(false, "00011");
+
+        ViewState["CommandName"] = "Add";
+    }
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    protected void btnEdit_Click(object sender, EventArgs e)
+    {
+        ViewState["CommandName"] = "Edit";
+        DataItemEnabled(true, chkShift2Set.Checked, chkShift3Set.Checked);
+        ButtonAction(false, "00011");
+    }
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    protected void btnDelete_Click(object sender, EventArgs e)
+    {
+        string Q = " SELECT MacID FROM TransDump WHERE MacID = " + txtWktID.Text + " ";
+        try
+        {
+            dt = DBFun.FetchData(Q);
+            if (!DBFun.IsNullOrEmpty(dt))
+            {
+                MessageFun.ShowMsg(this, MessageFun.TypeMsg.Error, General.Msg("Deletion can not because of the presence of related records", "لا يمكن الحذف بسبب وجود سجلات مرتبطة"));
+            }
+            else
+            {
+                ProClass.WktID = txtWktID.Text;
+                bool resExc = SqlClass.Delete(ProClass);
+                if (resExc) { MessageFun.ShowMsg(this, MessageFun.TypeMsg.Success, General.Msg("Worktime deleted successfully", "تم حذف وقت العمل بنجاح")); }
+
+                ClearItem();
+                Search();
+            }
+        }
+        catch (Exception Ex) { MessageFun.ShowAdminMsg(this, Ex.Message); }
+    }
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        ButtonAction(true, "10000");
+        DataItemEnabled(false, false, false);
+
+        if (ViewState["CommandName"].ToString() == "Add") { ClearData(); }
+        if (ViewState["CommandName"].ToString() == "Edit") { PopulateData(txtWktID.Text); }
+    }
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////    
+    protected void ButtonAction(bool pSearch, string pBtn) //string pBtn = [ADD,Edit,Delete,Save,Cancel]
+    {
+        if (FormSession.PermUsr.Contains("U" + MainPer)) { pnlSearch.Enabled = pSearch; } else { pnlSearch.Enabled = false; }
+        if (FormSession.PermUsr.Contains("U" + MainPer)) { grdData.Enabled = pSearch; } else { grdData.Enabled = false; }
+
+        if (FormSession.PermUsr.Contains("U" + MainPer)) { btnAdd.Enabled = Convert.ToBoolean(Convert.ToInt32(pBtn[0].ToString())); } else { btnAdd.Enabled = false; }
+        if (FormSession.PermUsr.Contains("U" + MainPer)) { btnEdit.Enabled = Convert.ToBoolean(Convert.ToInt32(pBtn[1].ToString())); } else { btnEdit.Enabled = false; }
+        if (FormSession.PermUsr.Contains("U" + MainPer)) { btnDelete.Enabled = Convert.ToBoolean(Convert.ToInt32(pBtn[2].ToString())); } else { btnDelete.Enabled = false; }
+
+        btnCancel.Enabled = Convert.ToBoolean(Convert.ToInt32(pBtn[3].ToString()));
+        btnSave.Enabled = Convert.ToBoolean(Convert.ToInt32(pBtn[4].ToString()));
+    }
+
+    #endregion
+    /*##############################################################################################################################*/
+    /*##############################################################################################################################*/
+
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     protected void chkShift2Setting_CheckedChanged(object sender, EventArgs e)
@@ -307,25 +671,25 @@ public partial class Pages_WorkTimeSetting : BasePage
     }
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    protected void btnSave_Click(object sender, EventArgs e)
-    {
-        if (!Page.IsValid)
-        {
-            ValidatorCollection ValidatorColl = Page.Validators;
-            for (int k = 0; k < ValidatorColl.Count; k++)
-            {
-                if (!ValidatorColl[k].IsValid && !String.IsNullOrEmpty(ValidatorColl[k].ErrorMessage)) { vsSave.ShowSummary = true; return; }
-                vsSave.ShowSummary = false;
-            }
-            return;
-        }
+    //protected void btnSave_Click(object sender, EventArgs e)
+    //{
+    //    if (!Page.IsValid)
+    //    {
+    //        ValidatorCollection ValidatorColl = Page.Validators;
+    //        for (int k = 0; k < ValidatorColl.Count; k++)
+    //        {
+    //            if (!ValidatorColl[k].IsValid && !String.IsNullOrEmpty(ValidatorColl[k].ErrorMessage)) { vsSave.ShowSummary = true; return; }
+    //            vsSave.ShowSummary = false;
+    //        }
+    //        return;
+    //    }
 
-        FillPropeties();
-        SqlClass.InsertUpdate(ProClass);
+    //    FillPropeties();
+    //    SqlClass.InsertUpdate(ProClass);
 
-        MessageFun.ShowMsg(this, MessageFun.TypeMsg.Success, General.Msg("WorkTime setting added successfully", "تم تحديث اعدادات وقت العمل بنجاح "));
+    //    MessageFun.ShowMsg(this, MessageFun.TypeMsg.Success, General.Msg("WorkTime setting added successfully", "تم تحديث اعدادات وقت العمل بنجاح "));
 
-    }
+    //}
     /*##############################################################################################################################*/
     /*##############################################################################################################################*/
 

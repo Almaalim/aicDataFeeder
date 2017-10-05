@@ -13,11 +13,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title></title>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-      <link href="CSS/Metro/Metro.css" rel="stylesheet" />
-  <script type="text/javascript" src="../Scripts/jquery-1.7.1.min.js"></script>
+    <link href="CSS/Metro/Metro.css" rel="stylesheet" />
+    <script type="text/javascript" src="../Scripts/jquery-1.7.1.min.js"></script>
     <script type="text/javascript" src="../JScript/Grid.js"></script>
     <script type="text/javascript" src="../JScript/CheckKey.js"></script>
-     <script type="text/javascript">
+    <script type="text/javascript">
         function PostbackFunction() {
             (function () {
                 // Load the script
@@ -108,7 +108,7 @@
                     $(this).parents("span:first").addClass('CustomValidator');
                 }
             });
-            
+
             //$(".flyOutDiv").each(function () {
             //    var peraH = $(this).find("p").height();
             //    $(this).height(peraH);
@@ -138,12 +138,12 @@
                     }
 
                 });
-                
-               
+
+
             }
 
             $("div[class*='col']").each(function () {
-               
+
                 if ($(this).children(".RequiredField").length > 0) {
 
                     $(this).addClass("RequiredFieldDiv");
@@ -154,7 +154,7 @@
                 $this.html($this.html().replace(/&nbsp;/g, ''));
 
             });
-            
+
             var colors = ["009ad7", "ffaa31", "68af27", "c22439", "005683", "622695", "d13f2a"];
 
             $('.rp_servlnk2').each(function (i) {
@@ -178,7 +178,7 @@
             $("ul.level2.dynamic").each(function (i) {
                 $(this).css('background-color', '#' + colors[i % colors.length]);
             });
-            
+
             $("ul.level1.static>li").each(function (i) {
                 $(this).css('background-color', '#' + colors[i % colors.length]);
             });
@@ -347,9 +347,8 @@
     </script>
     <%--style--%>
     <style>
-        .tdMenuHeader table
-        {
-            float:left;
+        .tdMenuHeader table {
+            float: left;
         }
     </style>
     <%--style--%>
@@ -358,7 +357,7 @@
     <form id="form1" runat="server">
         <div id="divNotifications" runat="server" class="NotificationsPopup">
         </div>
-         <%--side Menu--%>
+        <%--side Menu--%>
         <div class="taptap-main-wrapper">
             <div class="taptap-main-inner">
                 <div class="taptap-main">
@@ -393,124 +392,127 @@
             </div>
         </div>
         <%--side Menu--%>
-       
-            <div id="MainDiv" runat="Server" class="wrapper">
-                <div class="Header">
-                    <div id="divCustLogo" runat="server" class="Logo">
-                            <div class="wrap-title">
-                                <div class="icon">
-                                    <span class="ico-arrow-right"></span>
-                                </div>
-                                <h1>Attendance Management System</h1>
-                            </div>
+
+        <div id="MainDiv" runat="Server" class="wrapper">
+            <div class="Header">
+                <div id="divCustLogo" runat="server" class="Logo">
+                    <div class="wrap-title">
+                        <div class="icon">
+                            <span class="ico-arrow-right"></span>
                         </div>
-                    <div id="divMenu" runat="server">
-                         <asp:Panel runat="server" CssClass="TabStripBottom" ID="divTab8">
-
-                    <uc1:Header ID="MyHeader" runat="server" />
-
-                </asp:Panel>
-                        </div>
-                        <div class="taptap-menu-button-wrapper">
-                            <div class="taptap-main-menu-button">
-                                <div class="taptap-main-menu-button-middle"></div>
-                            </div>
-                        </div>
-                        <div class="clearfix"></div>
-
-
+                        <h1>Attendance Management System</h1>
                     </div>
-               <div id="divLogo" runat="server" class="tp_logobgHomeEN">
+                </div>
+                <div id="divMenu" runat="server">
+                    <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" ShowStartingNode="false" />
+
+                    <asp:Menu ID="Menu" runat="server" DataSourceID="SiteMapDataSource1" Orientation="Horizontal" OnMenuItemDataBound="OnMenuItemDataBound">
+                        <LevelMenuItemStyles>
+                            <asp:MenuItemStyle CssClass="main_menu" />
+                            <asp:MenuItemStyle CssClass="level_menu" />
+                        </LevelMenuItemStyles>
+                    </asp:Menu>
+
+                    <asp:Panel runat="server" CssClass="TabStripBottom" ID="divTab8">
+
+                        <uc1:Header ID="MyHeader" runat="server" />
+
+                    </asp:Panel>
+                </div>
+                <div class="taptap-menu-button-wrapper">
+                    <div class="taptap-main-menu-button">
+                        <div class="taptap-main-menu-button-middle"></div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
 
 
-                        <div class="UtilityEN">
+            </div>
+            <div id="divLogo" runat="server" class="tp_logobgHomeEN">
 
-                            <div class="breadcrumb glyphicon glyphicon-home">
-                               
-                            </div>
 
-                            <div class="UtilityLinks">
-                                <asp:LinkButton ID="LnkChangePassword" runat="server"  
-                                     >Change Password</asp:LinkButton>
+                <div class="UtilityEN">
 
-                                <asp:LinkButton ID="lnkShortcut" runat="server"   Style="color: #C3D8D5; text-decoration: none;"
-                                     >Add Quick Link</asp:LinkButton>
-                                <%--<asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                    <div class="breadcrumb glyphicon glyphicon-home">
+                    </div>
+
+                    <div class="UtilityLinks">
+                        <asp:LinkButton ID="LnkChangePassword" runat="server" OnClick="lnkChangePassword_Click">Change Password</asp:LinkButton>
+
+                        <asp:LinkButton ID="lnkShortcut" runat="server" Style="color: #C3D8D5; text-decoration: none;">Add Quick Link</asp:LinkButton>
+                        <%--<asp:UpdatePanel ID="UpdatePanel1" runat="server">
                                             <ContentTemplate>--%>
-                                <asp:LinkButton ID="lnkHelp" runat="server"  Style="color: #C3D8D5; text-decoration: none;"
-                                     >Help</asp:LinkButton>
-                                <%--</ContentTemplate>
+                        <asp:LinkButton ID="lnkHelp" runat="server" Style="color: #C3D8D5; text-decoration: none;">Help</asp:LinkButton>
+                        <%--</ContentTemplate>
                                         </asp:UpdatePanel>--%>
 
-                                <asp:LinkButton ID="LnkLogout" runat="server"  Style="color: #C3D8D5; text-decoration: none;"
-                                    >Logout</asp:LinkButton>
+                        <asp:LinkButton ID="LnkLogout" runat="server" OnClick="lnkLogout_Click" Style="color: #C3D8D5; text-decoration: none;">Logout</asp:LinkButton>
 
-                                <asp:LinkButton ID="lnkLanguage" runat="server" Style="color: #C3D8D5; text-decoration: none;" >Language</asp:LinkButton>
+                        <asp:LinkButton ID="lnkLanguage" runat="server" OnClick="lnkChangePassword_Click" Style="color: #C3D8D5; text-decoration: none;">Language</asp:LinkButton>
 
-                            </div>
-
-                        </div>
-                        <hr class="Sep" />
                     </div>
-                 <div class="container">
-                        <h1 class="pageTitle">
 
-                            </h1>
-                     <div id="menuTd1" runat="server" >
-                         <div style="display:none">
-                            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-                                <!--SideMenu-->
-                            </asp:ContentPlaceHolder></div>
-                       
-                    
-                <asp:Label ID="lblHeading" runat="server" Font-Size="Medium"></asp:Label>
-                 
-                                                                <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
-                                                                </asp:ContentPlaceHolder>
-                                    </div>  
-                        </div>
-               
-                         
-                <div id="ft_padd" class="footer">                     
-                <uc4:Footer ID="Footer1" runat="server" />
-                    </div>
+                </div>
+                <hr class="Sep" />
             </div>
-        
+            <div class="container">
+                <h1 class="pageTitle"></h1>
+                <div id="menuTd1" runat="server">
+                    <div style="display: none">
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                            <!--SideMenu-->
+                        </asp:ContentPlaceHolder>
+                    </div>
+
+
+                    <asp:Label ID="lblHeading" runat="server" Font-Size="Medium"></asp:Label>
+
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+            </div>
+
+
+            <div id="ft_padd" class="footer">
+                <uc4:Footer ID="Footer1" runat="server" />
+            </div>
+        </div>
+
     </form>
     <script type="text/javascript">
 
-                $(document).ready(function () {
-                    $('.sub-square>a').hover(function () {
-                        // Hover over code
-                        var title = $(this).attr('title');
-                        $(this).data('tipText', title).removeAttr('title');
-                        $('<div class="tooltipSmall"></div>')
+        $(document).ready(function () {
+            $('.sub-square>a').hover(function () {
+                // Hover over code
+                var title = $(this).attr('title');
+                $(this).data('tipText', title).removeAttr('title');
+                $('<div class="tooltipSmall"></div>')
 
-                        .text(title)
-                        .appendTo("body")
-                        .fadeIn('slow');
-                    }, function () {
-                        // Hover out code
-                        $(this).attr('title', $(this).data('tipText'));
-                        $('.tooltipSmall').remove();
-                    }).mousemove(function (e) {
-                        var mousex = e.pageX - 50; //Get X coordinates
-                        var mousey = e.pageY - 50; //Get Y coordinates
-                        $('.tooltipSmall')
-                        .css({ top: mousey, left: mousex })
-                    });
-                    if ("ontouchstart" in document.documentElement) {
-                        document.addEventListener('contextmenu', function (e) {
-                            e.preventDefault();
-                        }, false);
-                    }
+                .text(title)
+                .appendTo("body")
+                .fadeIn('slow');
+            }, function () {
+                // Hover out code
+                $(this).attr('title', $(this).data('tipText'));
+                $('.tooltipSmall').remove();
+            }).mousemove(function (e) {
+                var mousex = e.pageX - 50; //Get X coordinates
+                var mousey = e.pageY - 50; //Get Y coordinates
+                $('.tooltipSmall')
+                .css({ top: mousey, left: mousex })
+            });
+            if ("ontouchstart" in document.documentElement) {
+                document.addEventListener('contextmenu', function (e) {
+                    e.preventDefault();
+                }, false);
+            }
 
 
-                });
+        });
             </script>
     <div class="LoadingWrapper">
         <div class="Loader">
-           <!-- <div class="OuterCircle"></div>
+            <!-- <div class="OuterCircle"></div>
             <div class="MiddleCircle"></div>
             <div class="InnerCircle"></div>
             <div class="MinHand"></div>

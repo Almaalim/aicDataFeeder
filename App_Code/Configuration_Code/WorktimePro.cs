@@ -119,7 +119,7 @@ public class WorktimePro
 
     private int _WktShift3Duration;
     public int WktShift3Duration { get { return _WktShift3Duration; } set { _WktShift3Duration = value; } }
-      
+
     //private string _CreatedBy;
     //public string CreatedBy { get { return _CreatedBy; } set { _CreatedBy = value; } }
 
@@ -141,8 +141,8 @@ public class WorktimePro
     //private bool _Deleted;
     //public bool Deleted { get { return _Deleted; } set { _Deleted = value; } }
 
-    //private bool _WktIsActive;
-    //public bool WktIsActive { get { return _WktIsActive; } set { _WktIsActive = value; } }
+    private bool _WktIsActive;
+    public bool WktIsActive { get { return _WktIsActive; } set { _WktIsActive = value; } }
 
     private int _WktShiftCount;
     public int WktShiftCount { get { return _WktShiftCount; } set { _WktShiftCount = value; } }

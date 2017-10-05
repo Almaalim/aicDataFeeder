@@ -11,33 +11,33 @@ using System.Web.UI.WebControls.WebParts;
 using System.Xml.Linq;
 
 public static class InfoTab
-{   
+{
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public static int FindCount() { return 8; }
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public static int FindPageIndex(string pName) 
+    public static int FindPageIndex(string pName)
     {
         try
         {
-            if (pName == "Home")        { return 1; }
-            if (pName == "Users")       { return 2; }
-            if (pName == "Employees")   { return 3; }
+            if (pName == "Home") { return 1; }
+            if (pName == "Users") { return 2; }
+            if (pName == "Employees") { return 3; }
             if (pName == "Departments") { return 4; }
-            if (pName == "Vacations")   { return 5; }
+            if (pName == "Vacations") { return 5; }
             //if (pName == "EmpVacation") { return 6; }
             if (pName == "Machines") { return 6; }
             if (pName == "Settings") { return 7; }
-            if (pName == "Reports")     { return 8; }
-            
+            if (pName == "Reports") { return 8; }
+
             return -1;
         }
         catch (Exception EX) { return -1; }
     }
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public static string FindPageInfo(int pIndex , string pInfo)
+    public static string FindPageInfo(int pIndex, string pInfo)
     {
         try
         {
@@ -51,13 +51,13 @@ public static class InfoTab
             //if (pIndex == 6) { PageName = "EmpVacation"; PageTitel = General.Msg("Employee Vacation", "إجازات الموظفين"); PageUrl = @"~/Pages/EmployeeVacation.aspx"; }
             if (pIndex == 6) { PageName = "Machines"; PageTitel = General.Msg("Machines", "الأجهزة"); PageUrl = @"~/Pages/MachineHome.aspx"; }
             if (pIndex == 7) { PageName = "Settings"; PageTitel = General.Msg("Settings", "الإعدادات"); PageUrl = @"~/Pages/SettingHome.aspx"; }
-            if (pIndex == 8) { PageName = "Reports";   PageTitel = General.Msg("Reports", "التقارير");       PageUrl = @"~/ReportsMain.aspx"; }
-            
+            if (pIndex == 8) { PageName = "Reports"; PageTitel = General.Msg("Reports", "التقارير"); PageUrl = @"~/Pages/ReportsMain.aspx"; }
 
 
-            if (pInfo == "Name")  { return PageName;  }
+
+            if (pInfo == "Name") { return PageName; }
             if (pInfo == "Titel") { return PageTitel; }
-            if (pInfo == "Url")   { return PageUrl;   }
+            if (pInfo == "Url") { return PageUrl; }
             return "";
         }
         catch (Exception EX) { return ""; }
@@ -103,7 +103,7 @@ public static class InfoTab
         tb.ID = "Tabpage" + pIndex.ToString();
 
         TableRow tr = new TableRow();
-        
+
         /*TdLeft*/
         TableCell tdleft = new TableCell();
         if (pIndex == pIndexTab) { tdleft.CssClass = "NormalTab_Left"; } else { tdleft.CssClass = "ActiveTab_Left"; }
@@ -132,9 +132,9 @@ public static class InfoTab
         tdright.ID = "Tdright" + pIndex.ToString();
         /*Tdright*/
 
-        if (pLang == "Ar") { tr.Cells.Add(tdright);} else { tr.Cells.Add(tdleft); }
+        if (pLang == "Ar") { tr.Cells.Add(tdright); } else { tr.Cells.Add(tdleft); }
         tr.Cells.Add(tdmidd);
-        if (pLang == "Ar") { tr.Cells.Add(tdleft);} else { tr.Cells.Add(tdright); }
+        if (pLang == "Ar") { tr.Cells.Add(tdleft); } else { tr.Cells.Add(tdright); }
 
         tb.Rows.Add(tr);
 
@@ -146,8 +146,8 @@ public static class InfoTab
     {
         try
         {
-            if (pLang == "Ar") { for (int i = FindCount(); i > 0 ; i--) { if (IsAdd(i)) { AddTabs(i, pIndex, pLang, pnl); } }} 
-            else { for (int i = 1; i <= FindCount(); i++) { if (IsAdd(i)) { AddTabs(i, pIndex, pLang, pnl); } } } 
+            if (pLang == "Ar") { for (int i = FindCount(); i > 0; i--) { if (IsAdd(i)) { AddTabs(i, pIndex, pLang, pnl); } } }
+            else { for (int i = 1; i <= FindCount(); i++) { if (IsAdd(i)) { AddTabs(i, pIndex, pLang, pnl); } } }
         }
         catch (Exception e1) { }
     }
@@ -157,14 +157,14 @@ public static class InfoTab
     {
         try
         {
-            for (int i = 1; i <= FindCount(); i++) 
-            { 
-                string PageName  = FindPageInfo(i, "Name");
+            for (int i = 1; i <= FindCount(); i++)
+            {
+                string PageName = FindPageInfo(i, "Name");
                 string PageTitel = FindPageInfo(i, "Titel");
                 ddl.Items.Add(new ListItem(PageTitel, PageName));
             }
 
-            ListItem lsMsg = new ListItem(General.Msg("-Select Home page-", "-اختر صفحة البداية-"),"0");
+            ListItem lsMsg = new ListItem(General.Msg("-Select Home page-", "-اختر صفحة البداية-"), "0");
             ddl.Items.Insert(0, lsMsg);
         }
         catch (Exception e1) { }
@@ -187,20 +187,20 @@ public static class InfoTab
     public static string FindFirstTab()
     {
         string url = "";
-        
+
         try
         {
             string[] Perm = getPerm().Split(',');
-            
+
             for (int i = 1; i <= FindCount(); i++)
-            { 
+            {
                 string PagePerm = FindPageInfo(i, "Name");
                 if (!string.IsNullOrEmpty(PagePerm))
                 {
                     if (Perm.Contains(PagePerm)) { url = FindPageInfo(i, "Url"); break; }
                 }
             }
-            
+
         }
         catch (Exception e1) { url = ""; }
 

@@ -29,14 +29,17 @@ public partial class Header : System.Web.UI.UserControl
         if (dateFormat == "Gregorian") { System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US"); }
         else if (dateFormat == "Hijri") { System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("ar-Sa"); }
 
-        if (Session["Language"] != null)
-        {
-            Language = Session["Language"].ToString();
-            if (Language == "Ar") { lnkChangeLang.ImageUrl = "~/App_Themes/ThemeEn/images/english_icon.png"; } 
-            else { lnkChangeLang.ImageUrl = "~/App_Themes/ThemeEn/images/Arabic-icon.png"; }
-        }
+        //if (Session["Language"] != null)
+        //{
+        //    Language = Session["Language"].ToString();
 
-        if (!IsPostBack) { lnkLogout2.Text = "[" + Session["UserName"].ToString() + "]"; }
+        //    //**** i commit this code plesae change it to style linkedbutton***///
+
+        //    //if (Language == "Ar") { lnkChangeLang.ImageUrl = "~/App_Themes/ThemeEn/images/english_icon.png"; } 
+        //    //else { lnkChangeLang.ImageUrl = "~/App_Themes/ThemeEn/images/Arabic-icon.png"; }
+        //}
+
+        //if (!IsPostBack) { lnkLogout2.Text = "[" + Session["UserName"].ToString() + "]"; }
     }
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
