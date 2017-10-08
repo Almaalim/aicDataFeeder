@@ -22,7 +22,7 @@ public partial class Pages_WorkTimeSetting : BasePage
 
     WorktimePro ProClass = new WorktimePro();
     WorktimeSql SqlClass = new WorktimeSql();
-
+    string s;
     string MainPer = "SetWorktime";
     string MainQuery = "SELECT * FROM WorkingTime ";
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
