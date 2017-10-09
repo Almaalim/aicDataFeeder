@@ -45,14 +45,14 @@ public partial class MainMasterPage : System.Web.UI.MasterPage
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
     protected void OnMenuItemDataBound(object sender, MenuEventArgs e)
     {
-        if (SiteMap.CurrentNode != null)
-        {
-            if (e.Item.Text == SiteMap.CurrentNode.Title)
-            {
-                if (e.Item.Parent != null) { e.Item.Parent.Selected = true; }
-                else { e.Item.Selected = true; }
-            }
-        }
+        //if (SiteMap.CurrentNode != null)
+        //{
+        //    if (e.Item.Text == SiteMap.CurrentNode.Title)
+        //    {
+        //        if (e.Item.Parent != null) { e.Item.Parent.Selected = true; }
+        //        else { e.Item.Selected = true; }
+        //    }
+        //}
     }
     //public static string PageName() 
     //{ 
@@ -81,7 +81,7 @@ public partial class MainMasterPage : System.Web.UI.MasterPage
         if (Session["Language"].ToString() == "Ar") { Session["Language"] = "En"; } else { Session["Language"] = "Ar"; }
 
         if (Session["Language"].ToString() == "Ar") { Session["MyTheme"] = "ThemeAr"; }
-        if (Session["Language"].ToString() == "En") { Session["MyTheme"] = "ThemeEn"; }
+        if (Session["Language"].ToString() == "En") { Session["MyTheme"] = "MetroStyle"; }
 
         AppPro.UsrLoginID = FormSession.LoginID;
         AppPro.UsrLanguage = Session["Language"].ToString();

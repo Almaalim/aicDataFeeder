@@ -1,25 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
   <siteMapNode url="Home.aspx" title="Home"  description="Home Page">
-    <siteMapNode url="Users.aspx" title="Users" description="Users Page" />
-    <siteMapNode url="Employee.aspx" title="Employees" description="Employees Page" />
-    <siteMapNode url="Department.aspx" title="Departments" description="Departments Page" />
-    <siteMapNode url="VacationHome.aspx" title="Vacation" description="Vacation Page">
-      <siteMapNode url ="VacationType.aspx" title="Vacation Type" description="Vacation Type Page"></siteMapNode>
-      <siteMapNode url ="EmployeeVacation.aspx" title="Employee Vacation" description="Employee Vacation Page"></siteMapNode>
+    <siteMapNode url="pages/Users.aspx" title="Users" description="Users Page" />
+    <siteMapNode url="pages/Employee.aspx" title="Employees" description="Employees Page" />
+    <siteMapNode url="pages/Department.aspx" title="Departments" description="Departments Page" />
+    <siteMapNode url="pages/VacationHome.aspx" title="Vacation" description="Vacation Page">
+      <siteMapNode url ="pages/VacationType.aspx" title="Vacation Type" description="Vacation Type Page"></siteMapNode>
+      <siteMapNode url ="pages/EmployeeVacation.aspx" title="Employee Vacation" description="Employee Vacation Page"></siteMapNode>
     </siteMapNode>
-    <siteMapNode url="MachineHome.aspx" title="Machine" description="Machine Page">
-      <siteMapNode url ="SettingMachine.aspx" title="Setting Machine" description="Setting Machine Page"></siteMapNode>
-      <siteMapNode url ="MachinePing.aspx" title="Machine Status" description="Machine Status Page"></siteMapNode>
+    <siteMapNode url="pages/MachineHome.aspx" title="Machine" description="Machine Page">
+      <siteMapNode url ="pages/SettingMachine.aspx" title="Setting Machine" description="Setting Machine Page"></siteMapNode>
+      <siteMapNode url ="pages/MachinePing.aspx" title="Machine Status" description="Machine Status Page"></siteMapNode>
     </siteMapNode>
-    <siteMapNode url="SettingHome.aspx" title="Setting" description="Setting Page">
-      <siteMapNode url ="SettingDB.aspx" title="Import Database" description="Import Database Page"></siteMapNode>
-      <siteMapNode url ="WorkTimeSetting.aspx" title="WorkTime" description="WorkTime Page"></siteMapNode>
+    <siteMapNode url="pages/SettingHome.aspx" title="Setting" description="Setting Page">
+      <siteMapNode url ="pages/SettingDB.aspx" title="Import Database" description="Import Database Page"></siteMapNode>
+      <siteMapNode url ="pages/WorkTimeSetting.aspx" title="WorkTime" description="WorkTime Page"></siteMapNode>
       <!--<siteMapNode url ="SettingScheduleImport.aspx.exclude" title="Vacation Type" description="Vacation Type Page"></siteMapNode>-->
       <!--<siteMapNode url ="EmployeeVacation.aspx" title="Employee Vacation" description="Employee Vacation Page"></siteMapNode>-->
-      <siteMapNode url ="SettingCompany.aspx" title="Setting Company" description="Setting Company Page"></siteMapNode>
-      <siteMapNode url ="LogErrors.aspx" title="Log Errors" description="Log Errors Page"></siteMapNode>
+      <siteMapNode url ="pages/SettingCompany.aspx" title="Setting Company" description="Setting Company Page"></siteMapNode>
+      <siteMapNode url ="pages/LogErrors.aspx" title="Log Errors" description="Log Errors Page"></siteMapNode>
     </siteMapNode>
-    <siteMapNode url="ReportsMain.aspx" title="Reports" description="Reports Page" />
+    <siteMapNode url="pages/ReportsMain.aspx" title="Reports" description="Reports Page" />
   </siteMapNode>
 </siteMap>
