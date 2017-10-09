@@ -160,6 +160,9 @@
             $('.rp_servlnk2').each(function (i) {
                 $(this).css('background-color', '#' + colors[i % colors.length]);
             });
+            $('#Menu ul>li.static>a').each(function (i) {
+                $(this).css('background-color', '#' + colors[i % colors.length]);
+            });
             $('.monthSummaryDiv').each(function (i) {
                 $(this).css('background-color', '#' + colors[i % colors.length]);
             });
@@ -175,9 +178,9 @@
             $(".ReportBtns").each(function (i) {
                 $(this).css('background-color', '#' + colors[i % colors.length]);
             });
-            $("ul.level2.dynamic").each(function (i) {
-                $(this).css('background-color', '#' + colors[i % colors.length]);
-            });
+            //$("#Menu ul>li.static>ul").each(function (i) {
+            //    $(this).css('background-color', '#' + colors[i % colors.length]);
+            //});
 
             $("ul.level1.static>li").each(function (i) {
                 $(this).css('background-color', '#' + colors[i % colors.length]);
