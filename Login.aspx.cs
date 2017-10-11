@@ -81,12 +81,14 @@ public partial class Login : System.Web.UI.Page
                     Session["Role"]            = "User";
                     Session["MyTheme"]         = "Theme" + Session["Language"].ToString();
 
-                    string url = InfoTab.FindFirstTab(); //@"~/pages/SettingMachine.aspx"; //MachinePing.aspx"; //InfoTab.FindFirstTab(); //@"~/pages/MachinePing.aspx";//
-                    if (!string.IsNullOrEmpty(url)) { Response.Redirect(url, false); }
-                    else
-                    {
-                        MessageFun.ShowMsg(this, MessageFun.TypeMsg.Error, General.Msg("You do not have access,Please contact the Administrator", "لا يمكنك الدخول,الرجاء مراجعة مدير النظام"));
-                    }
+                    //string url = InfoTab.FindFirstTab(); //@"~/pages/SettingMachine.aspx"; //MachinePing.aspx"; //InfoTab.FindFirstTab(); //@"~/pages/MachinePing.aspx";//
+                    //if (!string.IsNullOrEmpty(url)) { Response.Redirect(url, false); }
+                    try { Response.Redirect("~/pages/Home.aspx", false); }
+                    catch { MessageFun.ShowMsg(this, MessageFun.TypeMsg.Error, General.Msg("You do not have access,Please contact the Administrator", "لا يمكنك الدخول,الرجاء مراجعة مدير النظام")); }
+                    //else
+                    //{
+                    //    MessageFun.ShowMsg(this, MessageFun.TypeMsg.Error, General.Msg("You do not have access,Please contact the Administrator", "لا يمكنك الدخول,الرجاء مراجعة مدير النظام"));
+                    //}
                     return;
                 }
                 catch (Exception e1)

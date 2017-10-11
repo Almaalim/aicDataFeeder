@@ -404,20 +404,36 @@
                     </div>
                 </div>
                 <div id="divMenu" runat="server">
-                    <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" ShowStartingNode="false" />
+                    <%--<asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" ShowStartingNode="false" />
 
-                    <asp:Menu ID="Menu" runat="server" DataSourceID="SiteMapDataSource1" Orientation="Horizontal" OnMenuItemDataBound="OnMenuItemDataBound">
+                    <asp:Menu ID="Menu" runat="server" DataSourceID="SiteMapDataSource1" Orientation="Horizontal" OnMenuItemDataBound="OnMenuItemDataBound2">
                         <LevelMenuItemStyles>
                             <asp:MenuItemStyle CssClass="main_menu" />
                             <asp:MenuItemStyle CssClass="level_menu" />
                         </LevelMenuItemStyles>
+                    </asp:Menu>--%>
+
+                    <asp:Menu ID="Menu1" DataSourceID="xmlDataSource" runat="server" Orientation="Horizontal"
+                        StaticEnableDefaultPopOutImage="False" DynamicEnableDefaultPopOutImage="False"
+                        DynamicVerticalOffset="0" meta:resourcekey="Menu1Resource1" OnMenuItemDataBound="Menu1_MenuItemDataBound"
+                        StaticSubMenuIndent="" RenderingMode="List">
+                        <DataBindings>
+                            <asp:MenuItemBinding DataMember="MenuItem" NavigateUrlField="NavigateUrl" TextField="Text"
+                                ToolTipField="ToolTip" meta:resourcekey="MenuItemBindingResource1" />
+                        </DataBindings>
+                        <Items>
+                            <asp:MenuItem Text="New Item" Value="New Item" meta:resourcekey="MenuItemResource1"></asp:MenuItem>
+                        </Items>
                     </asp:Menu>
 
-                    <asp:Panel runat="server" CssClass="TabStripBottom" ID="divTab8">
+                    <asp:XmlDataSource ID="xmlDataSource" TransformFile="~/XSL/TransformXSLT.xsl" XPath="MenuItems/MenuItem"
+                        runat="server" EnableCaching="False" EnableViewState="False" />
+
+                    <%--<asp:Panel runat="server" CssClass="TabStripBottom" ID="divTab8">
 
                         <uc1:Header ID="MyHeader" runat="server" />
 
-                    </asp:Panel>
+                    </asp:Panel>--%>
                 </div>
                 <div class="taptap-menu-button-wrapper">
                     <div class="taptap-main-menu-button">
@@ -464,9 +480,8 @@
                         </asp:ContentPlaceHolder>
                     </div>
 
-
                     <asp:Label ID="lblHeading" runat="server" Font-Size="Medium"></asp:Label>
-
+                    <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True"></asp:ScriptManager>
                     <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
                     </asp:ContentPlaceHolder>
                 </div>

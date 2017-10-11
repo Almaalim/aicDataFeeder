@@ -75,4 +75,22 @@ public class FormSession
     }
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public static string orderPermission(string PermUsr)
+    {
+        string retPerm = string.Empty;
+
+        if (!string.IsNullOrEmpty(PermUsr))
+        {
+            string[] permSplit = PermUsr.Split(',');
+
+            foreach(string perm in permSplit)
+            {
+                if (retPerm.Trim().Length > 0) { retPerm += ",'" + perm + "'" ; }
+                else {retPerm = "'" + perm + "'"; }
+            }
+            return retPerm;
+        }
+        else { return "''"; }
+        
+    }
 }

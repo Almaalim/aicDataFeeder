@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
   <siteMapNode url="Home.aspx" title="Home"  description="Home Page">
-    <siteMapNode url="Users.aspx" title="Users" description="Users Page" />
+    <siteMapNode url="~/Pages/Users.aspx" title="Users" description="Users Page" resourceKey="Users" />
     <siteMapNode url="Employee.aspx" title="Employees" description="Employees Page" />
     <siteMapNode url="Department.aspx" title="Departments" description="Departments Page" />
     <siteMapNode url="VacationHome.aspx" title="Vacation" description="Vacation Page">
-      <siteMapNode url ="VacationType.aspx" title="Vacation Type" description="Vacation Type Page"></siteMapNode>
+      <siteMapNode url ="~/Pages/VacationType.aspx" title="Vacation Type" description="Vacation Type Page"></siteMapNode>
       <siteMapNode url ="EmployeeVacation.aspx" title="Employee Vacation" description="Employee Vacation Page"></siteMapNode>
     </siteMapNode>
     <siteMapNode url="MachineHome.aspx" title="Machine" description="Machine Page">
@@ -19,6 +19,7 @@
       <!--<siteMapNode url ="EmployeeVacation.aspx" title="Employee Vacation" description="Employee Vacation Page"></siteMapNode>-->
       <siteMapNode url ="SettingCompany.aspx" title="Setting Company" description="Setting Company Page"></siteMapNode>
       <siteMapNode url ="LogErrors.aspx" title="Log Errors" description="Log Errors Page"></siteMapNode>
+      <siteMapNode url ="EmailSetting.aspx" title="Email Setting" description="Email Setting Page"></siteMapNode>
     </siteMapNode>
     <siteMapNode url="ReportsMain.aspx" title="Reports" description="Reports Page" />
   </siteMapNode>

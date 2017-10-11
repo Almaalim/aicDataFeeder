@@ -141,6 +141,26 @@ public class DBFun
     }
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public static DataSet FetchMenuData(string pQuery)
+    {
+        con = new SqlConnection(ConfigurationManager.ConnectionStrings[ConName].ConnectionString);
+
+        DataSet ds = new DataSet();
+        SqlDataAdapter da = new SqlDataAdapter(pQuery, con);
+
+        da.Fill(ds);
+        da.Dispose();
+
+        ds.DataSetName = "Menus";
+        ds.Tables[0].TableName = "Menu";
+        DataRelation relation = new DataRelation("ParentChild", ds.Tables["Menu"].Columns["MnuID"], ds.Tables["Menu"].Columns["MnuParentID"], false);
+        relation.Nested = true;
+        ds.Relations.Add(relation);
+
+        return ds;
+    }
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     static public int InsertData(string pQuery)
     {
         try
