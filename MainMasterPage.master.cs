@@ -218,7 +218,7 @@ public partial class MainMasterPage : System.Web.UI.MasterPage
                     menuCss = menuCss.Replace(" ", "");
                     menuCss = Regex.Replace(menuCss, @"[^0-9a-zA-Z]+", "");
                     if (isFirst)
-                    {
+    {
 
                         FirstItem = "<div class='square-big'>";
                         FirstItem += "<a title='" + SDR["MnuText"].ToString() + "' class='SideMenuItem " + "icon" + menuCss + "' href='" + SDR["MnuURL"].ToString().Replace("~", "..") + "'>" + SDR["MnuText"].ToString() + "</a>";
@@ -272,8 +272,8 @@ public partial class MainMasterPage : System.Web.UI.MasterPage
     //        }
     //    }
     //}
-    //public static string PageName()
-    //{
+    //public static string PageName() 
+    //{ 
 
     //    return getPageName();
     //}
@@ -299,7 +299,7 @@ public partial class MainMasterPage : System.Web.UI.MasterPage
         if (Session["Language"].ToString() == "Ar") { Session["Language"] = "En"; } else { Session["Language"] = "Ar"; }
 
         if (Session["Language"].ToString() == "Ar") { Session["MyTheme"] = "ThemeAr"; }
-        if (Session["Language"].ToString() == "En") { Session["MyTheme"] = "ThemeEn"; }
+        if (Session["Language"].ToString() == "En") { Session["MyTheme"] = "MetroStyle"; }
 
         AppPro.UsrLoginID = FormSession.LoginID;
         AppPro.UsrLanguage = Session["Language"].ToString();
