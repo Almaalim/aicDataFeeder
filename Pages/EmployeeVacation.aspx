@@ -42,7 +42,7 @@
                     <table align="left" dir="ltr">
                         <tr>
                             <td>
-                                <asp:GridView ID="grdData" runat="server" AutoGenerateColumns="False" CssClass="vGrid"
+                                <asp:GridView ID="grdData" runat="server" AutoGenerateColumns="False" CssClass="GridTable"
                                     DataKeyNames="EvrID" Width="100%" GridLines="Horizontal" HorizontalAlign="Center"
                                     CellPadding="4" AllowPaging="True" OnDataBound="grdData_DataBound" OnSelectedIndexChanged="grdData_SelectedIndexChanged"
                                     OnRowDataBound="grdData_RowDataBound" OnSorting="grdData_Sorting" OnRowCreated="grdData_RowCreated"

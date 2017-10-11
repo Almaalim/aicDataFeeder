@@ -13,7 +13,7 @@
                     <tr>
                         <td>
                             <asp:GridView ID="grdData" runat="server" AutoGenerateColumns="False" CellPadding="4"
-                                DataKeyNames="MacID" CssClass="vGrid" GridLines="Horizontal" Width="100%"
+                                DataKeyNames="MacID" CssClass="GridTable" GridLines="Horizontal" Width="100%"
                                 AllowPaging="True" AllowSorting="false" HorizontalAlign="Center" OnDataBound="grdData_DataBound"
                                 OnRowDataBound="grdData_RowDataBound" OnSorting="grdData_Sorting" OnRowCreated="grdData_RowCreated"
                                 OnPageIndexChanging="grdData_PageIndexChanging" ShowFooter="True">

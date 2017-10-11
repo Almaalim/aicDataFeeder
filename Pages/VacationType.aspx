@@ -41,7 +41,7 @@
 
                 <div class="row">
                     <div class="col12">
-                        <asp:GridView ID="grdData" runat="server" AutoGenerateColumns="False" CssClass="vGrid"
+                        <asp:GridView ID="grdData" runat="server" AutoGenerateColumns="False" CssClass="GridTable"
                             DataKeyNames="VtpID" Width="100%"
                             GridLines="Horizontal" HorizontalAlign="Center" CellPadding="4"
                             AllowPaging="True"
