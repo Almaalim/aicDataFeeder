@@ -19,6 +19,8 @@
       <!--<siteMapNode url ="EmployeeVacation.aspx" title="Employee Vacation" description="Employee Vacation Page"></siteMapNode>-->
       <siteMapNode url ="pages/SettingCompany.aspx" title="Setting Company" description="Setting Company Page"></siteMapNode>
       <siteMapNode url ="pages/LogErrors.aspx" title="Log Errors" description="Log Errors Page"></siteMapNode>
+      <siteMapNode url ="pages/EmailSetting.aspx" title="Email Setting" description="Email Setting Page"></siteMapNode>
+
     </siteMapNode>
     <siteMapNode url="pages/ReportsMain.aspx" title="Reports" description="Reports Page" />
   </siteMapNode>

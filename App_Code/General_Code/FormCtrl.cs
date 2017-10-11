@@ -7,12 +7,17 @@ using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Data;
+using System.Data.SqlClient;
+using System.Configuration;
 
 public class FormCtrl
 {
+    static SqlConnection MainCon;
+
+    static string ConName = "constring";
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	public FormCtrl() { }
+    public FormCtrl() { }
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public static void Clean(Control PCtrl)
@@ -217,11 +222,50 @@ public class FormCtrl
     }
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public static DataSet FetchDepartmentDataSet(string query)
+    {
+        MainCon = new SqlConnection(ConfigurationManager.ConnectionStrings[ConName].ConnectionString);
 
+        DataSet ds = new DataSet();
+        SqlDataAdapter da = new SqlDataAdapter(query, MainCon);
+
+        da.Fill(ds);
+        da.Dispose();
+        ds.DataSetName = "Departments";
+        ds.Tables[0].TableName = "Department";
+        DataRelation relation = new DataRelation("ParentChild", ds.Tables["Department"].Columns["DepID"], ds.Tables["Department"].Columns["DepParentID"], false);
+        relation.Nested = true;
+        ds.Relations.Add(relation);
+        return ds;
+    }
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public static DataSet FillBrcDepTreeDS(string ActiveVersion)
+    {
+        ActiveVersion = "General";
+        string sql;
+
+        string DQ = "";
+        if (ActiveVersion == "General")
+        {
+            DQ = " SELECT DISTINCT DepID,DepParentID,DepName" + General.Msg("En", "Ar") + " AS DepNameEn FROM Department ";
+        }
+        //else // (ActiveVersion == "General")
+        //{
+        //    DQ = " SELECT DISTINCT DepID,DepParentID,FullName" + General.Msg("En", "Ar") + " AS DepNameEn FROM DepartmentWithBranchLevelView ";
+        //}
+
+        DataSet ds = new DataSet();
+        ds = (DataSet)FetchDepartmentDataSet(sql = DQ);
+
+        return ds;
+    }
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /*###############################################################################################################################*/
     /*###############################################################################################################################*/
     #region FillDDL
-    
+
     static string[,] Religions = new string[4, 3] { { "-Select Religion-", "-اختر الديانة-", "0" } , { "Muslim", "مسلم", "Muslim" }, 
                                                     { "Christian", "مسيحي", "Christian" }           , { "Jewish", "يهودي", "Jewish" } };
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

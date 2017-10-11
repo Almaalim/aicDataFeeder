@@ -140,6 +140,34 @@ public class AppUsersSql : DataLayerBase
     }
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public bool AppUser_Update_DepList(string UsrName, string DepList, string TransactionBy)
+    {
+        SqlCommand Sqlcmd = new SqlCommand("dbo.[AppUser_Update_DepList]", MainConnection);
+        Sqlcmd.CommandType = CommandType.StoredProcedure;
+
+        try
+        {
+            Sqlcmd.Parameters.Add(new SqlParameter("@UsrLoginID", VchDB, 200, IN, false, 0, 0, "", DRV, UsrName));
+            Sqlcmd.Parameters.Add(new SqlParameter("@UsrDepartments", VchDB, 8000, IN, false, 0, 0, "", DRV, DepList));
+
+            Sqlcmd.Parameters.Add(new SqlParameter("@TransactionBy", VchDB, 15, IN, false, 0, 0, "", DRV, TransactionBy));
+
+            MainConnection.Open();
+            Sqlcmd.ExecuteNonQuery();
+            return true;
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message, ex);
+        }
+        finally
+        {
+            MainConnection.Close();
+            Sqlcmd.Dispose();
+        }
+    }
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public bool UpdateLanguage(AppUsersPro pro)
     {
         SqlCommand sqlCommand = new SqlCommand("dbo.[AppUsers_UpdateLanguage]",MainConnection);
