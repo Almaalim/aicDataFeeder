@@ -48,8 +48,7 @@
                 <div class="row">
                     <div class="col12">
                         <asp:GridView ID="grdData" runat="server" AutoGenerateColumns="False"
-                            CellPadding="4" DataKeyNames="EmpID" CssClass="vGrid"
-                            GridLines="Horizontal" Width="100%"
+                            CellPadding="4" DataKeyNames="EmpID"   Width="100%"
                             AllowPaging="True" HorizontalAlign="Center"
                             OnDataBound="grdData_DataBound" OnSelectedIndexChanged="grdData_SelectedIndexChanged"
                             OnRowDataBound="grdData_RowDataBound" OnSorting="grdData_Sorting" OnRowCreated="grdData_RowCreated"

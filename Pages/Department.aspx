@@ -43,7 +43,7 @@
 
                 <div class="row">
                     <div class="col12">
-                        <asp:GridView ID="grdMainData" runat="server" AutoGenerateColumns="False" CssClass="vGrid"
+                        <asp:GridView ID="grdMainData" runat="server" AutoGenerateColumns="False" CssClass="GridTable"
                             DataKeyNames="DepID" Width="100%"
                             GridLines="Horizontal" HorizontalAlign="Center" CellPadding="4"
                             AllowPaging="True"
@@ -179,7 +179,7 @@
                                 <%--<tr>
                             <td>  
                                 <asp:GridView ID="grdSubData" runat="server" AutoGenerateColumns="False" DataKeyNames="SdpID" Width="100%"
-                                        GridLines="Horizontal" HorizontalAlign="Center"  CellPadding="4" CssClass="vGrid"
+                                        GridLines="Horizontal" HorizontalAlign="Center"  CellPadding="4" CssClass="GridTable"
                                         AllowPaging="True" AllowSorting="false"  
                                         ondatabound="grdSubData_DataBound" onselectedindexchanged="grdSubData_SelectedIndexChanged" 
                                         onrowdatabound="grdSubData_RowDataBound" onsorting="grdSubData_Sorting" OnRowCreated="grdSubData_RowCreated" 

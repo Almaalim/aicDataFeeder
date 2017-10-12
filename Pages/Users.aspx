@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MainMasterPage.master" AutoEventWireup="true"
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MainMasterPage.master" AutoEventWireup="true" Theme="MetroStyle"
     CodeFile="Users.aspx.cs" Inherits="Pages_Users" %>
 
 <%@ Register Src="../Control/UsersSideMenu.ascx" TagName="UsersSideMenu" TagPrefix="uc1" %>
@@ -50,7 +50,7 @@
                 <div class="row">
                     <div class="col12">
                         <asp:GridView ID="grdData" runat="server" AutoGenerateColumns="False" CellPadding="4"
-                            DataKeyNames="UsrLoginID" CssClass="vGrid" GridLines="Horizontal" Width="100%"
+                            DataKeyNames="UsrLoginID" CssClass="GridTable" GridLines="Horizontal" Width="100%"
                             AllowPaging="True" AllowSorting="false" HorizontalAlign="Center" OnDataBound="grdData_DataBound"
                             OnSelectedIndexChanged="grdData_SelectedIndexChanged" OnRowDataBound="grdData_RowDataBound"
                             OnSorting="grdData_Sorting" OnRowCreated="grdData_RowCreated" OnPageIndexChanging="grdData_PageIndexChanging"
