@@ -158,7 +158,7 @@
                                                     ValidationGroup="VGroup" meta:resourcekey="rfvddlVacTypeResource1"></asp:RequiredFieldValidator>
                                                 <asp:CustomValidator ID="cvEmpID" runat="server" Text="&lt;img src='images/message_exclamation.png' title='!' /&gt;"
                                                     ValidationGroup="VGroup" ErrorMessage="this ID no there or no active!" OnServerValidate="EmpID_ServerValidate"
-                                                    EnableClientScript="False" ControlToValidate="txtCustomValidator" ></asp:CustomValidator>
+                                                    EnableClientScript="False" ControlToValidate="cvtxt" ></asp:CustomValidator>
                                             </td>
                                             <td class="td1Allalign">
                                                 <span class="RequiredField">*</span>

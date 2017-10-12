@@ -366,9 +366,9 @@
                                     <asp:LinkButton ID="btnMainCancel" runat="server" Text="Cancel" CssClass="GenButton glyphicon glyphicon-remove-circle" Enabled="false"
                                         OnClick="btnMainCancel_Click"></asp:LinkButton>
                                     <asp:TextBox ID="cvtxt" runat="server" Text="02120" Visible="False" Width="10px"></asp:TextBox>
-                                    <asp:CustomValidator ID="CustomValidator1" runat="server" Display="None" CssClass="CustomValidator"
-                                        ValidationGroup="ShowMsg" OnServerValidate="ShowMsg_ServerValidate" EnableClientScript="False" ControlToValidate="cvtxt">
-                                            </asp:CustomValidator>
+                                    <asp:CustomValidator ID="cvShowMsg" runat="server" Display="None"
+                                        ValidationGroup="ShowMsg" OnServerValidate="ShowMsg_ServerValidate"
+                                        EnableClientScript="False" ControlToValidate="cvtxt" meta:resourcekey="cvShowMsgResource1"></asp:CustomValidator>
                                 </div>
                             </div>
 
@@ -388,7 +388,7 @@
                                         ValidationGroup="vgSave"
                                         OnServerValidate="tree_ServerValidate"
                                         EnableClientScript="False"
-                                        ControlToValidate="txtValid"
+                                        ControlToValidate="cvtxt"
                                         meta:resourcekey="cvDepartmentResource1"></asp:CustomValidator>
                                 </div>
                             </div>
