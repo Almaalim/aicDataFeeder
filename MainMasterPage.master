@@ -77,7 +77,7 @@
             }
             else {
                 $(".NotificationsPopup").removeClass("NotificationsMobile");
-                $("#aspnetForm").prepend(Notifi);
+                
             }
             $("[id*='iFrame']").load(function () {
                 $(this).height($(this).contents().find("html").height());
@@ -206,10 +206,10 @@
             });
         }
         $(document).click(function (e) {
-            var container = $(".taptap-menu-active, .taptap-main-wrapper-active, .NotificationsPopup");
+            var container = $(".taptap-menu-active, .taptap-main-wrapper-active");
             if (!container.is(e.target) && container.has(e.target).length === 0) {
                 $(".taptap-menu-active").removeClass("taptap-menu-active");
-                $(".NotificationsPopup").removeClass("NotificationsActive");
+               /* $(".NotificationsPopup").removeClass("NotificationsActive");*/
                 $(".taptap-main-wrapper").removeClass("taptap-main-wrapper-active");
                 $("body").css("overflow", "auto");
             }
@@ -363,23 +363,14 @@
 </head>
 <body class="BODY">
     <form id="form1" runat="server">
-        <div id="divNotifications" runat="server" class="NotificationsPopup">
-        </div>
+        
         <%--side Menu--%>
         <div class="taptap-main-wrapper">
             <div class="taptap-main-inner">
                 <div class="taptap-main">
                     <div class="taptap-main-inner-inner">
                         <div class="taptap-contents-wrapper">
-                            <div class="NotificationsWrapper">
-                                <asp:Image ID="UserImg" runat="server" ImageUrl="~/CSS/Metro/Images/UserImg.png" CssClass="UserImg" />
-                                <asp:Label ID="lblWelcome" runat="server" Text="Welcome" meta:resourcekey="lblWelcomeResource1" Visible="false"></asp:Label>
-
-                                <asp:Label ID="lblUserName" runat="server" meta:resourcekey="lblUserNameResource1"></asp:Label>
-                                <div class="NotificationsIcon">
-                                    <span id="spnNotificationsNo" runat="server" class="NotificationsNumber">999</span>
-                                </div>
-                            </div>
+                           
                             <div class="UserDetails">
 
                                 <div class="clearfix"></div>
@@ -461,6 +452,9 @@
                     </div>
 
                     <div class="UtilityLinks">
+                        <asp:Image ID="UserImg" runat="server" ImageUrl="~/CSS/Metro/Images/UserImg.png" CssClass="UserImg" />
+                                <asp:Label ID="lblWelcome" runat="server" Text="Welcome" meta:resourcekey="lblWelcomeResource1" Visible="false"></asp:Label>
+                        <asp:Label ID="lblUserName" runat="server" meta:resourcekey="lblUserNameResource1" Text="admin"></asp:Label>
                         <asp:LinkButton ID="LnkChangePassword" runat="server" OnClick="lnkChangePassword_Click">Change Password</asp:LinkButton>
 
                         <asp:LinkButton ID="lnkShortcut" runat="server" Style="color: #C3D8D5; text-decoration: none;">Add Quick Link</asp:LinkButton>
@@ -477,6 +471,12 @@
                     </div>
 
                 </div>
+                <div class="NotificationsIcon">
+                                    <span id="spnNotificationsNo" runat="server" class="NotificationsNumber">999</span>
+                                </div>
+                <div id="divNotifications" runat="server" class="NotificationsPopup">
+                    <span class="NotificationsPopupClose"></span>
+        </div>
                 <hr class="Sep" />
             </div>
             <div class="container">
