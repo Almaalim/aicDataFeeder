@@ -15,7 +15,7 @@ public class CryptorEngine
         byte[] toEncryptArray = UTF8Encoding.UTF8.GetBytes(toEncrypt);
 
         System.Configuration.AppSettingsReader settingsReader = new AppSettingsReader();
-        string key = "almallim@1234%abcd";
+        string key = "almallim@1234%abcd"; //"Almaalim@@pA$$#EnC";
         if (useHashing)
         {
             MD5CryptoServiceProvider hashmd5 = new MD5CryptoServiceProvider();
@@ -43,7 +43,7 @@ public class CryptorEngine
         byte[] toEncryptArray = Convert.FromBase64String(cipherString);
 
         System.Configuration.AppSettingsReader settingsReader = new AppSettingsReader();
-        string key = "almallim@1234%abcd";
+        string key = "almallim@1234%abcd"; //"Almaalim@@pA$$#EnC";
 
         if (useHashing)
         {

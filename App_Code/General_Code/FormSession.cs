@@ -32,6 +32,9 @@ public class FormSession
 
     private static string _PageName;
     public  static string PageName { get { return _PageName; } set { _PageName = value; } }
+
+    private static string _DepList;
+    public static string DepList { get { return _DepList; } set { _DepList = value; } }
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public static void FillSession(string pPageIndex, HtmlGenericControl pDiv)
@@ -44,6 +47,7 @@ public class FormSession
             if (HttpContext.Current.Session["Permissions"] != null) { PermUsr = HttpContext.Current.Session["Permissions"].ToString().Split(','); } else { HttpContext.Current.Response.Redirect(@"~/Login.aspx"); }
             if (HttpContext.Current.Session["DateFormat"] != null) { DateType = HttpContext.Current.Session["DateFormat"].ToString(); } else { HttpContext.Current.Response.Redirect(@"~/Login.aspx"); }
             if (HttpContext.Current.Session["Language"]    != null) { Language = HttpContext.Current.Session["Language"].ToString();    } else { HttpContext.Current.Response.Redirect(@"~/Login.aspx"); }
+            if (HttpContext.Current.Session["DepartmentList"] != null) { DepList = HttpContext.Current.Session["DepartmentList"].ToString(); } else { DepList = "0"; }
 
             PageName = new System.IO.FileInfo((HttpContext.Current.Request.Url.AbsolutePath)).Name;
             if (pDiv != null) { pDiv.Attributes.Add("dir", General.getDir(Language)); }

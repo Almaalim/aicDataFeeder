@@ -21,6 +21,7 @@ public partial class Pages_SettingMachine : BasePage
     DataTable dt;
     MachinePro ProClass = new MachinePro();
     MachineSql SqlClass = new MachineSql();
+    DBFun DBCs = new DBFun();
 
     string MainPer = "Mac";
     string MainQuery = "SELECT * FROM MachineInfoView WHERE MacID = MacID ";
@@ -277,8 +278,8 @@ public partial class Pages_SettingMachine : BasePage
     {
         string Q = " SELECT MacID FROM TransDump WHERE MacID = " + txtMachineID.Text + " ";
 
-        dt = DBFun.FetchData(Q);
-        if (!DBFun.IsNullOrEmpty(dt))
+        dt = DBCs.FetchData(Q);
+        if (!DBCs.IsNullOrEmpty(dt))
         {
             MessageFun.ShowMsg(this, MessageFun.TypeMsg.Error, General.Msg("Deletion can not because of the presence of related records", "لا يمكن الحذف بسبب وجود سجلات مرتبطة"));
         }
@@ -353,8 +354,8 @@ public partial class Pages_SettingMachine : BasePage
     {
         try
         {
-            dt = DBFun.FetchData(MainQuery + " AND MacID = " + pID + "");
-            if (DBFun.IsNullOrEmpty(dt)) { return; }
+            dt = DBCs.FetchData(MainQuery + " AND MacID = " + pID + "");
+            if (DBCs.IsNullOrEmpty(dt)) { return; }
             txtMachineID.Text = dt.Rows[0]["MacID"].ToString();
             ddlMtpID.SelectedIndex = ddlMtpID.Items.IndexOf(ddlMtpID.Items.FindByValue(Convert.ToInt16(dt.Rows[0]["MtpID"]).ToString()));
             txtIPAddress.Text = dt.Rows[0]["IPAddress"].ToString();
@@ -375,8 +376,8 @@ public partial class Pages_SettingMachine : BasePage
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public void FillGrid(string Q)
     {
-        dt = DBFun.FetchData(Q);
-        if (!DBFun.IsNullOrEmpty(dt) && FormSession.PermUsr.Contains("S" + MainPer))
+        dt = DBCs.FetchData(Q);
+        if (!DBCs.IsNullOrEmpty(dt) && FormSession.PermUsr.Contains("V" + MainPer))
         {
             grdData.DataSource = (DataTable)dt;
             grdData.DataBind();
@@ -454,8 +455,8 @@ public partial class Pages_SettingMachine : BasePage
             {
                 if (!string.IsNullOrEmpty(txtIPAddress.Text))
                 {
-                    dt = DBFun.FetchData("SELECT * FROM MachineInfoView WHERE IPAddress = '" + txtIPAddress.Text + "' " + sqlUpdate);
-                    if (!DBFun.IsNullOrEmpty(dt))
+                    dt = DBCs.FetchData("SELECT * FROM MachineInfoView WHERE IPAddress = '" + txtIPAddress.Text + "' " + sqlUpdate);
+                    if (!DBCs.IsNullOrEmpty(dt))
                     {
                         MessageFun.ValidMsg(this, ref cvIPAddress, true, General.Msg("IP Address already exists,Please enter different IP", "رقم IP موجود مسبقا ,من فضلك ادخل رقما آخر"));
                         e.IsValid = false;
@@ -478,8 +479,8 @@ public partial class Pages_SettingMachine : BasePage
             {
                 if (!string.IsNullOrEmpty(txtMachineNo.Text))
                 {
-                    dt = DBFun.FetchData("SELECT * FROM MachineInfoView WHERE MachineNo = '" + txtMachineNo.Text + "' " + sqlUpdate);
-                    if (!DBFun.IsNullOrEmpty(dt))
+                    dt = DBCs.FetchData("SELECT * FROM MachineInfoView WHERE MachineNo = '" + txtMachineNo.Text + "' " + sqlUpdate);
+                    if (!DBCs.IsNullOrEmpty(dt))
                     {
                         MessageFun.ValidMsg(this, ref cvMachineNo, true, General.Msg("Machine No. already exists,Please enter another No.", "رقم المكينة موجود مسبقا ,من فضلك ادخل رقما آخر"));
                         e.IsValid = false;
@@ -492,8 +493,8 @@ public partial class Pages_SettingMachine : BasePage
             {
                 if (!string.IsNullOrEmpty(txtMacSerialNo.Text))
                 {
-                    dt = DBFun.FetchData("SELECT * FROM MachineInfoView WHERE MachineSerialNo = '" + txtMacSerialNo.Text + "' " + sqlUpdate);
-                    if (!DBFun.IsNullOrEmpty(dt))
+                    dt = DBCs.FetchData("SELECT * FROM MachineInfoView WHERE MachineSerialNo = '" + txtMacSerialNo.Text + "' " + sqlUpdate);
+                    if (!DBCs.IsNullOrEmpty(dt))
                     {
                         MessageFun.ValidMsg(this, ref cvMacSerialNo, true, General.Msg("Machine Serial No. already exists,Please enter another No.", "رقم المكينة التسلسلي موجود مسبقا ,من فضلك ادخل رقما آخر"));
                         e.IsValid = false;
@@ -516,8 +517,8 @@ public partial class Pages_SettingMachine : BasePage
             {
                 if (!string.IsNullOrEmpty(txtMacLocationAr.Text))
                 {
-                    dt = DBFun.FetchData("SELECT * FROM MachineInfoView WHERE LocationAr = '" + txtMacLocationAr.Text + "' " + sqlUpdate);
-                    if (!DBFun.IsNullOrEmpty(dt))
+                    dt = DBCs.FetchData("SELECT * FROM MachineInfoView WHERE LocationAr = '" + txtMacLocationAr.Text + "' " + sqlUpdate);
+                    if (!DBCs.IsNullOrEmpty(dt))
                     {
                         MessageFun.ValidMsg(this, ref cvLocationAr, true, General.Msg("Location (Ar) already exists,Please enter another Name", "الموقع (ع) موجود مسبقا ,من فضلك ادخل اسم آخر"));
                         e.IsValid = false;
@@ -530,8 +531,8 @@ public partial class Pages_SettingMachine : BasePage
             {
                 if (!string.IsNullOrEmpty(txtMacLocationEn.Text))
                 {
-                    dt = DBFun.FetchData("SELECT * FROM MachineInfoView WHERE LocationEn = '" + txtMacLocationEn.Text + "' " + sqlUpdate);
-                    if (!DBFun.IsNullOrEmpty(dt))
+                    dt = DBCs.FetchData("SELECT * FROM MachineInfoView WHERE LocationEn = '" + txtMacLocationEn.Text + "' " + sqlUpdate);
+                    if (!DBCs.IsNullOrEmpty(dt))
                     {
                         MessageFun.ValidMsg(this, ref cvLocationEn, true, General.Msg("Location (En) already exists,Please enter another No.", "الموقع (En) موجود مسبقا ,من فضلك ادخل رقما آخر"));
                         e.IsValid = false;

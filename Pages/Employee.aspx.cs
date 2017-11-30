@@ -21,7 +21,8 @@ public partial class Employee : BasePage
     DataTable dt;
     EmployeePro ProClass = new EmployeePro();
     EmployeeSql SqlClass = new EmployeeSql();
-    
+    DBFun DBCs = new DBFun();
+
     string MainPer   = "Emp";
     string MainQuery = " SELECT * FROM EmployeesInfoView WHERE EmpID = EmpID ";
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -48,8 +49,8 @@ public partial class Employee : BasePage
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     protected void Fillddl()
     {
-        dt = DBFun.FetchData("SELECT * FROM Department");
-        if (!DBFun.IsNullOrEmpty(dt))
+        dt = DBCs.FetchData("SELECT * FROM Department");
+        if (!DBCs.IsNullOrEmpty(dt))
         {
             FormCtrl.PopulateDDL(ddlDepID, dt, "DepName" + FormSession.Language, "DepID", General.Msg("-Select Department-","-اختر القسم-"));  //+ General.Lang()
             rvDepID.InitialValue = ddlDepID.Items[0].Text;
@@ -276,8 +277,8 @@ public partial class Employee : BasePage
     protected void btnDelete_Click(object sender, EventArgs e)
     {
         string Q = " SELECT * FROM TransactionLog WHERE LogPkID = '" + txtEmpID.Text + "' ";
-        dt = DBFun.FetchData(Q);   
-        if (!DBFun.IsNullOrEmpty(dt))
+        dt = DBCs.FetchData(Q);   
+        if (!DBCs.IsNullOrEmpty(dt))
         {
             MessageFun.ShowMsg(this, MessageFun.TypeMsg.Error, General.Msg("Deletion can not because of the presence of related records", "لا يمكن الحذف بسبب وجود سجلات مرتبطة"));
         }
@@ -352,8 +353,8 @@ public partial class Employee : BasePage
     {
         try
         {
-            dt = DBFun.FetchData(MainQuery + " AND EmpID = '" + pID + "'");
-            if (DBFun.IsNullOrEmpty(dt)) { return; }
+            dt = DBCs.FetchData(MainQuery + " AND EmpID = '" + pID + "'");
+            if (DBCs.IsNullOrEmpty(dt)) { return; }
             txtEmpID.Text              = dt.Rows[0]["EmpID"].ToString();
             ddlEmpStatus.SelectedIndex = ddlEmpStatus.Items.IndexOf(ddlEmpStatus.Items.FindByValue( Convert.ToInt16(dt.Rows[0]["EmpStatus"]).ToString()));
             txtEmpNameAr.Text          = dt.Rows[0]["EmpNameAr"].ToString();
@@ -369,8 +370,8 @@ public partial class Employee : BasePage
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public void FillGrid(string Q)
     {
-        dt = DBFun.FetchData(Q);
-        if (!DBFun.IsNullOrEmpty(dt) && FormSession.PermUsr.Contains("S" + MainPer))
+        dt = DBCs.FetchData(Q);
+        if (!DBCs.IsNullOrEmpty(dt) && FormSession.PermUsr.Contains("V" + MainPer))
         {
             grdData.DataSource = (DataTable)dt;
             grdData.DataBind();
@@ -458,8 +459,8 @@ public partial class Employee : BasePage
                 {
                     if (ViewState["CommandName"].ToString() == "Add")
                     {
-                        dt = DBFun.FetchData(MainQuery + " AND EmpID = '" + txtEmpID.Text + "'");
-                        if (!DBFun.IsNullOrEmpty(dt))
+                        dt = DBCs.FetchData(MainQuery + " AND EmpID = '" + txtEmpID.Text + "'");
+                        if (!DBCs.IsNullOrEmpty(dt))
                         {
                             MessageFun.ValidMsg(this, ref cvEmpID, true, General.Msg("The Employee ID already exists", "رقم الموظف موجود مسبقا"));
                             e.IsValid = false;
@@ -489,8 +490,8 @@ public partial class Employee : BasePage
                 }
                 else
                 {
-                    dt = DBFun.FetchData(MainQuery + " AND EmpNameAr = '" + txtEmpNameAr.Text + "' " + sqlUpdate);
-                    if (!DBFun.IsNullOrEmpty(dt))
+                    dt = DBCs.FetchData(MainQuery + " AND EmpNameAr = '" + txtEmpNameAr.Text + "' " + sqlUpdate);
+                    if (!DBCs.IsNullOrEmpty(dt))
                     {
                         MessageFun.ValidMsg(this, ref cvEmpNameAr, true, General.Msg("Employee Name (Ar) already exists", "اسم الموظف بالعربي موجود مسبقا"));
                         e.IsValid = false;
@@ -503,8 +504,8 @@ public partial class Employee : BasePage
             {
                 if (!string.IsNullOrEmpty(txtEmpNameEn.Text))
                 {
-                    dt = DBFun.FetchData(MainQuery + " AND EmpNameEn = '" + txtEmpNameEn.Text + "' " + sqlUpdate);
-                    if (!DBFun.IsNullOrEmpty(dt))
+                    dt = DBCs.FetchData(MainQuery + " AND EmpNameEn = '" + txtEmpNameEn.Text + "' " + sqlUpdate);
+                    if (!DBCs.IsNullOrEmpty(dt))
                     {
                         MessageFun.ValidMsg(this, ref cvEmpNameEn, true, General.Msg("Employee Name (En) already exists", "اسم الموظف بالانجليزي موجود مسبقا"));
                         e.IsValid = false;

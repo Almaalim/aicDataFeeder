@@ -17,6 +17,7 @@ public partial class Pages_SettingDB : BasePage
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     DataTable dt;
+    DBFun DBCs = new DBFun();
 
     DBSettingPro ProClass = new DBSettingPro();
     DBSettingSql SqlClass = new DBSettingSql();
@@ -43,8 +44,8 @@ public partial class Pages_SettingDB : BasePage
         {
             System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
 
-            dt = DBFun.FetchData(Query);
-            if (!DBFun.IsNullOrEmpty(dt))
+            dt = DBCs.FetchData(Query);
+            if (!DBCs.IsNullOrEmpty(dt))
             {
                 txtTableName.Text       = dt.Rows[0]["TableName"].ToString();
                 txtEmpField.Text        = dt.Rows[0]["EmployeeField"].ToString();

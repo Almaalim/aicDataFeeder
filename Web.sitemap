@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
-  <siteMapNode url="Home.aspx" title="Home"  description="Home Page">
+  <siteMapNode url="/Home.aspx" title="Home"  description="Home Page">
     <siteMapNode url="pages/Users.aspx" title="Users" description="Users Page" />
     <siteMapNode url="pages/Employee.aspx" title="Employees" description="Employees Page" />
     <siteMapNode url="pages/Department.aspx" title="Departments" description="Departments Page" />

@@ -19,6 +19,8 @@ public partial class Pages_EmailSetting : BasePage
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     DataTable dt;
+    DBFun DBCs = new DBFun();
+    DateFun DTCs = new DateFun();
 
     EmailSettingPro ProClass = new EmailSettingPro();
     EmailSettingSql SqlClass = new EmailSettingSql();
@@ -45,8 +47,8 @@ public partial class Pages_EmailSetting : BasePage
         {
             System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
 
-            dt = DBFun.FetchData(Query);
-            if (!DBFun.IsNullOrEmpty(dt))
+            dt = DBCs.FetchData(Query);
+            if (!DBCs.IsNullOrEmpty(dt))
             {
                 txtEmailServer.Text     = dt.Rows[0]["EmailServer"].ToString();
                 txtEmailPort.Text       = dt.Rows[0]["EmailPort"].ToString();

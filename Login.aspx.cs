@@ -10,12 +10,15 @@ public partial class Login : System.Web.UI.Page
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     DataTable dt;
+    DateFun DTCs = new DateFun();
+    DBFun DBCs = new DBFun();
+    General Gens = new General();
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     protected void Page_PreInit(object sender, EventArgs e) 
     {
         Session["MetroStyle"] = "";
-        string Applang = Session["Language"] != null ? Applang = Session["Language"].ToString() : Applang = General.getAppLanguage();
+        string Applang = Session["Language"] != null ? Applang = Session["Language"].ToString() : Applang = Gens.getAppLanguage();
         Page.Theme = "Theme" + Applang;
         System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(General.getCulture(Applang));
         string s;
@@ -44,8 +47,8 @@ public partial class Login : System.Web.UI.Page
     {
         try
         {
-            dt = DBFun.FetchData(" SELECT * FROM ApplicationSetup");
-            if (!DBFun.IsNullOrEmpty(dt))
+            dt = DBCs.FetchData(" SELECT * FROM ApplicationSetup");
+            if (!DBCs.IsNullOrEmpty(dt))
             {
                 if (dt.Rows[0]["AppCalendar"].ToString() == "H") { Session["DateFormat"] = "Hijri"; } else { Session["DateFormat"] = "Gregorian"; }
             }
@@ -53,7 +56,7 @@ public partial class Login : System.Web.UI.Page
         }
         catch (Exception e1)
         {
-            DBFun.InsertError("Login.aspx", "btnLogin");
+            DBCs.InsertError("Login.aspx", "btnLogin");
         }
     }
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -66,8 +69,8 @@ public partial class Login : System.Web.UI.Page
         StringBuilder Q = new StringBuilder();
         Q.Append("SELECT * FROM AppUsers WHERE UsrStatus = '1' AND UsrLoginID = @P1 ");
         if (txtLoginID.Text != "admin") { Q.Append(" AND GETDATE() BETWEEN UsrStartDate AND UsrExpireDate "); }
-        DataTable dt = DBFun.FetchData(Q.ToString(), new string[] { txtLoginID.Text });
-        if (!DBFun.IsNullOrEmpty(dt))
+        DataTable dt = DBCs.FetchData(Q.ToString(), new string[] { txtLoginID.Text });
+        if (!DBCs.IsNullOrEmpty(dt))
         {
             if (dt.Rows[0]["UsrPassword"].ToString() == txtPassword.Text) //CryptorEngine.Decrypt("", true)
             {
@@ -80,6 +83,8 @@ public partial class Login : System.Web.UI.Page
                     Session["Language"]        = dt.Rows[0]["UsrLanguage"].ToString();
                     Session["Role"]            = "User";
                     Session["MyTheme"]         = "Theme" + Session["Language"].ToString();
+                    //if (dt.Rows[0]["UsrDepartments"] != DBNull.Value) { Session["DepartmentList"] = CryptorEngine.Decrypt(dt.Rows[0]["UsrDepartments"].ToString(), true); } else { Session["UsrDepartments"] = ""; }
+                    if (dt.Rows[0]["UsrDepartments"] != DBNull.Value) { Session["DepartmentList"] = dt.Rows[0]["UsrDepartments"].ToString(); } else { Session["UsrDepartments"] = ""; }
 
                     //string url = InfoTab.FindFirstTab(); //@"~/pages/SettingMachine.aspx"; //MachinePing.aspx"; //InfoTab.FindFirstTab(); //@"~/pages/MachinePing.aspx";//
                     //if (!string.IsNullOrEmpty(url)) { Response.Redirect(url, false); }
@@ -93,7 +98,7 @@ public partial class Login : System.Web.UI.Page
                 }
                 catch (Exception e1)
                 {
-                    DBFun.InsertError("Login.aspx", "UserLogin");
+                    DBCs.InsertError("Login.aspx", "UserLogin");
                 }
             }
         }

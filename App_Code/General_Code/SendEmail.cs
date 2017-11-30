@@ -17,6 +17,9 @@ public class SendEmail
     string Sender   = "";
     string EmpEmail = "";
     string Lang     = "";
+
+    DBFun DBCs = new DBFun();
+    DateFun DTCs = new DateFun();
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public SendEmail() { }
@@ -31,8 +34,8 @@ public class SendEmail
         try
         {
             bool isValid = true;
-            dt = DBFun.FetchData("Select EmlServerID,EmlPortNo,EmlSenderEmail From EmailSetting ");
-            if (!DBFun.IsNullOrEmpty(dt))
+            dt = DBCs.FetchData("Select EmlServerID,EmlPortNo,EmlSenderEmail From EmailSetting ");
+            if (!DBCs.IsNullOrEmpty(dt))
             {
                 if (dt.Rows[0]["EmlServerID"] != DBNull.Value) { pServer = dt.Rows[0]["EmlServerID"].ToString(); } else { isValid = false; }
                 if (dt.Rows[0]["EmlPortNo"] != DBNull.Value) { pPort = dt.Rows[0]["EmlPortNo"].ToString(); } else { isValid = false; }
@@ -56,8 +59,8 @@ public class SendEmail
         try
         {
             bool isValid = true;
-            dt = DBFun.FetchData("SELECT EmpEmailID,Language FROM EmployeeMaster WHERE EmpID = '" + pEmpID + "'");
-            if (!DBFun.IsNullOrEmpty(dt)) 
+            dt = DBCs.FetchData("SELECT EmpEmailID,Language FROM EmployeeMaster WHERE EmpID = '" + pEmpID + "'");
+            if (!DBCs.IsNullOrEmpty(dt)) 
             {
                 if (dt.Rows[0]["Language"]   != DBNull.Value) { pLang     = dt.Rows[0]["Language"].ToString(); }
                 if (dt.Rows[0]["EmpEmailID"] != DBNull.Value) { pEmpEmail = dt.Rows[0]["EmpEmailID"].ToString(); } else { isValid = false; }
@@ -80,8 +83,8 @@ public class SendEmail
         try
         {
             bool isValid = true;
-            dt = DBFun.FetchData("SELECT UsrEmailID,UsrLanguage FROM AppUsers WHERE UsrLoginID = '" + pLoginID + "'");
-            if (!DBFun.IsNullOrEmpty(dt)) 
+            dt = DBCs.FetchData("SELECT UsrEmailID,UsrLanguage FROM AppUsers WHERE UsrLoginID = '" + pLoginID + "'");
+            if (!DBCs.IsNullOrEmpty(dt)) 
             {
                 if (dt.Rows[0]["UsrLanguage"] != DBNull.Value) { pLang    = dt.Rows[0]["UsrLanguage"].ToString(); }
                 if (dt.Rows[0]["UsrEmailID"]  != DBNull.Value) { pLoginID = dt.Rows[0]["UsrEmailID"].ToString(); } else { isValid = false; }
@@ -100,8 +103,8 @@ public class SendEmail
     {
         try
         {
-            dt = DBFun.FetchData("Select EmpNameEn, EmpNameAr FROM EmployeeMaster WHERE EmpID = '" + pEmpID + "'");
-            if (!DBFun.IsNullOrEmpty(dt))
+            dt = DBCs.FetchData("Select EmpNameEn, EmpNameAr FROM EmployeeMaster WHERE EmpID = '" + pEmpID + "'");
+            if (!DBCs.IsNullOrEmpty(dt))
             {
                 if (pLang == "Ar") { return dt.Rows[0]["EmpNameAr"].ToString(); } else { return dt.Rows[0]["EmpNameEn"].ToString(); }
             }
@@ -115,13 +118,13 @@ public class SendEmail
     {
         try
         {
-            dt = DBFun.FetchData("SELECT ExpiryDate FROM CardMaster WHERE CardID = " + pCardID + "");
-            if (!DBFun.IsNullOrEmpty(dt))
+            dt = DBCs.FetchData("SELECT ExpiryDate FROM CardMaster WHERE CardID = " + pCardID + "");
+            if (!DBCs.IsNullOrEmpty(dt))
             {
                 if (dt.Rows[0]["ExpiryDate"] != DBNull.Value)
                 {
                     if      (HttpContext.Current.Session["DateFormat"].ToString() == "Gregorian") { return (Convert.ToDateTime(dt.Rows[0]["ExpiryDate"])).ToString("dd/MM/yyyy"); }
-                    else if (HttpContext.Current.Session["DateFormat"].ToString() == "Hijri")     { return Convert.ToString(DateFun.GrnToHij(Convert.ToDateTime(dt.Rows[0]["ExpiryDate"]))); }
+                    else if (HttpContext.Current.Session["DateFormat"].ToString() == "Hijri")     { return Convert.ToString(DTCs.GrnToHij(Convert.ToDateTime(dt.Rows[0]["ExpiryDate"]))); }
                 }
             }
             return string.Empty;

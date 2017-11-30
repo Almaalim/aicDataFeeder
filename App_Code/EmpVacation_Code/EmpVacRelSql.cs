@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 
 public class EmpVacRelSql : DataLayerBase
 {
+    DateFun DTCs = new DateFun();
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public bool Insert(EmpVacRelPro pro)
@@ -109,8 +110,8 @@ public class EmpVacRelSql : DataLayerBase
     {
         //DateTime Date = Convert.ToDateTime(pDate);
         string strValue = "";
-        if (pDateType == "Gregorian") { strValue = DateFun.strTodt(String.Format("{0:dd/MM/yyyy}", pDate)).ToShortDateString(); }
-        else if (pDateType == "Hijri") { strValue = DateFun.HijToGrn(pDate).ToShortDateString(); }
+        if (pDateType == "Gregorian") { strValue = DTCs.strTodt(String.Format("{0:dd/MM/yyyy}", pDate)).ToShortDateString(); }
+        else if (pDateType == "Hijri") { strValue = DTCs.HijToGrn(pDate).ToShortDateString(); }
 
         return strValue;
     }

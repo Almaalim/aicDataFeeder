@@ -21,6 +21,7 @@ public partial class Pages_UserDepartment : BasePage
     DataTable dt;
     AppUsersPro ProClass = new AppUsersPro();
     AppUsersSql SqlClass = new AppUsersSql();
+    DBFun DBCs = new DBFun();
 
     string MainPer = "Usr";
     string MainQuery = "SELECT UsrLoginID,UsrFullName,UsrDepartments FROM AppUsers WHERE UsrStatus = 1 ";
@@ -414,8 +415,8 @@ public partial class Pages_UserDepartment : BasePage
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public void FillMainGrid(string Q)
     {
-        dt = DBFun.FetchData(Q);
-        if (!DBFun.IsNullOrEmpty(dt) && FormSession.PermUsr.Contains("S" + MainPer))
+        dt = DBCs.FetchData(Q);
+        if (!DBCs.IsNullOrEmpty(dt) && FormSession.PermUsr.Contains("S" + MainPer))
         {
             grdMainData.DataSource = (DataTable)dt;
             ViewState["grdDataDT"] = (DataTable)dt;

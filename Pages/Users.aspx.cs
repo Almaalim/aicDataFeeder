@@ -21,6 +21,8 @@ public partial class Pages_Users : BasePage
     DataTable dt;
     AppUsersPro ProClass = new AppUsersPro();
     AppUsersSql SqlClass = new AppUsersSql();
+    DBFun DBCs = new DBFun();
+    DateFun DTCs = new DateFun();
 
     string MainPer   = "Usr";
     string MainQuery = " SELECT * FROM AppUsers WHERE UsrLoginID = UsrLoginID ";
@@ -58,8 +60,8 @@ public partial class Pages_Users : BasePage
         txtUsrPassword.Enabled = pStatus;
         txtUsrFullName.Enabled = pStatus;
         txtUsrEmail.Enabled = pStatus;
-        calUsrStartDate.setEnabled(pStatus);
-        calUsrExpiryDate.setEnabled(pStatus);
+        calUsrStartDate.SetEnabled(pStatus);
+        calUsrExpiryDate.SetEnabled(pStatus);
         ddlUsrStatus.Enabled = pStatus;
         ddlUsrLang.Enabled = pStatus;
         txtUsrDescription.Enabled = pStatus;
@@ -82,8 +84,8 @@ public partial class Pages_Users : BasePage
             ProClass.UsrEmailID = txtUsrEmail.Text;
             ProClass.UsrLanguage = ddlUsrLang.SelectedValue;
             ProClass.UsrPermission = CryptorEngine.Encrypt(PermCtl.getPermissions(), true);
-            ProClass.UsrStartDate = calUsrStartDate.getDate();
-            ProClass.UsrExpiryDate = calUsrExpiryDate.getDate();
+            ProClass.UsrStartDate = calUsrStartDate.getGDateDBFormat();
+            ProClass.UsrExpiryDate = calUsrExpiryDate.getGDateDBFormat();
 
             ProClass.TransactionBy = FormSession.LoginID;
         }
@@ -287,8 +289,8 @@ public partial class Pages_Users : BasePage
 
         string Q = " SELECT LogTransactionBy FROM TransactionLog WHERE LogTransactionBy = '" + txtUsrLoginID.Text + "' ";
 
-        dt = DBFun.FetchData(Q);
-        if (!DBFun.IsNullOrEmpty(dt))
+        dt = DBCs.FetchData(Q);
+        if (!DBCs.IsNullOrEmpty(dt))
         {
             MessageFun.ShowMsg(this, MessageFun.TypeMsg.Error, General.Msg("Deletion can not because of the presence of related records", "لا يمكن الحذف بسبب وجود سجلات مرتبطة"));
         }
@@ -363,14 +365,14 @@ public partial class Pages_Users : BasePage
     {
         try
         {
-            dt = DBFun.FetchData(MainQuery + " AND UsrLoginID = '" + pID + "'");
-            if (DBFun.IsNullOrEmpty(dt)) { return; }
+            dt = DBCs.FetchData(MainQuery + " AND UsrLoginID = '" + pID + "'");
+            if (DBCs.IsNullOrEmpty(dt)) { return; }
             txtUsrLoginID.Text = dt.Rows[0]["UsrLoginID"].ToString();
             txtUsrPassword.Attributes["value"] = dt.Rows[0]["UsrPassword"].ToString();
             txtUsrFullName.Text = dt.Rows[0]["UsrFullName"].ToString();
             
-            calUsrStartDate.setDBDate(dt.Rows[0]["UsrStartDate"], "S");
-            calUsrExpiryDate.setDBDate(dt.Rows[0]["UsrExpiryDate"], "S");
+            calUsrStartDate.SetGDate(dt.Rows[0]["UsrStartDate"], "S");
+            calUsrExpiryDate.SetGDate(dt.Rows[0]["UsrExpiryDate"], "S");
 
             ddlUsrStatus.SelectedIndex = ddlUsrStatus.Items.IndexOf(ddlUsrStatus.Items.FindByValue(Convert.ToInt16(dt.Rows[0]["UsrStatus"]).ToString()));
             ddlUsrLang.SelectedIndex = ddlUsrLang.Items.IndexOf(ddlUsrLang.Items.FindByValue(dt.Rows[0]["UsrLanguage"].ToString()));
@@ -387,8 +389,8 @@ public partial class Pages_Users : BasePage
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public void FillGrid(string Q)
     {
-        dt = DBFun.FetchData(Q);
-        if (!DBFun.IsNullOrEmpty(dt) && FormSession.PermUsr.Contains("S" + MainPer)) //
+        dt = DBCs.FetchData(Q);
+        if (!DBCs.IsNullOrEmpty(dt) && FormSession.PermUsr.Contains("V" + MainPer)) //
         {
             grdData.DataSource = (DataTable)dt;
             grdData.DataBind();
@@ -472,10 +474,10 @@ public partial class Pages_Users : BasePage
         {
             if (source.Equals(cvCompareDates))
             {
-                if (!String.IsNullOrEmpty(calUsrStartDate.getDate()) && !String.IsNullOrEmpty(calUsrExpiryDate.getDate()))
+                if (!String.IsNullOrEmpty(calUsrStartDate.getGDateDBFormat()) && !String.IsNullOrEmpty(calUsrExpiryDate.getGDateDBFormat()))
                 {
-                    int iStartDate = DateFun.ConvertDateTimeToInt(FormSession.DateType, calUsrStartDate.getDate());
-                    int iEndDate = DateFun.ConvertDateTimeToInt(FormSession.DateType, calUsrExpiryDate.getDate());
+                    int iStartDate = DTCs.ConvertDateTimeToInt(FormSession.DateType, calUsrStartDate.getGDateDBFormat());
+                    int iEndDate = DTCs.ConvertDateTimeToInt(FormSession.DateType, calUsrExpiryDate.getGDateDBFormat());
                     if (iStartDate > iEndDate) { e.IsValid = false; } else { e.IsValid = true; }
                 }
             }
@@ -500,8 +502,8 @@ public partial class Pages_Users : BasePage
                 {
                     if (ViewState["CommandName"].ToString() == "Save")
                     {
-                        dt = DBFun.FetchData(MainQuery + " AND UsrLoginID = '" + txtUsrLoginID.Text + "'");
-                        if (!DBFun.IsNullOrEmpty(dt))
+                        dt = DBCs.FetchData(MainQuery + " AND UsrLoginID = '" + txtUsrLoginID.Text + "'");
+                        if (!DBCs.IsNullOrEmpty(dt))
                         {
                             MessageFun.ValidMsg(this, ref cvUsrLoginID, true, General.Msg("The Login ID already exists", "اسم الدخول موجود مسبقا"));
                             e.IsValid = false;

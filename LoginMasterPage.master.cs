@@ -8,9 +8,10 @@ using System.Data;
 
 public partial class LoginMasterPage : System.Web.UI.MasterPage
 {
+    General Gens = new General();
     protected void Page_Load(object sender, EventArgs e)
     {
-        string Applang = Session["Language"] != null ? Applang = Session["Language"].ToString() : Applang = General.getAppLanguage();
+        string Applang = Session["Language"] != null ? Applang = Session["Language"].ToString() : Applang = Gens.getAppLanguage();
 
         MainDiv.Attributes.Add("dir", General.getDir(Applang)); 
         Session["Language"] = Applang; 

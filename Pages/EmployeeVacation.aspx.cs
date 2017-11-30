@@ -21,6 +21,8 @@ public partial class EmployeeVacation : BasePage
     DataTable dt;
     EmpVacRelPro ProClass = new EmpVacRelPro();
     EmpVacRelSql SqlClass = new EmpVacRelSql();
+    DBFun DBCs = new DBFun();
+    DateFun DTCs = new DateFun();
 
     string MainPer = "EmpVac";
     string MainQuery = "SELECT * FROM EmpVacRelInfo WHERE EvrID = EvrID ";
@@ -60,8 +62,8 @@ public partial class EmployeeVacation : BasePage
         txtEvrID.Enabled = false;
         txtEmpID.Enabled = pStatus;
         ddlVacType.Enabled = pStatus;
-        calStartDate.setEnabled(pStatus);
-        calEndDate.setEnabled(pStatus);
+        calStartDate.SetEnabled(pStatus);
+        calEndDate.SetEnabled(pStatus);
         txtPhoneNo.Enabled = pStatus;
         txtAvailable.Enabled = pStatus;
         txtEvrDesc.Enabled = pStatus;
@@ -79,8 +81,8 @@ public partial class EmployeeVacation : BasePage
 
             ProClass.EmpID = txtEmpID.Text;
             if (ddlVacType.SelectedIndex > 0) { ProClass.VtpID = ddlVacType.SelectedValue; }
-            ProClass.EvrStartDate = calStartDate.getDate();
-            ProClass.EvrEndDate = calEndDate.getDate();
+            ProClass.EvrStartDate = calStartDate.getGDateDBFormat();
+            ProClass.EvrEndDate = calEndDate.getGDateDBFormat();
             ProClass.EvrPhone = txtPhoneNo.Text;
             ProClass.EvrAvailability = txtAvailable.Text;
             ProClass.EvrDescription = txtEvrDesc.Text;
@@ -341,14 +343,14 @@ public partial class EmployeeVacation : BasePage
     {
         try
         {
-            dt = DBFun.FetchData(MainQuery + " AND EvrID = " + pID + "");
-            if (DBFun.IsNullOrEmpty(dt)) { return; }
+            dt = DBCs.FetchData(MainQuery + " AND EvrID = " + pID + "");
+            if (DBCs.IsNullOrEmpty(dt)) { return; }
             txtEvrID.Text = dt.Rows[0]["EvrID"].ToString();
             txtEmpID.Text = dt.Rows[0]["EmpID"].ToString();
             ddlVacType.SelectedIndex = ddlVacType.Items.IndexOf(ddlVacType.Items.FindByValue(Convert.ToInt16(dt.Rows[0]["VtpID"]).ToString()));
 
-            calStartDate.setDBDate(dt.Rows[0]["EvrStartDate"], "S");
-            calEndDate.setDBDate(dt.Rows[0]["EvrEndDate"], "S");
+            calStartDate.SetGDate(dt.Rows[0]["EvrStartDate"], "S");
+            calEndDate.SetGDate(dt.Rows[0]["EvrEndDate"], "S");
 
             txtPhoneNo.Text = dt.Rows[0]["EvrPhone"].ToString();
             txtAvailable.Text = dt.Rows[0]["EvrAvailability"].ToString();
@@ -362,8 +364,8 @@ public partial class EmployeeVacation : BasePage
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public void FillGrid(string Q)
     {
-        dt = DBFun.FetchData(Q);
-        if (!DBFun.IsNullOrEmpty(dt) && FormSession.PermUsr.Contains("S" + MainPer))
+        dt = DBCs.FetchData(Q);
+        if (!DBCs.IsNullOrEmpty(dt) && FormSession.PermUsr.Contains("V" + MainPer))
         {
             grdData.DataSource = (DataTable)dt;
             grdData.DataBind();
@@ -442,8 +444,8 @@ public partial class EmployeeVacation : BasePage
                 {
                     if (!string.IsNullOrEmpty(txtEmpID.Text))
                     {
-                        dt = DBFun.FetchData("SELECT * FROM EmployeesInfoView WHERE EmpID = '" + txtEmpID.Text + "' ");
-                        if (!DBFun.IsNullOrEmpty(dt))
+                        dt = DBCs.FetchData("SELECT * FROM EmployeesInfoView WHERE EmpID = '" + txtEmpID.Text + "' ");
+                        if (!DBCs.IsNullOrEmpty(dt))
                         {
                             MessageFun.ValidMsg(this, ref cvEmpID, true, General.Msg("Employee ID entered donot exists or not Active,Please enter different ID", "رقم الموظف غير موجود أو غير فعال ,من فضلك اختر رقما آخر"));
                             e.IsValid = false;
@@ -463,10 +465,10 @@ public partial class EmployeeVacation : BasePage
         {
             if (source.Equals(cvCompareDates))
             {
-                if (!String.IsNullOrEmpty(calStartDate.getDate()) && !String.IsNullOrEmpty(calEndDate.getDate()))
+                if (!String.IsNullOrEmpty(calStartDate.getGDateDBFormat()) && !String.IsNullOrEmpty(calEndDate.getGDateDBFormat()))
                 {
-                    int iStartDate = DateFun.ConvertDateTimeToInt(FormSession.DateType, calStartDate.getDate());
-                    int iEndDate = DateFun.ConvertDateTimeToInt(FormSession.DateType, calEndDate.getDate());
+                    int iStartDate = DTCs.ConvertDateTimeToInt(FormSession.DateType, calStartDate.getGDateDBFormat());
+                    int iEndDate = DTCs.ConvertDateTimeToInt(FormSession.DateType, calEndDate.getGDateDBFormat());
                     if (iStartDate > iEndDate) { e.IsValid = false; } else { e.IsValid = true; }
                 }
             }

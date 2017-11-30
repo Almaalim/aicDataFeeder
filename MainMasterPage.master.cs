@@ -14,6 +14,7 @@ public partial class MainMasterPage : System.Web.UI.MasterPage
 {
     AppUsersPro AppPro = new AppUsersPro();
     AppUsersSql AppSql = new AppUsersSql();
+    DBFun DBCs = new DBFun();
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -91,7 +92,7 @@ public partial class MainMasterPage : System.Web.UI.MasterPage
         if (Session["MenuDS"] == null)
         {
             string QMuen = CreateMenuQuery("USR", "");
-            MuenDS = DBFun.FetchMenuData(QMuen);
+            MuenDS = DBCs.FetchMenuData(QMuen);
             Session["MenuDS"] = MuenDS;
         }
         else
@@ -191,7 +192,7 @@ public partial class MainMasterPage : System.Web.UI.MasterPage
 
         DataTable DT = MuenDS.Tables[0];
 
-        if (!DBFun.IsNullOrEmpty(DT))
+        if (!DBCs.IsNullOrEmpty(DT))
         {
             DataRow[] DRs = DT.Select("MnuParentID = 0");
 

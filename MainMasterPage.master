@@ -403,9 +403,9 @@
                     </div>
                 </div>
                 <div id="divMenu" runat="server">
-                    <%--<asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" ShowStartingNode="false" />
+                    <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" ShowStartingNode="false" />
 
-                    <asp:Menu ID="Menu" runat="server" DataSourceID="SiteMapDataSource1" Orientation="Horizontal" OnMenuItemDataBound="OnMenuItemDataBound2">
+                    <%--<asp:Menu ID="Menu" runat="server" DataSourceID="SiteMapDataSource1" Orientation="Horizontal" OnMenuItemDataBound="OnMenuItemDataBound2">
                         <LevelMenuItemStyles>
                             <asp:MenuItemStyle CssClass="main_menu" />
                             <asp:MenuItemStyle CssClass="level_menu" />
@@ -449,6 +449,7 @@
                 <div class="UtilityEN">
 
                     <div class="breadcrumb glyphicon glyphicon-home">
+                            <asp:SiteMapPath ID="SiteMapPath22" runat="server"></asp:SiteMapPath>
                     </div>
 
                     <div class="UtilityLinks">

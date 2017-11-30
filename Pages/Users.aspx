@@ -105,29 +105,29 @@
                                 <asp:Panel ID="pnlData" runat="server" CssClass="collapsePanelData">
                                     <div class="row">
                                         <div class="col8">
-                                            <asp:LinkButton ID="btnAdd" runat="server" Text="Add" CssClass="GenButton glyphicon glyphicon-plus-sign" OnClick="btnAdd_Click" ></asp:LinkButton>
-                                        
-                                                <asp:LinkButton ID="btnEdit" runat="server" Text="Edit" CssClass="GenButton  glyphicon glyphicon-edit" Enabled="false"
-                                                    OnClick="btnEdit_Click" ></asp:LinkButton>
-                                           
-                                                <asp:LinkButton ID="btnDelete" runat="server" Text="Delete" CssClass="GenButton glyphicon glyphicon-remove" Enabled="false"
-                                                    OnClick="btnDelete_Click" ></asp:LinkButton>
-                                             
-                                                <asp:LinkButton ID="btnSave" runat="server" Text="Save" CssClass="GenButton glyphicon glyphicon-floppy-disk" Enabled="false"
-                                                    OnClick="btnSave_Click" ValidationGroup="vgSave" ></asp:LinkButton>
-                                        
-                                                <asp:LinkButton ID="btnCancel" runat="server" Text="Cancel" CssClass="GenButton glyphicon glyphicon-remove-circle" Enabled="false"
-                                                    OnClick="btnCancel_Click" ></asp:LinkButton>
-                                         
-                                                <asp:TextBox ID="cvtxt" runat="server" Text="02120" Visible="False" Width="10px"></asp:TextBox>
+                                            <asp:LinkButton ID="btnAdd" runat="server" Text="Add" CssClass="GenButton glyphicon glyphicon-plus-sign" OnClick="btnAdd_Click"></asp:LinkButton>
+
+                                            <asp:LinkButton ID="btnEdit" runat="server" Text="Edit" CssClass="GenButton  glyphicon glyphicon-edit" Enabled="false"
+                                                OnClick="btnEdit_Click"></asp:LinkButton>
+
+                                            <asp:LinkButton ID="btnDelete" runat="server" Text="Delete" CssClass="GenButton glyphicon glyphicon-remove" Enabled="false"
+                                                OnClick="btnDelete_Click"></asp:LinkButton>
+
+                                            <asp:LinkButton ID="btnSave" runat="server" Text="Save" CssClass="GenButton glyphicon glyphicon-floppy-disk" Enabled="false"
+                                                OnClick="btnSave_Click" ValidationGroup="vgSave"></asp:LinkButton>
+
+                                            <asp:LinkButton ID="btnCancel" runat="server" Text="Cancel" CssClass="GenButton glyphicon glyphicon-remove-circle" Enabled="false"
+                                                OnClick="btnCancel_Click"></asp:LinkButton>
+
+                                            <asp:TextBox ID="cvtxt" runat="server" Text="02120" Visible="False" Width="10px"></asp:TextBox>
                                             <asp:CustomValidator ID="cvShowMsg" runat="server" Display="None" ValidationGroup="ShowMsg" CssClass="CustomValidator"
                                                 OnServerValidate="ShowMsg_ServerValidate" EnableClientScript="False" ControlToValidate="cvtxt">
                                             </asp:CustomValidator>
                                         </div>
-                                        </div>
+                                    </div>
                                     <div class="row">
                                         <div class="col12">
-                                            <asp:ValidationSummary ID="vsSave" runat="server" CssClass="MsgValidation" EnableClientScript="False" 
+                                            <asp:ValidationSummary ID="vsSave" runat="server" CssClass="MsgValidation" EnableClientScript="False"
                                                 ValidationGroup="vgSave" />
                                             <asp:ValidationSummary ID="vsShowMsg" runat="server" CssClass="MsgSuccess" EnableClientScript="False"
                                                 ValidationGroup="vgShowMsg" />

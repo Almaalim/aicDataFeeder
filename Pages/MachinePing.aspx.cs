@@ -22,6 +22,8 @@ public partial class Pages_MachinePing : BasePage
     DataTable dt;
     MachinePro ProClass = new MachinePro();
     MachineSql SqlClass = new MachineSql();
+    DBFun DBCs = new DBFun();
+    DateFun DTCs = new DateFun();
 
     string MainPer   = "Mac";
     string MainQuery = " SELECT * FROM MachineInfoView WHERE MacID = MacID ";
@@ -104,8 +106,8 @@ public partial class Pages_MachinePing : BasePage
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public void FillGrid(string Q)
     {
-        dt = DBFun.FetchData(Q);
-        if (!DBFun.IsNullOrEmpty(dt) && FormSession.PermUsr.Contains("S" + MainPer)) //
+        dt = DBCs.FetchData(Q);
+        if (!DBCs.IsNullOrEmpty(dt) && FormSession.PermUsr.Contains("S" + MainPer)) //
         {
             grdData.DataSource = (DataTable)dt;
             grdData.DataBind();

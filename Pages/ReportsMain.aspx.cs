@@ -27,6 +27,9 @@ public partial class Pages_ReportMain : BasePage
     ReportPro ProClass = new ReportPro();
     ReportSql SqlClass = new ReportSql();
 
+    DBFun DBCs = new DBFun();
+    DateFun DTCs = new DateFun();
+
     DataTable dt;
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -56,8 +59,8 @@ public partial class Pages_ReportMain : BasePage
 
     private void FillReportsGroups()
     {
-        DataTable GDT = DBFun.FetchData(" SELECT * FROM ReportGroup ORDER BY RgpID ");
-        if (!DBFun.IsNullOrEmpty(GDT))
+        DataTable GDT = DBCs.FetchData(" SELECT * FROM ReportGroup ORDER BY RgpID ");
+        if (!DBCs.IsNullOrEmpty(GDT))
         {
             foreach (DataRow DR in GDT.Rows)
             {
@@ -91,8 +94,8 @@ public partial class Pages_ReportMain : BasePage
         {
             string RgpID = lstReportsGroups.SelectedValue;
 
-            DataTable RepDT = DBFun.FetchData(" SELECT * FROM Report WHERE RgpID = " + RgpID + "");
-            if (!DBFun.IsNullOrEmpty(RepDT))
+            DataTable RepDT = DBCs.FetchData(" SELECT * FROM Report WHERE RgpID = " + RgpID + "");
+            if (!DBCs.IsNullOrEmpty(RepDT))
             {
                 FillReports(RgpID);
                 FillDLL();
@@ -105,8 +108,8 @@ public partial class Pages_ReportMain : BasePage
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     private void FillReports(string RgpID)
     {
-        DataTable RepDT = DBFun.FetchData(" SELECT * FROM Report WHERE RepVisible = 'True' AND RgpID = " + RgpID + "");
-        if (!DBFun.IsNullOrEmpty(RepDT))
+        DataTable RepDT = DBCs.FetchData(" SELECT * FROM Report WHERE RepVisible = 'True' AND RgpID = " + RgpID + "");
+        if (!DBCs.IsNullOrEmpty(RepDT))
         {
             foreach (DataRow DR in RepDT.Rows)
             {
@@ -132,14 +135,14 @@ public partial class Pages_ReportMain : BasePage
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     private void FillDLL()
     {
-        dt = DBFun.FetchData("SELECT * FROM Department ");
-        if (!DBFun.IsNullOrEmpty(dt)) { FormCtrl.PopulateDDL(ddlDepartment, dt, "DepName" + General.Lang(), "DepID", General.Msg("-Select Department-", "-اختر الإدارة-")); }
+        dt = DBCs.FetchData("SELECT * FROM Department ");
+        if (!DBCs.IsNullOrEmpty(dt)) { FormCtrl.PopulateDDL(ddlDepartment, dt, "DepName" + General.Lang(), "DepID", General.Msg("-Select Department-", "-اختر الإدارة-")); }
 
-        dt = DBFun.FetchData("SELECT * FROM Machine WHERE MachineStatus = 1");
-        if (!DBFun.IsNullOrEmpty(dt)) { FormCtrl.PopulateDDL(ddlLocation, dt, "Location" + General.Lang(), "MacID", General.Msg("-Select Location-", "-اختر الموقع-")); }
+        dt = DBCs.FetchData("SELECT * FROM Machine WHERE MachineStatus = 1");
+        if (!DBCs.IsNullOrEmpty(dt)) { FormCtrl.PopulateDDL(ddlLocation, dt, "Location" + General.Lang(), "MacID", General.Msg("-Select Location-", "-اختر الموقع-")); }
 
-        dt = DBFun.FetchData("SELECT * FROM MachineInfoView ");
-        if (!DBFun.IsNullOrEmpty(dt)) { FormCtrl.PopulateDDL(ddlMachine, dt, "MtpName" + General.Lang(), "MacID", General.Msg("-Select Machine-", "-اختر المكينة-")); }
+        dt = DBCs.FetchData("SELECT * FROM MachineInfoView ");
+        if (!DBCs.IsNullOrEmpty(dt)) { FormCtrl.PopulateDDL(ddlMachine, dt, "MtpName" + General.Lang(), "MacID", General.Msg("-Select Machine-", "-اختر المكينة-")); }
     }
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -203,8 +206,8 @@ public partial class Pages_ReportMain : BasePage
             string reportTitel = lstReport.SelectedItem.ToString();
             lblSelectedreport.Text = General.Msg("Report Selected : " + reportTitel, "التقرير المحدد : " + reportTitel);
 
-            DataTable RepDT = DBFun.FetchData(" SELECT * FROM Report WHERE  RepID = '" + RepID + "'");
-            if (!DBFun.IsNullOrEmpty(RepDT))
+            DataTable RepDT = DBCs.FetchData(" SELECT * FROM Report WHERE  RepID = '" + RepID + "'");
+            if (!DBCs.IsNullOrEmpty(RepDT))
             {
                 //RepDT.Rows[0]["RepID"].ToString()
                 ViewState["RepID"] = RepID;
@@ -269,8 +272,8 @@ public partial class Pages_ReportMain : BasePage
         string RepID = lstReport.SelectedValue;
 
         string RepTemp = "";
-        DataTable RepDT = DBFun.FetchData(" SELECT * FROM Report WHERE RepID = '" + RepID + "'");
-        if (!DBFun.IsNullOrEmpty(RepDT))
+        DataTable RepDT = DBCs.FetchData(" SELECT * FROM Report WHERE RepID = '" + RepID + "'");
+        if (!DBCs.IsNullOrEmpty(RepDT))
         {
             RepTemp = RepDT.Rows[0]["RepTemp" + FormSession.Language].ToString();
             string RepOrientation = RepDT.Rows[0]["RepOrientation"].ToString();
@@ -289,8 +292,8 @@ public partial class Pages_ReportMain : BasePage
 
             if (pnlDateFromTo.Visible)
             {
-                StiRep["ParamDateFrom"] = DateFun.GetGregDateTime(calStartDate.getDate(), 'S', "F");
-                StiRep["ParamDateTo"] = DateFun.GetGregDateTime(calEndDate.getDate(), 'S', "T");
+                StiRep["ParamDateFrom"] = DTCs.GetGregDateTime(calStartDate.getGDateDBFormat(), 'S', "F");
+                StiRep["ParamDateTo"] = DTCs.GetGregDateTime(calEndDate.getGDateDBFormat(), 'S', "T");
             }
 
             if (pnlEmployee.Visible) { StiRep["EmpID"] = ViewState["EmpID"].ToString(); }
@@ -319,8 +322,8 @@ public partial class Pages_ReportMain : BasePage
 
         StiReport HRep = new StiReport();
 
-        DataTable HDT = DBFun.FetchData(" SELECT * FROM Report WHERE RepType = 'Header' AND RepOrientation ='" + RepOrientation + "'");
-        if (!DBFun.IsNullOrEmpty(HDT))
+        DataTable HDT = DBCs.FetchData(" SELECT * FROM Report WHERE RepType = 'Header' AND RepOrientation ='" + RepOrientation + "'");
+        if (!DBCs.IsNullOrEmpty(HDT))
         {
             string RepHeader = HDT.Rows[0]["RepTemp" + FormSession.Language].ToString();
 
@@ -350,8 +353,8 @@ public partial class Pages_ReportMain : BasePage
             if (lstReport.SelectedIndex < 0) { return; }
             string RepID = lstReport.SelectedValue;
 
-            DataTable RepDT = DBFun.FetchData(" SELECT * FROM Report WHERE RepID = '" + RepID + "'");
-            if (!DBFun.IsNullOrEmpty(RepDT))
+            DataTable RepDT = DBCs.FetchData(" SELECT * FROM Report WHERE RepID = '" + RepID + "'");
+            if (!DBCs.IsNullOrEmpty(RepDT))
             {
                 string repStr = RepDT.Rows[0]["RepTempDef" + FormSession.Language].ToString();
 
@@ -404,8 +407,8 @@ public partial class Pages_ReportMain : BasePage
             if (lstReport.SelectedIndex < 0) { return; }  //ShowMsg("Please Select Report to edit it", "رجاء حدد تقرير للتعديل");
 
             string RepID = lstReport.SelectedValue;
-            DataTable RepDT = DBFun.FetchData(" SELECT * FROM Report WHERE RepID = '" + RepID + "'");
-            if (!DBFun.IsNullOrEmpty(RepDT))
+            DataTable RepDT = DBCs.FetchData(" SELECT * FROM Report WHERE RepID = '" + RepID + "'");
+            if (!DBCs.IsNullOrEmpty(RepDT))
             {
                 string repStr = RepDT.Rows[0]["RepTemp" + FormSession.Language].ToString();
                 if (string.IsNullOrEmpty(repStr)) { return; }
@@ -490,16 +493,16 @@ public partial class Pages_ReportMain : BasePage
         {
             if (pnlDateFromTo.Visible)
             {
-                if (source.Equals(cvStartDate)) { if (string.IsNullOrEmpty(calStartDate.getDate())) { e.IsValid = false; } else { e.IsValid = true; } }
-                if (source.Equals(cvEndDate)) { if (string.IsNullOrEmpty(calEndDate.getDate())) { e.IsValid = false; } else { e.IsValid = true; } }
+                if (source.Equals(cvStartDate)) { if (string.IsNullOrEmpty(calStartDate.getGDateDBFormat())) { e.IsValid = false; } else { e.IsValid = true; } }
+                if (source.Equals(cvEndDate)) { if (string.IsNullOrEmpty(calEndDate.getGDateDBFormat())) { e.IsValid = false; } else { e.IsValid = true; } }
                 if (source.Equals(cvCompareDates))
                 {
                     try
                     {
-                        if (!String.IsNullOrEmpty(calStartDate.getDate()) && !String.IsNullOrEmpty(calEndDate.getDate()))
+                        if (!String.IsNullOrEmpty(calStartDate.getGDateDBFormat()) && !String.IsNullOrEmpty(calEndDate.getGDateDBFormat()))
                         {
-                            int iStartDate = DateFun.ConvertDateTimeToInt(FormSession.DateType, calStartDate.getDate());
-                            int iEndDate = DateFun.ConvertDateTimeToInt(FormSession.DateType, calEndDate.getDate());
+                            int iStartDate = DTCs.ConvertDateTimeToInt(FormSession.DateType, calStartDate.getGDateDBFormat());
+                            int iEndDate = DTCs.ConvertDateTimeToInt(FormSession.DateType, calEndDate.getGDateDBFormat());
                             if (iStartDate > iEndDate) { e.IsValid = false; } else { e.IsValid = true; }
                         }
                     }
@@ -529,12 +532,12 @@ public partial class Pages_ReportMain : BasePage
                 else
                 {
                     DataTable DT = new DataTable();
-                    if (ddlIDSearch.SelectedValue == "EmpID") { DT = DBFun.FetchData("SELECT EmpID FROM EmployeesInfoView WHERE EmpID     = '" + txtIDSearch.Text + "'"); }
-                    else if (ddlIDSearch.SelectedValue == "EmpNameEn") { DT = DBFun.FetchData("SELECT EmpID FROM EmployeesInfoView WHERE EmpNameEn = '" + txtIDSearch.Text + "'"); }
-                    else if (ddlIDSearch.SelectedValue == "EmpNameAr") { DT = DBFun.FetchData("SELECT EmpID FROM EmployeesInfoView WHERE EmpNameAr = '" + txtIDSearch.Text + "'"); }
+                    if (ddlIDSearch.SelectedValue == "EmpID") { DT = DBCs.FetchData("SELECT EmpID FROM EmployeesInfoView WHERE EmpID     = '" + txtIDSearch.Text + "'"); }
+                    else if (ddlIDSearch.SelectedValue == "EmpNameEn") { DT = DBCs.FetchData("SELECT EmpID FROM EmployeesInfoView WHERE EmpNameEn = '" + txtIDSearch.Text + "'"); }
+                    else if (ddlIDSearch.SelectedValue == "EmpNameAr") { DT = DBCs.FetchData("SELECT EmpID FROM EmployeesInfoView WHERE EmpNameAr = '" + txtIDSearch.Text + "'"); }
 
                     ViewState["EmpID"] = "";
-                    if (DBFun.IsNullOrEmpty(DT))
+                    if (DBCs.IsNullOrEmpty(DT))
                     {
                         MessageFun.ValidMsg(this, ref cvIDSearch, true, General.Msg("Employee ID does not exist", "رقم الموظف غير موجود"));
                         e.IsValid = false;

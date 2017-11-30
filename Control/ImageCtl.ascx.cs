@@ -18,6 +18,7 @@ public partial class ImageCtl : System.Web.UI.UserControl
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     DataTable dt;
     TextBox txt;
+    DBFun DBCs = new DBFun();
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     private string _EmptyIDMsgEn;
@@ -112,7 +113,7 @@ public partial class ImageCtl : System.Web.UI.UserControl
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public void ClearImage() 
     { 
-        int returnValue = DBFun.ExecuteData("DELETE FROM TempImage WHERE Type = '" + Type + "' AND EmpID='" + FindID() + "'");
+        int returnValue = DBCs.ExecuteData("DELETE FROM TempImage WHERE Type = '" + Type + "' AND EmpID='" + FindID() + "'");
         imgPhoto.ImageUrl = EmptyImage(); 
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -128,8 +129,8 @@ public partial class ImageCtl : System.Web.UI.UserControl
         bool available = System.IO.File.Exists(path);
         try
         {
-            dt = DBFun.FetchData("SELECT * FROM TempImage WHERE Type = '" + Type + "' AND EmpID='" + FindID() + "'");
-            if (DBFun.IsNullOrEmpty(dt))
+            dt = DBCs.FetchData("SELECT * FROM TempImage WHERE Type = '" + Type + "' AND EmpID='" + FindID() + "'");
+            if (DBCs.IsNullOrEmpty(dt))
             {
                 if (available)
                 {
@@ -147,8 +148,8 @@ public partial class ImageCtl : System.Web.UI.UserControl
                 }
                 else
                 {
-                    DataTable imgdt = DBFun.FetchData(FindQuery());
-                    if (!DBFun.IsNullOrEmpty(imgdt))
+                    DataTable imgdt = DBCs.FetchData(FindQuery());
+                    if (!DBCs.IsNullOrEmpty(imgdt))
                     {
                         if (!IsEncryption) { pImage = (Byte[])imgdt.Rows[0]["Image"]; } else { pImage = CryptoImage.DecryptBytes((Byte[])imgdt.Rows[0]["Image"]);}
                         pImageContentType = imgdt.Rows[0]["ImageType"].ToString();
@@ -163,11 +164,11 @@ public partial class ImageCtl : System.Web.UI.UserControl
                 pImageLength      = Convert.ToInt32(dt.Rows[0]["PhotoLength"]);
             }
 
-            int returnValue = DBFun.ExecuteData("DELETE FROM TempImage WHERE Type = '" + Type + "' AND EmpID='" + FindID() + "'");
+            int returnValue = DBCs.ExecuteData("DELETE FROM TempImage WHERE Type = '" + Type + "' AND EmpID='" + FindID() + "'");
         }
         catch (Exception e2)
         {
-            int returnValue = DBFun.ExecuteData("DELETE FROM TempImage WHERE Type = '" + Type + "' AND EmpID='" + FindID() + "'");
+            int returnValue = DBCs.ExecuteData("DELETE FROM TempImage WHERE Type = '" + Type + "' AND EmpID='" + FindID() + "'");
         }
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -179,8 +180,8 @@ public partial class ImageCtl : System.Web.UI.UserControl
     {
         try
         {
-            dt = (DataTable)DBFun.FetchData("SELECT * FROM TempImage WHERE Type = '" + Type + "' AND EmpID='" + ID  + "'");
-            if (DBFun.IsNullOrEmpty(dt)) 
+            dt = (DataTable)DBCs.FetchData("SELECT * FROM TempImage WHERE Type = '" + Type + "' AND EmpID='" + ID  + "'");
+            if (DBCs.IsNullOrEmpty(dt)) 
             {
                 if (imgPhoto.ImageUrl != EmptyImage()) 
                 { 
@@ -194,7 +195,7 @@ public partial class ImageCtl : System.Web.UI.UserControl
 
             imgPhoto.ImageUrl = "~/Images/Pages/ReadImage.aspx?Type=" + Type + "Tmp&ID=" + ID + "";
         }
-        catch (Exception e1) { DBFun.InsertError("Image", "PopulateImage()"); }
+        catch (Exception e1) { DBCs.InsertError("Image", "PopulateImage()"); }
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

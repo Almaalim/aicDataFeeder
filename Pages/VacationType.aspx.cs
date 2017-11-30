@@ -21,6 +21,7 @@ public partial class VacationType : BasePage
     DataTable dt;
     VacationPro ProClass = new VacationPro();
     VacationSql SqlClass = new VacationSql();
+    DBFun DBCs = new DBFun();
 
     string MainPer = "Vac";
     string MainQuery = "SELECT * FROM VacationType    WHERE VtpID = VtpID ";
@@ -250,8 +251,8 @@ public partial class VacationType : BasePage
     {
         string Q = " SELECT VtpID FROM EmpVacRel WHERE VtpID = " + txtVtpID.Text + " ";
 
-        dt = DBFun.FetchData(Q);
-        if (!DBFun.IsNullOrEmpty(dt))
+        dt = DBCs.FetchData(Q);
+        if (!DBCs.IsNullOrEmpty(dt))
         {
             MessageFun.ShowMsg(this, MessageFun.TypeMsg.Error, General.Msg("Deletion can not because of the presence of related records", "لا يمكن الحذف بسبب وجود سجلات مرتبطة"));
         }
@@ -326,8 +327,8 @@ public partial class VacationType : BasePage
     {
         try
         {
-            dt = DBFun.FetchData(MainQuery + " AND DepID = " + pID + "");
-            if (DBFun.IsNullOrEmpty(dt)) { return; }
+            dt = DBCs.FetchData(MainQuery + " AND DepID = " + pID + "");
+            if (DBCs.IsNullOrEmpty(dt)) { return; }
             txtVtpID.Text = dt.Rows[0]["DepID"].ToString();
             txtVtpNameAr.Text = dt.Rows[0]["DepNameAr"].ToString();
             txtVtpNameEn.Text = dt.Rows[0]["DepNameEn"].ToString();
@@ -341,8 +342,8 @@ public partial class VacationType : BasePage
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public void FillGrid(string Q)
     {
-        dt = DBFun.FetchData(Q);
-        if (!DBFun.IsNullOrEmpty(dt) && FormSession.PermUsr.Contains("S" + MainPer))
+        dt = DBCs.FetchData(Q);
+        if (!DBCs.IsNullOrEmpty(dt) && FormSession.PermUsr.Contains("V" + MainPer))
         {
             grdData.DataSource = (DataTable)dt;
             grdData.DataBind();
@@ -427,8 +428,8 @@ public partial class VacationType : BasePage
                     }
                     else
                     {
-                        dt = DBFun.FetchData(MainQuery + " AND VtpNameAr = '" + txtVtpNameAr.Text + "' " + sqlUpdate);
-                        if (!DBFun.IsNullOrEmpty(dt))
+                        dt = DBCs.FetchData(MainQuery + " AND VtpNameAr = '" + txtVtpNameAr.Text + "' " + sqlUpdate);
+                        if (!DBCs.IsNullOrEmpty(dt))
                         {
                             MessageFun.ValidMsg(this, ref cvVtpNameAr, true, General.Msg("Vacation Name (Ar) already exists", "اسم الإجازة بالعربي موجود مسبقا"));
                             e.IsValid = false;
@@ -441,8 +442,8 @@ public partial class VacationType : BasePage
                 {
                     if (!string.IsNullOrEmpty(txtVtpNameEn.Text))
                     {
-                        dt = DBFun.FetchData(MainQuery + " AND VtpNameEn = '" + txtVtpNameEn.Text + "' " + sqlUpdate);
-                        if (!DBFun.IsNullOrEmpty(dt))
+                        dt = DBCs.FetchData(MainQuery + " AND VtpNameEn = '" + txtVtpNameEn.Text + "' " + sqlUpdate);
+                        if (!DBCs.IsNullOrEmpty(dt))
                         {
                             MessageFun.ValidMsg(this, ref cvVtpNameEn, true, General.Msg("Vacation Name (En) already exists", "اسم الإجازة بالانجليزي موجود مسبقا"));
                             e.IsValid = false;

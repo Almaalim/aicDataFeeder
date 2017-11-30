@@ -21,6 +21,8 @@ public class WorktimeSql : DataLayerBase
     SqlDbType VchDB = SqlDbType.VarChar;
     SqlDbType DtDB = SqlDbType.DateTime;
     SqlDbType BIT = SqlDbType.Bit;
+
+    DateFun DTCs = new DateFun();
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public Int32 Insert(WorktimePro pro)
@@ -234,8 +236,8 @@ public class WorktimeSql : DataLayerBase
     {
         //DateTime Date = Convert.ToDateTime(pDate);
         string strValue = "";
-        if (pDateType == "Gregorian") { strValue = DateFun.strTodt(String.Format("{0:dd/MM/yyyy}", pDate)).ToShortDateString(); }
-        else if (pDateType == "Hijri") { strValue = DateFun.HijToGrn(pDate).ToShortDateString(); }
+        if (pDateType == "Gregorian") { strValue = DTCs.strTodt(String.Format("{0:dd/MM/yyyy}", pDate)).ToShortDateString(); }
+        else if (pDateType == "Hijri") { strValue = DTCs.HijToGrn(pDate).ToShortDateString(); }
 
         return strValue;
     }

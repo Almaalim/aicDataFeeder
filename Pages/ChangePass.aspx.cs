@@ -20,6 +20,7 @@ public partial class ChangePass : BasePage
 
     AppUsersPro ProClass = new AppUsersPro();
     AppUsersSql SqlClass = new AppUsersSql();
+    DBFun DBCs = new DBFun();
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     protected void Page_Load(object sender, EventArgs e)
@@ -108,9 +109,9 @@ public partial class ChangePass : BasePage
                 }
                 else
                 {
-                    dt = DBFun.FetchData("SELECT UsrPassword FROM AppUsers WHERE UsrLoginID = '" + FormSession.LoginID + "'");
+                    dt = DBCs.FetchData("SELECT UsrPassword FROM AppUsers WHERE UsrLoginID = '" + FormSession.LoginID + "'");
 
-                    if (!DBFun.IsNullOrEmpty(dt)) 
+                    if (!DBCs.IsNullOrEmpty(dt)) 
                     {
                         if (dt.Rows[0][0].ToString() != txtCurrentPass.Text) 
                         { 

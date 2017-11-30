@@ -22,8 +22,10 @@ public partial class Pages_WorkTimeSetting : BasePage
 
     WorktimePro ProClass = new WorktimePro();
     WorktimeSql SqlClass = new WorktimeSql();
+    DBFun DBCs = new DBFun();
+    DateFun DTCs = new DateFun();
 
-    string MainPer = "SetWorktime";
+    string MainPer = "Set";
     string MainQuery = "SELECT * FROM WorkingTime ";
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -81,8 +83,8 @@ public partial class Pages_WorkTimeSetting : BasePage
             ProClass.WktFri = chkEwrFri.Checked;
 
             ProClass.WktIsActive = chkWktStatus.Checked;
-            ProClass.WktStartDate = calStartDate.getDate();
-            ProClass.WktEndDate = calEndDate.getDate();
+            ProClass.WktStartDate = calStartDate.getGDateDBFormat();
+            ProClass.WktEndDate = calEndDate.getGDateDBFormat();
             ProClass.WktShiftCount = FindShiftCount();
 
             ////Shift 1
@@ -188,8 +190,8 @@ public partial class Pages_WorkTimeSetting : BasePage
         chkEwrFri.Enabled = pStatus;
 
         chkWktStatus.Enabled = pStatus;
-        calStartDate.setEnabled(pStatus);
-        calEndDate.setEnabled(pStatus);
+        calStartDate.SetEnabled(pStatus);
+        calEndDate.SetEnabled(pStatus);
         FindShiftCount();
 
         chkShift2Set.Enabled = pStatus;
@@ -333,8 +335,8 @@ public partial class Pages_WorkTimeSetting : BasePage
             System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
             TextTimeServerControl.TextTime.TimeTypeEnum Seconds = TextTimeServerControl.TextTime.TimeTypeEnum.Seconds;
 
-            dt = DBFun.FetchData(MainQuery + " AND WktID = " + pID + "");
-            if (DBFun.IsNullOrEmpty(dt)) { return; }
+            dt = DBCs.FetchData(MainQuery + " AND WktID = " + pID + "");
+            if (DBCs.IsNullOrEmpty(dt)) { return; }
 
             txtWktID.Text = dt.Rows[0]["WktID"].ToString();
             chkWktStatus.Checked = Convert.ToBoolean(dt.Rows[0]["WktIsActive"]);
@@ -347,8 +349,8 @@ public partial class Pages_WorkTimeSetting : BasePage
             chkEwrThu.Checked = Convert.ToBoolean(dt.Rows[0]["WktThu"]);
             chkEwrFri.Checked = Convert.ToBoolean(dt.Rows[0]["WktFri"]);
 
-            calStartDate.setDBDate(dt.Rows[0]["WktStartDate"], "S");
-            calEndDate.setDBDate(dt.Rows[0]["WktEndDate"], "S");
+            calStartDate.SetGDate(dt.Rows[0]["WktStartDate"], "S");
+            calEndDate.SetGDate(dt.Rows[0]["WktEndDate"], "S");
 
             //Shift 1
             txtShift1NameAr.Text = dt.Rows[0]["WktShift1NameAr"].ToString();
@@ -387,8 +389,8 @@ public partial class Pages_WorkTimeSetting : BasePage
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public void FillGrid(string Q)
     {
-        dt = DBFun.FetchData(Q);
-        if (!DBFun.IsNullOrEmpty(dt) && FormSession.PermUsr.Contains("U" + MainPer))
+        dt = DBCs.FetchData(Q);
+        if (!DBCs.IsNullOrEmpty(dt) && FormSession.PermUsr.Contains("U" + MainPer))
         {
             grdData.DataSource = (DataTable)dt;
             grdData.DataBind();
@@ -510,8 +512,8 @@ public partial class Pages_WorkTimeSetting : BasePage
         string Q = " SELECT MacID FROM TransDump WHERE MacID = " + txtWktID.Text + " ";
         try
         {
-            dt = DBFun.FetchData(Q);
-            if (!DBFun.IsNullOrEmpty(dt))
+            dt = DBCs.FetchData(Q);
+            if (!DBCs.IsNullOrEmpty(dt))
             {
                 MessageFun.ShowMsg(this, MessageFun.TypeMsg.Error, General.Msg("Deletion can not because of the presence of related records", "لا يمكن الحذف بسبب وجود سجلات مرتبطة"));
             }
@@ -618,8 +620,6 @@ public partial class Pages_WorkTimeSetting : BasePage
 
         Duration = ToTime - FromTime;
         txtShift1Duration.SetTime(Duration, TextTimeServerControl.TextTime.TimeTypeEnum.Minutes);
-
-
     }
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -710,14 +710,14 @@ public partial class Pages_WorkTimeSetting : BasePage
         {
             if (source.Equals(cvCalStartDateEmpty))
             {
-                if (String.IsNullOrEmpty(calStartDate.getDate())) { e.IsValid = false; } else { e.IsValid = true; }
+                if (String.IsNullOrEmpty(calStartDate.getGDateDBFormat())) { e.IsValid = false; } else { e.IsValid = true; }
             }
             else if (source.Equals(cvCompareDates))
             {
-                if (!String.IsNullOrEmpty(calStartDate.getDate()) && !String.IsNullOrEmpty(calEndDate.getDate()))
+                if (!String.IsNullOrEmpty(calStartDate.getGDateDBFormat()) && !String.IsNullOrEmpty(calEndDate.getGDateDBFormat()))
                 {
-                    int iStartDate = DateFun.ConvertDateTimeToInt(FormSession.DateType, calStartDate.getDate());
-                    int iEndDate = DateFun.ConvertDateTimeToInt(FormSession.DateType, calEndDate.getDate());
+                    int iStartDate = DTCs.ConvertDateTimeToInt(FormSession.DateType, calStartDate.getGDateDBFormat());
+                    int iEndDate = DTCs.ConvertDateTimeToInt(FormSession.DateType, calEndDate.getGDateDBFormat());
                     if (iStartDate > iEndDate) { e.IsValid = false; } else { e.IsValid = true; }
                 }
             }

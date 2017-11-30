@@ -78,12 +78,12 @@
                                         </asp:BoundField>
                                         <asp:TemplateField HeaderText="Start Date" SortExpression="EvrStartDate" meta:resourcekey="TemplateFieldResource1">
                                             <ItemTemplate>
-                                                <%# DateFun.GrdDisplayDate(Eval("EvrStartDate"), 'S')%>
+                                                <%# DisplayFun.GrdDisplayDate(Eval("EvrStartDate"), 'S')%>
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="End Date" SortExpression="EvrEndDate" meta:resourcekey="TemplateFieldResource1">
                                             <ItemTemplate>
-                                                <%# DateFun.GrdDisplayDate(Eval("EvrEndDate"), 'S')%>
+                                                <%# DisplayFun.GrdDisplayDate(Eval("EvrEndDate"), 'S')%>
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                         <asp:CommandField ButtonType="Button" SelectText="select" ShowSelectButton="True" />

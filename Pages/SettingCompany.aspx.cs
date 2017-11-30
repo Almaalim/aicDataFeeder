@@ -19,6 +19,8 @@ public partial class SettingCompany : BasePage
     ApplicationSetupPro ProClass = new ApplicationSetupPro();
     ApplicationSetupSql SqlClass = new ApplicationSetupSql();
     DataTable dt;
+    DBFun DBCs = new DBFun();
+    DateFun DTCs = new DateFun();
 
     string MainPer = "Set";
     string MainQuery = " SELECT * FROM ApplicationSetup ";
@@ -70,7 +72,7 @@ public partial class SettingCompany : BasePage
         }
         catch (Exception Ex)
         {
-            DBFun.InsertError(FormSession.PageName, "btnSave");
+            DBCs.InsertError(FormSession.PageName, "btnSave");
             MessageFun.ShowAdminMsg(this, Ex.Message);
         }
     }
@@ -117,8 +119,8 @@ public partial class SettingCompany : BasePage
     {
         try
         {
-            dt = DBFun.FetchData(MainQuery);
-            if (DBFun.IsNullOrEmpty(dt)) { return; }
+            dt = DBCs.FetchData(MainQuery);
+            if (DBCs.IsNullOrEmpty(dt)) { return; }
             
             txtAppCompany.Text  = dt.Rows[0]["AppCompany"].ToString();
             txtAppDisplay.Text  = dt.Rows[0]["AppDisplay"].ToString();

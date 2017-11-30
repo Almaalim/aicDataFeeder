@@ -21,7 +21,9 @@ public partial class Department : BasePage
     DataTable   dt;
     DepartmentPro ProClass = new DepartmentPro();
     DepartmentSql SqlClass = new DepartmentSql();
-    
+    DBFun DBCs = new DBFun();
+    DateFun DTCs = new DateFun();
+
     string MainPer   = "Dep";
     string MainQuery = "SELECT * FROM Department WHERE DepID = DepID ";
     //string SubQuery  = "SELECT * FROM SubDepartments WHERE SdpID = SdpID ";
@@ -325,8 +327,8 @@ public partial class Department : BasePage
         string Q = " SELECT DepID FROM Department WHERE DepParentID = " + txtDepID.Text + " "
                  + " UNION SELECT DepID FROM EmployeesInfoView WHERE DepID = " + txtDepID.Text + " ";
 
-        dt = DBFun.FetchData(Q);
-        if (!DBFun.IsNullOrEmpty(dt))
+        dt = DBCs.FetchData(Q);
+        if (!DBCs.IsNullOrEmpty(dt))
         {
             MessageFun.ShowMsg(this, MessageFun.TypeMsg.Error, General.Msg("Deletion can not because of the presence of related records", "لا يمكن الحذف بسبب وجود سجلات مرتبطة"));
         }
@@ -526,8 +528,8 @@ public partial class Department : BasePage
     {
         try
         {
-            dt = DBFun.FetchData(MainQuery + " AND DepID = " + pID + "");
-            if (DBFun.IsNullOrEmpty(dt)) { return; }
+            dt = DBCs.FetchData(MainQuery + " AND DepID = " + pID + "");
+            if (DBCs.IsNullOrEmpty(dt)) { return; }
             txtDepID.Text     = dt.Rows[0]["DepID"].ToString();
             txtDepNameAr.Text = dt.Rows[0]["DepNameAr"].ToString();
             txtDepNameEn.Text = dt.Rows[0]["DepNameEn"].ToString();
@@ -545,8 +547,8 @@ public partial class Department : BasePage
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public void FillMainGrid(string Q)
     {
-        dt = DBFun.FetchData(Q);
-        if (!DBFun.IsNullOrEmpty(dt) && FormSession.PermUsr.Contains("S" + MainPer))
+        dt = DBCs.FetchData(Q);
+        if (!DBCs.IsNullOrEmpty(dt) && FormSession.PermUsr.Contains("V" + MainPer))
         {
             grdMainData.DataSource = (DataTable)dt;
             grdMainData.DataBind();
@@ -742,8 +744,8 @@ public partial class Department : BasePage
                     }
                     else
                     {
-                        dt = DBFun.FetchData(MainQuery + " AND DepNameAr = '" + txtDepNameAr.Text + "' " + sqlUpdate);
-                        if (!DBFun.IsNullOrEmpty(dt))
+                        dt = DBCs.FetchData(MainQuery + " AND DepNameAr = '" + txtDepNameAr.Text + "' " + sqlUpdate);
+                        if (!DBCs.IsNullOrEmpty(dt))
                         {
                             MessageFun.ValidMsg(this, ref cvDepNameAr, true, General.Msg("Department Name (Ar) already exists", "اسم القسم بالعربي موجود مسبقا"));
                             e.IsValid = false;
@@ -756,8 +758,8 @@ public partial class Department : BasePage
                 {
                     if (!string.IsNullOrEmpty(txtDepNameEn.Text))
                     {
-                        dt = DBFun.FetchData(MainQuery + " AND DepNameEn = '" + txtDepNameEn.Text + "' " + sqlUpdate);
-                        if (!DBFun.IsNullOrEmpty(dt))
+                        dt = DBCs.FetchData(MainQuery + " AND DepNameEn = '" + txtDepNameEn.Text + "' " + sqlUpdate);
+                        if (!DBCs.IsNullOrEmpty(dt))
                         {
                             MessageFun.ValidMsg(this, ref cvDepNameEn, true, General.Msg("Department Name (En) already exists", "اسم القسم بالانجليزي موجود مسبقا"));
                             e.IsValid = false;
