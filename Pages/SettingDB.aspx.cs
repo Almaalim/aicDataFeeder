@@ -101,21 +101,30 @@ public partial class Pages_SettingDB : BasePage
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     protected void btnSave_Click(object sender, EventArgs e)
     {
-        if (!Page.IsValid)
-        {
-            ValidatorCollection ValidatorColl = Page.Validators;
-            for (int k = 0; k < ValidatorColl.Count; k++)
+       if ( txtTableName.Text != "" || txtEmpField.Text!="" || txtDateField.Text !="" || txtTimeField.Text!="" || txtInOutField.Text !="" || txtMachineIdField.Text !="" || txtLocationField.Text !="" || txtSchemaName.Text !="")
+            {          
+            if (!Page.IsValid)
             {
-                if (!ValidatorColl[k].IsValid && !String.IsNullOrEmpty(ValidatorColl[k].ErrorMessage)) { vsSave.ShowSummary = true; return; }
-                vsSave.ShowSummary = false;
+                ValidatorCollection ValidatorColl = Page.Validators;
+                for (int k = 0; k < ValidatorColl.Count; k++)
+                {
+                    if (!ValidatorColl[k].IsValid && !String.IsNullOrEmpty(ValidatorColl[k].ErrorMessage)) { vsSave.ShowSummary = true; return; }
+                    vsSave.ShowSummary = false;
+                }
+                return;
             }
-            return;
-        }
-
             FillPropeties();
             SqlClass.InsertUpdate(ProClass);
-
             MessageFun.ShowMsg(this, MessageFun.TypeMsg.Success, General.Msg("Database setting Import added successfully", "تم تحديث اعدادات قاعد البيانات بنجاح "));
+            }
+      
+        else
+        {
+          
+            MessageFun.ShowMsg(this, MessageFun.TypeMsg.Error, General.Msg("Please Fill All Records", "خطأ في ادخال البيانات "));
+          
+        }
+       
     }
     /*##############################################################################################################################*/
     /*##############################################################################################################################*/

@@ -97,7 +97,7 @@ public partial class Home : BasePage
             DivMonth1.Visible = DivMonth2.Visible = DivYear1.Visible = DivYear2.Visible = false;
             DivDay1.Visible = true;
             ScriptManager.RegisterStartupScript(this, this.GetType(), "key", "showPopup('" + DivDay2.ClientID + "');", true);
-            //calDate.SetEnabled(true);
+            calDate.SetEnabled(true);
         }
         else
         {
@@ -113,7 +113,8 @@ public partial class Home : BasePage
         string DepID = ddlDepChartsFilter.SelectedValue;
         string EmpID = ddlEmpChartsFilter.SelectedValue;
         string Type = ddlTypeChartsFilter.SelectedValue;
-        string Date = "";// calDate.getGDateDBFormat();
+        string Date = "";
+        //calDate.getGDateDBFormat();
         string Month = ddlMonth.SelectedValue;
         string Year = ddlYear.SelectedValue;
         string CALENDAR_TYPE = (FormSession.DateType == "Hijri") ? "H" : "G";

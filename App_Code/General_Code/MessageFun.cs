@@ -101,6 +101,11 @@ public class MessageFun
         if (isShow) { cv.ErrorMessage = pMsg; } else { cv.ErrorMessage = ""; }
         cv.Text = pg.Server.HtmlDecode("&lt;img src='../Images/Icon/Exclamation.gif' title='" + pMsg + "' /&gt;");  
     }
+    public static void ValidMsg2(Page pg, ref CustomValidator cv, bool isShow, string pMsg)
+    {
+        string MMsg = General.Msg("the new password should not be similar to the Old Password ", "النظام غير قادر على حفظ البيانات, الرجاء الاتصال بمدير النظام. ");
+    }
+
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 }

@@ -28,7 +28,7 @@
                             <asp:Label ID="lblEmailPort" runat="server" Text="Email Port :"></asp:Label>
                         </td>
                         <td class="td2Allalign">
-                            <asp:TextBox ID="txtEmailPort" runat="server" Width="60px"></asp:TextBox>
+                            <asp:TextBox ID="txtEmailPort" runat="server" Width="60px" TabIndex="1"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
@@ -36,7 +36,7 @@
                             <asp:Label ID="lblSendEmailFrom" runat="server" Text="Send email from :"></asp:Label>
                         </td>
                         <td class="td2Allalign">
-                            <asp:TextBox ID="txtSendEmailFrom" runat="server" Width="200px"></asp:TextBox>
+                            <asp:TextBox ID="txtSendEmailFrom" runat="server" Width="200px" TabIndex="2"></asp:TextBox>
                             <asp:RegularExpressionValidator ID="rvEmailFrom"  runat="server" ErrorMessage="Please enter email in correct format"
                                 Text="&lt;img src='../Images/icon/Exclamation.gif' title='Please enter email in correct format!' /&gt;"
                                 ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" 
@@ -49,7 +49,7 @@
                             <asp:Label ID="lblPassword" runat="server" Text="Password :"></asp:Label>
                         </td>
                         <td class="td2Allalign">
-                            <asp:TextBox ID="txtPassword" runat="server" Width="200px"></asp:TextBox>
+                            <asp:TextBox ID="txtPassword" runat="server" Width="200px" TabIndex="3"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
