@@ -399,7 +399,7 @@
                         <div class="icon">
                             <span class="ico-arrow-right"></span>
                         </div>
-                        <h1>Attendance Management System</h1>
+                        <h1Attendance Management System</h1>
                     </div>
                 </div>
                 <div id="divMenu" runat="server">
@@ -458,22 +458,23 @@
                         <asp:Label ID="lblUserName" runat="server" meta:resourcekey="lblUserNameResource1" Text="admin"></asp:Label>
                         <asp:LinkButton ID="LnkChangePassword" runat="server" OnClick="lnkChangePassword_Click">Change Password</asp:LinkButton>
 
-                        <asp:LinkButton ID="lnkShortcut" runat="server" Style="color: #C3D8D5; text-decoration: none;">Add Quick Link</asp:LinkButton>
+                        <asp:LinkButton ID="lnkShortcut" runat="server" Style="color: #C3D8D5; text-decoration: none;" OnClick="lnkShortcut_Click">Add Quick Link</asp:LinkButton>
                         <%--<asp:UpdatePanel ID="UpdatePanel1" runat="server">
                                             <ContentTemplate>--%>
+                       
                         <asp:LinkButton ID="lnkHelp" runat="server" Style="color: #C3D8D5; text-decoration: none;">Help</asp:LinkButton>
                         <%--</ContentTemplate>
                                         </asp:UpdatePanel>--%>
 
                         <asp:LinkButton ID="LnkLogout" runat="server" OnClick="lnkLogout_Click" Style="color: #C3D8D5; text-decoration: none;">Logout</asp:LinkButton>
 
-                        <asp:LinkButton ID="lnkLanguage" runat="server" OnClick="lnkChangePassword_Click" Style="color: #C3D8D5; text-decoration: none;">Language</asp:LinkButton>
+                        <asp:LinkButton ID="lnkLanguage" runat="server" OnClick=" lnkChangeLang_Click" Style="color: #C3D8D5; text-decoration: none;">Language</asp:LinkButton>
 
                     </div>
 
                 </div>
                 <div class="NotificationsIcon">
-                                    <span id="spnNotificationsNo" runat="server" class="NotificationsNumber">999</span>
+                                    <span id="spnNotificationsNo" runat="server" class="NotificationsNumber"></span>
                                 </div>
                 <div id="divNotifications" runat="server" class="NotificationsPopup">
                     <span class="NotificationsPopupClose"></span>
@@ -484,12 +485,11 @@
                 <h1 class="pageTitle"></h1>
                 <div id="menuTd1" runat="server">
                     <div style="display: none">
-                        <asp:ScriptManager ID="ScriptManager2" runat="server" EnableScriptGlobalization="True"></asp:ScriptManager>
+                        <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True"></asp:ScriptManager>
                         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                             <!--SideMenu-->
                         </asp:ContentPlaceHolder>
                     </div>
-
                     <asp:Label ID="lblHeading" runat="server" Font-Size="Medium"></asp:Label>
                     <%--<asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True"></asp:ScriptManager>--%>
                     <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
@@ -504,6 +504,25 @@
         </div>
 
     </form>
+     </script>
+    <script type="text/javascript">
+
+        function hideunhide_leftpanel(imgid) {
+            var ele = document.getElementById('tdleft_panel');
+            ele.style.display = (ele.style.display == "none" ? "" : "none");
+            //alert(imgid);
+            if (imgid == "close") {
+                document.getElementById("open").style.display = "";
+                document.getElementById("close").style.display = "none";
+            }
+            else {
+                document.getElementById("open").style.display = "none";
+                document.getElementById("close").style.display = "";
+            }
+           // leftpanel_img
+
+        }
+        </script>
     <script type="text/javascript">
 
         $(document).ready(function () {
