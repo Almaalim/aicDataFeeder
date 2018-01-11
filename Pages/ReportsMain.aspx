@@ -8,7 +8,7 @@
     TagPrefix="cc2" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <script type="text/javascript" src="../JScript/sdmenu.js"></script>
+<script type="text/javascript" src="../JScript/sdmenu.js"></script>
     <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Conditional">
         <ContentTemplate>
             <div style="float: left; width: 155px" id="my_menu" class="sdmenu1" onclick="loadfun('my_menu');">
@@ -31,7 +31,7 @@
                 </div>
             </div>
         </ContentTemplate>
-    </asp:UpdatePanel>  
+    </asp:UpdatePanel>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" Runat="Server">
   

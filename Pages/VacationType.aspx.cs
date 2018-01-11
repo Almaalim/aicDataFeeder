@@ -50,7 +50,7 @@ public partial class VacationType : BasePage
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     void ClearItem()
     {
-        ClearItem();
+       ClearData();
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -143,7 +143,7 @@ public partial class VacationType : BasePage
             else if (ddlSearch.SelectedValue == "VtpNameAr") { SearchItemStatus(true, false, "Type Vacation Name (Ar) here"); }
             else if (ddlSearch.SelectedValue == "VtpNameEn") { SearchItemStatus(true, false, "Type Vacation Name (En) here"); }
 
-            ClearItem();
+            ClearData();
             FillGrid(MainQuery + " AND VtpID = -1");
         }
     }

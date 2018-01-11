@@ -48,8 +48,11 @@ public class FormCtrl
 
             for (int i = 0; i < dt.Rows.Count; i++)
             {
-                ListItem ls = new ListItem(dt.Rows[i][Text].ToString(), dt.Rows[i][Value].ToString());
-                ddl.Items.Add(ls);
+                if (!string.IsNullOrEmpty(dt.Rows[i][Text].ToString()))
+                {
+                    ListItem ls = new ListItem(dt.Rows[i][Text].ToString(), dt.Rows[i][Value].ToString());
+                    ddl.Items.Add(ls);
+                }
             }
             
             ListItem lsMsg = new ListItem(Msg,Msg);

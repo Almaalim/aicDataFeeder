@@ -57,6 +57,7 @@ public partial class Login : System.Web.UI.Page
         catch (Exception e1)
         {
             DBCs.InsertError("Login.aspx", "btnLogin");
+            
         }
     }
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -92,7 +93,7 @@ public partial class Login : System.Web.UI.Page
                     catch { MessageFun.ShowMsg(this, MessageFun.TypeMsg.Error, General.Msg("You do not have access,Please contact the Administrator", "لا يمكنك الدخول,الرجاء مراجعة مدير النظام")); }
                     //else
                     //{
-                    //    MessageFun.ShowMsg(this, MessageFun.TypeMsg.Error, General.Msg("You do not have access,Please contact the Administrator", "لا يمكنك الدخول,الرجاء مراجعة مدير النظام"));
+                    //    MessageFun.ShowMsg(this, MessageFun.TypeMsg.Error, General.Msg("Wrong User Name Or Password", "لا يمكنك الدخول,الرجاء مراجعة مدير النظام"));
                     //}
                     return;
                 }
@@ -103,7 +104,7 @@ public partial class Login : System.Web.UI.Page
             }
         }
 
-        MessageFun.ShowMsg(this, MessageFun.TypeMsg.Error, General.Msg("You do not have access,Please contact the Administrator", "لا يمكنك الدخول,الرجاء مراجعة مدير النظام")); 
+        MessageFun.ShowMsg(this, MessageFun.TypeMsg.Error, General.Msg("Couldn't find your inserted data please check it again", "لا يمكننا الحصول على البيانات المدخله الرجاء التأكد من البيانات المدخله")); 
     } 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
