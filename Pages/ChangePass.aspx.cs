@@ -62,11 +62,11 @@ public partial class ChangePass : BasePage
                     if (!ValidatorColl[k].IsValid && !String.IsNullOrEmpty(ValidatorColl[k].ErrorMessage)) { vsSave.ShowSummary = true; return; }
                     vsSave.ShowSummary = false;
                 }
-               return;
+                return;
             }
 
 
-            ProClass.UsrLoginID  = FormSession.LoginID;
+            ProClass.UsrLoginID = FormSession.LoginID;
             ProClass.UsrPassword = txtNewPass.Text;
             ProClass.TransactionBy = FormSession.LoginID;
 
@@ -76,10 +76,7 @@ public partial class ChangePass : BasePage
 
             MessageFun.ShowMsg(this, MessageFun.TypeMsg.Success, General.Msg("Password updated successfully", "تم تعديل كلمة المرور بنجاح"));
         }
-        catch (Exception Ex)
-        {
-            MessageFun.ShowAdminMsg(this, Ex.Message);
-        }
+        catch (Exception Ex) { MessageFun.ShowAdminMsg(this, Ex.Message); }
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
