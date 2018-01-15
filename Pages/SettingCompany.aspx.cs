@@ -146,14 +146,29 @@ public partial class SettingCompany : BasePage
     protected void ClearUI() { PopulateUI(); }
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    protected void btnCancel_Click(object sender, EventArgs e) { ClearUI(); }
+    protected void btnCancel_Click(object sender, EventArgs e)
+
+    {
+        txtAppCompany.Text = "";
+        txtAppDisplay.Text = "";
+        txtAppAddress1.Text = "";
+        txtAppAddress2.Text = "";
+        txtAppCity.Text = "";
+        txtAppCountry.Text = "";
+        txtAppPOBox.Text = "";
+        txtAppTelNo1.Text = "";
+        txtAppTelNo2.Text = "";
+        txtAppFax.Text = "";
+        txtAppUrl.Text = "";
+        txtAppEmail.Text = "";
+    }
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     /*******************************************************************************************************************************/
-    /*******************************************************************************************************************************/ 
+    /*******************************************************************************************************************************/
     #region Custom Validate Events
-    
+
     protected void ShowMsg_ServerValidate(Object source, ServerValidateEventArgs e) { e.IsValid = false; }
 
     #endregion

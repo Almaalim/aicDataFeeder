@@ -12,7 +12,7 @@ using System.Web.UI.WebControls.WebParts;
 using System.Xml.Linq;
 using System.Data.SqlClient;
 
-public partial class ChangePass : BasePage
+public partial class Pages_ChangePassword : System.Web.UI.Page
 {
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -28,15 +28,16 @@ public partial class ChangePass : BasePage
     {
         try
         {
-           // --Common Code---------------------------------------------------------------- - //
+            // --Common Code---------------------------------------------------------------- - //
             FormSession.FillSession("Home", pageDiv);
 
             PageName = new System.IO.FileInfo(Request.Url.AbsolutePath).Name;
             if (FormSession.Language == "Ar") { pageDiv.Attributes.Add("dir", "rtl"); } else { pageDiv.Attributes.Add("dir", "ltr"); }
 
-          //  --Common Code---------------------------------------------------------------- - //
-
-              if (!string.IsNullOrEmpty(txtCurrentPass.Text)) { ViewState["CurrentPass"] = txtCurrentPass.Text; }
+            //  --Common Code---------------------------------------------------------------- - //
+            if (!IsPostBack)
+            { ClearUI(); } 
+            if (!string.IsNullOrEmpty(txtCurrentPass.Text)) { ViewState["CurrentPass"] = txtCurrentPass.Text; }
             if (ViewState["CurrentPass"] != null) { txtCurrentPass.Attributes["value"] = ViewState["CurrentPass"].ToString(); }
 
             if (!string.IsNullOrEmpty(txtNewPass.Text)) { ViewState["NewPass"] = txtNewPass.Text; }
@@ -44,9 +45,12 @@ public partial class ChangePass : BasePage
 
             if (!string.IsNullOrEmpty(txtConfirmPass.Text)) { ViewState["ConfirmPass"] = txtConfirmPass.Text; }
             if (ViewState["ConfirmPass"] != null) { txtConfirmPass.Attributes["value"] = ViewState["ConfirmPass"].ToString(); }
-        }
-        catch (Exception e1) { }
+            
 
+        }
+        
+        catch (Exception e1) { }
+        
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -62,11 +66,11 @@ public partial class ChangePass : BasePage
                     if (!ValidatorColl[k].IsValid && !String.IsNullOrEmpty(ValidatorColl[k].ErrorMessage)) { vsSave.ShowSummary = true; return; }
                     vsSave.ShowSummary = false;
                 }
-               return;
+                return;
             }
 
 
-            ProClass.UsrLoginID  = FormSession.LoginID;
+            ProClass.UsrLoginID = FormSession.LoginID;
             ProClass.UsrPassword = txtNewPass.Text;
 
             SqlClass.UpdatePassword(ProClass);
@@ -86,13 +90,13 @@ public partial class ChangePass : BasePage
     {
         //System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
         ViewState["CurrentPass"] = null;
-        txtCurrentPass.Attributes["value"] = null;
+        txtCurrentPass.Attributes["value"] = "";
 
         ViewState["NewPass"] = null;
-        txtNewPass.Attributes["value"] = null;
+        txtNewPass.Attributes["value"] = "";
 
         ViewState["ConfirmPass"] = null;
-        txtConfirmPass.Attributes["value"] = null;
+        txtConfirmPass.Attributes["value"] = "";
     }
 
     protected void btnCancel_Click(object sender, EventArgs e)
@@ -117,76 +121,76 @@ public partial class ChangePass : BasePage
     protected void ShowMsg_ServerValidate(Object source, ServerValidateEventArgs e) { e.IsValid = false; }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-     protected void Pass_ServerValidate(Object source, ServerValidateEventArgs e)
-     {
-         //try
-         //{
-         //    if (source.Equals(cvNewPass) == source.Equals(cvCurrentPass))
-         //    {
-         //        MessageFun.ValidMsg2(this, ref cvConfirmPass, true, General.Msg("the new password should not be similar to the Old Password", "كلمة المرور وتأكيد كلمة المرور غير متطابقتين"));
-         //        e.IsValid = false;
-         //        return;
-         //    }
-         //    if (source.Equals(cvCurrentPass))
-         //    {
-         //        if (string.IsNullOrEmpty(txtCurrentPass.Text))
-         //        {
-         //            MessageFun.ValidMsg(this, ref cvCurrentPass, false, General.Msg("Current Password is required", "كلمة المرور الحالية مطلوبة"));
-         //            e.IsValid = false;
-         //            return;
-         //        }
-         //        else
-         //        {
-         //            dt = DBCs.FetchData("SELECT UsrPassword FROM AppUsers WHERE UsrLoginID = '" + FormSession.LoginID + "'");
+    protected void Pass_ServerValidate(Object source, ServerValidateEventArgs e)
+    {
+        //try
+        //{
+        //    if (source.Equals(cvNewPass) == source.Equals(cvCurrentPass))
+        //    {
+        //        MessageFun.ValidMsg2(this, ref cvConfirmPass, true, General.Msg("the new password should not be similar to the Old Password", "كلمة المرور وتأكيد كلمة المرور غير متطابقتين"));
+        //        e.IsValid = false;
+        //        return;
+        //    }
+        //    if (source.Equals(cvCurrentPass))
+        //    {
+        //        if (string.IsNullOrEmpty(txtCurrentPass.Text))
+        //        {
+        //            MessageFun.ValidMsg(this, ref cvCurrentPass, false, General.Msg("Current Password is required", "كلمة المرور الحالية مطلوبة"));
+        //            e.IsValid = false;
+        //            return;
+        //        }
+        //        else
+        //        {
+        //            dt = DBCs.FetchData("SELECT UsrPassword FROM AppUsers WHERE UsrLoginID = '" + FormSession.LoginID + "'");
 
-         //            if (!DBCs.IsNullOrEmpty(dt)) 
-         //            {
-         //                if (dt.Rows[0][0].ToString() != txtCurrentPass.Text) 
-         //                { 
-         //                    MessageFun.ValidMsg(this, ref cvCurrentPass, true, General.Msg("The Current password is incorrect", "كلمة المرور الحالية غير صحيحة"));
-         //                    e.IsValid = false;
-         //                    return;
-         //                }
-         //            }
-         //        }
-         //    }
+        //            if (!DBCs.IsNullOrEmpty(dt)) 
+        //            {
+        //                if (dt.Rows[0][0].ToString() != txtCurrentPass.Text) 
+        //                { 
+        //                    MessageFun.ValidMsg(this, ref cvCurrentPass, true, General.Msg("The Current password is incorrect", "كلمة المرور الحالية غير صحيحة"));
+        //                    e.IsValid = false;
+        //                    return;
+        //                }
+        //            }
+        //        }
+        //    }
 
-         //    if (source.Equals(cvNewPass))
-         //    {
-         //        if (string.IsNullOrEmpty(txtNewPass.Text))
-         //        {
-         //            MessageFun.ValidMsg(this, ref cvNewPass, false, General.Msg("New Password is required", "كلمة المرور الجديدة مطلوبة"));
-         //            e.IsValid = false;
-         //            return;
-         //        }
-         //    }
+        //    if (source.Equals(cvNewPass))
+        //    {
+        //        if (string.IsNullOrEmpty(txtNewPass.Text))
+        //        {
+        //            MessageFun.ValidMsg(this, ref cvNewPass, false, General.Msg("New Password is required", "كلمة المرور الجديدة مطلوبة"));
+        //            e.IsValid = false;
+        //            return;
+        //        }
+        //    }
 
-         //    if (source.Equals(cvConfirmPass))
-         //    {
-         //        if (string.IsNullOrEmpty(txtConfirmPass.Text))
-         //        {
-         //            MessageFun.ValidMsg(this, ref cvConfirmPass, false, General.Msg("Confirm Password is required", " تأكيد كلمة المرور مطلوبة"));
-         //            e.IsValid = false;
-         //            return;
-         //        }
-         //        else
-         //        {   
-         //            if (!string.IsNullOrEmpty(txtNewPass.Text) && txtNewPass.Text != txtConfirmPass.Text) 
-         //            {
-         //                MessageFun.ValidMsg(this, ref cvConfirmPass, true, General.Msg("Password and Confirm Password must be same", "كلمة المرور وتأكيد كلمة المرور غير متطابقتين"));
-         //                e.IsValid = false;
-         //                return;
-         //            }
-         //        }
-         //    }
+        //    if (source.Equals(cvConfirmPass))
+        //    {
+        //        if (string.IsNullOrEmpty(txtConfirmPass.Text))
+        //        {
+        //            MessageFun.ValidMsg(this, ref cvConfirmPass, false, General.Msg("Confirm Password is required", " تأكيد كلمة المرور مطلوبة"));
+        //            e.IsValid = false;
+        //            return;
+        //        }
+        //        else
+        //        {   
+        //            if (!string.IsNullOrEmpty(txtNewPass.Text) && txtNewPass.Text != txtConfirmPass.Text) 
+        //            {
+        //                MessageFun.ValidMsg(this, ref cvConfirmPass, true, General.Msg("Password and Confirm Password must be same", "كلمة المرور وتأكيد كلمة المرور غير متطابقتين"));
+        //                e.IsValid = false;
+        //                return;
+        //            }
+        //        }
+        //    }
 
 
-         //}
-         //catch {
+        //}
+        //catch {
 
-         //    e.IsValid = false;
-         //}
-     }
+        //    e.IsValid = false;
+        //}
+    }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     protected void Oldpassword_ServerValidate(Object source, ServerValidateEventArgs e)
@@ -195,7 +199,7 @@ public partial class ChangePass : BasePage
         {
             if (source.Equals(cvOldpassword))
             {
-                if (string.IsNullOrEmpty(txtCurrentPass.Text)) { }
+                if (!string.IsNullOrEmpty(txtCurrentPass.Text)) { return; }
                 else
                 {
                     MessageFun.ValidMsg(this, ref cvOldpassword, true, General.Msg("Please enter correct password", "من فضلك أدخل كلة السر الحالية الصحيحة"));
@@ -258,6 +262,4 @@ public partial class ChangePass : BasePage
     /*####################################################################################################################################*/
     /*####################################################################################################################################*/
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////   
 }
