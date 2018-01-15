@@ -1335,7 +1335,7 @@ body.loginPage > #aspnetForm {
         margin-top: 20%;
     }
 
-.MsgValidation, .MsgSuccess, .errorValidation {
+.MsgValidation, .MsgSuccess, .errorValidation , .MsgError {
     word-break: break-word;
     padding: 15px 7px;
     color: #fff !important;
@@ -1355,18 +1355,18 @@ body.loginPage > #aspnetForm {
     font-size: 16px;
 }
 
-.MsgValidation, .errorValidation {
+.MsgValidation, .errorValidation , .MsgError {
     background-color: #ba2c1d;
     font-size: 12px;
     top: 0px;
     left: 0px;
 }
 
-    .MsgValidation li, .MsgSuccess li, .errorValidation li {
+    .MsgValidation li, .MsgSuccess li, .errorValidation li , .MsgError li {
         list-style: none;
     }
 
-    .MsgSuccess ul, .MsgValidation ul, .errorValidation ul {
+    .MsgSuccess ul, .MsgValidation ul, .errorValidation ul , .MsgError ul {
         vertical-align: middle;
         display: table-cell;
         position: inherit;
@@ -1379,7 +1379,7 @@ body.loginPage > #aspnetForm {
         Padding-right: 10px;
     }
 
-    .MsgValidation:before, .MsgSuccess:before, .errorValidation:before {
+    .MsgValidation:before, .MsgSuccess:before, .errorValidation:before , .MsgError:before {
         width: 45px;
         color: rgba(255,255,255,1);
         text-align: center;
@@ -1395,7 +1395,7 @@ body.loginPage > #aspnetForm {
     font-family: FontAwesome;
 }
 
-.MsgValidation:before, .errorValidation:before {
+.MsgValidation:before, .errorValidation:before , .MsgError:before {
     background-color: #ba2c1d;
     content: "\f05a";
     font-family: FontAwesome;
@@ -1975,14 +1975,14 @@ box-shadow: 0px 0px 26px -3px rgba(0,0,0,0.75);
     content: "\e22a";
 }
 
-a.Reports:before {
+a.Reports:before  {
     content: "\f17a";
     font-family: FontAwesome !important;
 }
 
-.reportsicon:before {
+.reportsicon:before , a.SideMenuItem.icon26:before , .ReportsGeneral:before {
     content: "\f0f6";
-    font-family: FontAwesome;
+    font-family: FontAwesome !important;
 }
 
 .ico-chart-2:before {
@@ -3470,7 +3470,7 @@ a.Requests:before {
     }
 
 .LoginRight {
-    margin: 50px 125px 0px 0px;
+    margin: 40px 125px 0px 0px;
     float: right;
     width: 309px;
 }
@@ -3980,7 +3980,7 @@ p {
     z-index: 999;
     position: fixed;
     top: 8px;
-    right: 12px;
+    right: 23px;
     background-color: #4b4b4b;
 }
 
@@ -4026,6 +4026,7 @@ p {
     height: 100%;
     overflow-x: hidden;
     overflow-y: auto;
+    direction: ltr;
 }
 
 .taptap-main {
@@ -4509,7 +4510,7 @@ a.colord13f2a:before {
     font-family: FontAwesome !important;
 }
 
-.EmployeeJobAssignment:before , .icon572:before {
+.EmployeeJobAssignment:before , .icon24:before , .EmployeesData:before {
     content: "\f0ae";
     font-family: FontAwesome !important;
 }
@@ -4669,7 +4670,7 @@ a.colord13f2a:before {
     font-family: FontAwesome !important;
 }
 
-.DepartmentsLevels:before , .icon600:before {
+.DepartmentsLevels:before , .icon18:before {
     content: "\f039";
     font-family: FontAwesome !important;
 }
@@ -4787,12 +4788,12 @@ a.SideMenuItem.icon172:before, a.level2.dynamic.PermissionGroup:before {
     font-family: 'icomoon' !important;
 }
 
-a.SideMenuItem.icon167:before, a.level2.dynamic.ApplicationUser:before {
+a.SideMenuItem.icon23:before, a.level2.dynamic.ApplicationUsers:before {
     content: "\f007";
     font-family: FontAwesome !important;
 }
 
-a.SideMenuItem.icon228:before, a.level2.dynamic.UsersDepartmentRelation:before , .UserDepartments:before , .icon18:before {
+a.SideMenuItem.icon27:before, a.level2.dynamic.UsersDepartmentRelation:before , .UserDepartments:before , .icon180:before {
     content: "\e263" !important;
     font-family: 'icomoon' !important;
 }

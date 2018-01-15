@@ -10,6 +10,7 @@
         <ContentTemplate>
             <div id="pageDiv" runat="server">
                 <div class="row">
+
                     <div class="col2">
                         <asp:Label ID="lblEmailServer" runat="server" Text="Email Server :"></asp:Label>
                     </div>
@@ -67,7 +68,7 @@
 
                 <div class="row">
                     <div class="col12">
-                        <asp:Button ID="btnSave" runat="server" Text="Save" CssClass="ActionButton" OnClick="btnSave_Click" />
+                        <asp:LinkButton ID="btnSave" runat="server" Text="Save" CssClass="GenButton  glyphicon glyphicon-floppy-disk" OnClick="btnSave_Click" ></asp:LinkButton>
                         <asp:TextBox ID="cvtxt" runat="server" Text="02120" Visible="False" Width="10px"></asp:TextBox>
                         <asp:CustomValidator ID="cvShowMsg" runat="server" Display="None" ValidationGroup="vgShowMsg"
                             OnServerValidate="ShowMsg_ServerValidate" EnableClientScript="False" ControlToValidate="cvtxt">

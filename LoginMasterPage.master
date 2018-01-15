@@ -19,8 +19,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <link href="CSS/Metro/Metro.css" rel="stylesheet" />
-  <%--<script type="text/javascript" src="../Scripts/jquery-1.7.1.min.js"></script>
-    --%>
+  <script type="text/javascript" src="../Scripts/jquery-1.7.1.min.js"></script>
+   
 </head>
 <body class="loginPage">
     <form id="aspnetForm" runat="server">
