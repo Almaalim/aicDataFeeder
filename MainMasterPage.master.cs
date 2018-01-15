@@ -216,7 +216,7 @@ public partial class MainMasterPage : System.Web.UI.MasterPage
                 foreach (DataRow SDR in SDRs)
                 {
 
-                    string menuCss = SDR["MnuID"].ToString();
+                    string menuCss = SDR["MnuNumber"].ToString();
                     menuCss = menuCss.Replace(" ", "");
                     menuCss = Regex.Replace(menuCss, @"[^0-9a-zA-Z]+", "");
                     if (isFirst)

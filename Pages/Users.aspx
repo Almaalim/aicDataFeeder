@@ -1,5 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MainMasterPage.master" AutoEventWireup="true" Theme="MetroStyle"
-    CodeFile="Users.aspx.cs" Inherits="Pages_Users" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MainMasterPage.master" AutoEventWireup="true" Theme="MetroStyle" CodeFile="Users.aspx.cs" Inherits="Pages_Users" %>
 
 <%@ Register Src="../Control/UsersSideMenu.ascx" TagName="UsersSideMenu" TagPrefix="uc1" %>
 <%@ Register Src="../Control/PermissionsCtl.ascx" TagName="PermissionsCtl" TagPrefix="uc3" %>

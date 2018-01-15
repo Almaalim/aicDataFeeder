@@ -101,30 +101,20 @@ public partial class Pages_SettingDB : BasePage
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     protected void btnSave_Click(object sender, EventArgs e)
     {
-       if ( txtTableName.Text != "" || txtEmpField.Text!="" || txtDateField.Text !="" || txtTimeField.Text!="" || txtInOutField.Text !="" || txtMachineIdField.Text !="" || txtLocationField.Text !="" || txtSchemaName.Text !="")
-            {          
-            if (!Page.IsValid)
-            {
-                ValidatorCollection ValidatorColl = Page.Validators;
-                for (int k = 0; k < ValidatorColl.Count; k++)
-                {
-                    if (!ValidatorColl[k].IsValid && !String.IsNullOrEmpty(ValidatorColl[k].ErrorMessage)) { vsSave.ShowSummary = true; return; }
-                    vsSave.ShowSummary = false;
-                }
-                return;
-            }
-            FillPropeties();
-            SqlClass.InsertUpdate(ProClass);
-            MessageFun.ShowMsg(this, MessageFun.TypeMsg.Success, General.Msg("Database setting Import added successfully", "تم تحديث اعدادات قاعد البيانات بنجاح "));
-            }
-      
-        else
+        if (!Page.IsValid)
         {
-          
-            MessageFun.ShowMsg(this, MessageFun.TypeMsg.Error, General.Msg("Please Fill All Records", "خطأ في ادخال البيانات "));
-          
+            ValidatorCollection ValidatorColl = Page.Validators;
+            for (int k = 0; k < ValidatorColl.Count; k++)
+            {
+                if (!ValidatorColl[k].IsValid && !String.IsNullOrEmpty(ValidatorColl[k].ErrorMessage)) { vsSave.ShowSummary = true; return; }
+                vsSave.ShowSummary = false;
+            }
+            return;
         }
-       
+        FillPropeties();
+        SqlClass.InsertUpdate(ProClass);
+        MessageFun.ShowMsg(this, MessageFun.TypeMsg.Success, General.Msg("Database setting Import added successfully", "تم تحديث اعدادات قاعد البيانات بنجاح "));
+        //else        { MessageFun.ShowMsg(this, MessageFun.TypeMsg.Error, General.Msg("Please Fill All Records", "خطأ في ادخال البيانات ")); }
     }
     /*##############################################################################################################################*/
     /*##############################################################################################################################*/
@@ -137,7 +127,7 @@ public partial class Pages_SettingDB : BasePage
     #region Custom Validate Events
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    protected void ShowMsg_ServerValidate(Object source, ServerValidateEventArgs e) { e.IsValid = false; }
+    protected void ShowMsg_ServerValidate(Object source, ServerValidateEventArgs e) { } //e.IsValid = false; 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     #endregion

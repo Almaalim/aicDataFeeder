@@ -39,7 +39,7 @@ public partial class SettingCompany : BasePage
             btnSave.Enabled = FormSession.PermUsr.Contains("U" + MainPer);
             btnSave.Text = General.Msg("Save","حفظ");
 
-            if (!IsPostBack) {  }
+            if (!IsPostBack) { PopulateUI(); }
 
             if (IsPostBack) { imgLogo.PopulateImage("Logo");}
         }
@@ -64,7 +64,6 @@ public partial class SettingCompany : BasePage
 
         try
         {
-
             FillPropeties();
             SqlClass.InsertUpdate(ProClass);
             MessageFun.ShowMsg(this, MessageFun.TypeMsg.Success, General.Msg("institution Setting saved successfully", "تم حفظ إعدادات المنشأة"));
@@ -86,7 +85,7 @@ public partial class SettingCompany : BasePage
             ProClass.AppDisplay = txtAppDisplay.Text;
             
             ProClass.AppAddress1 = txtAppAddress1.Text;
-            ProClass.AppAddress2 = txtAppAddress2.Text;
+            //ProClass.AppAddress2 = txtAppAddress2.Text;
             ProClass.AppCity     = txtAppCity.Text;
             ProClass.AppCountry  = txtAppCountry.Text;
             ProClass.AppPOBox    = txtAppPOBox.Text;
@@ -124,8 +123,8 @@ public partial class SettingCompany : BasePage
             
             txtAppCompany.Text  = dt.Rows[0]["AppCompany"].ToString();
             txtAppDisplay.Text  = dt.Rows[0]["AppDisplay"].ToString();
-            txtAppAddress1.Text = dt.Rows[0]["AppAddress1"].ToString();
-            txtAppAddress2.Text = dt.Rows[0]["AppAddress2"].ToString();
+            txtAppAddress1.Text = dt.Rows[0]["AppAddress"].ToString();
+            //txtAppAddress2.Text = dt.Rows[0]["AppAddress2"].ToString();
             txtAppCity.Text     = dt.Rows[0]["AppCity"].ToString();
             txtAppCountry.Text  = dt.Rows[0]["AppCountry"].ToString();
             txtAppPOBox.Text    = dt.Rows[0]["AppPOBox"].ToString();

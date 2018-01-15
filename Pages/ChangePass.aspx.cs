@@ -68,6 +68,7 @@ public partial class ChangePass : BasePage
 
             ProClass.UsrLoginID  = FormSession.LoginID;
             ProClass.UsrPassword = txtNewPass.Text;
+            ProClass.TransactionBy = FormSession.LoginID;
 
             SqlClass.UpdatePassword(ProClass);
 
@@ -193,22 +194,25 @@ public partial class ChangePass : BasePage
     {
         try
         {
-            if (source.Equals(cvOldpassword))
-            {
-                if (string.IsNullOrEmpty(txtCurrentPass.Text)) { }
+            if (source.Equals(cvCurrentPass))
+            { 
+                if (string.IsNullOrEmpty(txtCurrentPass.Text))
+                {
+                    MessageFun.ValidMsg(this, ref cvCurrentPass, false, General.Msg("Current Password is required", "كلمة المرور الحالية مطلوبة"));
+                    e.IsValid = false;
+                    return;
+                }
                 else
                 {
                     MessageFun.ValidMsg(this, ref cvOldpassword, true, General.Msg("Please enter correct password", "من فضلك أدخل كلة السر الحالية الصحيحة"));
 
-                    DataTable DT = new DataTable();
-
-                    DT = DBCs.FetchData(" SELECT UsrPassword FROM AppUsers WHERE UsrLoginID = '" + FormSession.LoginID + "'");
-                    if (!DBCs.IsNullOrEmpty(DT))
+                    if (!DBCs.IsNullOrEmpty(dt))
                     {
-                        if (DT.Rows[0][0] != DBNull.Value)
+                        if (dt.Rows[0][0].ToString() != txtCurrentPass.Text)
                         {
-                            string DecPass = CryptorEngine.Decrypt(DT.Rows[0][0].ToString(), true);
-                            if (DecPass != txtCurrentPass.Text) { e.IsValid = false; }
+                            MessageFun.ValidMsg(this, ref cvCurrentPass, true, General.Msg("The Current password is incorrect", "كلمة المرور الحالية غير صحيحة"));
+                            e.IsValid = false;
+                            return;
                         }
                         else { e.IsValid = false; }
                     }
@@ -246,11 +250,19 @@ public partial class ChangePass : BasePage
             {
                 if (string.IsNullOrEmpty(txtNewPass.Text) || string.IsNullOrEmpty(txtConfirmPass.Text)) { }
                 else
-                {
-                    MessageFun.ValidMsg(this, ref cvConfirmpassword, true, General.Msg("New and Confirm passwords are not same", "كلمة السر الجديدة وتأكيدها غير متطابقين"));
-                    if (txtNewPass.Text != txtConfirmPass.Text) { e.IsValid = false; } else { e.IsValid = true; }
+                {   
+                    if (txtNewPass.Text != txtConfirmPass.Text) 
+                    {
+                        MessageFun.ValidMsg(this, ref cvConfirmPass, true, General.Msg("Password and Confirm Password must be same", "كلمة المرور وتأكيد كلمة المرور غير متطابقتين"));
+                        e.IsValid = false;
+                        return;
+                    }
                 }
             }
+        }
+        catch {
+           
+            e.IsValid = false;
         }
         catch { e.IsValid = false; }
     }
