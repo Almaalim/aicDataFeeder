@@ -111,11 +111,10 @@ public partial class Pages_SettingDB : BasePage
             }
             return;
         }
-
-            FillPropeties();
-            SqlClass.InsertUpdate(ProClass);
-
-            MessageFun.ShowMsg(this, MessageFun.TypeMsg.Success, General.Msg("Database setting Import added successfully", "تم تحديث اعدادات قاعد البيانات بنجاح "));
+        FillPropeties();
+        SqlClass.InsertUpdate(ProClass);
+        MessageFun.ShowMsg(this, MessageFun.TypeMsg.Success, General.Msg("Database setting Import added successfully", "تم تحديث اعدادات قاعد البيانات بنجاح "));
+        //else        { MessageFun.ShowMsg(this, MessageFun.TypeMsg.Error, General.Msg("Please Fill All Records", "خطأ في ادخال البيانات ")); }
     }
     /*##############################################################################################################################*/
     /*##############################################################################################################################*/
@@ -128,7 +127,7 @@ public partial class Pages_SettingDB : BasePage
     #region Custom Validate Events
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    protected void ShowMsg_ServerValidate(Object source, ServerValidateEventArgs e) { e.IsValid = false; }
+    protected void ShowMsg_ServerValidate(Object source, ServerValidateEventArgs e) { } //e.IsValid = false; 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     #endregion

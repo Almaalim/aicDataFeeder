@@ -79,7 +79,7 @@
                                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                 </asp:BoundField>
 
-                                <asp:BoundField DataField="SdpID" HeaderText="SubDepartment ID" ReadOnly="True" SortExpression="SdpID" Visible="false" />
+                                <%--<asp:BoundField DataField="SdpID" HeaderText="SubDepartment ID" ReadOnly="True" SortExpression="SdpID" Visible="false" />
                                 <asp:BoundField DataField="SdpNameAr" HeaderText="SubDepartment Name (Ar)" SortExpression="SdpNameAr">
                                     <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
@@ -87,7 +87,7 @@
                                 <asp:BoundField DataField="SdpNameEn" HeaderText="SubDepartment Name (En)" SortExpression="SdpNameEn" Visible="false">
                                     <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                                </asp:BoundField>
+                                </asp:BoundField>--%>
 
                                 <asp:BoundField DataField="EmpStatus" HeaderText="" SortExpression="EmpStatus" Visible="false" />
                                 <asp:TemplateField HeaderText="Status" SortExpression="EmpStatusText">

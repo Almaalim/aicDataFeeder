@@ -21,22 +21,35 @@ public partial class ChangePass : BasePage
     AppUsersPro ProClass = new AppUsersPro();
     AppUsersSql SqlClass = new AppUsersSql();
     DBFun DBCs = new DBFun();
+    string PageName = string.Empty;
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     protected void Page_Load(object sender, EventArgs e)
     {
-        //--Common Code----------------------------------------------------------------- //
-        FormSession.FillSession("Home",pageDiv);
-        //--Common Code----------------------------------------------------------------- //
+        try
+        {
+            //--Common Code----------------------------------------------------------------- //
+            FormSession.FillSession("Home", pageDiv);
+            PageName = new System.IO.FileInfo(Request.Url.AbsolutePath).Name;
+            if (FormSession.Language == "Ar") { pageDiv.Attributes.Add("dir", "rtl"); } else { pageDiv.Attributes.Add("dir", "ltr"); }
 
-        if (!string.IsNullOrEmpty(txtCurrentPass.Text)) { ViewState["CurrentPass"] = txtCurrentPass.Text; }
-        if (ViewState["CurrentPass"] != null) { txtCurrentPass.Attributes["value"] = ViewState["CurrentPass"].ToString(); }
+            //--Common Code----------------------------------------------------------------- //
 
-        if (!string.IsNullOrEmpty(txtNewPass.Text)) { ViewState["NewPass"] = txtNewPass.Text; }
-        if (ViewState["NewPass"] != null) { txtNewPass.Attributes["value"] = ViewState["NewPass"].ToString(); }
+            if (!string.IsNullOrEmpty(txtCurrentPass.Text)) { ViewState["CurrentPass"] = txtCurrentPass.Text; }
+            if (ViewState["CurrentPass"] != null) { txtCurrentPass.Attributes["value"] = ViewState["CurrentPass"].ToString(); }
 
-        if (!string.IsNullOrEmpty(txtConfirmPass.Text)) { ViewState["ConfirmPass"] = txtConfirmPass.Text; }
-        if (ViewState["ConfirmPass"] != null) { txtConfirmPass.Attributes["value"] = ViewState["ConfirmPass"].ToString(); }
+            if (!string.IsNullOrEmpty(txtNewPass.Text)) { ViewState["NewPass"] = txtNewPass.Text; }
+            if (ViewState["NewPass"] != null) { txtNewPass.Attributes["value"] = ViewState["NewPass"].ToString(); }
+
+            if (!string.IsNullOrEmpty(txtConfirmPass.Text)) { ViewState["ConfirmPass"] = txtConfirmPass.Text; }
+            if (ViewState["ConfirmPass"] != null) { txtConfirmPass.Attributes["value"] = ViewState["ConfirmPass"].ToString(); }
+        }
+
+
+        catch (Exception e1) { }
+   
+
+       
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -52,12 +65,13 @@ public partial class ChangePass : BasePage
                     if (!ValidatorColl[k].IsValid && !String.IsNullOrEmpty(ValidatorColl[k].ErrorMessage)) { vsSave.ShowSummary = true; return; }
                     vsSave.ShowSummary = false;
                 }
-                return;
+               return;
             }
 
 
             ProClass.UsrLoginID  = FormSession.LoginID;
             ProClass.UsrPassword = txtNewPass.Text;
+            ProClass.TransactionBy = FormSession.LoginID;
 
             SqlClass.UpdatePassword(ProClass);
 
@@ -100,7 +114,7 @@ public partial class ChangePass : BasePage
         try
         {
             if (source.Equals(cvCurrentPass))
-            {
+            { 
                 if (string.IsNullOrEmpty(txtCurrentPass.Text))
                 {
                     MessageFun.ValidMsg(this, ref cvCurrentPass, false, General.Msg("Current Password is required", "كلمة المرور الحالية مطلوبة"));
@@ -111,10 +125,10 @@ public partial class ChangePass : BasePage
                 {
                     dt = DBCs.FetchData("SELECT UsrPassword FROM AppUsers WHERE UsrLoginID = '" + FormSession.LoginID + "'");
 
-                    if (!DBCs.IsNullOrEmpty(dt)) 
+                    if (!DBCs.IsNullOrEmpty(dt))
                     {
-                        if (dt.Rows[0][0].ToString() != txtCurrentPass.Text) 
-                        { 
+                        if (dt.Rows[0][0].ToString() != txtCurrentPass.Text)
+                        {
                             MessageFun.ValidMsg(this, ref cvCurrentPass, true, General.Msg("The Current password is incorrect", "كلمة المرور الحالية غير صحيحة"));
                             e.IsValid = false;
                             return;
@@ -143,7 +157,7 @@ public partial class ChangePass : BasePage
                 }
                 else
                 {   
-                    if (!string.IsNullOrEmpty(txtNewPass.Text) && txtNewPass.Text != txtConfirmPass.Text) 
+                    if (txtNewPass.Text != txtConfirmPass.Text) 
                     {
                         MessageFun.ValidMsg(this, ref cvConfirmPass, true, General.Msg("Password and Confirm Password must be same", "كلمة المرور وتأكيد كلمة المرور غير متطابقتين"));
                         e.IsValid = false;
@@ -151,10 +165,11 @@ public partial class ChangePass : BasePage
                     }
                 }
             }
-
-
         }
-        catch { e.IsValid = false; }
+        catch {
+           
+            e.IsValid = false;
+        }
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

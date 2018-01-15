@@ -29,8 +29,8 @@ public class ApplicationSetupSql : DataLayerBase
         {
             sqlCommand.Parameters.Add(new SqlParameter("@AppCompany", VchDB, 100, IN, false, 0, 0, "", DRV, pro.AppCompany));
             sqlCommand.Parameters.Add(new SqlParameter("@AppDisplay", VchDB, 100, IN, false, 0, 0, "", DRV, pro.AppDisplay));
-            sqlCommand.Parameters.Add(new SqlParameter("@AppAddress1", VchDB, 255, IN, false, 0, 0, "", DRV, pro.AppAddress1));
-            sqlCommand.Parameters.Add(new SqlParameter("@AppAddress2", VchDB, 255, IN, false, 0, 0, "", DRV, pro.AppAddress2));
+            sqlCommand.Parameters.Add(new SqlParameter("@AppAddress", VchDB, 255, IN, false, 0, 0, "", DRV, pro.AppAddress1));
+            //sqlCommand.Parameters.Add(new SqlParameter("@AppAddress2", VchDB, 255, IN, false, 0, 0, "", DRV, pro.AppAddress2));
             sqlCommand.Parameters.Add(new SqlParameter("@AppCity", VchDB, 50, IN, false, 0, 0, "", DRV, pro.AppCity));
             sqlCommand.Parameters.Add(new SqlParameter("@AppCountry", VchDB, 50, IN, false, 0, 0, "", DRV, pro.AppCountry));
             sqlCommand.Parameters.Add(new SqlParameter("@AppPOBox", VchDB, 50, IN, false, 0, 0, "", DRV, pro.AppPOBox));

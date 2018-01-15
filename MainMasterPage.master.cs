@@ -25,6 +25,7 @@ public partial class MainMasterPage : System.Web.UI.MasterPage
     {
         FormSession.FillSession("", null);
         FillMenu();
+        FillFavForm();
 
         try { Response.AppendHeader("Refresh", Convert.ToString((Session.Timeout * 60) + 2) + "; URL=../Login.aspx"); }
         catch (Exception ex) { }
@@ -170,7 +171,7 @@ public partial class MainMasterPage : System.Web.UI.MasterPage
         //if (ERSLic == "1" && Reqht.ContainsKey("JOB")) { listPage += ",'ERS_JOBMenu'"; }
         //if (ERSLic == "1" && Reqht.ContainsKey("EXC")) { listPage += ",'ERS_EXCMenu'"; }
         //if (ERSLic == "1" && Reqht.ContainsKey("ESH")) { listPage += ",'ERS_ESHMenu'"; }
-        //if (ERSLic == "1" && LicDf.FetchLic("SS") == "1" && Reqht.ContainsKey("SWP")) { listPage += ",'ERS_SWPMenu'"; }
+        ////if (ERSLic == "1" && LicDf.FetchLic("SS") == "1" && Reqht.ContainsKey("SWP")) { listPage += ",'ERS_SWPMenu'"; }
 
         //QMuen.Append(" SELECT MnuNumber,MnuID,MnuPermissionID,MnuImageURL,MnuText" + lang + " as MnuText,MnuTextEn as MnuTextEn,(MnuServer + '' + MnuURL) as MnuURL,MnuParentID,MnuVisible,MnuOrder,MnuPermissionID AS MnuDepth ");
         //QMuen.Append(" FROM Menu WHERE MnuVisible = 'True' AND MnuType IN (" + listPage + ") AND ( CHARINDEX('General',VerID) > 0 OR CHARINDEX('" + pgCs.Version + "',VerID) > 0) ");
@@ -196,7 +197,7 @@ public partial class MainMasterPage : System.Web.UI.MasterPage
         {
             DataRow[] DRs = DT.Select("MnuParentID = 0");
 
-            foreach (DataRow DR in DRs)
+            foreach (DataRow DR in DRs) 
             {
                 DataRow[] SDRs = DT.Select("MnuParentID = " + DR["MnuNumber"].ToString() + "");
                 if (SDRs.Length > 0)
@@ -215,7 +216,7 @@ public partial class MainMasterPage : System.Web.UI.MasterPage
                 foreach (DataRow SDR in SDRs)
                 {
 
-                    string menuCss = SDR["MnuID"].ToString();
+                    string menuCss = SDR["MnuNumber"].ToString();
                     menuCss = menuCss.Replace(" ", "");
                     menuCss = Regex.Replace(menuCss, @"[^0-9a-zA-Z]+", "");
                     if (isFirst)
@@ -283,6 +284,7 @@ public partial class MainMasterPage : System.Web.UI.MasterPage
     protected void lnkChangePassword_Click(object sender, EventArgs e)
     {
         Server.Transfer(@"~/Pages/ChangePass.aspx");
+
     }
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
@@ -311,4 +313,100 @@ public partial class MainMasterPage : System.Web.UI.MasterPage
     }
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
+    #region FavForm Events
+
+    protected void lnkShortcut_Click(object sender, EventArgs e)
+    {
+        
+        try
+        {
+            FavoriteFormsPro FavProCs = new FavoriteFormsPro();
+            FavoriteFormsSql FavSqlCs = new FavoriteFormsSql();
+
+            System.IO.FileInfo PageFileInfo = new System.IO.FileInfo(Request.Url.AbsolutePath);
+            string QS = (Request.QueryString.Count != 0) ? Request.QueryString.ToString() : "";
+            string PageName = PageFileInfo.Name + (!string.IsNullOrEmpty(QS) ? "?" + QS : "");
+
+            if (PageName != "Home.aspx")
+            {
+                DataTable DT = DBCs.FetchData(" SELECT MnuNumber FROM Menu WHERE MnuURL = @P1 ", new string[] { PageName });
+                if (!DBCs.IsNullOrEmpty(DT))
+                {
+                    FavProCs.FavFormID = DT.Rows[0]["MnuNumber"].ToString();
+                    FavProCs.FavUsrName = FormSession.LoginID;
+                    FavProCs.FavType = "P";
+
+                    FavSqlCs.Insert(FavProCs);
+                }
+
+                Session["FavFormDT"] = null;
+
+                FillFavForm();
+            }
+        }
+        catch (Exception ex) {  }
+    }
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public void FillFavForm()
+    {
+        try
+        {
+            FavForm.Controls.Clear();
+
+            DataTable DT = new DataTable();
+
+            if (Session["FavFormDT"] == null)
+            {
+                DT = DBCs.FetchData(" SELECT * FROM FavoriteFormsView WHERE FavUsrName = @P1 ORDER BY FavType ", new string[] { FormSession.LoginID });
+                Session["FavFormDT"] = DT;
+            }
+            else
+            {
+                DT = (DataTable)Session["FavFormDT"];
+            }
+
+            foreach (DataRow DR in DT.Rows)
+            {
+                FavForm.Controls.Add(new LiteralControl("<li>"));
+
+                LinkButton _lnk = new LinkButton();
+                _lnk.ID = "lnk_GoFavForm_" + DR["FavID"].ToString();
+                _lnk.CssClass = "folder"; //CssClass="home"
+
+                if (DR["FavType"].ToString() == "P") { _lnk.PostBackUrl = DR["FormUrl"].ToString(); }
+                else if (DR["FavType"].ToString() == "R") { _lnk.PostBackUrl = "~/Pages_Report/ReportViewer.aspx?ID=" + DR["FavID"].ToString() + "_" + DR["FavFormID"].ToString(); }
+
+                Label _lbl = new Label();
+                _lbl.ID = "lbl_" + DR["FavID"].ToString();
+                _lbl.Text = DR[General.Msg("FormNameEn", "FormNameAr")].ToString();
+                _lnk.Controls.Add(_lbl);
+
+                FavForm.Controls.Add(_lnk);
+
+                FavForm.Controls.Add(new LiteralControl("<span class='folderCloseBtn' onclick='FavDelete(" + DR["FavID"].ToString() + ");'></span</li>")); //
+            }
+        }
+        catch (Exception ex) {  }
+    }
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    protected void btnDeleteForm_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            FavoriteFormsSql FavSqlCs = new FavoriteFormsSql();
+            //string FavID = hdnFavID.Value;
+            //FavSqlCs.Delete(FavID, FormSession.LoginID);
+
+            Session["FavFormDT"] = null;
+        }
+        catch (Exception ex) {  }
+
+        FillFavForm();
+    }
+
+    #endregion
+
+   
 }

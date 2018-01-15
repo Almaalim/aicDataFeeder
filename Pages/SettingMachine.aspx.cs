@@ -29,25 +29,29 @@ public partial class Pages_SettingMachine : BasePage
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     protected void Page_Load(object sender, EventArgs e)
     {
-        //--Common Code----------------------------------------------------------------- //
-        FormSession.FillSession("Machines", pageDiv);
-        FormCtrl.RefreshGridEmpty(ref grdData, 20, "No Data Found", "لا توجد بيانات");
-        //--Common Code----------------------------------------------------------------- //
+       
+            //--Common Code----------------------------------------------------------------- //
+            FormSession.FillSession("Machines", pageDiv);
+            FormCtrl.RefreshGridEmpty(ref grdData, 20, "No Data Found", "لا توجد بيانات");
+            //--Common Code----------------------------------------------------------------- //
 
-        if (!IsPostBack)
-        {
-            btnAdd.Enabled = FormSession.PermUsr.Contains("I" + MainPer);
-            pnlSearch.Enabled = grdData.Enabled = FormSession.PermUsr.Contains("V" + MainPer);
-            FillGrid(MainQuery);
+            if (!IsPostBack)
+            {
+                btnAdd.Enabled = FormSession.PermUsr.Contains("I" + MainPer);
+                pnlSearch.Enabled = grdData.Enabled = FormSession.PermUsr.Contains("V" + MainPer);
+                FillGrid(MainQuery);
 
-            DataItemStatus(false);
-        }
+                DataItemStatus(false);
+            }
+       
+   
+      
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     void ClearItem()
     {
-        ClearItem();
+        ClearData();
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -166,7 +170,7 @@ public partial class Pages_SettingMachine : BasePage
             else if (ddlSearch.SelectedValue == "MachineSerialNo") { SearchItemStatus(true, false, "Type Machine Serial No here"); }
 
             ClearItem();
-            FillGrid(MainQuery + "  MacID = '@@@@'");
+            //FillGrid(MainQuery + " AND MacID = '@@@@'");
         }
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -20,9 +20,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <link href="CSS/Metro/Metro.css" rel="stylesheet" />
   <script type="text/javascript" src="../Scripts/jquery-1.7.1.min.js"></script>
-    <script type="text/javascript">
+   
+</head>
+<body class="loginPage">
+    <form id="aspnetForm" runat="server">
+        <div id="MainDiv" runat="Server">
+            <script type="text/javascript">
         $(document).ready(function () {
-
             $("div[class*='col']").each(function () {
                 var $this = $(this);
                 $this.html($this.html().replace(/&nbsp;/g, ''));
@@ -30,10 +34,10 @@
         });
 
     </script>
-</head>
-<body class="loginPage">
-    <form id="aspnetForm" runat="server">
-        <div id="MainDiv" runat="Server">
+            
+            
+            
+            
             <div class="loginWrapper">
                 <asp:Panel runat="server" ID="divTab8">
 

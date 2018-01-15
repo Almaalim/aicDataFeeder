@@ -4,8 +4,8 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 <%@ Register Src="~/Control/SettingSideMenu.ascx" TagName="SettingSideMenu" TagPrefix="uc1" %>
 <%@ Register Src="~/Control/Calendar2.ascx" TagName="Calendar2" TagPrefix="uc" %>
-<%@ Register Assembly="TimePickerServerControl" Namespace="TimePickerServerControl" TagPrefix="Almaalim" %>
-<%@ Register Assembly="TextTimeServerControl" Namespace="TextTimeServerControl" TagPrefix="Almaalim" %>
+<%@ Register Assembly="TimePickerServerControl" Namespace="TimePickerServerControl" TagPrefix="Almaalimtp" %>
+<%@ Register Assembly="TextTimeServerControl" Namespace="TextTimeServerControl" TagPrefix="Almaalimtt" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <uc1:SettingSideMenu ID="SideMenu" runat="server" />
@@ -195,7 +195,7 @@
                                 <asp:Label ID="lblShift1In" runat="server" Text="Shift In :"></asp:Label>
                             </div>
                             <div class="col3">
-                                <Almaalim:TimePicker ID="tpShift1In" runat="server" FormatTime="HHmm" CssClass="TimeCss"
+                                <Almaalimtp:TimePicker ID="tpShift1In" runat="server" FormatTime="HHmm" CssClass="TimeCss"
                                     TimePickerValidationGroup="VgSave" TimePickerValidationText="&lt;img src='../Images/icon/Exclamation.gif' title='Time Shift 1 In is required!' /&gt;" />
                             </div>
 
@@ -203,7 +203,7 @@
                                 <asp:Label ID="lblShift1Out" runat="server" Text="Shift Out :"></asp:Label>
                             </div>
                             <div class="col3">
-                                <Almaalim:TimePicker ID="tpShift1Out" runat="server" FormatTime="HHmm" CssClass="TimeCss"
+                                <Almaalimtp:TimePicker ID="tpShift1Out" runat="server" FormatTime="HHmm" CssClass="TimeCss"
                                     TimePickerValidationGroup="VgSave" TimePickerValidationText="&lt;img src='../Images/icon/Exclamation.gif' title='Time Shift 1 Out is required!' /&gt;" />
                                 <asp:CustomValidator ID="cvShift1Time" runat="server" Text="&lt;img src='../Images/icon/message_exclamation.png' title='Enter correct Shift 1 Time' /&gt;"
                                     ErrorMessage="Enter correct Shift 1 Time!" ValidationGroup="VgSave" OnServerValidate="Shift1Validate_ServerValidate" CssClass="CustomValidator"
@@ -220,7 +220,7 @@
                                 <asp:Label ID="lblShift1Duration" runat="server" Text="Duration :"></asp:Label>
                             </div>
                             <div class="col3">
-                                <Almaalim:TextTime ID="txtShift1Duration" runat="server" FormatTime="hhmm" CssClass="TimeCss" />
+                                <Almaalimtt:TextTime ID="txtShift1Duration" runat="server" FormatTime="hhmm" CssClass="TimeCss" />
                                 <asp:CustomValidator ID="cvShift1Duration" runat="server" Text="&lt;img src='../Images/icon/Exclamation.gif' title='Shift 1 Duration is required!' /&gt;"
                                     ValidationGroup="VgSave" OnServerValidate="Shift1Validate_ServerValidate" EnableClientScript="False" CssClass="CustomValidator"
                                     ControlToValidate="cvtxt"></asp:CustomValidator>
@@ -238,7 +238,7 @@
                             </div>
 
                             <div class="col3">
-                                <Almaalim:TextTime ID="txtShift1GraceIn" runat="server" FormatTime="mm" />
+                                <Almaalimtt:TextTime ID="txtShift1GraceIn" runat="server" FormatTime="mm" />
                             </div>
                         </div>
                         <div class="row">
@@ -274,7 +274,7 @@
                             </div>
 
                             <div class="col3">
-                                <Almaalim:TimePicker ID="tpShift2In" runat="server" FormatTime="HHmm" CssClass="TimeCss"
+                                <Almaalimtp:TimePicker ID="tpShift2In" runat="server" FormatTime="HHmm" CssClass="TimeCss"
                                     TimePickerValidationGroup="VgSave" TimePickerValidationText="&lt;img src='../Images/icon/Exclamation.gif' title='Time Shift 2 Out is required!' /&gt;" />
                             </div>
 
@@ -283,7 +283,7 @@
                             </div>
 
                             <div class="col3">
-                                <Almaalim:TimePicker ID="tpShift2Out" runat="server" FormatTime="HHmm" CssClass="TimeCss"
+                                <Almaalimtp:TimePicker ID="tpShift2Out" runat="server" FormatTime="HHmm" CssClass="TimeCss"
                                     TimePickerValidationGroup="VgSave" TimePickerValidationText="&lt;img src='../Images/icon/Exclamation.gif' title='Time Shift 2 In is required!' /&gt;" />
                                 <asp:CustomValidator ID="cvShift2Time" runat="server" Text="&lt;img src='../Images/icon/message_exclamation.png' title='Enter correct Shift 2 Time' /&gt;"
                                     ErrorMessage="Enter correct Shift 2 Time!" ValidationGroup="VgSave" OnServerValidate="Shift2Validate_ServerValidate" CssClass="CustomValidator"
@@ -301,7 +301,7 @@
                             </div>
 
                             <div class="col3">
-                                <Almaalim:TextTime ID="txtShift2Duration" runat="server" FormatTime="hhmm" CssClass="TimeCss" />
+                                <Almaalimtt:TextTime ID="txtShift2Duration" runat="server" FormatTime="hhmm" CssClass="TimeCss" />
                                 <asp:CustomValidator ID="cvShift2Duration" runat="server" Text="&lt;img src='../Images/icon/Exclamation.gif' title='Shift 2 Duration is required!' /&gt;"
                                     ValidationGroup="VgSave" OnServerValidate="Shift2Validate_ServerValidate" EnableClientScript="False" CssClass="CustomValidator"
                                     ControlToValidate="cvtxt"></asp:CustomValidator>
@@ -316,7 +316,7 @@
                             </div>
 
                             <div class="col3">
-                                <Almaalim:TextTime ID="txtShift2GraceIn" runat="server" FormatTime="mm" />
+                                <Almaalimtt:TextTime ID="txtShift2GraceIn" runat="server" FormatTime="mm" />
                             </div>
                         </div>
                         <div class="row">
@@ -352,7 +352,7 @@
                             </div>
 
                             <div class="col3">
-                                <Almaalim:TimePicker ID="tpShift3In" runat="server" FormatTime="HHmm" CssClass="TimeCss"
+                                <Almaalimtp:TimePicker ID="tpShift3In" runat="server" FormatTime="HHmm" CssClass="TimeCss"
                                     TimePickerValidationGroup="VgSave" TimePickerValidationText="&lt;img src='../Images/icon/Exclamation.gif' title='Time Shift 3 In is required!' /&gt;" />
                             </div>
 
@@ -361,7 +361,7 @@
                             </div>
 
                             <div class="col3">
-                                <Almaalim:TimePicker ID="tpShift3Out" runat="server" FormatTime="HHmm" CssClass="TimeCss"
+                                <Almaalimtp:TimePicker ID="tpShift3Out" runat="server" FormatTime="HHmm" CssClass="TimeCss"
                                     TimePickerValidationGroup="VgSave" TimePickerValidationText="&lt;img src='../Images/icon/Exclamation.gif' title='Time Shift 3 Out is required!' /&gt;" />
                                 <asp:CustomValidator ID="cvShift3Time" runat="server" Text="&lt;img src='../Images/icon/message_exclamation.png' title='Enter correct Shift 3 Time' /&gt;"
                                     ErrorMessage="Enter correct Shift 3 Time!" ValidationGroup="VgSave" OnServerValidate="Shift3Validate_ServerValidate" CssClass="CustomValidator"
@@ -379,7 +379,7 @@
                             </div>
 
                             <div class="col3">
-                                <Almaalim:TextTime ID="txtShift3Duration" runat="server" FormatTime="hhmm" CssClass="TimeCss" />
+                                <Almaalimtt:TextTime ID="txtShift3Duration" runat="server" FormatTime="hhmm" CssClass="TimeCss" />
                                 <asp:CustomValidator ID="cvShift3Duration" runat="server" Text="&lt;img src='../Images/icon/Exclamation.gif' title='Shift 3 Duration is required!' /&gt;"
                                     ValidationGroup="VgSave" OnServerValidate="Shift3Validate_ServerValidate" EnableClientScript="False" CssClass="CustomValidator"
                                     ControlToValidate="cvtxt"></asp:CustomValidator>
@@ -394,7 +394,7 @@
                             </div>
 
                             <div class="col3">
-                                <Almaalim:TextTime ID="txtShift3GraceIn" runat="server" FormatTime="mm" />
+                                <Almaalimtt:TextTime ID="txtShift3GraceIn" runat="server" FormatTime="mm" />
                             </div>
                         </div>
                     </div>

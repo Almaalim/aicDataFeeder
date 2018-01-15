@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MainMasterPage.master" AutoEventWireup="true" CodeFile="SettingDB.aspx.cs" Inherits="Pages_SettingDB" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MainMasterPage.master" AutoEventWireup="true" Theme="MetroStyle" CodeFile="SettingDB.aspx.cs" Inherits="Pages_SettingDB" %>
 
 <%@ Register Src="~/Control/SettingSideMenu.ascx" TagName="SettingSideMenu" TagPrefix="uc1" %>
 
@@ -13,6 +13,14 @@
                     <div class="col12">
                         <asp:Button ID="btnConnDB" runat="server" Text="Database Connect" CssClass="ActionButton"
                             Visible="false" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col12">
+                        <asp:ValidationSummary ID="vsSave" runat="server" CssClass="MsgValidation" EnableClientScript="False"
+                            ValidationGroup="vgSave" />
+                        <asp:ValidationSummary ID="vsShowMsg" runat="server" CssClass="MsgSuccess" EnableClientScript="False"
+                            ValidationGroup="vgShowMsg" />
                     </div>
                 </div>
                 <div class="row">
@@ -109,17 +117,10 @@
                             ValidationGroup="vgSave"></asp:RequiredFieldValidator>
                     </div>
                 </div>
+                
                 <div class="row">
                     <div class="col12">
-                        <asp:ValidationSummary ID="vsSave" runat="server" CssClass="MsgValidation" EnableClientScript="False"
-                            ValidationGroup="vgSave" />
-                        <asp:ValidationSummary ID="vsShowMsg" runat="server" CssClass="MsgSuccess" EnableClientScript="False"
-                            ValidationGroup="vgShowMsg" />
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col12">
-                        <asp:LinkButton ID="btnSave" runat="server" Text="Save" CssClass="GenButton glyphicon glyphicon-floppy-disk" OnClick="btnSave_Click" ></asp:LinkButton>
+                        <asp:LinkButton ID="btnSave" runat="server" Text="Save" ValidationGroup="vgSave" CssClass="GenButton glyphicon glyphicon-floppy-disk" OnClick="btnSave_Click" ></asp:LinkButton>
                         <asp:TextBox ID="cvtxt" runat="server" Text="02120" Visible="False" Width="10px"></asp:TextBox>
                         <asp:CustomValidator ID="cvShowMsg" runat="server" Display="None" ValidationGroup="vgShowMsg" CssClass="CustomValidator"
                             OnServerValidate="ShowMsg_ServerValidate" EnableClientScript="False" ControlToValidate="cvtxt">
