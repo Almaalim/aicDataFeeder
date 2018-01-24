@@ -201,7 +201,7 @@ public partial class ChangePass : BasePage
                 }
                 else
                 {
-                    MessageFun.ValidMsg(this, ref cvOldpassword, true, General.Msg("Please enter correct password", "من فضلك أدخل كلة السر الحالية الصحيحة"));
+                    MessageFun.ValidMsg(this, ref cvCurrentPass, true, General.Msg("Please enter correct password", "من فضلك أدخل كلة السر الحالية الصحيحة"));
 
                     if (!DBCs.IsNullOrEmpty(dt))
                     {
@@ -225,12 +225,12 @@ public partial class ChangePass : BasePage
     {
         try
         {
-            if (source.Equals(cvNewpassword))
+            if (source.Equals(cvNewPass))
             {
                 if (string.IsNullOrEmpty(txtNewPass.Text) || string.IsNullOrEmpty(txtCurrentPass.Text)) { }
                 else
                 {
-                    MessageFun.ValidMsg(this, ref cvNewpassword, true, General.Msg("Old and New passwords are same", "كلمة السر الجديدة متطابقة مع كلمة السر القديمة"));
+                    MessageFun.ValidMsg(this, ref cvNewPass, true, General.Msg("Old and New passwords are same", "كلمة السر الجديدة متطابقة مع كلمة السر القديمة"));
                     if (txtCurrentPass.Text == txtNewPass.Text) { e.IsValid = false; } else { e.IsValid = true; }
                 }
             }
@@ -243,7 +243,7 @@ public partial class ChangePass : BasePage
     {
         try
         {
-            if (source.Equals(cvConfirmpassword))
+            if (source.Equals(cvConfirmPass))
             {
                 if (string.IsNullOrEmpty(txtNewPass.Text) || string.IsNullOrEmpty(txtConfirmPass.Text)) { }
                 else
@@ -261,7 +261,7 @@ public partial class ChangePass : BasePage
            
             e.IsValid = false;
         }
-        catch { e.IsValid = false; }
+        //catch { e.IsValid = false; }
     }
     #endregion
     /*####################################################################################################################################*/
