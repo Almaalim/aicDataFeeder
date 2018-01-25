@@ -115,84 +115,12 @@ public partial class ChangePass : BasePage
     protected void ShowMsg_ServerValidate(Object source, ServerValidateEventArgs e) { e.IsValid = false; }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-     protected void Pass_ServerValidate(Object source, ServerValidateEventArgs e)
-     {
-         //try
-         //{
-         //    if (source.Equals(cvNewPass) == source.Equals(cvCurrentPass))
-         //    {
-         //        MessageFun.ValidMsg2(this, ref cvConfirmPass, true, General.Msg("the new password should not be similar to the Old Password", "كلمة المرور وتأكيد كلمة المرور غير متطابقتين"));
-         //        e.IsValid = false;
-         //        return;
-         //    }
-         //    if (source.Equals(cvCurrentPass))
-         //    {
-         //        if (string.IsNullOrEmpty(txtCurrentPass.Text))
-         //        {
-         //            MessageFun.ValidMsg(this, ref cvCurrentPass, false, General.Msg("Current Password is required", "كلمة المرور الحالية مطلوبة"));
-         //            e.IsValid = false;
-         //            return;
-         //        }
-         //        else
-         //        {
-         //            dt = DBCs.FetchData("SELECT UsrPassword FROM AppUsers WHERE UsrLoginID = '" + FormSession.LoginID + "'");
-
-         //            if (!DBCs.IsNullOrEmpty(dt)) 
-         //            {
-         //                if (dt.Rows[0][0].ToString() != txtCurrentPass.Text) 
-         //                { 
-         //                    MessageFun.ValidMsg(this, ref cvCurrentPass, true, General.Msg("The Current password is incorrect", "كلمة المرور الحالية غير صحيحة"));
-         //                    e.IsValid = false;
-         //                    return;
-         //                }
-         //            }
-         //        }
-         //    }
-
-         //    if (source.Equals(cvNewPass))
-         //    {
-         //        if (string.IsNullOrEmpty(txtNewPass.Text))
-         //        {
-         //            MessageFun.ValidMsg(this, ref cvNewPass, false, General.Msg("New Password is required", "كلمة المرور الجديدة مطلوبة"));
-         //            e.IsValid = false;
-         //            return;
-         //        }
-         //    }
-
-         //    if (source.Equals(cvConfirmPass))
-         //    {
-         //        if (string.IsNullOrEmpty(txtConfirmPass.Text))
-         //        {
-         //            MessageFun.ValidMsg(this, ref cvConfirmPass, false, General.Msg("Confirm Password is required", " تأكيد كلمة المرور مطلوبة"));
-         //            e.IsValid = false;
-         //            return;
-         //        }
-         //        else
-         //        {   
-         //            if (!string.IsNullOrEmpty(txtNewPass.Text) && txtNewPass.Text != txtConfirmPass.Text) 
-         //            {
-         //                MessageFun.ValidMsg(this, ref cvConfirmPass, true, General.Msg("Password and Confirm Password must be same", "كلمة المرور وتأكيد كلمة المرور غير متطابقتين"));
-         //                e.IsValid = false;
-         //                return;
-         //            }
-         //        }
-         //    }
-
-
-         //}
-         //catch {
-
-         //    e.IsValid = false;
-         //}
-     }
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    protected void Oldpassword_ServerValidate(Object source, ServerValidateEventArgs e)
+    protected void Pass_ServerValidate(Object source, ServerValidateEventArgs e)
     {
         try
         {
             if (source.Equals(cvCurrentPass))
-            { 
+            {
                 if (string.IsNullOrEmpty(txtCurrentPass.Text))
                 {
                     MessageFun.ValidMsg(this, ref cvCurrentPass, false, General.Msg("Current Password is required", "كلمة المرور الحالية مطلوبة"));
@@ -201,7 +129,7 @@ public partial class ChangePass : BasePage
                 }
                 else
                 {
-                    MessageFun.ValidMsg(this, ref cvOldpassword, true, General.Msg("Please enter correct password", "من فضلك أدخل كلة السر الحالية الصحيحة"));
+                    dt = DBCs.FetchData("SELECT UsrPassword FROM AppUsers WHERE UsrLoginID = '" + FormSession.LoginID + "'");
 
                     if (!DBCs.IsNullOrEmpty(dt))
                     {
@@ -211,44 +139,31 @@ public partial class ChangePass : BasePage
                             e.IsValid = false;
                             return;
                         }
-                        else { e.IsValid = false; }
                     }
-                    else { e.IsValid = false; }
                 }
             }
-        }
-        catch { e.IsValid = false; }
-    }
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    protected void Newpassword_ServerValidate(Object source, ServerValidateEventArgs e)
-    {
-        try
-        {
-            if (source.Equals(cvNewpassword))
+
+            if (source.Equals(cvNewPass))
             {
-                if (string.IsNullOrEmpty(txtNewPass.Text) || string.IsNullOrEmpty(txtCurrentPass.Text)) { }
+                if (string.IsNullOrEmpty(txtNewPass.Text))
+                {
+                    MessageFun.ValidMsg(this, ref cvNewPass, false, General.Msg("New Password is required", "كلمة المرور الجديدة مطلوبة"));
+                    e.IsValid = false;
+                    return;
+                }
+            }
+
+            if (source.Equals(cvConfirmPass))
+            {
+                if (string.IsNullOrEmpty(txtConfirmPass.Text))
+                {
+                    MessageFun.ValidMsg(this, ref cvConfirmPass, false, General.Msg("Confirm Password is required", " تأكيد كلمة المرور مطلوبة"));
+                    e.IsValid = false;
+                    return;
+                }
                 else
                 {
-                    MessageFun.ValidMsg(this, ref cvNewpassword, true, General.Msg("Old and New passwords are same", "كلمة السر الجديدة متطابقة مع كلمة السر القديمة"));
-                    if (txtCurrentPass.Text == txtNewPass.Text) { e.IsValid = false; } else { e.IsValid = true; }
-                }
-            }
-        }
-        catch { e.IsValid = false; }
-    }
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    protected void Confirmpassword_ServerValidate(Object source, ServerValidateEventArgs e)
-    {
-        try
-        {
-            if (source.Equals(cvConfirmpassword))
-            {
-                if (string.IsNullOrEmpty(txtNewPass.Text) || string.IsNullOrEmpty(txtConfirmPass.Text)) { }
-                else
-                {   
-                    if (txtNewPass.Text != txtConfirmPass.Text) 
+                    if (txtNewPass.Text != txtConfirmPass.Text)
                     {
                         MessageFun.ValidMsg(this, ref cvConfirmPass, true, General.Msg("Password and Confirm Password must be same", "كلمة المرور وتأكيد كلمة المرور غير متطابقتين"));
                         e.IsValid = false;
@@ -257,12 +172,14 @@ public partial class ChangePass : BasePage
                 }
             }
         }
-        catch {
-           
+        catch
+        {
+
             e.IsValid = false;
         }
-        catch { e.IsValid = false; }
     }
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     #endregion
     /*####################################################################################################################################*/
     /*####################################################################################################################################*/

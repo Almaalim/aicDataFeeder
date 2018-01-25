@@ -151,7 +151,7 @@ public partial class SettingCompany : BasePage
         txtAppCompany.Text = "";
         txtAppDisplay.Text = "";
         txtAppAddress1.Text = "";
-        txtAppAddress2.Text = "";
+//        txtAppAddress2.Text = "";
         txtAppCity.Text = "";
         txtAppCountry.Text = "";
         txtAppPOBox.Text = "";
