@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/MainMasterPage.master" AutoEventWireup="true" Theme="MetroStyle" CodeFile="ChangePass.aspx.cs" Inherits="ChangePass" Title="Extractor Web - Change Password Page" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/MainMasterPage.master" AutoEventWireup="true" CodeFile="ChangePass.aspx.cs" Inherits="ChangePass" Title="Extractor Web - Change Password Page" EnableEventValidation="false" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
 </asp:Content>
