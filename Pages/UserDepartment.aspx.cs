@@ -139,7 +139,7 @@ public partial class Pages_UserDepartment : BasePage
             else if (ddlSearch.SelectedValue == "DepNameEn") { SearchItemStatus(true, false, "Type Department Name (En) here"); }
 
             ClearItem();
-            FillMainGrid(MainQuery + " AND UsrLoginID = -1");
+            FillMainGrid(MainQuery + " AND UsrLoginID = '-1'");
         }
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

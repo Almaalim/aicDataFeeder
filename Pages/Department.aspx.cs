@@ -100,6 +100,7 @@ public partial class Department : BasePage
         txtDepNameAr.Text = "";
         txtDepNameEn.Text = "";
         txtDepDesc.Text   = "";
+      
         //ClearSubData();
         ViewState["CommandName"]   = "";
     }

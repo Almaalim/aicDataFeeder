@@ -257,9 +257,9 @@ public partial class Pages_WorkTimeSetting : BasePage
         {
             if (ddlSearch.SelectedValue == "WktNameAr") { SearchItemStatus(true, false, "Type Worktime Name (Ar) here"); }
             if (ddlSearch.SelectedValue == "WktNameEn") { SearchItemStatus(true, false, "Type Worktime Name (En) here"); }
-
-            ClearData();
-            FillGrid(MainQuery + "  WktID = '@@@@'");
+            ClearItem();
+          //  ClearData();
+           // FillGrid(MainQuery + "  WktID = '@@@@'");
         }
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
