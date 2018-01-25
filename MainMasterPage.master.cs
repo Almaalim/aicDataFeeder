@@ -30,7 +30,12 @@ public partial class MainMasterPage : System.Web.UI.MasterPage
         try { Response.AppendHeader("Refresh", Convert.ToString((Session.Timeout * 60) + 2) + "; URL=../Login.aspx"); }
         catch (Exception ex) { }
 
-        if (FormSession.Language == "Ar") { MainDiv.Attributes.Add("dir", "rtl"); } else { MainDiv.Attributes.Add("dir", "ltr"); }
+        //if (FormSession.Language == "Ar") { MainDiv.Attributes.Add("dir", "rtl"); } else { MainDiv.Attributes.Add("dir", "ltr"); }
+
+        ///Added by Abbas
+        string CurrentLanguage = Session["Language"].ToString();
+        if (CurrentLanguage == "EN") { LanguageSwitch.Href = "CSS/Metro/Metro.css"; } else if (CurrentLanguage == "AR") { LanguageSwitch.Href = "CSS/Metro/MetroAr.css"; }
+        ///Added by Abbas End
 
         //int Index = InfoTab.FindPageIndex(FormSession.PageIndex);
         //InfoTab.ShowTabs(Index, Session["Language"].ToString(), (HtmlTableCell)MyHeader.FindControl("MenuHeader"));
@@ -301,15 +306,22 @@ public partial class MainMasterPage : System.Web.UI.MasterPage
     {
         if (Session["Language"].ToString() == "Ar") { Session["Language"] = "En"; } else { Session["Language"] = "Ar"; }
 
-        if (Session["Language"].ToString() == "Ar") { Session["MyTheme"] = "ThemeAr"; }
-        if (Session["Language"].ToString() == "En") { Session["MyTheme"] = "MetroStyle"; }
+        Session["MenuDS"] = null;
 
-        AppPro.UsrLoginID = FormSession.LoginID;
-        AppPro.UsrLanguage = Session["Language"].ToString();
-        AppPro.TransactionBy = FormSession.LoginID;
-        AppSql.UpdateLanguage(AppPro);
+        string QS = (Request.QueryString.Count != 0) ? Request.QueryString.ToString() : "";
+        Response.Redirect(Request.FilePath + "?" + QS);
 
-        Server.Transfer(Request.FilePath);
+        //if (Session["Language"].ToString() == "Ar") { Session["Language"] = "En"; } else { Session["Language"] = "Ar"; }
+
+        //if (Session["Language"].ToString() == "Ar") { Session["MyTheme"] = "ThemeAr"; }
+        //if (Session["Language"].ToString() == "En") { Session["MyTheme"] = "MetroStyle"; }
+
+        //AppPro.UsrLoginID = FormSession.LoginID;
+        //AppPro.UsrLanguage = Session["Language"].ToString();
+        //AppPro.TransactionBy = FormSession.LoginID;
+        //AppSql.UpdateLanguage(AppPro);
+
+        //Server.Transfer(Request.FilePath);
     }
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 

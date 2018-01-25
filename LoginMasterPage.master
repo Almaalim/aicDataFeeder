@@ -19,13 +19,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <link href="CSS/Metro/Metro.css" rel="stylesheet" />
-  <script type="text/javascript" src="../Scripts/jquery-1.7.1.min.js"></script>
-   
-</head>
-<body class="loginPage">
-    <form id="aspnetForm" runat="server">
-        <div id="MainDiv" runat="Server">
-            <script type="text/javascript">
+    <script type="text/javascript" src="../Scripts/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript">
         $(document).ready(function () {
             $("div[class*='col']").each(function () {
                 var $this = $(this);
@@ -34,36 +29,29 @@
         });
 
     </script>
-            
-            
-            
-            
+</head>
+<body class="loginPage">
+    <form id="aspnetForm" runat="server">
+        <div id="MainDiv" runat="Server">
             <div class="loginWrapper">
                 <asp:Panel runat="server" ID="divTab8">
-
                     <uc1:LoginHeader ID="LoginHeader1" runat="server" />
-
                 </asp:Panel>
 
                 <asp:Label ID="lblHeading" runat="server" Font-Size="Medium" Text="Login"></asp:Label>
 
-
                 <div id="ContantTd1" runat="server" valign="top" class="Body_BG" height="680">
-
                     <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
                     </asp:ContentPlaceHolder>
-
                 </div>
             </div>
             <div class="row">
                 <div class="col12 LoginFooterLink">
-                      <uc4:Footer ID="Footer1" runat="server" />
+                    <uc4:Footer ID="Footer1" runat="server" />
 
                 </div>
 
             </div>
-          
-
         </div>
     </form>
 </body>

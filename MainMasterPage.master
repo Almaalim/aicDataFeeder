@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title></title>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <link href="CSS/Metro/Metro.css" rel="stylesheet" />
+    <link href="CSS/Metro/Metro.css" rel="stylesheet" runat="server" id="LanguageSwitch" />
     <script type="text/javascript" src="../Scripts/jquery-1.7.1.min.js"></script>
     <script type="text/javascript" src="../JScript/Grid.js"></script>
     <script type="text/javascript" src="../JScript/CheckKey.js"></script>
@@ -468,7 +468,7 @@
 
                         <asp:LinkButton ID="LnkLogout" runat="server" OnClick="lnkLogout_Click" Style="color: #C3D8D5; text-decoration: none;">Logout</asp:LinkButton>
 
-                        <asp:LinkButton ID="lnkLanguage" runat="server" OnClick=" lnkChangeLang_Click" Style="color: #C3D8D5; text-decoration: none;">Language</asp:LinkButton>
+                        <asp:LinkButton ID="lnkLanguage" runat="server" OnClick="lnkChangeLang_Click" Style="color: #C3D8D5; text-decoration: none;">Language</asp:LinkButton>
 
                     </div>
 
