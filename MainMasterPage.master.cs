@@ -34,7 +34,7 @@ public partial class MainMasterPage : System.Web.UI.MasterPage
 
         ///Added by Abbas
         string CurrentLanguage = Session["Language"].ToString();
-        if (CurrentLanguage == "EN") { LanguageSwitch.Href = "CSS/Metro/Metro.css"; } else if (CurrentLanguage == "AR") { LanguageSwitch.Href = "CSS/Metro/MetroAr.css"; }
+        if (CurrentLanguage == "En") { LanguageSwitch.Href = "CSS/Metro/Metro.css"; } else if (CurrentLanguage == "Ar") { LanguageSwitch.Href = "CSS/Metro/MetroAr.css"; }
         ///Added by Abbas End
 
         //int Index = InfoTab.FindPageIndex(FormSession.PageIndex);
