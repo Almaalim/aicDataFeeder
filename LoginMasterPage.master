@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="LoginMasterPage.master.cs" Inherits="LoginMasterPage" %>
+﻿-<%@ Master Language="C#" AutoEventWireup="true" CodeFile="LoginMasterPage.master.cs" Inherits="LoginMasterPage" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
