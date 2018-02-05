@@ -117,7 +117,6 @@
                             ValidationGroup="vgSave"></asp:RequiredFieldValidator>
                     </div>
                 </div>
-                
                 <div class="row">
                     <div class="col12">
                         <asp:LinkButton ID="btnSave" runat="server" Text="Save" ValidationGroup="vgSave" CssClass="GenButton glyphicon glyphicon-floppy-disk" OnClick="btnSave_Click" ></asp:LinkButton>
@@ -127,9 +126,7 @@
                         </asp:CustomValidator>
                     </div>
                 </div>
-
             </div>
-
         </ContentTemplate>
     </asp:UpdatePanel>
 </asp:Content>

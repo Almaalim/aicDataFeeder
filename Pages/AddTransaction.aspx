@@ -172,10 +172,8 @@
                                     <asp:Label ID="lblTrnTime" runat="server" Text="Trans Time :"></asp:Label>
                                 </div>
                                 <div class="col3">
-                                    <div class="col3">
-                                        <Almaalimtp:TimePicker ID="tpTrnTime" runat="server" FormatTime="HHmm" CssClass="TimeCss"
-                                            TimePickerValidationGroup="VgSave" TimePickerValidationText="&lt;img src='../Images/icon/Exclamation.gif' title='Trans Time is required!' /&gt;" />
-                                    </div>
+                                    <Almaalimtp:TimePicker ID="tpTrnTime" runat="server" FormatTime="HHmm" CssClass="TimeCss"
+                                        TimePickerValidationGroup="VgSave" TimePickerValidationText="&lt;img src='../Images/icon/Exclamation.gif' title='Trans Time is required!' /&gt;" />
                                 </div>
                             </div>
 
@@ -186,13 +184,13 @@
                                 </div>
                                 <div class="col3">
                                     <asp:DropDownList ID="ddlTrnType" runat="server">
-                                    <asp:ListItem Text="- Select Trans Type -" Value="10" Selected="True"></asp:ListItem>
-                                    <asp:ListItem Text="IN" Value="1"></asp:ListItem>
-                                    <asp:ListItem Text="OUT" Value="0"></asp:ListItem>
-                                </asp:DropDownList>
-                                <asp:RequiredFieldValidator ID="rfvddlTrnType" runat="server" ControlToValidate="ddlTrnType" CssClass="CustomValidator"
-                                    EnableClientScript="False" Text="&lt;img src='../Images/icon/Exclamation.gif' title='Trans Type is required!' /&gt;"
-                                    ValidationGroup="vgSave"></asp:RequiredFieldValidator>
+                                        <asp:ListItem Text="- Select Trans Type -" Value="10" Selected="True"></asp:ListItem>
+                                        <asp:ListItem Text="IN" Value="1"></asp:ListItem>
+                                        <asp:ListItem Text="OUT" Value="0"></asp:ListItem>
+                                    </asp:DropDownList>
+                                    <asp:RequiredFieldValidator ID="rfvddlTrnType" runat="server" ControlToValidate="ddlTrnType" CssClass="CustomValidator"
+                                        EnableClientScript="False" Text="&lt;img src='../Images/icon/Exclamation.gif' title='Trans Type is required!' /&gt;"
+                                        ValidationGroup="vgSave"></asp:RequiredFieldValidator>
                                 </div>
                             </div>
 
