@@ -273,22 +273,6 @@ public class FormCtrl
                                                     { "Christian", "مسيحي", "Christian" }           , { "Jewish", "يهودي", "Jewish" } };
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    static string[,] WorkTypes = new string[5, 3] { { "-Select Work Type-", "-اختر طبيعة العمل-", "0" } ,{ "Teaching", "تدريسية", "Teaching" },
-                                                    { "Research", "بحثية", "Research" }, { "Administrative", "إدارية", "Administrative" }, 
-                                                    { "Other", "أخرى", "Other" } };
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    static string[,] Qualifications = new string[6, 3] { { "-Select Qualification-", "-اختر المؤهل العلمي-", "0" } ,{ "Doctorate", "دكتوراه", "Doctorate" }
-                                                        ,{ "Fellowship", "زمالة", "Fellowship" }, { "Master", "ماجستير", "Master" } 
-                                                        ,{ "Bachelor", "بكالوريوس", "Bachelor" } ,{ "Other", "أخرى", "Other" } };
-
-    static string[,] QualificationsOfficer = new string[9, 3] { { "-Select Qualification-", "-اختر المؤهل العلمي-", "0" } ,{ "Elementary", "ابتدائية", "Elementary" }
-                                                        ,{ "Intermediate", "متوسطة", "Intermediate" }, { "Secondary", "ثانوية", "Secondary" } 
-                                                        ,{ "Diploma", "دبلوم", "Diploma" } ,{ "Bachelor", "بكالوريوس", "Bachelor" }
-                                                        , { "Master", "ماجستير", "Master" } ,{ "Doctorate", "دكتوراه", "Doctorate" }
-                                                        ,{ "Other", "أخرى", "Other" } };
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     static string[,] MaritalStatus = new string[4, 3] { { "-Select Marital-", "-اختر الحالة الاجتماعية-", "0" } , { "Single", "أعزب", "Single" }, 
                                                       { "Married", "متزوج", "Married" }, { "Other", "أخرى", "Other" } };
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -312,15 +296,12 @@ public class FormCtrl
         try
         {
             if (pType == "Religion")         { return Religions; }
-            if (pType == "WorkType")         { return WorkTypes; }
-            if (pType == "Qualification")    { return Qualifications; }
             if (pType == "MaritalStatus")    { return MaritalStatus; }
             if (pType == "Status")           { return Status; }
             if (pType == "StatusWithSelect") { return StatusWithSelect; }
             if (pType == "CardStatus")       { return CardStatus; }
             if (pType == "CardStatusFull")   { return CardStatusFull; }
             if (pType == "RetReason")        { return RetReason; }
-            if (pType == "QualificationsOfficer") { return QualificationsOfficer; }
             
             return null;
         }

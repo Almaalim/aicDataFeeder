@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Globalization;
+using System.Data.SqlClient;
+using System.Data;
 
 /// <summary>
 /// Summary description for DisplayFun
@@ -10,6 +12,7 @@ using System.Globalization;
 public class DisplayFun
 {
     DateFun DTCs = new DateFun();
+    DBFun DBCs = new DBFun();
 
     static GregorianCalendar Grn = new GregorianCalendar();
     static UmAlQuraCalendar Umq = new UmAlQuraCalendar();
@@ -88,6 +91,32 @@ public class DisplayFun
             return string.Empty;
         }
     }
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public static List<string> GetTables(string connectionString)
+    {
+        List<string> TableNames = new List<string>();
+        SqlConnection connection = new SqlConnection(connectionString);
+        try
+        {
+            using (connection)
+            {
+                connection.Open();
+                DataTable schema = connection.GetSchema("Tables");
+
+                foreach (DataRow row in schema.Rows)
+                {
+                    TableNames.Add(row[2].ToString());
+                }
+                connection.Close();
+                return TableNames;
+            }
+        }
+        catch { connection.Close(); return TableNames; }
+    }
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 }

@@ -62,7 +62,8 @@ public partial class Home : BasePage
             ddlDepChartsFilter.SelectedIndex = 1;
         }
     }
-
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public void FillEmployeeList(string DepID, string DepList)
     {
         ddlEmpChartsFilter.Items.Clear();
@@ -126,6 +127,9 @@ public partial class Home : BasePage
         SqlCommand cmd = new SqlCommand();
         StringBuilder CQ = new StringBuilder();
 
+        SqlCommand cmd2 = new SqlCommand();
+        StringBuilder CQ2 = new StringBuilder();
+
         if (Type == "M")
         {
             CQ.Append(" SELECT SUM(DsmShiftDuration) SumShiftDuration, SUM(DsmWorkDuration) SumWorkDuration, SUM(DsmBeginLate) SumBeginLateDuration ");
@@ -133,6 +137,9 @@ public partial class Home : BasePage
             CQ.Append(" , COUNT(CASE WHEN DsmStatus IN ('A') THEN DsmStatus ELSE NULL END) SumAbsentDays ");
             CQ.Append(" , SUM(DsmOutEarly) SumOutEarlyDuration "); //CQ.Append(" , SUM(DsmGapDur_WithoutExc) SumGapsDuration ");
             CQ.Append(" FROM DaySummary WHERE ");
+
+            CQ2.Append(" SELECT SUM(ImlTransCount) SumCountRecords ");
+            CQ2.Append(" FROM ImportMachineLog WHERE 1 = 1 ");
         }
         else if (Type == "D")
         {
@@ -141,6 +148,9 @@ public partial class Home : BasePage
             CQ.Append(" , COUNT(CASE WHEN DsmStatus IN ('A') THEN DsmStatus ELSE NULL END) SumAbsentDays ");
             CQ.Append(" , SUM(DsmOutEarly) SumOutEarlyDuration ");  //CQ.Append(" , SUM(DsmGapDur_WithoutExc) SumGapsDuration ");
             CQ.Append(" FROM DaySummary WHERE ");
+
+            CQ2.Append(" SELECT SUM(ImlTransCount) SumCountRecords ");
+            CQ2.Append(" FROM ImportMachineLog WHERE 1 = 1 ");
         }
 
         if (EmpID != "All") { CQ.Append(" EmpID = @EmpID"); cmd.Parameters.AddWithValue("@EmpID", EmpID); }
@@ -156,23 +166,38 @@ public partial class Home : BasePage
             //cmd.Parameters.AddWithValue("@MsmCalendar", CALENDAR_TYPE);
             cmd.Parameters.AddWithValue("@MsmStartDate", SDATE);
             cmd.Parameters.AddWithValue("@MsmEndDate", EDATE);
+
+            CQ2.Append(" AND CONVERT(VARCHAR(10),ImlStartDT,101) BETWEEN CONVERT(VARCHAR(10),@MsmStartDate,101) AND CONVERT(VARCHAR(10),@MsmEndDate,101) ");  //AND MsmCalendar = @MsmCalendar
+            //cmd.Parameters.AddWithValue("@MsmCalendar", CALENDAR_TYPE);
+            cmd2.Parameters.AddWithValue("@MsmStartDate", SDATE);
+            cmd2.Parameters.AddWithValue("@MsmEndDate", EDATE);
         }
         else if (Type == "D")
         {
             CQ.Append(" AND CONVERT(VARCHAR(10),DsmDate,101) = CONVERT(VARCHAR(10),@DsmDate,101) ");
             cmd.Parameters.AddWithValue("@DsmDate", Date);
+
+            CQ2.Append(" AND CONVERT(VARCHAR(10),ImlStartDT,101) = CONVERT(VARCHAR(10),@ImlStartDT,101) ");
+            cmd2.Parameters.AddWithValue("@ImlStartDT", Date);
         }
 
         cmd.CommandText = CQ.ToString();
 
+        cmd2.CommandText = CQ2.ToString();
+
         DataTable ChartDT = new DataTable();
         ChartDT = DBCs.FetchData(cmd);
+
+        DataTable ChartDF = new DataTable();
+        ChartDF = DBCs.FetchData(cmd2);
 
         FillChartWorkDurtion(ChartDT);
         FillChartBeginLateDurtion(ChartDT);
         bool EmpDay = (Type == "D" && EmpID != "All") ? true : false;
         FillChartAbsentDays(EmpDay, ChartDT, EmpID, Date);
         FillChartDurations(ChartDT);
+        FillChartCountRecByTime(ChartDF);
+        FillChartCountRecByMachine(ChartDF);
     }
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -437,6 +462,132 @@ public partial class Home : BasePage
         xmlChart += xmlData + xmlStyle + "</chart>";
 
         LitChartDurations.Text = FusionCharts.RenderChart("../FusionCharts/Column2D.swf", "", xmlChart, "ChartDurations", "100%", "350", false, false);
+    }
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public void FillChartCountRecByTime(DataTable DT)
+    {
+        LitChartCountRecByTime.Text = General.Msg("No data as required", "لا يوجد بيانات حسب الخيارات المطلوبة");
+        string xmlChart = "";
+        string xmlData = "";
+        string titel = "";
+        string xmlStyle = "";
+
+        object SumCountRecords = "0";
+        //object SumWorkDuration = "0";
+        //object SumGapsDuration = "0";
+
+        object ShowSumCountRecords = "0";
+        //object ShowSumWorkDuration = "0";
+        //object ShowSumGapsDuration = "0";
+
+        if (!DBCs.IsNullOrEmpty(DT))
+        {
+            DataRow DR = DT.Rows[0];
+            string sSumCountRecords = DR["SumCountRecords"] != DBNull.Value ? DR["SumCountRecords"].ToString() : "0";
+            //string sSumOutEarlyDuration = DR["SumOutEarlyDuration"] != DBNull.Value ? DR["SumOutEarlyDuration"].ToString() : "0";
+
+            //int iSumGapsDuration = Int32.Parse(sSumBeginLateDuration) + Int32.Parse(sSumOutEarlyDuration);
+
+            if (!General.IsNullOrEmpty(DR["SumCountRecords"])) //!General.IsNullOrEmpty(DR["SumGapsDuration"])
+            {
+                SumCountRecords = ShowSumCountRecords = DR["SumCountRecords"];
+                //SumWorkDuration = ShowSumWorkDuration = DR["SumWorkDuration"];
+                //SumGapsDuration = ShowSumGapsDuration = iSumGapsDuration; //DR["SumGapsDuration"]
+            }
+        }
+
+        xmlData += "<set label='" + General.Msg("Count records imports", "عدد الحركات المسحوبة") + " " + General.GrdDisplayDuration(ShowSumCountRecords) + "' value='" + DisplayDuration(SumCountRecords) + "' />";
+        //xmlData += "<set label='" + General.Msg("actual hours required", "ساعات العمل الفعلية") + " " + General.GrdDisplayDuration(ShowSumWorkDuration) + "' value='" + DisplayDuration(SumWorkDuration) + "' />";
+        //xmlData += "<set label='" + General.Msg("hours of gaps", "ساعات الثغرات") + " " + General.GrdDisplayDuration(ShowSumGapsDuration) + "' value='" + DisplayDuration(SumGapsDuration) + "' />";
+
+        xmlStyle = " <styles> "
+                + " <definition> "
+                + "  <style name='CaptionAnim'  type='animation' param='_y' easing='Bounce' start='0' duration='2' /> "
+                + "  <style name='CaptionFont'  type='font' isHTML='1' font='GE SS Two Light' size='18' color='666666' bold='1' underline='0' /> "
+                + "  <style name='AxisNameFont' type='font' isHTML='1' font='GE SS Two Light' size='14' color='666666' bold='1' /> "
+                + "  <style name='DataFont'     type='font' isHTML='1' font='GE SS Two Light' size='12' color='666666' /> "
+                + " </definition> "
+                + " <application> "
+                + " <apply toObject='TOOLTIP'     styles='AxisNameFont' /> "
+                + " <apply toObject='xAxisName'   styles='AxisNameFont' /> "
+                + " <apply toObject='yAxisName'   styles='AxisNameFont' /> "
+                + " <apply toObject='DATALABELS'  styles='DataFont' /> "
+                + " <apply toObject='DataValues'  styles='DataFont' /> "
+                + " <apply toObject='Caption'     styles='CaptionFont' /> "
+                + " </application> "
+                + " </styles> ";
+
+        titel = General.Msg("Total records imports by time", "مجموع الحركات المسحوبة بحسب الوقت");
+
+        xmlChart = " <chart palette='1' caption='" + titel + "' xAxisName='" + General.Msg("Total", "المجموع") + "' "
+                + " yAxisName='" + General.Msg("Hour", "ساعة") + "' rotateYAxisName='0' showValues='0' decimals='0' showborder='0' formatNumberScale='0' labelDisplay='Stagger' > ";
+        xmlChart += xmlData + xmlStyle + "</chart>";
+
+        LitChartCountRecByTime.Text = FusionCharts.RenderChart("../FusionCharts/Column2D.swf", "", xmlChart, "ChartDurations", "100%", "350", false, false);
+    }
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public void FillChartCountRecByMachine(DataTable DT)
+    {
+        LitChartCountRecByMachine.Text = General.Msg("No data as required", "لا يوجد بيانات حسب الخيارات المطلوبة");
+        string xmlChart = "";
+        string xmlData = "";
+        string titel = "";
+        string xmlStyle = "";
+
+        object SumCountRecords = "0";
+        //object SumWorkDuration = "0";
+        //object SumGapsDuration = "0";
+
+        object ShowSumCountRecords = "0";
+        //object ShowSumWorkDuration = "0";
+        //object ShowSumGapsDuration = "0";
+
+        if (!DBCs.IsNullOrEmpty(DT))
+        {
+            DataRow DR = DT.Rows[0];
+            string sSumCountRecords = DR["SumCountRecords"] != DBNull.Value ? DR["SumCountRecords"].ToString() : "0";
+            //string sSumOutEarlyDuration = DR["SumOutEarlyDuration"] != DBNull.Value ? DR["SumOutEarlyDuration"].ToString() : "0";
+
+            //int iSumGapsDuration = Int32.Parse(sSumBeginLateDuration) + Int32.Parse(sSumOutEarlyDuration);
+
+            if (!General.IsNullOrEmpty(DR["SumCountRecords"])) //!General.IsNullOrEmpty(DR["SumGapsDuration"])
+            {
+                SumCountRecords = ShowSumCountRecords = DR["SumCountRecords"];
+                //SumWorkDuration = ShowSumWorkDuration = DR["SumWorkDuration"];
+                //SumGapsDuration = ShowSumGapsDuration = iSumGapsDuration; //DR["SumGapsDuration"]
+            }
+        }
+
+        xmlData += "<set label='" + General.Msg("Count records imports", "عدد الحركات المسحوبة") + " " + General.GrdDisplayDuration(ShowSumCountRecords) + "' value='" + DisplayDuration(SumCountRecords) + "' />";
+        //xmlData += "<set label='" + General.Msg("actual hours required", "ساعات العمل الفعلية") + " " + General.GrdDisplayDuration(ShowSumWorkDuration) + "' value='" + DisplayDuration(SumWorkDuration) + "' />";
+        //xmlData += "<set label='" + General.Msg("hours of gaps", "ساعات الثغرات") + " " + General.GrdDisplayDuration(ShowSumGapsDuration) + "' value='" + DisplayDuration(SumGapsDuration) + "' />";
+
+        xmlStyle = " <styles> "
+                + " <definition> "
+                + "  <style name='CaptionAnim'  type='animation' param='_y' easing='Bounce' start='0' duration='2' /> "
+                + "  <style name='CaptionFont'  type='font' isHTML='1' font='GE SS Two Light' size='18' color='666666' bold='1' underline='0' /> "
+                + "  <style name='AxisNameFont' type='font' isHTML='1' font='GE SS Two Light' size='14' color='666666' bold='1' /> "
+                + "  <style name='DataFont'     type='font' isHTML='1' font='GE SS Two Light' size='12' color='666666' /> "
+                + " </definition> "
+                + " <application> "
+                + " <apply toObject='TOOLTIP'     styles='AxisNameFont' /> "
+                + " <apply toObject='xAxisName'   styles='AxisNameFont' /> "
+                + " <apply toObject='yAxisName'   styles='AxisNameFont' /> "
+                + " <apply toObject='DATALABELS'  styles='DataFont' /> "
+                + " <apply toObject='DataValues'  styles='DataFont' /> "
+                + " <apply toObject='Caption'     styles='CaptionFont' /> "
+                + " </application> "
+                + " </styles> ";
+
+        titel = General.Msg("Total records imports by Machine", "مجموع الحركات المسحوبة بحسب المكينة");
+
+        xmlChart = " <chart palette='1' caption='" + titel + "' xAxisName='" + General.Msg("Total", "المجموع") + "' "
+                + " yAxisName='" + General.Msg("Hour", "ساعة") + "' rotateYAxisName='0' showValues='0' decimals='0' showborder='0' formatNumberScale='0' labelDisplay='Stagger' > ";
+        xmlChart += xmlData + xmlStyle + "</chart>";
+
+        LitChartCountRecByMachine.Text = FusionCharts.RenderChart("../FusionCharts/Column2D.swf", "", xmlChart, "ChartDurations", "100%", "350", false, false);
     }
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

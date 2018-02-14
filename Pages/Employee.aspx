@@ -33,7 +33,7 @@
                             <asp:TextBox ID="txtSearch" runat="server" Enabled="False"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="rvSearch" runat="server" CssClass="CustomValidator"
                                 ControlToValidate="txtSearch" EnableClientScript="False" ValidationGroup="vgSearch"
-                                Text="&lt;img src='Images/icon/Exclamation.gif' title='You must enter a value to search!' /&gt;">
+                                Text="&lt;img src='../Images/icon/Exclamation.gif' title='You must enter a value to search!' /&gt;">
                             </asp:RequiredFieldValidator>
                             <cc1:FilteredTextBoxExtender ID="eFilteredSearch" runat="server" Enabled="True" FilterType="Numbers" TargetControlID="txtSearch" />
                             <cc1:TextBoxWatermarkExtender ID="eWatermarkSearch" runat="server" Enabled="True" TargetControlID="txtSearch" WatermarkText="can't type" WatermarkCssClass="watermarked" />
@@ -157,7 +157,7 @@
                                         <div class="col3">
                                             <asp:TextBox ID="txtEmpID" runat="server" Enabled="False"></asp:TextBox>
                                             <asp:CustomValidator ID="cvEmpID" runat="server" ValidationGroup="vgSave" OnServerValidate="EmpID_ServerValidate"
-                                                Text="&lt;img src='Images/icon/Exclamation.gif' title='Employee ID is required!' /&gt;" CssClass="CustomValidator"
+                                                Text="&lt;img src='../Images/icon/Exclamation.gif' title='Employee ID is required!' /&gt;" CssClass="CustomValidator"
                                                 EnableClientScript="False" ControlToValidate="cvtxt">
                                             </asp:CustomValidator>
                                         </div>
@@ -180,7 +180,7 @@
                                         <div class="col3">
                                             <asp:TextBox ID="txtEmpNameAr" runat="server" Enabled="False"></asp:TextBox>
                                             <asp:CustomValidator ID="cvEmpNameAr" runat="server" ValidationGroup="vgSave" OnServerValidate="EmpName_ServerValidate"
-                                                Text="&lt;img src='Images/icon/Exclamation.gif' title='Employee Name (Ar) is required!' /&gt;" CssClass="CustomValidator"
+                                                Text="&lt;img src='../Images/icon/Exclamation.gif' title='Employee Name (Ar) is required!' /&gt;" CssClass="CustomValidator"
                                                 EnableClientScript="False" ControlToValidate="cvtxt">
                                             </asp:CustomValidator>
                                         </div>
@@ -190,7 +190,7 @@
                                         <div class="col3">
                                             <asp:TextBox ID="txtEmpNameEn" runat="server" Enabled="False"></asp:TextBox>
                                             <asp:CustomValidator ID="cvEmpNameEn" runat="server" ValidationGroup="vgSave" OnServerValidate="EmpName_ServerValidate"
-                                                Text="&lt;img src='Images/icon/Exclamation.gif' title='Employee Name (En) is required!' /&gt;" CssClass="CustomValidator"
+                                                Text="&lt;img src='../Images/icon/Exclamation.gif' title='Employee Name (En) is required!' /&gt;" CssClass="CustomValidator"
                                                 EnableClientScript="False" ControlToValidate="cvtxt">
                                             </asp:CustomValidator>
                                         </div>
@@ -203,7 +203,7 @@
                                         <div class="col3">
                                             <asp:TextBox ID="txtEmpPositionAr" runat="server" Enabled="False"></asp:TextBox>
                                             <asp:RequiredFieldValidator ID="rvEmpPositionAr" runat="server" ValidationGroup="vgSave" ControlToValidate="txtEmpPositionAr" CssClass="CustomValidator"
-                                                EnableClientScript="False" Text="&lt;img src='Images/icon/Exclamation.gif' title='Position Name (Ar) is required' /&gt;">
+                                                EnableClientScript="False" Text="&lt;img src='../Images/icon/Exclamation.gif' title='Position Name (Ar) is required' /&gt;">
                                             </asp:RequiredFieldValidator>
                                         </div>
                                         <div class="col2">
@@ -212,7 +212,7 @@
                                         <div class="col3">
                                             <asp:TextBox ID="txtEmpPositionEn" runat="server" Enabled="False"></asp:TextBox>
                                             <asp:RequiredFieldValidator ID="rvEmpPositionEn" runat="server" ValidationGroup="vgSave" ControlToValidate="txtEmpPositionEn"
-                                                EnableClientScript="False" Text="&lt;img src='Images/icon/Exclamation.gif' title='Position Name (En) is required' /&gt;" CssClass="CustomValidator"
+                                                EnableClientScript="False" Text="&lt;img src='../Images/icon/Exclamation.gif' title='Position Name (En) is required' /&gt;" CssClass="CustomValidator"
                                                 Enabled="false">
                                             </asp:RequiredFieldValidator>
                                         </div>
@@ -225,7 +225,7 @@
                                         <div class="col3">
                                             <asp:DropDownList ID="ddlDepID" runat="server"></asp:DropDownList>
                                             <asp:RequiredFieldValidator ID="rvDepID" runat="server" ValidationGroup="vgSave" ControlToValidate="ddlDepID" CssClass="CustomValidator"
-                                                EnableClientScript="False" Text="&lt;img src='Images/icon/Exclamation.gif' title='Department is required' /&gt;">
+                                                EnableClientScript="False" Text="&lt;img src='../Images/icon/Exclamation.gif' title='Department is required' /&gt;">
                                             </asp:RequiredFieldValidator>
                                         </div>
                                         <div class="col2">

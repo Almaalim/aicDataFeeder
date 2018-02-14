@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MainMasterPage.master" AutoEventWireup="true" CodeFile="LogErrors.aspx.cs" Inherits="Pages_LogErrors" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MainMasterPage.master" AutoEventWireup="true" CodeFile="LogImport.aspx.cs" Inherits="Pages_LogImport" %>
 
 <%@ Register Src="~/Control/SettingSideMenu.ascx" TagName="SettingSideMenu" TagPrefix="uc1" %>
 
@@ -44,11 +44,27 @@
                             ShowFooter="True">
                             <Columns>
                                 <%--<asp:CommandField ButtonType="Button" SelectText="User Control" ShowSelectButton="True" />--%>
-                                <asp:BoundField DataField="ImlID" HeaderText="ID" SortExpression="ImlID">
+                                <asp:BoundField DataField="ImlID" HeaderText="ImlID" SortExpression="ImlID" Visible="false">
                                     <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                 </asp:BoundField>
-                                <asp:BoundField DataField="ImlStartDT" HeaderText="Date" SortExpression="ImlStartDT">
+                                <asp:BoundField DataField="IplID" HeaderText="IplID" SortExpression="IplID" Visible="false">
+                                    <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="ImlStartDT" HeaderText="Start Date" SortExpression="ImlStartDT">
+                                    <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="ImlEndDT" HeaderText="End Date" SortExpression="ImlEndDT">
+                                    <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="MacIP" HeaderText="Machine IP" SortExpression="MacIP">
+                                    <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="MtpName" HeaderText="Machine Name" SortExpression="MtpName">
                                     <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                 </asp:BoundField>

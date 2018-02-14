@@ -14,7 +14,7 @@ using System.Xml.Linq;
 using System.Drawing;
 using System.Text;
 
-public partial class Pages_LogErrors : BasePage
+public partial class Pages_LogImport : BasePage
 {
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -23,7 +23,7 @@ public partial class Pages_LogErrors : BasePage
     DBFun DBCs = new DBFun();
     DateFun DTCs = new DateFun();
     string MainPer = "Set";
-    string MainQuery = " SELECT * FROM ImportMachineLog WHERE ImlID = ImlID ";
+    string MainQuery = " SELECT * FROM LogImportMachineInfoView WHERE ImlID = ImlID ";
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     protected void Page_Load(object sender, EventArgs e)
@@ -96,7 +96,7 @@ public partial class Pages_LogErrors : BasePage
 
             StringBuilder FQ = new StringBuilder();
             FQ.Append(MainQuery);
-            FQ.Append(" WHERE ImlStartDT BETWEEN @SDate AND @EDate ");
+            FQ.Append(" AND ImlStartDT BETWEEN @SDate AND @EDate ");
             
             FQ.Append(" ORDER BY ImlStartDT DESC ");
             cmd.Parameters.AddWithValue("@SDate", SDate);
@@ -144,7 +144,7 @@ public partial class Pages_LogErrors : BasePage
     public void FillGrid(string Q)
     {
         dt = DBCs.FetchData(Q);
-        if (!DBCs.IsNullOrEmpty(dt) && FormSession.PermUsr.Contains("V" + MainPer)) //
+        if (!DBCs.IsNullOrEmpty(dt) && FormSession.PermUsr.Contains("U" + MainPer)) //
         {
             grdData.DataSource = (DataTable)dt;
             grdData.DataBind();

@@ -127,7 +127,19 @@
                         <asp:Literal ID="LitChartDurations" runat="server" meta:resourcekey="LitChartDurationsResource1"></asp:Literal>
                     </div>
                 </div>
+                <div class="row">
 
+                    <div class="col4">
+                    </div>
+                </div>
+                <div class="row" runat="server">
+                    <div class="col6 ChartRed">
+                        <asp:Literal ID="LitChartCountRecByTime" runat="server" meta:resourcekey="LitChartCountRecByTimeResource1"></asp:Literal>
+                    </div>
+                    <div class="col6 chartPurple">
+                        <asp:Literal ID="LitChartCountRecByMachine" runat="server" meta:resourcekey="LitChartCountRecByMachineResource1"></asp:Literal>
+                    </div>
+                </div>
 
             </div>
         </ContentTemplate>

@@ -238,4 +238,29 @@ public class DBFun
     //}
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public DataTable GetFields(string ConnString, string pTable)
+    {
+        DataTable FieldNames = new DataTable();
+        SqlConnection Conn = new SqlConnection(ConnString);
+        try
+        {
+            using (Conn)
+            {
+                Conn.Open();
+
+                string Query = "SELECT name FROM sys.columns WHERE object_id = OBJECT_ID('" + pTable + "')";
+                SqlCommand cmd = new SqlCommand(Query, Conn);
+                FieldNames = FetchData(cmd);
+
+                //SqlDataAdapter da = new SqlDataAdapter(Query, Conn);
+
+                //da.Fill(FieldNames);
+                //da.Dispose();
+
+                Conn.Close();
+                return FieldNames;
+            }
+        }
+        catch { Conn.Close(); return FieldNames; }
+    }
 }

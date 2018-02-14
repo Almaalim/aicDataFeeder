@@ -94,11 +94,11 @@
                 </td>
                 <td>
                     <asp:RequiredFieldValidator ID="rvDate" runat="server" ControlToValidate="txtGDate" Enabled="false" CssClass="DateExp"
-                        EnableClientScript="False" Text="&lt;img src='images/Exclamation.gif' title='Date is required' /&gt;">
+                        EnableClientScript="False" Text="&lt;img src='../Images/icon/Exclamation.gif' title='Date is required' /&gt;">
                     </asp:RequiredFieldValidator>
                 </td>
                 <td>
-                    <asp:CustomValidator ID="cvCompareDates" runat="server" Text="&lt;img src='images/message_exclamation.png' title='Start date more than End date' /&gt;"
+                    <asp:CustomValidator ID="cvCompareDates" runat="server" Text="&lt;img src='../Images/icon/Exclamation.gif' title='Start date more than End date' /&gt;"
                         ValidationGroup="vgSave" ErrorMessage="Start date more than End date" Enabled="false" CssClass="CustomValidator"
                         OnServerValidate="DateValidate_ServerValidate" EnableClientScript="False" ControlToValidate="ddlMonths">
                     </asp:CustomValidator>

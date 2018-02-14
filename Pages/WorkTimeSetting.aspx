@@ -45,7 +45,6 @@
                                 ValidationGroup="vgSearch" Enabled="False" />
                         </div>
                     </div>
-
                 </asp:Panel>
                 <div class="row">
                     <div class="col12">

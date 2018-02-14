@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MainMasterPage.master" AutoEventWireup="true" CodeFile="UserDepartment.aspx.cs" Inherits="Pages_UserDepartment" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MainMasterPage.master" AutoEventWireup="true" Theme="MetroStyle" CodeFile="UserDepartment.aspx.cs" Inherits="Pages_UserDepartment" EnableEventValidation="false" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
@@ -293,7 +293,7 @@
                             <asp:TextBox ID="txtSearch" runat="server" Enabled="False"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="rvSearch" runat="server" CssClass="CustomValidator"
                                 ControlToValidate="txtSearch" EnableClientScript="False" ValidationGroup="vgSearch"
-                                Text="&lt;img src='Images/icon/Exclamation.gif' title='You must enter a value to search!' /&gt;">
+                                Text="&lt;img src='../Images/icon/Exclamation.gif' title='You must enter a value to search!' /&gt;">
                             </asp:RequiredFieldValidator>
                             <cc1:FilteredTextBoxExtender ID="eFilteredSearch" runat="server" Enabled="True" FilterType="Numbers" TargetControlID="txtSearch" />
                             <cc1:TextBoxWatermarkExtender ID="eWatermarkSearch" runat="server" Enabled="True" TargetControlID="txtSearch" WatermarkText="can't type" WatermarkCssClass="watermarked" />
@@ -307,8 +307,8 @@
 
                 <div class="row">
                     <div class="col12">
-                        <asp:GridView ID="grdMainData" runat="server" AutoGenerateColumns="False" CssClass="vGrid"
-                            DataKeyNames="DepID" Width="100%"
+                        <asp:GridView ID="grdMainData" runat="server" AutoGenerateColumns="False" 
+                            DataKeyNames="UsrLoginID" Width="100%"
                             GridLines="Horizontal" HorizontalAlign="Center" CellPadding="4"
                             AllowPaging="True"
                             OnDataBound="grdMainData_DataBound" OnSelectedIndexChanged="grdMainData_SelectedIndexChanged"
@@ -326,9 +326,7 @@
                                     <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                 </asp:BoundField>
-
                             </Columns>
-
                         </asp:GridView>
                     </div>
                 </div>
@@ -368,7 +366,7 @@
                                     <asp:TextBox ID="cvtxt" runat="server" Text="02120" Visible="False" Width="10px"></asp:TextBox>
                                     <asp:CustomValidator ID="cvShowMsg" runat="server" Display="None"
                                         ValidationGroup="ShowMsg" OnServerValidate="ShowMsg_ServerValidate"
-                                        EnableClientScript="False" ControlToValidate="cvtxt" meta:resourcekey="cvShowMsgResource1"></asp:CustomValidator>
+                                        EnableClientScript="False" ControlToValidate="cvtxt" ></asp:CustomValidator>
                                 </div>
                             </div>
 
@@ -383,13 +381,13 @@
                                 <div class="col12">
                                     <span class="h3">
                                         <asp:Label ID="lblDepartment" runat="server" Text="Department"
-                                            meta:resourcekey="lblDepartmentResource1"></asp:Label></span>
+                                            ></asp:Label></span>
                                     <asp:CustomValidator ID="cvDepartment" runat="server"
                                         ValidationGroup="vgSave"
                                         OnServerValidate="tree_ServerValidate"
                                         EnableClientScript="False"
                                         ControlToValidate="cvtxt"
-                                        meta:resourcekey="cvDepartmentResource1"></asp:CustomValidator>
+                                        ></asp:CustomValidator>
                                 </div>
                             </div>
 
@@ -399,11 +397,11 @@
                                         CacheExpirationPolicy="Sliding" XPath="MenuItems/MenuItem" EnableCaching="False" />
                                     <asp:TreeView ID="trvDept" runat="server" LineImagesFolder="~/images/TreeLineImages" DataSourceID="xmlDataSource2"
                                         ShowLines="True" ShowCheckBoxes="All" OnDataBound="trvDept_DataBound"
-                                        OnTreeNodeDataBound="trvDept_TreeNodeDataBound" ForeColor="#CAD2D6"
-                                        meta:resourcekey="trvDeptResource1">
+                                        OnTreeNodeDataBound="trvDept_TreeNodeDataBound" ForeColor="#CAD2D6" BackColor="#cccccc"
+                                        >
                                         <DataBindings>
                                             <asp:TreeNodeBinding DataMember="MenuItem" TextField="Text" ValueField="Value"
-                                                meta:resourcekey="TreeNodeBindingResource1" ImageUrlField="Check" />
+                                                ImageUrlField="Check" />
                                         </DataBindings>
                                     </asp:TreeView>
                                 </div>
@@ -413,106 +411,9 @@
 
                 </div>
 
-                <%--<div class="col1">
-                        <asp:Label ID="lblSearchBy" runat="server" Text="Search By:"
-                            meta:resourcekey="Label1Resource1"></asp:Label>
-                    </div>
-                    <div class="col2">
-                        <asp:DropDownList ID="ddlFilter" runat="server"
-                            meta:resourcekey="ddlFilterResource1">
-                            <asp:ListItem Selected="True" meta:resourcekey="ListItemResource1">[None]</asp:ListItem>
-                            <asp:ListItem Text="User Name" Value="UsrName"
-                                meta:resourcekey="ListItemResource2"></asp:ListItem>
-                            <asp:ListItem Text="Department Name (Ar)" Value="DepNameAr"
-                                meta:resourcekey="ListItemResource3"></asp:ListItem>
-                            <asp:ListItem Text="Department Name (En)" Value="DepNameEn"
-                                meta:resourcekey="ListItemResource4"></asp:ListItem>
-                        </asp:DropDownList>
-                    </div>
-                    <div class="col2">
-                        <asp:TextBox ID="txtFilter" runat="server" AutoCompleteType="Disabled"
-                            meta:resourcekey="txtFilterResource1"></asp:TextBox>
-
-                        <asp:ImageButton ID="btnFilter" runat="server" OnClick="btnFilter_Click" CssClass="LeftOverlay"
-                            ImageUrl="../images/Button_Icons/button_magnify.png"
-                            meta:resourcekey="btnFilterResource1" />
-                    </div>--%>
-
-
-                <%--<div class="row">
-                    <div class="col12">
-                        <asp:Literal ID="Literal1" runat="server" meta:resourcekey="Literal1Resource1"></asp:Literal>
-                    </div>
-                </div>--%>
-
-                <%--<div class="row">
-                    <div class="col12">
-                        <as:gridviewkeyboardpagerextender runat="server" id="gridviewextender" targetcontrolid="grdData" />
-                        <asp:GridView ID="grdData" runat="server" CssClass="datatable"
-                            SelectedIndex="0" AutoGenerateColumns="False"
-                            AllowPaging="True" CellPadding="0" BorderWidth="0px" GridLines="None" DataKeyNames="UsrName"
-                            ShowFooter="True" OnPageIndexChanging="grdData_PageIndexChanging" OnRowCreated="grdData_RowCreated"
-                            OnRowDataBound="grdData_RowDataBound" OnSorting="grdData_Sorting"
-                            OnRowCommand="grdData_RowCommand" OnPreRender="grdData_PreRender"
-                            OnSelectedIndexChanged="grdData_SelectedIndexChanged" meta:resourcekey="grdDataResource1">
-
-                            <PagerSettings Mode="NextPreviousFirstLast" FirstPageText="First"
-                                FirstPageImageUrl="~/images/first.gif" LastPageText="Last" LastPageImageUrl="~/images/last.gif"
-                                NextPageText="Next" NextPageImageUrl="~/images/next.gif" PreviousPageText="Prev"
-                                PreviousPageImageUrl="~/images/prev.gif" />
-                            <Columns>
-                                <asp:BoundField DataField="UsrName" HeaderText="User Name"
-                                    SortExpression="UsrName" meta:resourcekey="BoundFieldResource3" />
-                                <asp:BoundField DataField="UsrFullName" HeaderText="Full Name" SortExpression="UsrFullName"
-                                    meta:resourcekey="BoundFieldResource422" />
-                            </Columns>
-
-
-                        </asp:GridView>
-                    </div>
-                </div>--%>
-                <%--<div class="row">
-                    <div class="col12">
-                        <asp:ValidationSummary ID="vsShowMsg" runat="server" CssClass="MsgSuccess"
-                            EnableClientScript="False" ValidationGroup="ShowMsg" meta:resourcekey="vsShowMsgResource1" />
-                    </div>
-                </div>--%>
-                <%--<div class="row">
-                    <div class="col12">
-                        <asp:ValidationSummary runat="server" ID="vsSave" ValidationGroup="vgSave" EnableClientScript="False"
-                            CssClass="MsgValidation" ShowSummary="False" meta:resourcekey="vsumAllResource1" />
-                    </div>
-                </div>--%>
-                <%--<div class="row">
-                    <div class="col8">
-                        <asp:LinkButton ID="btnModify" runat="server" CssClass="GenButton glyphicon glyphicon-edit"
-                            OnClick="btnModify_Click"
-                            Text="&lt;img src=&quot;../images/Button_Icons/button_edit.png&quot; /&gt; Modify"
-                            meta:resourcekey="btnModifyResource1"></asp:LinkButton>
-
-                        <asp:LinkButton ID="btnSave" runat="server" CssClass="GenButton glyphicon glyphicon-floppy-disk"
-                            OnClick="btnSave_Click" ValidationGroup="Groups"
-                            Text="&lt;img src=&quot;../images/Button_Icons/button_storage.png&quot; /&gt; Save"
-                            meta:resourcekey="btnSaveResource1"></asp:LinkButton>
-
-                        <asp:LinkButton ID="btnCancel" runat="server" CssClass="GenButton glyphicon glyphicon-remove-circle"
-                            OnClick="btnCancel_Click"
-                            Text="&lt;img src=&quot;../images/Button_Icons/button_Cancel.png&quot; /&gt; Cancel"
-                            meta:resourcekey="btnCancelResource1"></asp:LinkButton>
-                    </div>
-                    <div class="col8">
-                        <asp:TextBox ID="txtValid" runat="server" Text="02120" Visible="False"
-                            Width="10px" meta:resourcekey="txtCustomValidatorResource1"></asp:TextBox>
-                        <asp:CustomValidator ID="cvShowMsg" runat="server" Display="None"
-                            ValidationGroup="ShowMsg" OnServerValidate="ShowMsg_ServerValidate"
-                            EnableClientScript="False" ControlToValidate="txtValid" meta:resourcekey="cvShowMsgResource1"></asp:CustomValidator>
-
-                    </div>
-                </div>--%>
-
                 <div class="row">
                     <div class="col12">
-                        <asp:TextBox ID="txtID" runat="server" AutoCompleteType="Disabled" Enabled="False" Visible="False" Width="15px" meta:resourcekey="txtIDResource1"></asp:TextBox>
+                        <asp:TextBox ID="txtID" runat="server" AutoCompleteType="Disabled" Enabled="False" Visible="False" Width="15px" ></asp:TextBox>
                     </div>
                 </div>
             </div>

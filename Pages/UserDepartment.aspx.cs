@@ -135,8 +135,8 @@ public partial class Pages_UserDepartment : BasePage
         else
         {
             if (ddlSearch.SelectedValue == "UsrLoginID") { SearchItemStatus(true, false, "Type Username here"); }
-            else if (ddlSearch.SelectedValue == "DepNameAr") { SearchItemStatus(true, false, "Type Department Name (Ar) here"); }
-            else if (ddlSearch.SelectedValue == "DepNameEn") { SearchItemStatus(true, false, "Type Department Name (En) here"); }
+            ////else if (ddlSearch.SelectedValue == "DepNameAr") { SearchItemStatus(true, false, "Type Department Name (Ar) here"); }
+            ////else if (ddlSearch.SelectedValue == "DepNameEn") { SearchItemStatus(true, false, "Type Department Name (En) here"); }
 
             ClearItem();
             FillMainGrid(MainQuery + " AND UsrLoginID = '-1'");
@@ -163,8 +163,8 @@ public partial class Pages_UserDepartment : BasePage
         if (ddlSearch.SelectedIndex > 0)
         {
             if (ddlSearch.SelectedValue == "UsrLoginID") { SQ.Append(" AND UsrLoginID LIKE '%" + txtSearch.Text + "%'"); }
-            if (ddlSearch.SelectedValue == "DepNameAr") { SQ.Append(" AND DepNameAr LIKE '%" + txtSearch.Text + "%'"); }
-            if (ddlSearch.SelectedValue == "DepNameEn") { SQ.Append(" AND DepNameEn LIKE '%" + txtSearch.Text + "%'"); }
+            //if (ddlSearch.SelectedValue == "DepNameAr") { SQ.Append(" AND DepNameAr LIKE '%" + txtSearch.Text + "%'"); }
+            //if (ddlSearch.SelectedValue == "DepNameEn") { SQ.Append(" AND DepNameEn LIKE '%" + txtSearch.Text + "%'"); }
         }
 
         FillMainGrid(SQ.ToString());
@@ -262,7 +262,7 @@ public partial class Pages_UserDepartment : BasePage
                 string DepListEnc = CryptorEngine.Encrypt(DepList, true);
                 SqlClass.AppUser_Update_DepList(txtID.Text, DepListEnc, FormSession.LoginID);
 
-                MessageFun.ShowMsg(this, MessageFun.TypeMsg.Success, General.Msg("User updated successfully", "تم تعديل المستخدم بنجاح"));
+                MessageFun.ShowMsg(this, MessageFun.TypeMsg.Success, General.Msg("User Departments updated successfully", "تم تعديل صلاحيات الأقسام  للمستخدم بنجاح"));
             }
 
             ClearItem();
@@ -370,7 +370,7 @@ public partial class Pages_UserDepartment : BasePage
     {
         try
         {
-            ClearItem();
+            //ClearItem();
             DataMainItemStatus(false);
             
             GridViewRow gridrow = grdMainData.SelectedRow;
@@ -380,7 +380,7 @@ public partial class Pages_UserDepartment : BasePage
             }
             else
             {
-                PopulateMainData(gridrow.Cells[2].Text);
+                PopulateMainData(gridrow.Cells[0].Text);
                 ButtonMainAction(true, "100");
             }
         }
@@ -397,11 +397,13 @@ public partial class Pages_UserDepartment : BasePage
 
             txtID.Text = DRs[0]["UsrLoginID"].ToString();
 
-            string UsrDepartmentsEnc = DRs[0]["UsrDepartments"].ToString();
-            string UsrDepartmentsDec = CryptorEngine.Decrypt(UsrDepartmentsEnc, true);
+            if (DRs[0]["UsrDepartments"] != DBNull.Value)
+            {
+                string UsrDepartmentsEnc = DRs[0]["UsrDepartments"].ToString();
+                string UsrDepartmentsDec = CryptorEngine.Decrypt(UsrDepartmentsEnc, true);
 
-            ViewState["Departments"] = UsrDepartmentsDec;
-
+                ViewState["Departments"] = UsrDepartmentsDec;
+            }
             ///////////////////////////////////////////
 
             trvDept.DataBind();
@@ -416,7 +418,7 @@ public partial class Pages_UserDepartment : BasePage
     public void FillMainGrid(string Q)
     {
         dt = DBCs.FetchData(Q);
-        if (!DBCs.IsNullOrEmpty(dt) && FormSession.PermUsr.Contains("S" + MainPer))
+        if (!DBCs.IsNullOrEmpty(dt) && FormSession.PermUsr.Contains("V" + MainPer))
         {
             grdMainData.DataSource = (DataTable)dt;
             ViewState["grdDataDT"] = (DataTable)dt;
@@ -455,6 +457,7 @@ public partial class Pages_UserDepartment : BasePage
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     protected void grdMainData_Sorting(object sender, GridViewSortEventArgs e)
     {
+        ClearItem();
         //grdMainData.SelectedIndex = -1;
         //ClearMainData();
         //ButtonMainAction(true,"10000");

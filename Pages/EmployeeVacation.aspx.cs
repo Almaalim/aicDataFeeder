@@ -417,6 +417,30 @@ public partial class EmployeeVacation : BasePage
         catch { }
     }
 
+    public bool FindNestingDates(string DateType, string StartDate, string EndDate, string EmpID)
+    {
+        try
+        {
+            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
+            DateTime SDate = DTCs.ConvertToDatetime(StartDate, DateType);
+            DateTime EDate = DTCs.ConvertToDatetime(EndDate, DateType);
+            DateTime Date = SDate;
+            int Days = Convert.ToInt32((Date - SDate).TotalDays + 1);
+
+            StringBuilder Q = new StringBuilder();
+            Q.Append(" SELECT EmpID FROM EmpVacRel WHERE EmpID = @P1 AND @P2 BETWEEN EvrStartDate AND EvrEndDate AND ISNULL(EvrDeleted,0) = 0 ");
+
+            for (int i = 0; i < Days; i++)
+            {
+                Date = SDate.AddDays(i);
+
+                DataTable DT = DBCs.FetchData(Q.ToString(), new string[] { EmpID, Date.ToString() });
+                if (!DBCs.IsNullOrEmpty(DT)) { return true; }
+            }
+            return false;
+        }
+        catch (Exception ex) { return true; }
+    }
     #endregion
     /*##############################################################################################################################*/
     /*##############################################################################################################################*/
