@@ -1351,13 +1351,8 @@ body.loginPage > #aspnetForm {
 }
 
 .MsgSuccess {
-    background-color: #
-
-.MsgSuccess {
     background-color: #68af27;
     font-size: 16px;
-    top: -9px;
-    left: 0px;
 }
 
 .MsgValidation, .errorValidation , .MsgError {
@@ -3540,14 +3535,13 @@ button, select {
     text-transform: none;
 }
 
-button, html input[type=button], inpu
-
 button, html input[type=button], input[type=reset], input[type=submit] {
     -webkit-appearance: button;
     cursor: pointer;
 }
 
-ortant;
+input[type=file] {
+    border: none !important;
     font-size: 15px !important;
 }
 
