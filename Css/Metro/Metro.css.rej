@@ -1,0 +1,23 @@
+diff a/Css/Metro/Metro.css b/Css/Metro/Metro.css	(rejected hunks)
+@@ -1355,18 +1355,18 @@
+     font-size: 16px;
+ }
+ 
+-.MsgValidation, .errorValidation {
++.MsgValidation, .errorValidation , .MsgError {
+     background-color: #ba2c1d;
+     font-size: 12px;
+     top: 0px;
+     left: 0px;
+ }
+ 
+-    .MsgValidation li, .MsgSuccess li, .errorValidation li {
++    .MsgValidation li, .MsgSuccess li, .errorValidation li , .MsgError li {
+         list-style: none;
+     }
+ 
+-    .MsgSuccess ul, .MsgValidation ul, .errorValidation ul {
++    .MsgSuccess ul, .MsgValidation ul, .errorValidation ul , .MsgError ul {
+         vertical-align: middle;
+         display: table-cell;
+         position: inherit;
