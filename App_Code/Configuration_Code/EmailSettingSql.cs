@@ -27,6 +27,8 @@ public class EmailSettingSql : DataLayerBase
             sqlCommand.Parameters.Add(new SqlParameter("@EmlPortNo"          , IntDB , 50 , IN, false, 0, 0, "", DRV, Pro.EmlPortNo));
             sqlCommand.Parameters.Add(new SqlParameter("@EmlSenderEmail"     , VchDB , 100 , IN, false, 0, 0, "", DRV, Pro.EmlSenderEmail));
             sqlCommand.Parameters.Add(new SqlParameter("@EmlSenderPassword"  , VchDB , 500 , IN, false, 0, 0, "", DRV, Pro.EmlSenderPassword));
+            sqlCommand.Parameters.Add(new SqlParameter("@EmlCredential"    , BtDB  , 1, IN, false, 0, 0, "", DRV, Pro.EmlCredential));
+            sqlCommand.Parameters.Add(new SqlParameter("@EmlSsl"           , BtDB  , 1, IN, false, 0, 0, "", DRV, Pro.EmlSsl));
             sqlCommand.Parameters.Add(new SqlParameter("@TransactionBy"      , VchDB , 50  , IN, false, 0, 0, "", DRV, Pro.TransactionBy));
 
             MainConnection.Open();

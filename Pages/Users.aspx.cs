@@ -297,8 +297,8 @@ public partial class Pages_Users : BasePage
         }
         else
         {
-            FillPropeties();
-            SqlClass.Delete(ProClass);
+            //FillPropeties();
+            SqlClass.Delete(txtUsrLoginID.Text, FormSession.LoginID);
             MessageFun.ShowMsg(this, MessageFun.TypeMsg.Success, General.Msg("User deleted successfully", "تم حذف المستخدم بنجاح"));
 
             ClearItem();
@@ -355,7 +355,7 @@ public partial class Pages_Users : BasePage
             }
             else
             {
-                PopulateData(gridrow.Cells[1].Text);
+                PopulateData(gridrow.Cells[0].Text);
             }
         }
         catch (Exception e1) { }
@@ -373,14 +373,14 @@ public partial class Pages_Users : BasePage
             txtUsrFullName.Text = dt.Rows[0]["UsrFullName"].ToString();
             
             calUsrStartDate.SetGDate(dt.Rows[0]["UsrStartDate"], "S");
-            calUsrExpiryDate.SetGDate(dt.Rows[0]["UsrExpiryDate"], "S");
+            calUsrExpiryDate.SetGDate(dt.Rows[0]["UsrExpireDate"], "S");
 
             ddlUsrStatus.SelectedIndex = ddlUsrStatus.Items.IndexOf(ddlUsrStatus.Items.FindByValue(Convert.ToInt16(dt.Rows[0]["UsrStatus"]).ToString()));
             ddlUsrLang.SelectedIndex = ddlUsrLang.Items.IndexOf(ddlUsrLang.Items.FindByValue(dt.Rows[0]["UsrLanguage"].ToString()));
             txtUsrEmail.Text = dt.Rows[0]["UsrEmailID"].ToString();
             txtUsrDescription.Text = dt.Rows[0]["UsrDescription"].ToString();
             
-            PermCtl.PopulatePermissions(CryptorEngine.Decrypt(dt.Rows[0]["UsrPermission"].ToString(), true), txtUsrLoginID.Text);
+            PermCtl.PopulatePermissions(dt.Rows[0]["UsrPermission"].ToString(), txtUsrLoginID.Text);
             
             ButtonAction(true, "11100");
         }
@@ -447,7 +447,7 @@ public partial class Pages_Users : BasePage
     {
         try
         {
-            e.Row.Cells[0].Visible = false;
+            //e.Row.Cells[5].Visible = false;
         }
         catch { }
     }
@@ -466,7 +466,7 @@ public partial class Pages_Users : BasePage
     #region Custom Validate Events
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    protected void ShowMsg_ServerValidate(Object source, ServerValidateEventArgs e) { } //e.IsValid = false;
+    protected void ShowMsg_ServerValidate(Object source, ServerValidateEventArgs e) { e.IsValid = false; } //e.IsValid = false;
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     protected void DateValidate_ServerValidate(Object source, ServerValidateEventArgs e)

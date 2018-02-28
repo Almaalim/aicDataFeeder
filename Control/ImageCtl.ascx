@@ -59,7 +59,7 @@
                         <asp:Image ID="imgPhoto" runat="server" ImageUrl="~/Images/icon/NoPersonalImage.gif" Height="110px" Width="120px"/>
                     </div>
                 </td>
-                <td valign="top" style="border-width:thin; border-style:outset">
+                <td valign="top" style="border-width:thin; border-style:outset" >
                     <table>
                         <tr>
                             <td>

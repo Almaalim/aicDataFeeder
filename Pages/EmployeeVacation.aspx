@@ -55,6 +55,10 @@
                                     <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                 </asp:BoundField>
+                                <asp:BoundField DataField="EvrID" HeaderText="EvrID " SortExpression="EvrID">
+                                    <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                </asp:BoundField>
                                 <asp:BoundField DataField="EmpNameAr" HeaderText="Employee Name (Ar)" SortExpression="EmpNameAr">
                                     <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />

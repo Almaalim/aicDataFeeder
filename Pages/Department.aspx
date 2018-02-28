@@ -29,7 +29,7 @@
                             <asp:TextBox ID="txtSearch" runat="server" Enabled="False"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="rvSearch" runat="server" CssClass="CustomValidator"
                                 ControlToValidate="txtSearch" EnableClientScript="False" ValidationGroup="vgSearch"
-                                Text="&lt;img src='Images/icon/Exclamation.gif' title='You must enter a value to search!' /&gt;">
+                                Text="&lt;img src='../Images/icon/Exclamation.gif' title='You must enter a value to search!' /&gt;">
                             </asp:RequiredFieldValidator>
                             <cc1:FilteredTextBoxExtender ID="eFilteredSearch" runat="server" Enabled="True" FilterType="Numbers" TargetControlID="txtSearch" />
                             <cc1:TextBoxWatermarkExtender ID="eWatermarkSearch" runat="server" Enabled="True" TargetControlID="txtSearch" WatermarkText="can't type" WatermarkCssClass="watermarked" />
@@ -132,7 +132,7 @@
                                         <div class="col3">
                                             <asp:TextBox ID="txtDepNameAr" runat="server" Enabled="False"></asp:TextBox>
                                             <asp:CustomValidator ID="cvDepNameAr" runat="server" ValidationGroup="vgSave" OnServerValidate="DepName_ServerValidate"
-                                                Text="&lt;img src='Images/icon/Exclamation.gif' title='Department Name (Ar) is required!' /&gt;" CssClass="CustomValidator"
+                                                Text="&lt;img src='../Images/icon/Exclamation.gif' title='Department Name (Ar) is required!' /&gt;" CssClass="CustomValidator"
                                                 EnableClientScript="False" ControlToValidate="cvtxt">
                                             </asp:CustomValidator>
                                         </div>
@@ -142,7 +142,7 @@
                                         <div class="col3">
                                             <asp:TextBox ID="txtDepNameEn" runat="server" Enabled="False"></asp:TextBox>
                                             <asp:CustomValidator ID="cvDepNameEn" runat="server" ValidationGroup="vgSave" OnServerValidate="DepName_ServerValidate" CssClass="CustomValidator"
-                                                Text="&lt;img src='Images/icon/Exclamation.gif' title='Department Name (En) is required!' /&gt;"
+                                                Text="&lt;img src='../Images/icon/Exclamation.gif' title='Department Name (En) is required!' /&gt;"
                                                 EnableClientScript="False" ControlToValidate="cvtxt">
                                             </asp:CustomValidator>
                                         </div>

@@ -57,6 +57,22 @@
                     </div>
                 </div>
 
+                <div class="row">
+                    <div class="col2">
+                        <asp:CheckBox ID="chkEmailCredential" runat="server" Text="Enable Credentials" />
+                    </div>
+                    <div class="col3">
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col2">
+                        <asp:CheckBox ID="chkEnableSSL" runat="server" Text="Enable SSL" />
+                    </div>
+                    <div class="col3">
+                    </div>
+
+                </div>
 
                 <div class="row">
                     <div class="col12">
@@ -68,7 +84,7 @@
 
                 <div class="row">
                     <div class="col12">
-                        <asp:LinkButton ID="btnSave" runat="server" Text="Save" CssClass="GenButton  glyphicon glyphicon-floppy-disk" OnClick="btnSave_Click" ></asp:LinkButton>
+                        <asp:LinkButton ID="btnSave" runat="server" Text="Save" CssClass="GenButton  glyphicon glyphicon-floppy-disk" OnClick="btnSave_Click"></asp:LinkButton>
                         <asp:TextBox ID="cvtxt" runat="server" Text="02120" Visible="False" Width="10px"></asp:TextBox>
                         <asp:CustomValidator ID="cvShowMsg" runat="server" Display="None" ValidationGroup="vgShowMsg"
                             OnServerValidate="ShowMsg_ServerValidate" EnableClientScript="False" ControlToValidate="cvtxt">

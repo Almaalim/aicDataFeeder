@@ -148,7 +148,7 @@ public partial class Pages_ReportMain : BasePage
         string RepID = e.CommandArgument.ToString();
         ViewState["RepID"] = Session["RepID"] = RepID;
 
-        /////////////////Change Style
+        /////////////////Change Style/////////////////////////
         foreach (DataListItem item in dltReport.Items)
         {
             System.Web.UI.WebControls.LinkButton lnkRef = (System.Web.UI.WebControls.LinkButton)item.FindControl("lnkBtnEn");
@@ -165,7 +165,7 @@ public partial class Pages_ReportMain : BasePage
         /////////////////
         string pnlshow = "";
         Clear();
-        StiWebViewerFx1.Report = null;
+        //StiWebViewerFx1.Report = null;
 
         //calDate.SetValidationEnabled(false);
         //calStartDate.SetValidationEnabled(false);
@@ -223,11 +223,11 @@ public partial class Pages_ReportMain : BasePage
 
         //if (lstReport.SelectedIndex > -1)
         //{
-            //string RepID = lstReport.SelectedValue;
-            //string reportTitel = lstReport.SelectedItem.ToString();
-            //lblSelectedreport.Text = General.Msg("Report Selected : " + reportTitel, "التقرير المحدد : " + reportTitel);
+        //string RepID = lstReport.SelectedValue;
+        //string reportTitel = lstReport.SelectedItem.ToString();
+        //lblSelectedreport.Text = General.Msg("Report Selected : " + reportTitel, "التقرير المحدد : " + reportTitel);
 
-            DataTable RepDT = DBCs.FetchData(" SELECT * FROM Report WHERE  RepID = '" + RepID + "'");
+        DataTable RepDT = DBCs.FetchData(" SELECT * FROM Report WHERE  RepID = '" + RepID + "'");
         if (!DBCs.IsNullOrEmpty(RepDT))
         {
             //RepDT.Rows[0]["RepID"].ToString()
@@ -243,8 +243,9 @@ public partial class Pages_ReportMain : BasePage
             pnlLocation.Visible = rvLocation.Enabled = CheckBitWise(pnlPermissions, 8);
             pnlMachine.Visible = rvMachine.Enabled = CheckBitWise(pnlPermissions, 16);
             //pnlEmpType.Visible = CheckBitWise(pnlPermissions, 32);
-
             FillPerm();
+
+            FillDLL();
 
             //btnViewreport.Enabled = true;
 
@@ -370,49 +371,133 @@ public partial class Pages_ReportMain : BasePage
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     protected void ShowReport()
     {
-        StiWebViewerFx1.Report = null;
+        try
+        {
+            Session["RepProCs"] = null;
+
+            FillParameter(ViewState["RepID"].ToString());
+
+            Session["RepProCs"] = ViewState["RepProCs"];
+        }
+        catch (Exception Ex) { }
+
+        Response.Redirect(@"~/Pages/ReportViewer.aspx");
+
+        //StiWebViewerFx1.Report = null;
+
+        //if (ViewState["RepID"].ToString() != null)
+        //{
+        //    string RepID = ViewState["RepID"].ToString();
+
+        //    string RepTemp = "";
+        //    DataTable RepDT = DBCs.FetchData(" SELECT * FROM Report WHERE RepID = '" + RepID + "'");
+        //    if (!DBCs.IsNullOrEmpty(RepDT))
+        //    {
+        //        RepTemp = RepDT.Rows[0]["RepTemp" + FormSession.Language].ToString();
+        //        string RepOrientation = RepDT.Rows[0]["RepOrientation"].ToString();
+        //        ViewState["RepOrientation"] = RepDT.Rows[0]["RepOrientation"].ToString();
+
+        //        StiReport StiRep = new StiReport();
+        //        StiRep.LoadFromString(RepTemp);
+        //        StiRep.Dictionary.Databases.Clear();
+        //        StiRep.Dictionary.Databases.Add(new Stimulsoft.Report.Dictionary.StiSqlDatabase("Connection", General.ConnString));
+        //        StiRep.GetSubReport += new StiGetSubReportEventHandler(rep_GetSubReport);
+        //        StiRep.Dictionary.Synchronize();
+        //        StiRep.Compile();
+
+        //        ///////////////// Fill Parameters to Report ///////////////////
+        //        System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
+
+        //        if (pnlDateFromTo.Visible)
+        //        {
+        //            StiRep["ParamDateFrom"] = DTCs.GetGregDateTime(calStartDate.getGDateDBFormat(), 'S', "F");
+        //            StiRep["ParamDateTo"] = DTCs.GetGregDateTime(calEndDate.getGDateDBFormat(), 'S', "T");
+        //        }
+
+        //        if (pnlEmployee.Visible) { StiRep["EmpID"] = ViewState["EmpID"].ToString(); }
+        //        if (pnlDepartment.Visible) { StiRep["DepID"] = ddlDepartment.SelectedValue; }
+        //        if (pnlLocation.Visible) { StiRep["MacID"] = ddlLocation.SelectedValue; }
+        //        if (pnlMachine.Visible) { StiRep["MacID"] = Convert.ToInt32(ddlMachine.SelectedValue); }
+
+        //        //StiRep["DateFormat"] = "";
+        //        //StiRep["DateType"] = "";
+
+        //        //StiRep.Render();
+        //        //StiWebViewerFx1.Report = StiRep;
+        //    }
+        //}
+    }
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    protected void FillParameter(string RepID)
+    {
+        ViewState["RepProCs"] = "";
 
         if (ViewState["RepID"].ToString() != null)
         {
-            string RepID = ViewState["RepID"].ToString();
-
-            string RepTemp = "";
-            DataTable RepDT = DBCs.FetchData(" SELECT * FROM Report WHERE RepID = '" + RepID + "'");
-            if (!DBCs.IsNullOrEmpty(RepDT))
-            {
-                RepTemp = RepDT.Rows[0]["RepTemp" + FormSession.Language].ToString();
-                string RepOrientation = RepDT.Rows[0]["RepOrientation"].ToString();
-                ViewState["RepOrientation"] = RepDT.Rows[0]["RepOrientation"].ToString();
-
-                StiReport StiRep = new StiReport();
-                StiRep.LoadFromString(RepTemp);
-                StiRep.Dictionary.Databases.Clear();
-                StiRep.Dictionary.Databases.Add(new Stimulsoft.Report.Dictionary.StiSqlDatabase("Connection", General.ConnString));
-                StiRep.GetSubReport += new StiGetSubReportEventHandler(rep_GetSubReport);
-                StiRep.Dictionary.Synchronize();
-                StiRep.Compile();
-
-                /////// Fill Parameters to Report
-                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
-
-                if (pnlDateFromTo.Visible)
-                {
-                    StiRep["ParamDateFrom"] = DTCs.GetGregDateTime(calStartDate.getGDateDBFormat(), 'S', "F");
-                    StiRep["ParamDateTo"] = DTCs.GetGregDateTime(calEndDate.getGDateDBFormat(), 'S', "T");
-                }
-
-                if (pnlEmployee.Visible) { StiRep["EmpID"] = ViewState["EmpID"].ToString(); }
-                if (pnlDepartment.Visible) { StiRep["DepID"] = ddlDepartment.SelectedValue; }
-                if (pnlLocation.Visible) { StiRep["MacID"] = ddlLocation.SelectedValue; }
-                if (pnlMachine.Visible) { StiRep["MacID"] = Convert.ToInt32(ddlMachine.SelectedValue); }
-
-                StiRep["DateFormat"] = "";
-                StiRep["DateType"] = "";
-
-                StiRep.Render();
-                StiWebViewerFx1.Report = StiRep;
-            }
+            RepID = ViewState["RepID"].ToString();
         }
+
+        ReportPro RepProCs = new ReportPro();
+        RepProCs.RepID = RepID;
+        RepProCs.RepUser = FormSession.LoginID;
+        RepProCs.DateType = FormSession.DateType;
+        RepProCs.RepLang = FormSession.Language;
+
+        string RepTemp = "";
+        DataTable RepDT = DBCs.FetchData(" SELECT * FROM Report WHERE RepID = '" + RepID + "'");
+        if (!DBCs.IsNullOrEmpty(RepDT))
+        {
+            RepTemp = RepDT.Rows[0]["RepTemp" + FormSession.Language].ToString();
+            RepProCs.RepOrientation = RepDT.Rows[0]["RepOrientation"].ToString();
+            //ViewState["RepOrientation"] = RepDT.Rows[0]["RepOrientation"].ToString();
+
+            ///////////////// Fill Parameters to Report ///////////////////
+
+            if (pnlDateFromTo.Visible)
+            {
+                RepProCs.DateFrom = calStartDate.getGDateDBFormat();
+                RepProCs.DateTo = calEndDate.getGDateDBFormat();  //DTCs.GetGregDateTime(calEndDate.getGDateDBFormat(), 'S', "T");
+            }
+
+            if (pnlEmployee.Visible) { RepProCs.EmpID = ViewState["EmpID"].ToString(); }
+            if (pnlDepartment.Visible) { RepProCs.DepID = ddlDepartment.SelectedValue; }
+            if (pnlLocation.Visible) { RepProCs.MacID = ddlLocation.SelectedValue; }
+            if (pnlMachine.Visible) { RepProCs.MacID = ddlMachine.SelectedValue; } //Convert.ToInt32(ddlMachine.SelectedValue);
+
+        }
+        ViewState["RepProCs"] = RepProCs;
+
+        //RepProCs = RepCs.GetReportInfo(RepProCs);
+
+        //if (pnlDate.Visible && !string.IsNullOrEmpty(calDate.getGDate())) { RepProCs.Date = calDate.getGDateDefFormat(); }
+        //if (pnlDateFromTo.Visible && !string.IsNullOrEmpty(calStartDate.getGDate())) { RepProCs.DateFrom = calStartDate.getGDateDefFormat(); }
+        //if (pnlDateFromTo.Visible && !string.IsNullOrEmpty(calEndDate.getGDate())) { RepProCs.DateTo = calEndDate.getGDateDefFormat(); }
+
+        //if (pnlMonth.Visible && ddlMonth.SelectedIndex >= 0)
+        //{
+        //    DateTime SDate = DateTime.Now;
+        //    DateTime EDate = DateTime.Now;
+        //    DTCs.FindMonthDates(ddlYear.SelectedValue, ddlMonth.SelectedValue, out SDate, out EDate);
+
+        //    RepProCs.DateFrom = SDate.ToString("dd/MM/yyyy");
+        //    RepProCs.DateTo = EDate.ToString("dd/MM/yyyy");
+
+        //    RepProCs.MonthDate = ddlMonth.SelectedValue;
+        //    RepProCs.YearDate = ddlYear.SelectedValue;
+        //}
+
+        //if (pnlWorkTime.Visible) { RepProCs.WktID = ViewState["WorkTimeParam"].ToString(); }
+        //if (pnlMachine.Visible) { RepProCs.MacID = ViewState["MachineParam"].ToString(); }
+        //if (pnlEmployee.Visible) { RepProCs.EmpID = Employee(); }
+        //if (pnlDepartmnets.Visible) { RepProCs.DepID = ViewState["DepartmentParam"].ToString(); }
+        //if (pnlCategory.Visible) { RepProCs.CatID = ViewState["CategoryParam"].ToString(); }
+        //if (pnlUsers.Visible) { RepProCs.UsrName = ddlUserName.SelectedValue.ToString(); RepProCs.Permissions = Permission(); }
+        //if (pnlVacType.Visible) { RepProCs.VtpID = ViewState["VacationParam"].ToString(); }
+        //if (pnlExcType.Visible) { RepProCs.ExcID = ViewState["ExcuseParam"].ToString(); }
+        //if (pnlDaysCount.Visible) { RepProCs.DaysCount = txtDaysCount.Text; }
+
+        //ViewState["RepProCs"] = RepProCs;
     }
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

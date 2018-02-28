@@ -113,6 +113,28 @@
                         <div class="row">
                             <div class="col2">
                                 <span class="RequiredField">*</span>
+                                <asp:Label ID="lblWorkNameAr" runat="server" Text="Work Name (Ar):" ></asp:Label>
+                            </div>
+                            <div class="col3">
+                                <asp:TextBox ID="txtWorkNameAr" runat="server"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="rfvWorkNameAr" runat="server" ValidationGroup="VgSave" ControlToValidate="txtWorkNameAr" CssClass="CustomValidator"
+                                    EnableClientScript="False" Text="&lt;img src='../Images/icon/Exclamation.gif' title='Work Name (Ar) is required' /&gt;">
+                                </asp:RequiredFieldValidator>
+                            </div>
+
+                            <div class="col2">
+                                <asp:Label ID="lblWorkNameEn" runat="server" Text="Work Name (En) :"></asp:Label>
+                            </div>
+                            <div class="col3">
+                                <asp:TextBox ID="txtWorkNameEn" runat="server"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="rfvWorkNameEn" runat="server" ValidationGroup="VgSave" ControlToValidate="txtWorkNameEn" CssClass="CustomValidator"
+                                    EnableClientScript="False" Text="&lt;img src='../Images/icon/Exclamation.gif' title='Work Name (En) is required' /&gt;">
+                                </asp:RequiredFieldValidator>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col2">
+                                <span class="RequiredField">*</span>
                                 <asp:Label ID="lblWrokDays" runat="server" Text="Work Days :"></asp:Label>
                             </div>
                             <div class="col10">
@@ -223,15 +245,12 @@
                                 <asp:CustomValidator ID="cvShift1Duration" runat="server" Text="&lt;img src='../Images/icon/Exclamation.gif' title='Shift 1 Duration is required!' /&gt;"
                                     ValidationGroup="VgSave" OnServerValidate="Shift1Validate_ServerValidate" EnableClientScript="False" CssClass="CustomValidator"
                                     ControlToValidate="cvtxt"></asp:CustomValidator>
-                            </div>
 
-                            <div class="col2">
                                 <asp:ImageButton ID="btnCalShift1Duration" runat="server" OnClick="btnCalShift1Duration_Click"
                                     ImageUrl="~/Images/icon/button_calculator.png" Enabled="False" ValidationGroup="CalShift"
                                     ToolTip="Calculater Shift 1 Duration" />
                             </div>
-                        </div>
-                        <div class="row">
+
                             <div class="col2">
                                 <asp:Label ID="lblshift1GraceIn" runat="server" Text="Grace time In :"></asp:Label>
                             </div>
@@ -240,6 +259,7 @@
                                 <Almaalimtt:TextTime ID="txtShift1GraceIn" runat="server" FormatTime="mm" />
                             </div>
                         </div>
+
                         <div class="row">
                             <div class="col12 h3">
                                 <asp:CheckBox ID="chkShift2Set" runat="server" Text="" AutoPostBack="True" OnCheckedChanged="chkShift2Setting_CheckedChanged" />

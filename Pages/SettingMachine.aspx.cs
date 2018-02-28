@@ -29,23 +29,33 @@ public partial class Pages_SettingMachine : BasePage
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     protected void Page_Load(object sender, EventArgs e)
     {
-       
-            //--Common Code----------------------------------------------------------------- //
-            FormSession.FillSession("Machines", pageDiv);
-            FormCtrl.RefreshGridEmpty(ref grdData, 20, "No Data Found", "لا توجد بيانات");
-            //--Common Code----------------------------------------------------------------- //
 
-            if (!IsPostBack)
-            {
-                btnAdd.Enabled = FormSession.PermUsr.Contains("I" + MainPer);
-                pnlSearch.Enabled = grdData.Enabled = FormSession.PermUsr.Contains("V" + MainPer);
-                FillGrid(MainQuery);
+        //--Common Code----------------------------------------------------------------- //
+        FormSession.FillSession("Machines", pageDiv);
+        FormCtrl.RefreshGridEmpty(ref grdData, 20, "No Data Found", "لا توجد بيانات");
+        //--Common Code----------------------------------------------------------------- //
 
-                DataItemStatus(false);
-            }
-       
-   
-      
+        if (!IsPostBack)
+        {
+            btnAdd.Enabled = FormSession.PermUsr.Contains("I" + MainPer);
+            pnlSearch.Enabled = grdData.Enabled = FormSession.PermUsr.Contains("V" + MainPer);
+            FillGrid(MainQuery);
+
+            DataItemStatus(false);
+            FillDDL();
+        }
+    }
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    protected void FillDDL()
+    {
+        dt = DBCs.FetchData("SELECT * FROM MachineType WHERE MtpStatus = '1' ");
+        if (!DBCs.IsNullOrEmpty(dt))
+        {
+            FormCtrl.PopulateDDL(ddlMtpID, dt, "MtpName" + FormSession.Language, "MtpID", General.Msg("-Select Machine type-", "-اختر نوع المكينة-"));
+            rfvddlMtpID.InitialValue = ddlMtpID.Items[0].Text;
+            ddlMtpID.SelectedIndex = 1;
+        }
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

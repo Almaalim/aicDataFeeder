@@ -23,11 +23,11 @@ public class EmailSettingPro
     private string _EmlSenderPassword;
     public string EmlSenderPassword { get { return _EmlSenderPassword; } set { _EmlSenderPassword = value; } }
 
-    private string _EmlSsl;
-    public string EmlSsl { get { return _EmlSsl; } set { _EmlSsl = value; } }
+    private bool _EmlSsl;
+    public bool EmlSsl { get { return _EmlSsl; } set { _EmlSsl = value; } }
 
-    private string _EmlCredential;
-    public string EmlCredential { get { return _EmlCredential; } set { _EmlCredential = value; } }
+    private bool _EmlCredential;
+    public bool EmlCredential { get { return _EmlCredential; } set { _EmlCredential = value; } }
     
     private string _EmlCountDaysForSend;
     public string EmlCountDaysForSend { get { return _EmlCountDaysForSend; } set { _EmlCountDaysForSend = value; } }

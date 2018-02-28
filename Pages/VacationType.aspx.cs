@@ -24,7 +24,7 @@ public partial class VacationType : BasePage
     DBFun DBCs = new DBFun();
 
     string MainPer = "Vac";
-    string MainQuery = "SELECT * FROM VacationType    WHERE VtpID = VtpID ";
+    string MainQuery = "SELECT * FROM VacationType WHERE VtpID = VtpID ";
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     protected void Page_Load(object sender, EventArgs e)
@@ -95,6 +95,7 @@ public partial class VacationType : BasePage
         txtVtpNameAr.Text = "";
         txtVtpNameEn.Text = "";
         txtVtpDesc.Text = "";
+        chkVtpStatus.Checked = false;
         ViewState["CommandName"] = "";
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -167,7 +168,7 @@ public partial class VacationType : BasePage
         SQ.Append(MainQuery);
         if (ddlSearch.SelectedIndex > 0)
         {
-            if (ddlSearch.SelectedValue == "VtpID") { SQ.Append(" AND VtpID = " + txtSearch.Text + ""); }
+            if (ddlSearch.SelectedValue == "VtpID")     { SQ.Append(" AND VtpID = " + txtSearch.Text + ""); }
             if (ddlSearch.SelectedValue == "VtpNameAr") { SQ.Append(" AND VtpNameAr LIKE '%" + txtSearch.Text + "%'"); }
             if (ddlSearch.SelectedValue == "VtpNameEn") { SQ.Append(" AND VtpNameEn LIKE '%" + txtSearch.Text + "%'"); }
         }
@@ -327,12 +328,12 @@ public partial class VacationType : BasePage
     {
         try
         {
-            dt = DBCs.FetchData(MainQuery + " AND DepID = " + pID + "");
+            dt = DBCs.FetchData(MainQuery + " AND VtpID = " + pID + "");
             if (DBCs.IsNullOrEmpty(dt)) { return; }
-            txtVtpID.Text = dt.Rows[0]["DepID"].ToString();
-            txtVtpNameAr.Text = dt.Rows[0]["DepNameAr"].ToString();
-            txtVtpNameEn.Text = dt.Rows[0]["DepNameEn"].ToString();
-            txtVtpDesc.Text = dt.Rows[0]["DepDesc"].ToString();
+            txtVtpID.Text = dt.Rows[0]["VtpID"].ToString();
+            txtVtpNameAr.Text = dt.Rows[0]["VtpNameAr"].ToString();
+            txtVtpNameEn.Text = dt.Rows[0]["VtpNameEn"].ToString();
+            txtVtpDesc.Text = dt.Rows[0]["VtpDescription"].ToString();
             if (dt.Rows[0]["VtpStatus"] != DBNull.Value) { chkVtpStatus.Checked = Convert.ToBoolean(dt.Rows[0]["VtpStatus"]); }
             ButtonAction(true, "11100");
         }

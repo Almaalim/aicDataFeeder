@@ -48,7 +48,7 @@
                 <div class="row">
                     <div class="col12">
                         <asp:GridView ID="grdData" runat="server" AutoGenerateColumns="False"
-                            CellPadding="4" DataKeyNames="EmpID"   Width="100%"
+                            CellPadding="4" DataKeyNames="EmpID" Width="100%"
                             AllowPaging="True" HorizontalAlign="Center"
                             OnDataBound="grdData_DataBound" OnSelectedIndexChanged="grdData_SelectedIndexChanged"
                             OnRowDataBound="grdData_RowDataBound" OnSorting="grdData_Sorting" OnRowCreated="grdData_RowCreated"
@@ -105,164 +105,151 @@
                     </div>
                 </div>
                 <div class="GreySetion">
-                     
-                            <asp:Panel ID="pnlTitel" runat="server" CssClass="collapsePanelTitelHeader">
-                                <asp:HyperLink ID="hlkTitel" runat="server" Text="Employee Information" Width="202px" CssClass="collapsePanelTitelLink"></asp:HyperLink>
-                                <asp:Label ID="lblTitel" runat="server" Text="Label" Width="873px" CssClass="collapsePanelTitelLabel"></asp:Label>
-                                <asp:Image ID="imgTitel" runat="server" CssClass="collapsePanelImage" />
-                            </asp:Panel>
 
-                            <div class="collapsePanelDataBorder">
-                                <cc1:CollapsiblePanelExtender ID="epnlData" runat="server" Enabled="True"
-                                    TargetControlID="pnlData"
-                                    CollapsedSize="0" Collapsed="False"
-                                    ExpandControlID="pnlTitel" CollapseControlID="pnlTitel" AutoCollapse="false" AutoExpand="false"
-                                    CollapsedText="(Show Details...)" ExpandedText="(Hide Details)" ExpandDirection="Vertical"
-                                    TextLabelID="lblTitel" ImageControlID="imgTitel" ExpandedImage="~/images/collapse.jpg" CollapsedImage="~/images/expand.jpg">
-                                </cc1:CollapsiblePanelExtender>
+                    <asp:Panel ID="pnlTitel" runat="server" CssClass="collapsePanelTitelHeader">
+                        <asp:HyperLink ID="hlkTitel" runat="server" Text="Employee Information" Width="202px" CssClass="collapsePanelTitelLink"></asp:HyperLink>
+                        <asp:Label ID="lblTitel" runat="server" Text="Label" Width="873px" CssClass="collapsePanelTitelLabel"></asp:Label>
+                        <asp:Image ID="imgTitel" runat="server" CssClass="collapsePanelImage" />
+                    </asp:Panel>
 
-                                <asp:Panel ID="pnlData" runat="server" CssClass="collapsePanelData">
-                                    <div class="row">
-                                        <div class="col8">
-                                            <asp:LinkButton ID="btnAdd" runat="server" Text="Add" CssClass="GenButton glyphicon glyphicon-plus-sign" OnClick="btnAdd_Click"></asp:LinkButton>
+                    <div class="collapsePanelDataBorder">
+                        <cc1:CollapsiblePanelExtender ID="epnlData" runat="server" Enabled="True"
+                            TargetControlID="pnlData"
+                            CollapsedSize="0" Collapsed="False"
+                            ExpandControlID="pnlTitel" CollapseControlID="pnlTitel" AutoCollapse="false" AutoExpand="false"
+                            CollapsedText="(Show Details...)" ExpandedText="(Hide Details)" ExpandDirection="Vertical"
+                            TextLabelID="lblTitel" ImageControlID="imgTitel" ExpandedImage="~/images/collapse.jpg" CollapsedImage="~/images/expand.jpg">
+                        </cc1:CollapsiblePanelExtender>
 
-                                            <asp:LinkButton ID="btnEdit" runat="server" Text="Edit" CssClass="GenButton  glyphicon glyphicon-edit" Enabled="false"
-                                                OnClick="btnEdit_Click"></asp:LinkButton>
+                        <asp:Panel ID="pnlData" runat="server" CssClass="collapsePanelData">
+                            <div class="row">
+                                <div class="col8">
+                                    <asp:LinkButton ID="btnAdd" runat="server" Text="Add" CssClass="GenButton glyphicon glyphicon-plus-sign" OnClick="btnAdd_Click"></asp:LinkButton>
 
-                                            <asp:LinkButton ID="btnDelete" runat="server" Text="Delete" CssClass="GenButton glyphicon glyphicon-remove" Enabled="false"
-                                                OnClick="btnDelete_Click"></asp:LinkButton>
+                                    <asp:LinkButton ID="btnEdit" runat="server" Text="Edit" CssClass="GenButton  glyphicon glyphicon-edit" Enabled="false"
+                                        OnClick="btnEdit_Click"></asp:LinkButton>
 
-                                            <asp:LinkButton ID="btnSave" runat="server" Text="Save" CssClass="GenButton glyphicon glyphicon-floppy-disk" Enabled="false"
-                                                OnClick="btnSave_Click" ValidationGroup="vgSave"></asp:LinkButton>
+                                    <asp:LinkButton ID="btnDelete" runat="server" Text="Delete" CssClass="GenButton glyphicon glyphicon-remove" Enabled="false"
+                                        OnClick="btnDelete_Click"></asp:LinkButton>
 
-                                            <asp:LinkButton ID="btnCancel" runat="server" Text="Cancel" CssClass="GenButton glyphicon glyphicon-remove-circle" Enabled="false"
-                                                OnClick="btnCancel_Click"></asp:LinkButton>
-                                            <asp:TextBox ID="cvtxt" runat="server" Text="02120" Visible="False" Width="10px"></asp:TextBox>
-                                            <asp:CustomValidator ID="cvShowMsg" runat="server" Display="None" CssClass="CustomValidator"
-                                                ValidationGroup="ShowMsg" OnServerValidate="ShowMsg_ServerValidate" EnableClientScript="False" ControlToValidate="cvtxt">
-                                            </asp:CustomValidator>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col12">
-                                            <asp:ValidationSummary ID="vsSave" runat="server" CssClass="MsgValidation" EnableClientScript="False" ValidationGroup="vgSave" />
-                                            <asp:ValidationSummary ID="vsShowMsg" runat="server" CssClass="MsgSuccess" EnableClientScript="False" ValidationGroup="vgShowMsg" />
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col2">
-                                            <span class="RequiredField">*</span>
-                                            <asp:Label ID="lblEmpID" runat="server" Text="Employee ID :"></asp:Label>
-                                        </div>
-                                        <div class="col3">
-                                            <asp:TextBox ID="txtEmpID" runat="server" Enabled="False"></asp:TextBox>
-                                            <asp:CustomValidator ID="cvEmpID" runat="server" ValidationGroup="vgSave" OnServerValidate="EmpID_ServerValidate"
-                                                Text="&lt;img src='../Images/icon/Exclamation.gif' title='Employee ID is required!' /&gt;" CssClass="CustomValidator"
-                                                EnableClientScript="False" ControlToValidate="cvtxt">
-                                            </asp:CustomValidator>
-                                        </div>
-                                        <div class="col2">
-                                            <span class="RequiredField">*</span>
-                                            <asp:Label ID="lblEmpStatus" runat="server" Text="Status :"></asp:Label>
-                                        </div>
-                                        <div class="col3">
-                                            <asp:DropDownList ID="ddlEmpStatus" runat="server">
-                                                <asp:ListItem Value="0" Text="InActive"></asp:ListItem>
-                                                <asp:ListItem Value="1" Text="Active" Selected="True"></asp:ListItem>
-                                            </asp:DropDownList>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col2">
-                                            <span class="RequiredField">*</span>
-                                            <asp:Label ID="lblEmpNameAr" runat="server" Text="Employee Name (Ar) :"></asp:Label>
-                                        </div>
-                                        <div class="col3">
-                                            <asp:TextBox ID="txtEmpNameAr" runat="server" Enabled="False"></asp:TextBox>
-                                            <asp:CustomValidator ID="cvEmpNameAr" runat="server" ValidationGroup="vgSave" OnServerValidate="EmpName_ServerValidate"
-                                                Text="&lt;img src='../Images/icon/Exclamation.gif' title='Employee Name (Ar) is required!' /&gt;" CssClass="CustomValidator"
-                                                EnableClientScript="False" ControlToValidate="cvtxt">
-                                            </asp:CustomValidator>
-                                        </div>
-                                        <div class="col2">
-                                            <asp:Label ID="lblEmpNameEn" runat="server" Text="Employee Name (En) :"></asp:Label>
-                                        </div>
-                                        <div class="col3">
-                                            <asp:TextBox ID="txtEmpNameEn" runat="server" Enabled="False"></asp:TextBox>
-                                            <asp:CustomValidator ID="cvEmpNameEn" runat="server" ValidationGroup="vgSave" OnServerValidate="EmpName_ServerValidate"
-                                                Text="&lt;img src='../Images/icon/Exclamation.gif' title='Employee Name (En) is required!' /&gt;" CssClass="CustomValidator"
-                                                EnableClientScript="False" ControlToValidate="cvtxt">
-                                            </asp:CustomValidator>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col2">
-                                            <span class="RequiredField">*</span>
-                                            <asp:Label ID="lblEmpPositionAr" runat="server" Text="Position Name (Ar) :"></asp:Label>
-                                        </div>
-                                        <div class="col3">
-                                            <asp:TextBox ID="txtEmpPositionAr" runat="server" Enabled="False"></asp:TextBox>
-                                            <asp:RequiredFieldValidator ID="rvEmpPositionAr" runat="server" ValidationGroup="vgSave" ControlToValidate="txtEmpPositionAr" CssClass="CustomValidator"
-                                                EnableClientScript="False" Text="&lt;img src='../Images/icon/Exclamation.gif' title='Position Name (Ar) is required' /&gt;">
-                                            </asp:RequiredFieldValidator>
-                                        </div>
-                                        <div class="col2">
-                                            <asp:Label ID="lblEmpPositionEn" runat="server" Text="Position Name (En) :"></asp:Label>
-                                        </div>
-                                        <div class="col3">
-                                            <asp:TextBox ID="txtEmpPositionEn" runat="server" Enabled="False"></asp:TextBox>
-                                            <asp:RequiredFieldValidator ID="rvEmpPositionEn" runat="server" ValidationGroup="vgSave" ControlToValidate="txtEmpPositionEn"
-                                                EnableClientScript="False" Text="&lt;img src='../Images/icon/Exclamation.gif' title='Position Name (En) is required' /&gt;" CssClass="CustomValidator"
-                                                Enabled="false">
-                                            </asp:RequiredFieldValidator>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col2">
-                                            <span class="RequiredField">*</span>
-                                            <asp:Label ID="lblDepID" runat="server" Text="Department :"></asp:Label>
-                                        </div>
-                                        <div class="col3">
-                                            <asp:DropDownList ID="ddlDepID" runat="server"></asp:DropDownList>
-                                            <asp:RequiredFieldValidator ID="rvDepID" runat="server" ValidationGroup="vgSave" ControlToValidate="ddlDepID" CssClass="CustomValidator"
-                                                EnableClientScript="False" Text="&lt;img src='../Images/icon/Exclamation.gif' title='Department is required' /&gt;">
-                                            </asp:RequiredFieldValidator>
-                                        </div>
-                                        <div class="col2">
-                                            <asp:Label ID="lblUsrEmilID" runat="server" Text="E-Mail :"></asp:Label>
-                                        </div>
-                                        <div class="col3">
-                                            <asp:TextBox ID="txtEmpEmail" runat="server" Enabled="False"></asp:TextBox>
-                                            <asp:RegularExpressionValidator ID="rvEmailIDCorrect" runat="server" ErrorMessage="Please enter email in correct format"
-                                                Text="&lt;img src='../Images/icon/Exclamation.gif' title='Please enter email in correct format!' /&gt;" CssClass="CustomValidator"
-                                                ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ControlToValidate="txtEmpEmail"
-                                                EnableClientScript="False" ValidationGroup="vgSave" meta:resourcekey="rvEmailIDCorrectResource1"></asp:RegularExpressionValidator>
+                                    <asp:LinkButton ID="btnSave" runat="server" Text="Save" CssClass="GenButton glyphicon glyphicon-floppy-disk" Enabled="false"
+                                        OnClick="btnSave_Click" ValidationGroup="vgSave"></asp:LinkButton>
 
-                                            <%--<td class="td1Allalign">
-                                                <span class="RequiredField">*</span>
-                                                <asp:Label ID="lblSdpID" runat="server" Text="SubDepartment :"></asp:Label>
-                                            </td>
-                                            <td class="td2Allalign">
-                                                <asp:DropDownList ID="ddlSdpID" runat="server" Width="173px"></asp:DropDownList>
-                                                <asp:RequiredFieldValidator ID="rvSdpID" runat="server" ValidationGroup="vgSave" ControlToValidate="ddlSdpID"
-                                                    EnableClientScript="False" Text="&lt;img src='Images/icon/Exclamation.gif' title='SubDepartment is required' /&gt;">
-                                                </asp:RequiredFieldValidator>
-                                            </td>--%>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col2">
-                                            <asp:Label ID="lblEmpMobile" runat="server" Text="Mobile :"></asp:Label>
-                                        </div>
-                                        <div class="col3">
-                                            <asp:TextBox ID="txtEmpMobile" runat="server"  Enabled="False" onkeypress="return NumberOnly(event);"></asp:TextBox>
-                                        </div>
-                                    </div>
-
-                                </asp:Panel>
+                                    <asp:LinkButton ID="btnCancel" runat="server" Text="Cancel" CssClass="GenButton glyphicon glyphicon-remove-circle" Enabled="false"
+                                        OnClick="btnCancel_Click"></asp:LinkButton>
+                                    <asp:TextBox ID="cvtxt" runat="server" Text="02120" Visible="False" Width="10px"></asp:TextBox>
+                                    <asp:CustomValidator ID="cvShowMsg" runat="server" Display="None" CssClass="CustomValidator"
+                                        ValidationGroup="ShowMsg" OnServerValidate="ShowMsg_ServerValidate" EnableClientScript="False" ControlToValidate="cvtxt">
+                                    </asp:CustomValidator>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col12">
+                                    <asp:ValidationSummary ID="vsSave" runat="server" CssClass="MsgValidation" EnableClientScript="False" ValidationGroup="vgSave" />
+                                    <asp:ValidationSummary ID="vsShowMsg" runat="server" CssClass="MsgSuccess" EnableClientScript="False" ValidationGroup="vgShowMsg" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col2">
+                                    <span class="RequiredField">*</span>
+                                    <asp:Label ID="lblEmpID" runat="server" Text="Employee ID :"></asp:Label>
+                                </div>
+                                <div class="col3">
+                                    <asp:TextBox ID="txtEmpID" runat="server" Enabled="False"></asp:TextBox>
+                                    <asp:CustomValidator ID="cvEmpID" runat="server" ValidationGroup="vgSave" OnServerValidate="EmpID_ServerValidate"
+                                        Text="&lt;img src='../Images/icon/Exclamation.gif' title='Employee ID is required!' /&gt;" CssClass="CustomValidator"
+                                        EnableClientScript="False" ControlToValidate="cvtxt">
+                                    </asp:CustomValidator>
+                                </div>
+                                <div class="col2">
+                                    <span class="RequiredField">*</span>
+                                    <asp:Label ID="lblEmpStatus" runat="server" Text="Status :"></asp:Label>
+                                </div>
+                                <div class="col3">
+                                    <asp:DropDownList ID="ddlEmpStatus" runat="server">
+                                        <asp:ListItem Value="0" Text="InActive"></asp:ListItem>
+                                        <asp:ListItem Value="1" Text="Active" Selected="True"></asp:ListItem>
+                                    </asp:DropDownList>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col2">
+                                    <span class="RequiredField">*</span>
+                                    <asp:Label ID="lblEmpNameAr" runat="server" Text="Employee Name (Ar) :"></asp:Label>
+                                </div>
+                                <div class="col3">
+                                    <asp:TextBox ID="txtEmpNameAr" runat="server" Enabled="False"></asp:TextBox>
+                                    <asp:CustomValidator ID="cvEmpNameAr" runat="server" ValidationGroup="vgSave" OnServerValidate="EmpName_ServerValidate"
+                                        Text="&lt;img src='../Images/icon/Exclamation.gif' title='Employee Name (Ar) is required!' /&gt;" CssClass="CustomValidator"
+                                        EnableClientScript="False" ControlToValidate="cvtxt">
+                                    </asp:CustomValidator>
+                                </div>
+                                <div class="col2">
+                                    <asp:Label ID="lblEmpNameEn" runat="server" Text="Employee Name (En) :"></asp:Label>
+                                </div>
+                                <div class="col3">
+                                    <asp:TextBox ID="txtEmpNameEn" runat="server" Enabled="False"></asp:TextBox>
+                                    <asp:CustomValidator ID="cvEmpNameEn" runat="server" ValidationGroup="vgSave" OnServerValidate="EmpName_ServerValidate"
+                                        Text="&lt;img src='../Images/icon/Exclamation.gif' title='Employee Name (En) is required!' /&gt;" CssClass="CustomValidator"
+                                        EnableClientScript="False" ControlToValidate="cvtxt">
+                                    </asp:CustomValidator>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col2">
+                                    <span class="RequiredField">*</span>
+                                    <asp:Label ID="lblEmpPositionAr" runat="server" Text="Position Name (Ar) :"></asp:Label>
+                                </div>
+                                <div class="col3">
+                                    <asp:TextBox ID="txtEmpPositionAr" runat="server" Enabled="False"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="rvEmpPositionAr" runat="server" ValidationGroup="vgSave" ControlToValidate="txtEmpPositionAr" CssClass="CustomValidator"
+                                        EnableClientScript="False" Text="&lt;img src='../Images/icon/Exclamation.gif' title='Position Name (Ar) is required' /&gt;">
+                                    </asp:RequiredFieldValidator>
+                                </div>
+                                <div class="col2">
+                                    <asp:Label ID="lblEmpPositionEn" runat="server" Text="Position Name (En) :"></asp:Label>
+                                </div>
+                                <div class="col3">
+                                    <asp:TextBox ID="txtEmpPositionEn" runat="server" Enabled="False"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="rvEmpPositionEn" runat="server" ValidationGroup="vgSave" ControlToValidate="txtEmpPositionEn"
+                                        EnableClientScript="False" Text="&lt;img src='../Images/icon/Exclamation.gif' title='Position Name (En) is required' /&gt;" CssClass="CustomValidator"
+                                        Enabled="false">
+                                    </asp:RequiredFieldValidator>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col2">
+                                    <span class="RequiredField">*</span>
+                                    <asp:Label ID="lblDepID" runat="server" Text="Department :"></asp:Label>
+                                </div>
+                                <div class="col3">
+                                    <asp:DropDownList ID="ddlDepID" runat="server"></asp:DropDownList>
+                                    <asp:RequiredFieldValidator ID="rvDepID" runat="server" ValidationGroup="vgSave" ControlToValidate="ddlDepID" CssClass="CustomValidator"
+                                        EnableClientScript="False" Text="&lt;img src='../Images/icon/Exclamation.gif' title='Department is required' /&gt;">
+                                    </asp:RequiredFieldValidator>
+                                </div>
+                                <div class="col2">
+                                    <asp:Label ID="lblUsrEmilID" runat="server" Text="E-Mail :"></asp:Label>
+                                </div>
+                                <div class="col3">
+                                    <asp:TextBox ID="txtEmpEmail" runat="server" Enabled="False"></asp:TextBox>
+                                    <asp:RegularExpressionValidator ID="rvEmailIDCorrect" runat="server" ErrorMessage="Please enter email in correct format"
+                                        Text="&lt;img src='../Images/icon/Exclamation.gif' title='Please enter email in correct format!' /&gt;" CssClass="CustomValidator"
+                                        ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ControlToValidate="txtEmpEmail"
+                                        EnableClientScript="False" ValidationGroup="vgSave" meta:resourcekey="rvEmailIDCorrectResource1"></asp:RegularExpressionValidator>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col2">
+                                    <asp:Label ID="lblEmpMobile" runat="server" Text="Mobile :"></asp:Label>
+                                </div>
+                                <div class="col3">
+                                    <asp:TextBox ID="txtEmpMobile" runat="server" Enabled="False" onkeypress="return NumberOnly(event);"></asp:TextBox>
+                                </div>
                             </div>
 
-                        
+                        </asp:Panel>
+                    </div>
                 </div>
             </div>
         </ContentTemplate>

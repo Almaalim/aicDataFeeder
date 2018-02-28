@@ -119,12 +119,18 @@
                     </div>
                     <div class="row">
                         <div class="col2">
+                            <span class="requiredStar">*</span>
                             <asp:Label ID="lblAppEmail" runat="server" Text="Email :"
                                 meta:resourcekey="lblAppEmailResource1"></asp:Label>
                         </div>
                         <div class="col3">
                             <asp:TextBox ID="txtAppEmail" runat="server"
-                                meta:resourcekey="txtAppEmailResource1"></asp:TextBox>
+                                meta:resourcekey="txtAppEmailResource1" ></asp:TextBox>
+                            <asp:RegularExpressionValidator ID="rvftxtAppEmail" runat="server" ControlToValidate="txtAppEmail"
+                            EnableClientScript="False" ErrorMessage="Enter Correct Email ID!" ValidationExpression="\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)"
+                            ValidationGroup="vgSave" 
+                                meta:resourcekey="rvftxtAppEmailResource2"><img src="../Images/icon/Exclamation.gif" alt="" title="Enter Correct Email ID!" />
+                        </asp:RegularExpressionValidator>
                         </div>
                         <div class="col2">
                             <span class="requiredStar">*</span>

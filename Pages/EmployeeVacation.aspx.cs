@@ -42,6 +42,19 @@ public partial class EmployeeVacation : BasePage
             FillGrid(MainQuery);
 
             DataItemStatus(false);
+            Fillddl();
+        }
+    }
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    protected void Fillddl()
+    {
+        dt = DBCs.FetchData("SELECT VtpID, VtpNameAr, VtpNameEn FROM VacationType WHERE VtpStatus = '1' ");
+        if (!DBCs.IsNullOrEmpty(dt))
+        {
+            FormCtrl.PopulateDDL(ddlVacType, dt, "VtpName" + FormSession.Language, "VtpID", General.Msg("-Select Vacation type-", "-اختر نوع الإجازة-"));
+            rfvddlVacType.InitialValue = ddlVacType.Items[0].Text;
+            ddlVacType.SelectedIndex = 0;
         }
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -105,16 +118,6 @@ public partial class EmployeeVacation : BasePage
         txtEvrDesc.Text = "";
         ViewState["CommandName"] = "";
     }
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    void ClearMainItem()
-    {
-        grdData.SelectedIndex = -1;
-        FillInfoLabel("", "");
-        DataItemStatus(false);
-        ButtonAction(true, "10000");
-        ClearData();
-    }
 
     #endregion
     /*##############################################################################################################################*/
@@ -156,7 +159,7 @@ public partial class EmployeeVacation : BasePage
             else if (ddlSearch.SelectedValue == "VtpNameEn") { SearchItemStatus(true, false, "Type Vacation Name (En) here"); }
 
             ClearData();
-           // FillGrid(MainQuery + "  EmpID = '@@@@'");
+            FillGrid(MainQuery + "  EmpID = '@@@@'");
         }
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -332,7 +335,7 @@ public partial class EmployeeVacation : BasePage
             }
             else
             {
-                PopulateData(gridrow.Cells[2].Text);
+                PopulateData(gridrow.Cells[1].Text);
             }
         }
         catch (Exception e1) { }

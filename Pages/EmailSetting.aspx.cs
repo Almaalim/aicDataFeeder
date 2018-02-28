@@ -55,6 +55,8 @@ public partial class Pages_EmailSetting : BasePage
                 txtEmailPort.Text       = dt.Rows[0]["EmailPort"].ToString();
                 txtSendEmailFrom.Text   = dt.Rows[0]["EmailSender"].ToString();
                 txtPassword.Text        = dt.Rows[0]["EmailPassword"].ToString();
+                if (dt.Rows[0]["EmailCredential"] != DBNull.Value) { chkEmailCredential.Checked = Convert.ToBoolean(dt.Rows[0]["EmailCredential"]); }
+                if (dt.Rows[0]["EmailSsl"] != DBNull.Value) { chkEnableSSL.Checked = Convert.ToBoolean(dt.Rows[0]["EmailSsl"]); }
             }
         }
         catch (Exception Ex) { }
@@ -73,6 +75,9 @@ public partial class Pages_EmailSetting : BasePage
             ProClass.EmlPortNo = txtEmailPort.Text;
             ProClass.EmlSenderEmail = txtSendEmailFrom.Text;
             ProClass.EmlSenderPassword = txtPassword.Text;
+            ProClass.EmlCredential = Convert.ToBoolean(chkEmailCredential.Checked);
+            ProClass.EmlSsl = Convert.ToBoolean(chkEnableSSL.Checked);
+
 
             ProClass.TransactionBy = FormSession.LoginID;
         }
@@ -86,6 +91,8 @@ public partial class Pages_EmailSetting : BasePage
         txtEmailPort.Text = "";
         txtSendEmailFrom.Text = "";
         txtPassword.Text = "";
+        chkEmailCredential.Checked = false;
+        chkEnableSSL.Checked = false;
 
         ViewState["CommandName"] = "";
     }

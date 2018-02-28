@@ -24,7 +24,7 @@ public partial class Pages_UserDepartment : BasePage
     DBFun DBCs = new DBFun();
 
     string MainPer = "Usr";
-    string MainQuery = "SELECT UsrLoginID,UsrFullName,UsrDepartments FROM AppUsers WHERE UsrStatus = 1 ";
+    string MainQuery = "SELECT UsrLoginID,UsrFullName,UsrDepartments FROM AppUsers WHERE UsrStatus = 1 "; //AND UsrLoginID != 'admin'
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     protected void Page_Load(object sender, EventArgs e)

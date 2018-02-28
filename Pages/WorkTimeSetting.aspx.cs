@@ -40,6 +40,8 @@ public partial class Pages_WorkTimeSetting : BasePage
         {
             btnAdd.Enabled = FormSession.PermUsr.Contains("U" + MainPer);
             pnlSearch.Enabled = grdData.Enabled = FormSession.PermUsr.Contains("U" + MainPer);
+
+            FillGrid(MainQuery);
             //PopulateData(MainQuery);
         }
     }
@@ -73,6 +75,9 @@ public partial class Pages_WorkTimeSetting : BasePage
             System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
 
             if (ViewState["CommandName"].ToString() == "Edit") { ProClass.WktID = txtWktID.Text; }
+
+            ProClass.WktNameAr = txtWorkNameAr.Text;
+            ProClass.WktNameEn = txtWorkNameEn.Text;
 
             ProClass.WktSat = chkEwrSat.Checked;
             ProClass.WktSun = chkEwrSun.Checked;
@@ -138,6 +143,8 @@ public partial class Pages_WorkTimeSetting : BasePage
         System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
 
         txtWktID.Text = "";
+        txtWorkNameAr.Text = "";
+        txtWorkNameEn.Text = "";
 
         chkEwrSat.Checked = false;
         chkEwrSun.Checked = false;
@@ -204,6 +211,7 @@ public partial class Pages_WorkTimeSetting : BasePage
         tpShift1Out.Enabled = pStatus;
         txtShift1GraceIn.Enabled = pStatus;
         txtShift1Duration.Enabled = pStatus;
+        btnCalShift1Duration.Enabled = pStatus;
 
         //shift 2 info
         txtShift2NameAr.Enabled = pShift2;
@@ -212,6 +220,7 @@ public partial class Pages_WorkTimeSetting : BasePage
         tpShift2Out.Enabled = pShift2;
         txtShift2GraceIn.Enabled = pShift2;
         txtShift2Duration.Enabled = pShift2;
+        btnCalShift2Duration.Enabled = pStatus;
 
         //shift 3 info
         txtShift3NameAr.Enabled = pShift3;
@@ -220,6 +229,7 @@ public partial class Pages_WorkTimeSetting : BasePage
         tpShift3Out.Enabled = pShift3;
         txtShift3GraceIn.Enabled = pShift3;
         txtShift3Duration.Enabled = pShift3;
+        btnCalShift3Duration.Enabled = pStatus;
     }
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -339,6 +349,10 @@ public partial class Pages_WorkTimeSetting : BasePage
             if (DBCs.IsNullOrEmpty(dt)) { return; }
 
             txtWktID.Text = dt.Rows[0]["WktID"].ToString();
+
+            txtWorkNameAr.Text = dt.Rows[0]["WktNameAr"].ToString();
+            txtWorkNameEn.Text = dt.Rows[0]["WktNameEn"].ToString();
+
             chkWktStatus.Checked = Convert.ToBoolean(dt.Rows[0]["WktIsActive"]);
 
             chkEwrSat.Checked = Convert.ToBoolean(dt.Rows[0]["WktSat"]);
@@ -750,7 +764,7 @@ public partial class Pages_WorkTimeSetting : BasePage
             }
             else if (source.Equals(cvShift1Time) || source.Equals(cvShift1Cal))
             {
-                if (tpShift2In.getIntTime() >= 0 && tpShift1Out.getIntTime() >= 0)
+                if (tpShift1In.getIntTime() >= 0 && tpShift1Out.getIntTime() >= 0)
                 {
                     int FromTime = tpShift1In.getIntTime();
                     int ToTime = tpShift1Out.getIntTime();
@@ -776,7 +790,6 @@ public partial class Pages_WorkTimeSetting : BasePage
         {
             if (chkShift2Set.Checked)
             {
-
                 if (source.Equals(cvShift2Duration))
                 {
                     if (txtShift2Duration.getTimeInSecond() <= 0) { e.IsValid = false; } else { e.IsValid = true; }

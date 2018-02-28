@@ -36,13 +36,13 @@ public class AppUsersSql : DataLayerBase
             
             if (!string.IsNullOrEmpty(pro.UsrStartDate))
             { 
-                sqlCommand.Parameters.Add(new SqlParameter("@UsrStartDate", DtDB, 14, IN, false, 0, 0, "", DRV, DTCs.SaveDB(pro.UsrStartDateType, pro.UsrStartDate)));
+                sqlCommand.Parameters.Add(new SqlParameter("@UsrStartDate", DtDB, 14, IN, false, 0, 0, "", DRV, pro.UsrStartDate));
                 //sqlCommand.Parameters.Add(new SqlParameter("@UsrStartDateType", ChrDB, 1, IN, false, 0, 0, "", DRV, pro.UsrStartDateType));
             }
 
             if (!string.IsNullOrEmpty(pro.UsrExpiryDate))
             {
-                sqlCommand.Parameters.Add(new SqlParameter("@UsrExpireDate", DtDB, 14, IN, false, 0, 0, "", DRV, DTCs.SaveDB(pro.UsrExpiryDateType, pro.UsrExpiryDate)));
+                sqlCommand.Parameters.Add(new SqlParameter("@UsrExpireDate", DtDB, 14, IN, false, 0, 0, "", DRV, pro.UsrExpiryDate));
                 //sqlCommand.Parameters.Add(new SqlParameter("@UsrExpiryDateType", ChrDB, 1, IN, false, 0, 0, "", DRV, pro.UsrExpiryDateType));
             }
             sqlCommand.Parameters.Add(new SqlParameter("@UsrStatus", BitDB, 1, IN, false, 0, 0, "", DRV, pro.UsrStatus));
@@ -117,15 +117,15 @@ public class AppUsersSql : DataLayerBase
     }
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public bool Delete(AppUsersPro pro)
+    public bool Delete(string UsrLoginID, string TransactionBy)
     {
         SqlCommand sqlCommand = new SqlCommand("dbo.[AppUsers_Delete]", MainConnection);
         sqlCommand.CommandType = CommandType.StoredProcedure;
 
         try
         {
-            sqlCommand.Parameters.Add(new SqlParameter("@UsrLoginID", VchDB, 50, IN, false, 0, 0, "", DRV, pro.UsrLoginID));
-            sqlCommand.Parameters.Add(new SqlParameter("@TransactionBy" , VchDB, 50 , IN, false, 0, 0, "", DRV, pro.TransactionBy));
+            sqlCommand.Parameters.Add(new SqlParameter("@UsrLoginID", VchDB, 50, IN, false, 0, 0, "", DRV, UsrLoginID));
+            sqlCommand.Parameters.Add(new SqlParameter("@TransactionBy" , VchDB, 50 , IN, false, 0, 0, "", DRV, TransactionBy));
             MainConnection.Open();
             sqlCommand.ExecuteNonQuery();
             return true;

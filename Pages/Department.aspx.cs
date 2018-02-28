@@ -43,9 +43,22 @@ public partial class Department : BasePage
             pnlSearch.Enabled = grdMainData.Enabled = FormSession.PermUsr.Contains("V" + MainPer);
             FillMainGrid(MainQuery);
             //FillSubGrid(SubQuery + " AND SdpID = -1");
-            
+            Fillddl();
+
             DataMainItemStatus(false);
             //DataSubItemStatus(false);
+        }
+    }
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    protected void Fillddl()
+    {
+        dt = DBCs.FetchData("SELECT * FROM Department");
+        if (!DBCs.IsNullOrEmpty(dt))
+        {
+            FormCtrl.PopulateDDL(ddlParentID, dt, "DepName" + FormSession.Language, "DepID", General.Msg("-Select Parent Department-", "-اختر القسم الأب-"));  //+ General.Lang()
+            //rvDepID.InitialValue = ddlDepID.Items[0].Text;
+            ddlParentID.SelectedIndex = 1;
         }
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -100,6 +113,8 @@ public partial class Department : BasePage
         txtDepNameAr.Text = "";
         txtDepNameEn.Text = "";
         txtDepDesc.Text   = "";
+        chkDepStatus.Checked = false;
+        ddlParentID.SelectedIndex = -1;
       
         //ClearSubData();
         ViewState["CommandName"]   = "";
@@ -535,7 +550,7 @@ public partial class Department : BasePage
             txtDepNameAr.Text = dt.Rows[0]["DepNameAr"].ToString();
             txtDepNameEn.Text = dt.Rows[0]["DepNameEn"].ToString();
             ddlParentID.SelectedIndex = ddlParentID.Items.IndexOf(ddlParentID.Items.FindByValue(dt.Rows[0]["DepParentID"].ToString()));
-            txtDepDesc.Text   = dt.Rows[0]["DepDesc"].ToString();
+            txtDepDesc.Text   = dt.Rows[0]["DepDescription"].ToString();
             if (dt.Rows[0]["DepStatus"] != DBNull.Value) { chkDepStatus.Checked = Convert.ToBoolean(dt.Rows[0]["DepStatus"]); }
             ButtonMainAction(true,"11100");
 

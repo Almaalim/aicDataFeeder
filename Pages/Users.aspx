@@ -30,7 +30,7 @@
                         <div class="col2">
                             <asp:TextBox ID="txtSearch" runat="server" Enabled="False"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="rvSearch" runat="server" ControlToValidate="txtSearch" CssClass="CustomValidator"
-                                EnableClientScript="False" ValidationGroup="vgSearch" Text="&lt;img src='Images/icon/Exclamation.gif' title='You must enter a value to search!' /&gt;">
+                                EnableClientScript="False" ValidationGroup="vgSearch" Text="&lt;img src='../Images/icon/Exclamation.gif' title='You must enter a value to search!' /&gt;">
                             </asp:RequiredFieldValidator>
 
                             <cc1:FilteredTextBoxExtender ID="eFilteredSearch" runat="server" Enabled="True" FilterType="Numbers"
@@ -55,7 +55,7 @@
                             OnSorting="grdData_Sorting" OnRowCreated="grdData_RowCreated" OnPageIndexChanging="grdData_PageIndexChanging"
                             ShowFooter="True">
                             <Columns>
-                                <asp:CommandField ButtonType="Button" SelectText="User Control" ShowSelectButton="True" />
+                                <%--<asp:CommandField ButtonType="Button" SelectText="User Control" ShowSelectButton="True" />--%>
                                 <asp:BoundField DataField="UsrLoginID" HeaderText="Login ID" SortExpression="UsrLoginID">
                                     <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
@@ -79,6 +79,7 @@
                                     <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                 </asp:BoundField>
+                                <asp:CommandField ButtonType="Button" SelectText="select" ShowSelectButton="True" />
                             </Columns>
 
                         </asp:GridView>
@@ -140,7 +141,7 @@
                                         <div class="col3">
                                             <asp:TextBox ID="txtUsrLoginID" runat="server" Enabled="False"></asp:TextBox>
                                             <asp:CustomValidator ID="cvUsrLoginID" runat="server" ValidationGroup="vgSave" OnServerValidate="UsrLoginID_ServerValidate" CssClass="CustomValidator"
-                                                Text="&lt;img src='Images/icon/Exclamation.gif' title='Login ID is required!' /&gt;"
+                                                Text="&lt;img src='../Images/icon/Exclamation.gif' title='Login ID is required!' /&gt;"
                                                 EnableClientScript="False" ControlToValidate="cvtxt">
                                             </asp:CustomValidator>
                                         </div>
@@ -152,7 +153,7 @@
                                             <asp:TextBox ID="txtUsrPassword" runat="server" TextMode="Password" MaxLength="50"
                                                 Enabled="False"></asp:TextBox>
                                             <asp:RequiredFieldValidator ID="rvUsrPassword" runat="server" ControlToValidate="txtUsrPassword" CssClass="CustomValidator"
-                                                EnableClientScript="False" ValidationGroup="vgSave" Text="&lt;img src='Images/icon/Exclamation.gif' title='Password is required!' /&gt;">
+                                                EnableClientScript="False" ValidationGroup="vgSave" Text="&lt;img src='../Images/icon/Exclamation.gif' title='Password is required!' /&gt;">
                                             </asp:RequiredFieldValidator>
                                         </div>
                                     </div>

@@ -17,7 +17,7 @@
             <%--<asp:PostBackTrigger ControlID="lstReport" />--%>
         </Triggers>
         <ContentTemplate>
-            <div id="pageDiv" runat="server" class="PageDir">
+            <div id="pageDiv" runat="server">
                 <table border="0" cellpadding="0" cellspacing="4" width="100%">
                     <tr>
                         <td>
@@ -65,15 +65,6 @@
                                                 </h3>
                                             </ContentTemplate>
                                         </asp:UpdatePanel>
-                                    </td>
-                                    <td width="50%">
-                                        <asp:Button ID="btnEditReport" runat="server" Text="Edit Report" CssClass="buttonBG"
-                                            OnClick="btnEditReport_Click" Enabled="False" Width="100px" />
-                                        <asp:Button ID="btnSetAsDefault" runat="server" Text="Set As Default" CssClass="buttonBG"
-                                            Width="100px" OnClick="btnSetAsDefault_Click" Enabled="False" />
-                                        <%--<asp:Button ID="btnExport" runat="server" Text="Export" CssClass="buttonBG" OnClick="btnExport_Click"
-                                            Enabled="False" Width="100px" Visible="False"  />--%>
-                                        <asp:TextBox ID="cvValid" runat="server" Text="02120" Visible="False" Width="10px"></asp:TextBox>
                                     </td>
                                 </tr>
                             </table>
@@ -170,7 +161,7 @@
                                                         <table border="0" cellpadding="0" cellspacing="0">
                                                             <tr>
                                                                 <td>
-                                                                    <uc:Calendar2 ID="calStartDate" runat="server" CalendarType="System" />
+                                                                    <uc:Calendar2 ID="calStartDate" runat="server" CalendarType="System"  ValidationGroup="vgView" />
                                                                 </td>
                                                                 <td valign="middle">
                                                                     <asp:CustomValidator ID="cvStartDate" runat="server" Text="&lt;img src='../Images/icon/Exclamation.gif' title='Start Date is required!' /&gt;"
@@ -192,7 +183,7 @@
                                                         <table border="0" cellpadding="0" cellspacing="0">
                                                             <tr>
                                                                 <td>
-                                                                    <uc:Calendar2 ID="calEndDate" runat="server" CalendarType="System" />
+                                                                    <uc:Calendar2 ID="calEndDate" runat="server" CalendarType="System"  ValidationGroup="vgView" />
                                                                 </td>
                                                                 <td valign="middle">
                                                                     <asp:CustomValidator ID="cvEndDate" runat="server" Text="&lt;img src='../Images/icon/Exclamation.gif' title='End Date is required!' /&gt;"
@@ -215,10 +206,22 @@
                                 </tr>
                                 <tr>
                                     <td class="borderButton">
-                                        <asp:Button ID="btnViewreport" runat="server" CssClass="buttonBG" Text="View Report"
-                                            Enabled="False" OnClick="btnViewreport_Click" Width="100px" ValidationGroup="vgView" />
-                                        <asp:Button ID="btnCancel" runat="server" CssClass="buttonBG" Text="Cancel" Visible="False"
-                                            Width="100px" />
+                                        <%--<asp:Button ID="btnViewreport" runat="server" CssClass="buttonBG" Text="View Report"
+                                            Enabled="False" OnClick="btnViewreport_Click" Width="100px" ValidationGroup="vgView" />--%>
+                                        <asp:LinkButton ID="btnViewreport" runat="server" Text="View Report" CssClass="GenButton glyphicon glyphicon-plus-sign" OnClick="btnViewreport_Click" ValidationGroup="vgView"></asp:LinkButton>
+                                        <%--<asp:Button ID="btnEditReport" runat="server" Text="Edit Report" CssClass="buttonBG"
+                                            OnClick="btnEditReport_Click" Enabled="False" Width="100px" />--%>
+                                        <asp:LinkButton ID="btnEditReport" runat="server" Text="Edit Report" CssClass="GenButton glyphicon glyphicon-plus-sign" OnClick="btnEditReport_Click" Enabled="False"></asp:LinkButton>
+                                        <%--<asp:Button ID="btnSetAsDefault" runat="server" Text="Set As Default" CssClass="buttonBG"
+                                            Width="100px" OnClick="btnSetAsDefault_Click" Enabled="False" />--%>
+                                        <asp:LinkButton ID="btnSetAsDefault" runat="server" Text="Set As Default" CssClass="GenButton glyphicon glyphicon-plus-sign" OnClick="btnSetAsDefault_Click" Enabled="False"></asp:LinkButton>
+                                        <%--<asp:Button ID="btnExport" runat="server" Text="Export" CssClass="buttonBG" OnClick="btnExport_Click"
+                                            Enabled="False" Width="100px" Visible="False"  />--%>
+                                        <%--<asp:Button ID="btnCancel" runat="server" CssClass="buttonBG" Text="Cancel" Visible="False"
+                                            Width="100px" />--%>
+                                        <asp:LinkButton ID="btnCancel" runat="server" Text="Cancel" CssClass="GenButton glyphicon glyphicon-plus-sign" Visible="False"></asp:LinkButton>
+                                        <asp:TextBox ID="cvValid" runat="server" Text="02120" Visible="False" Width="10px"></asp:TextBox>
+                                        
                                     </td>
                                 </tr>
                             </table>
@@ -235,12 +238,12 @@
                     Height="30px" Width="250px" />
             </td>
         </tr>
-        <tr>
+        <%--<tr>
             <td>
                 <cc1:StiWebViewerFx ID="StiWebViewerFx1" runat="server" Width="912px" Height="600px"
                     Background="White" />
             </td>
-        </tr>
+        </tr>--%>
     </table>
 </asp:Content>
 
