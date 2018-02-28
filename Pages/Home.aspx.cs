@@ -36,7 +36,7 @@ public partial class Home : BasePage
 
                 /*** Charts *****************************************/
                 string DepList = "";
-                if (Session["DepartmentList"] != null) { DepList = Session["DepartmentList"].ToString(); } else { DepList = "0"; }
+                if (Session["DepartmentList"] != null) { DepList = CryptorEngine.Decrypt(Session["DepartmentList"].ToString(), true); } else { DepList = "0"; }
 
                 FillDepartmentList(DepList);
                 FillEmployeeList("0", DepList);
