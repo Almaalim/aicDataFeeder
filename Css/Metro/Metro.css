@@ -513,13 +513,21 @@ ul.level2 > li {
     }
 
 .reportsicon {
-        width: calc(25% - 13px) !important;
+        width: calc(25% - 14px) !important;
     height: 105px !important;
     font-size: 10px !important;
     text-align: left !important;
     text-shadow: 1px 1px 0px rgba(0, 0, 10, 0.5);
 }
-
+#lnkLanguage
+{
+    font-size:0px;
+}
+#lnkLanguage:after
+{
+    font-size:12px;
+    content:"عربى";
+}
 
 .UtilityLinks a {
     color: #333333 !important;
@@ -5067,7 +5075,10 @@ a.level2.dynamic.JobCategory:before {
             margin: 0 3px;
             font-size: 18px;
         }
-
+.UtilityLinks a:after
+    {
+         font-size: 0 !important;
+    }
     .UtilityEN, .UtilityAR {
         padding: 6px;
     }
