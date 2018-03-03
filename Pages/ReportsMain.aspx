@@ -174,6 +174,8 @@
                         <div class="col8">
                                         <asp:LinkButton ID="btnViewreport" runat="server" CssClass="GenButton  glyphicon glyphicon-search" Text="View Report"
                                             Enabled="False" OnClick="btnViewreport_Click"   ValidationGroup="vgView" ></asp:LinkButton>
+                           <a class="GenButton  glyphicon glyphicon-search" href="#popup1">Pop up</a>
+                            <%--This is link which opens popup and href should be same as popup id as mentioned above--%>
                                         <asp:LinkButton ID="btnCancel" runat="server" CssClass="GenButton glyphicon glyphicon-remove-circle" Text="Cancel" Visible="False"></asp:LinkButton>
                                     </div>
                                          </div>
@@ -181,17 +183,20 @@
         </ContentTemplate>
     </asp:UpdatePanel>
         <div class="row">
-                        <div class="col12">
+                        <div class="col12" >
                 <cc2:StiWebDesigner ID="StiWebDesigner1" runat="server" OnSaveReport="StiWebDesigner1_SaveReport"
                     Height="30px" Width="250px"  />
             </div>
             </div>
+    <div id="popup1" class="overlay"> <%--The popup Div--%>
+        <a class="close" href="#">&times;</a> 
         <div class="row">
                         <div class="col12">
                 <cc1:StiWebViewerFx ID="StiWebViewerFx1" runat="server" Width="100%" Height="600px"
                     Background="White" />
            </div>
             </div>
+        </div>
     <script>
 
         $('#menuTd1').bind("DOMSubtreeModified", function () {
