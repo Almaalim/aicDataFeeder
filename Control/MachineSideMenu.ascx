@@ -8,7 +8,7 @@
         <span>
             <center>
                 <asp:Literal ID="litMachine" runat="server" Text="<%$ Resources:Menu, btnMachines %>"
-                    meta:resourcekey="litMachinesResource1"></asp:Literal>
+                    ></asp:Literal>
             </center>
         </span>
         <table width="100%" bgcolor="#c0c0c0" style="border-left-width: 1px; border-right-width: 1px;"
@@ -19,7 +19,7 @@
                 </td>
                 <td align="center" width="85%">
                     <asp:LinkButton ID="btnMachines" runat="server" Enabled="False" OnClick="btnSideMenu_Click" PostBackUrl="~/Pages/SettingMachine.aspx"
-                        Text="<%$ Resources:Menu, btnMachines %>" meta:resourcekey="btnMachinesResource1"></asp:LinkButton>
+                        Text="<%$ Resources:Menu, btnMachines %>" ></asp:LinkButton>
                 </td>
             </tr>
             <tr>
@@ -28,7 +28,7 @@
                 </td>
                 <td align="center" width="85%">
                     <asp:LinkButton ID="btnMachineStatus" runat="server" Enabled="False" OnClick="btnSideMenu_Click" PostBackUrl="~/Pages/MachinePing.aspx"
-                        Text="<%$ Resources:Menu, btnMachineStatus %>" meta:resourcekey="btnMachineStatusResource1"></asp:LinkButton>
+                        Text="<%$ Resources:Menu, btnMachineStatus %>" ></asp:LinkButton>
                 </td>
             </tr>
         </table>

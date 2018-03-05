@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MainMasterPage.master" AutoEventWireup="true" Theme="MetroStyle" CodeFile="UserDepartment.aspx.cs" Inherits="Pages_UserDepartment" EnableEventValidation="false" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MainMasterPage.master" AutoEventWireup="true" Theme="MetroStyle" CodeFile="UserDepartment.aspx.cs" Inherits="Pages_UserDepartment" EnableEventValidation="false" culture="auto" meta:resourcekey="PageResource1" uiculture="auto" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
@@ -274,33 +274,30 @@
     <asp:UpdatePanel ID="upnlMain" runat="server">
         <ContentTemplate>
             <div id="pageDiv" runat="server">
-                <asp:Panel ID="pnlSearch" runat="server" class="SearchPanel">
+                <asp:Panel ID="pnlSearch" runat="server" class="SearchPanel" meta:resourcekey="pnlSearchResource1">
                     <div class="row">
                         <div class="col1">
-                            <asp:Label ID="lblSearch" runat="server" Text="Search By :"></asp:Label>
+                            <asp:Label ID="lblSearch" runat="server" Text="Search By :" meta:resourcekey="lblSearchResource1"></asp:Label>
                         </div>
 
                         <div class="col2">
-                            <asp:DropDownList ID="ddlSearch" runat="server" OnSelectedIndexChanged="ddlSearch_SelectedIndexChanged" AutoPostBack="True">
-                                <asp:ListItem Value="[none]" Text="[none]" Selected="True"></asp:ListItem>
-                                <asp:ListItem Value="UsrLoginID" Text="Username"></asp:ListItem>
-                                <%--<asp:ListItem Value="DepNameAr" Text="Department Name (Ar)"></asp:ListItem>
-                                <asp:ListItem Value="DepNameEn" Text="Department Name (En)"></asp:ListItem>--%>
+                            <asp:DropDownList ID="ddlSearch" runat="server" OnSelectedIndexChanged="ddlSearch_SelectedIndexChanged" AutoPostBack="True" meta:resourcekey="ddlSearchResource1">
+                                <asp:ListItem Value="[none]" Text="[none]" Selected="True" meta:resourcekey="ListItemResource1"></asp:ListItem>
+                                <asp:ListItem Value="UsrLoginID" Text="Username" meta:resourcekey="ListItemResource2"></asp:ListItem>
                             </asp:DropDownList>
                         </div>
 
                         <div class="col2">
-                            <asp:TextBox ID="txtSearch" runat="server" Enabled="False"></asp:TextBox>
+                            <asp:TextBox ID="txtSearch" runat="server" Enabled="False" meta:resourcekey="txtSearchResource1"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="rvSearch" runat="server" CssClass="CustomValidator"
                                 ControlToValidate="txtSearch" EnableClientScript="False" ValidationGroup="vgSearch"
-                                Text="&lt;img src='../Images/icon/Exclamation.gif' title='You must enter a value to search!' /&gt;">
-                            </asp:RequiredFieldValidator>
+                                Text="&lt;img src='../Images/icon/Exclamation.gif' title='You must enter a value to search!' /&gt;" meta:resourcekey="rvSearchResource1"></asp:RequiredFieldValidator>
                             <cc1:FilteredTextBoxExtender ID="eFilteredSearch" runat="server" Enabled="True" FilterType="Numbers" TargetControlID="txtSearch" />
                             <cc1:TextBoxWatermarkExtender ID="eWatermarkSearch" runat="server" Enabled="True" TargetControlID="txtSearch" WatermarkText="can't type" WatermarkCssClass="watermarked" />
                         </div>
 
                         <div class="col3">
-                            <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass="btnSearch" OnClick="btnSearch_Click" ValidationGroup="vgSearch" Enabled="False" />
+                            <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass="btnSearch" OnClick="btnSearch_Click" ValidationGroup="vgSearch" Enabled="False" meta:resourcekey="btnSearchResource1" />
                         </div>
                     </div>
                 </asp:Panel>
@@ -314,15 +311,14 @@
                             OnDataBound="grdMainData_DataBound" OnSelectedIndexChanged="grdMainData_SelectedIndexChanged"
                             OnRowDataBound="grdMainData_RowDataBound"
                             OnSorting="grdMainData_Sorting" OnRowCreated="grdMainData_RowCreated"
-                            OnPageIndexChanging="grdMainData_PageIndexChanging" ShowFooter="True"
-                            EnableModelValidation="True">
+                            OnPageIndexChanging="grdMainData_PageIndexChanging" ShowFooter="True" meta:resourcekey="grdMainDataResource1">
                             <Columns>
-                                <asp:BoundField DataField="UsrLoginID" HeaderText="Username" SortExpression="UsrLoginID">
+                                <asp:BoundField DataField="UsrLoginID" HeaderText="Username" SortExpression="UsrLoginID" meta:resourcekey="BoundFieldResource1">
                                     <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                 </asp:BoundField>
 
-                                <asp:BoundField DataField="UsrFullName" HeaderText="Full Name" SortExpression="UsrFullName">
+                                <asp:BoundField DataField="UsrFullName" HeaderText="Full Name" SortExpression="UsrFullName" meta:resourcekey="BoundFieldResource2">
                                     <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                 </asp:BoundField>
@@ -332,61 +328,57 @@
                 </div>
 
                 <div class="GreySetion">
-                    <asp:Panel ID="pnlMainTitel" runat="server" CssClass="collapsePanelTitelHeader">
-                        <asp:HyperLink ID="hlkMainTitel" runat="server" Text="Department Information" Width="202px" CssClass="collapsePanelTitelLink"></asp:HyperLink>
-                        <asp:Label ID="lblMainTitel" runat="server" Text="Label" Width="873px" CssClass="collapsePanelTitelLabel" />
-                        <asp:Image ID="imgMainTitel" runat="server" CssClass="collapsePanelImage" />
+                    <asp:Panel ID="pnlMainTitel" runat="server" CssClass="collapsePanelTitelHeader" meta:resourcekey="pnlMainTitelResource1">
+                        <asp:HyperLink ID="hlkMainTitel" runat="server" Text="Department Information" Width="202px" CssClass="collapsePanelTitelLink" meta:resourcekey="hlkMainTitelResource1"></asp:HyperLink>
+                        <asp:Label ID="lblMainTitel" runat="server" Text="Label" Width="873px" CssClass="collapsePanelTitelLabel" meta:resourcekey="lblMainTitelResource1" />
+                        <asp:Image ID="imgMainTitel" runat="server" CssClass="collapsePanelImage" meta:resourcekey="imgMainTitelResource1" />
                     </asp:Panel>
 
                     <div class="collapsePanelDataBorder">
                         <cc1:CollapsiblePanelExtender ID="epnlMainData" runat="server" Enabled="True"
                             TargetControlID="pnlMainData"
-                            CollapsedSize="0" Collapsed="true"
-                            ExpandControlID="pnlMainTitel" CollapseControlID="pnlMainTitel" AutoCollapse="false" AutoExpand="false"
-                            CollapsedText="(Show Details...)" ExpandedText="(Hide Details)" ExpandDirection="Vertical"
+                            CollapsedSize="0" Collapsed="True"
+                            ExpandControlID="pnlMainTitel" CollapseControlID="pnlMainTitel"
+                            CollapsedText="(Show Details...)" ExpandedText="(Hide Details)"
                             TextLabelID="lblMainTitel" ImageControlID="imgMainTitel" ExpandedImage="~/images/collapse.jpg" CollapsedImage="~/images/expand.jpg">
                         </cc1:CollapsiblePanelExtender>
 
-                        <asp:Panel ID="pnlMainData" runat="server" CssClass="collapsePanelData">
+                        <asp:Panel ID="pnlMainData" runat="server" CssClass="collapsePanelData" meta:resourcekey="pnlMainDataResource1">
                             <div class="row">
                                 <div class="col8">
-                                    <%--<asp:LinkButton ID="btnMainAdd" runat="server" Text="Add" CssClass="GenButton glyphicon glyphicon-plus-sign" OnClick="btnMainAdd_Click"></asp:LinkButton>--%>
 
-                                    <asp:LinkButton ID="btnMainEdit" runat="server" Text="Edit" CssClass="GenButton  glyphicon glyphicon-edit" Enabled="false"
-                                        OnClick="btnMainEdit_Click"></asp:LinkButton>
+                                    <asp:LinkButton ID="btnMainEdit" runat="server" Text="Edit" CssClass="GenButton  glyphicon glyphicon-edit" Enabled="False"
+                                        OnClick="btnMainEdit_Click" meta:resourcekey="btnMainEditResource1"></asp:LinkButton>
 
-                                    <%--<asp:LinkButton ID="btnMainDelete" runat="server" Text="Delete" CssClass="GenButton glyphicon glyphicon-remove" Enabled="false"
-                                        OnClick="btnMainDelete_Click"></asp:LinkButton>--%>
+                                    <asp:LinkButton ID="btnMainSave" runat="server" Text="Save" CssClass="GenButton glyphicon glyphicon-floppy-disk" Enabled="False"
+                                        OnClick="btnMainSave_Click" ValidationGroup="vgSave" meta:resourcekey="btnMainSaveResource1"></asp:LinkButton>
 
-                                    <asp:LinkButton ID="btnMainSave" runat="server" Text="Save" CssClass="GenButton glyphicon glyphicon-floppy-disk" Enabled="false"
-                                        OnClick="btnMainSave_Click" ValidationGroup="vgSave"></asp:LinkButton>
-
-                                    <asp:LinkButton ID="btnMainCancel" runat="server" Text="Cancel" CssClass="GenButton glyphicon glyphicon-remove-circle" Enabled="false"
-                                        OnClick="btnMainCancel_Click"></asp:LinkButton>
-                                    <asp:TextBox ID="cvtxt" runat="server" Text="02120" Visible="False" Width="10px"></asp:TextBox>
+                                    <asp:LinkButton ID="btnMainCancel" runat="server" Text="Cancel" CssClass="GenButton glyphicon glyphicon-remove-circle" Enabled="False"
+                                        OnClick="btnMainCancel_Click" meta:resourcekey="btnMainCancelResource1"></asp:LinkButton>
+                                    <asp:TextBox ID="cvtxt" runat="server" Text="02120" Visible="False" Width="10px" meta:resourcekey="cvtxtResource1"></asp:TextBox>
                                     <asp:CustomValidator ID="cvShowMsg" runat="server" Display="None"
                                         ValidationGroup="ShowMsg" OnServerValidate="ShowMsg_ServerValidate"
-                                        EnableClientScript="False" ControlToValidate="cvtxt" ></asp:CustomValidator>
+                                        EnableClientScript="False" ControlToValidate="cvtxt" meta:resourcekey="cvShowMsgResource1" ></asp:CustomValidator>
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="col12">
-                                    <asp:ValidationSummary ID="vsSave" runat="server" CssClass="MsgValidation" EnableClientScript="False" ValidationGroup="vgSave" />
-                                    <asp:ValidationSummary ID="vsShowMsg" runat="server" CssClass="MsgSuccess" EnableClientScript="False" ValidationGroup="vgShowMsg" />
+                                    <asp:ValidationSummary ID="vsSave" runat="server" CssClass="MsgValidation" EnableClientScript="False" ValidationGroup="vgSave" meta:resourcekey="vsSaveResource1" />
+                                    <asp:ValidationSummary ID="vsShowMsg" runat="server" CssClass="MsgSuccess" EnableClientScript="False" ValidationGroup="vgShowMsg" meta:resourcekey="vsShowMsgResource1" />
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="col12">
                                     <span class="h3">
-                                        <asp:Label ID="lblDepartment" runat="server" Text="Department"
+                                        <asp:Label ID="lblDepartment" runat="server" Text="Department" meta:resourcekey="lblDepartmentResource1"
                                             ></asp:Label></span>
                                     <asp:CustomValidator ID="cvDepartment" runat="server"
                                         ValidationGroup="vgSave"
                                         OnServerValidate="tree_ServerValidate"
                                         EnableClientScript="False"
-                                        ControlToValidate="cvtxt"
+                                        ControlToValidate="cvtxt" meta:resourcekey="cvDepartmentResource1"
                                         ></asp:CustomValidator>
                                 </div>
                             </div>
@@ -397,11 +389,11 @@
                                         CacheExpirationPolicy="Sliding" XPath="MenuItems/MenuItem" EnableCaching="False" />
                                     <asp:TreeView ID="trvDept" runat="server" LineImagesFolder="~/images/TreeLineImages" DataSourceID="xmlDataSource2"
                                         ShowLines="True" ShowCheckBoxes="All" OnDataBound="trvDept_DataBound"
-                                        OnTreeNodeDataBound="trvDept_TreeNodeDataBound" ForeColor="#CAD2D6" BackColor="#cccccc"
+                                        OnTreeNodeDataBound="trvDept_TreeNodeDataBound" ForeColor="#CAD2D6" BackColor="#CCCCCC" meta:resourcekey="trvDeptResource1"
                                         >
                                         <DataBindings>
                                             <asp:TreeNodeBinding DataMember="MenuItem" TextField="Text" ValueField="Value"
-                                                ImageUrlField="Check" />
+                                                ImageUrlField="Check" meta:resourcekey="TreeNodeBindingResource1" />
                                         </DataBindings>
                                     </asp:TreeView>
                                 </div>
@@ -413,7 +405,7 @@
 
                 <div class="row">
                     <div class="col12">
-                        <asp:TextBox ID="txtID" runat="server" AutoCompleteType="Disabled" Enabled="False" Visible="False" Width="15px" ></asp:TextBox>
+                        <asp:TextBox ID="txtID" runat="server" AutoCompleteType="Disabled" Enabled="False" Visible="False" Width="15px" meta:resourcekey="txtIDResource1" ></asp:TextBox>
                     </div>
                 </div>
             </div>

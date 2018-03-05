@@ -8,7 +8,7 @@
         <span>
             <center>
                 <asp:Literal ID="litVacation" runat="server" Text="<%$ Resources:Menu, litVacation %>"
-                    meta:resourcekey="litVacationResource1"></asp:Literal>
+                   ></asp:Literal>
             </center>
         </span>
         <table width="100%" bgcolor="#c0c0c0" style="border-left-width: 1px; border-right-width: 1px;"
