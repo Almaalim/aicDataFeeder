@@ -5,6 +5,7 @@
 <%@ Register Assembly="Stimulsoft.Report.WebDesign" Namespace="Stimulsoft.Report.Web" TagPrefix="cc2" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+  
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" runat="Server">
@@ -15,10 +16,9 @@
             <asp:PostBackTrigger ControlID="btnEditReport" />
         </Triggers>
         <ContentTemplate>
-            <div id="pageDiv" runat="server">
-                <table border="0" cellpadding="0" cellspacing="4" width="100%">
-                    <tr>
-                        <td>
+           <div id="pageDiv" runat="server" class="PageDir">
+                <div class="row">
+                <div class="col12">
                             <asp:DataList ID="dltReport" runat="server" CaptionAlign="Top" RepeatColumns="4"
                                 BorderStyle="None" OnItemCommand="dltReport_ItemCommand"
                                 OnItemDataBound="dltReport_ItemDataBound"
@@ -39,182 +39,164 @@
 
                                 </ItemTemplate>
                             </asp:DataList>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="border: 2px outset; height: 50px;" width="100%">
-                            <table width="100%">
-                                <tr>
-                                    <td width="50%">
+                                    </td>
+                                </tr>
+                            </table>--%>
+                        </div>
+                    </div>
+                          <div class="row">
+                <div class="col12">
                                         <asp:UpdatePanel ID="UpdatePanel3" runat="server">
                                             <ContentTemplate>
-                                                <h3>
-                                                    <asp:Label ID="lblSelectedreport" runat="server" meta:resourcekey="lblSelectedreportResource1"></asp:Label>
+                                                <h3 class="h3">
+                                                    <asp:Label ID="lblSelectedreport" runat="server"></asp:Label>
                                                 </h3>
                                             </ContentTemplate>
                                         </asp:UpdatePanel>
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td style="border: 2px outset; height: 200px;" width="100%" valign="top">
-                            <table width="100%">
-                                <tr>
-                                    <td>
-                                        <table width="100%">
-                                            <asp:Panel ID="pnlEmployee" runat="server" Visible="False" meta:resourcekey="pnlEmployeeResource1">
-                                                <tr>
-                                                    <td colspan="4">
-                                                        <table>
-                                                            <tr>
-                                                                <td>
+                                    </div>
+                              </div>
+                                <div class="row">
+                                    <div class="col12">
+                                        <asp:LinkButton ID="btnEditReport" runat="server" Text="Edit Report" 
+                                            OnClick="btnEditReport_Click" Enabled="False" CssClass="GenButton  glyphicon glyphicon-edit"></asp:LinkButton>
+                                        <asp:LinkButton ID="btnSetAsDefault" runat="server" Text="Set As Default" CssClass="GenButton glyphicon glyphicon-plus-sign"
+                                            OnClick="btnSetAsDefault_Click" Enabled="False" ></asp:LinkButton>
+                                        <%--<asp:Button ID="btnExport" runat="server" Text="Export" CssClass="buttonBG" OnClick="btnExport_Click"
+                                            Enabled="False" Width="100px" Visible="False"  />--%>
+                                        <asp:TextBox ID="cvValid" runat="server" Text="02120" Visible="False" Width="10px"></asp:TextBox>
+                                    </div>
+                                </div>
+                        
+                                            <asp:Panel ID="pnlEmployee" runat="server" Visible="False">
+                                                  <div class="row">
+                        <div class="col2">
                                                                     <span class="requiredStar">*</span>
-                                                                    <asp:Label ID="lblIDSearch" runat="server" Text="Select Employee By :" meta:resourcekey="lblIDSearchResource1"></asp:Label>
-                                                                </td>
-                                                                <td>
-                                                                    <asp:DropDownList ID="ddlIDSearch" runat="server" Width="150px" meta:resourcekey="ddlIDSearchResource1">
-                                                                        <asp:ListItem Value="EmpID" Text="Employee ID" Selected="True" meta:resourcekey="ListItemResource1"></asp:ListItem>
-                                                                        <asp:ListItem Value="EmpNameEn" Text="Employee Name (En)" meta:resourcekey="ListItemResource2"></asp:ListItem>
-                                                                        <asp:ListItem Value="EmpNameAr" Text="Employee Name (Ar)" meta:resourcekey="ListItemResource3"></asp:ListItem>
+                                                                    <asp:Label ID="lblIDSearch" runat="server" Text="Select Employee By :"></asp:Label>
+                                                                </div>
+                                                                <div class="col4">
+                                                                    <asp:DropDownList ID="ddlIDSearch" runat="server"  >
+                                                                        <asp:ListItem Value="EmpID" Text="Employee ID" Selected="True"></asp:ListItem>
+                                                                        <asp:ListItem Value="EmpNameEn" Text="Employee Name (En)"></asp:ListItem>
+                                                                        <asp:ListItem Value="EmpNameAr" Text="Employee Name (Ar)"></asp:ListItem>
                                                                     </asp:DropDownList>
-                                                                </td>
-                                                                <td>
-                                                                    <asp:TextBox ID="txtIDSearch" runat="server" Width="150px" meta:resourcekey="txtIDSearchResource1"></asp:TextBox>
-                                                                </td>
-                                                                <td>
-                                                                    <asp:CustomValidator ID="cvIDSearch" runat="server" ValidationGroup="vgView" OnServerValidate="IDSearch_ServerValidate"
-                                                                        EnableClientScript="False" ControlToValidate="cvValid" meta:resourcekey="cvIDSearchResource1"></asp:CustomValidator>
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                    </td>
-                                                </tr>
+                                                                </div>
+                                                                <div class="col4">
+                                                                    <asp:TextBox ID="txtIDSearch" runat="server"  ></asp:TextBox>
+                                                                
+                                                                    <asp:CustomValidator ID="cvIDSearch" runat="server" ValidationGroup="vgView" OnServerValidate="IDSearch_ServerValidate" CssClass="CustomValidator"
+                                                                        EnableClientScript="False" ControlToValidate="cvValid"></asp:CustomValidator>
+                                                         </div>
+                                                      </div>
                                             </asp:Panel>
-                                            <asp:Panel ID="pnlDepartment" runat="server" Visible="False" meta:resourcekey="pnlDepartmentResource1">
-                                                <tr>
-                                                    <td class="td1align" valign="middle">
-                                                        <asp:Label ID="lblDepartment" runat="server" Text="Department :" meta:resourcekey="lblDepartmentResource1"></asp:Label>
-                                                    </td>
-                                                    <td class="td2align" valign="middle">
-                                                        <asp:DropDownList ID="ddlDepartment" runat="server" Width="168px" meta:resourcekey="ddlDepartmentResource1">
+                                            <asp:Panel ID="pnlDepartment" runat="server" Visible="False">
+                                                 <div class="row">
+                        <div class="col2">
+                                                        <asp:Label ID="lblDepartment" runat="server" Text="Department :"></asp:Label>
+                                                     </div>
+                                                                <div class="col4">
+                                                        <asp:DropDownList ID="ddlDepartment" runat="server"  >
                                                         </asp:DropDownList>
-                                                        <asp:RequiredFieldValidator ID="rvDepartment" runat="server" EnableClientScript="False"
-                                                            ControlToValidate="ddlDepartment" ValidationGroup="vgView" Text="&lt;img src='../Images/icon/Exclamation.gif' title='Department is required!' /&gt;" meta:resourcekey="rvDepartmentResource1"></asp:RequiredFieldValidator>
-                                                    </td>
-                                                    <td></td>
-                                                    <td></td>
-                                                </tr>
+                                                        <asp:RequiredFieldValidator ID="rvDepartment" runat="server" EnableClientScript="False" CssClass="CustomValidator"
+                                                            ControlToValidate="ddlDepartment" ValidationGroup="vgView" Text="&lt;img src='../Images/icon/Exclamation.gif' title='Department is required!' /&gt;"></asp:RequiredFieldValidator>
+                                                   </div>
+                                                      </div>
                                             </asp:Panel>
-                                            <asp:Panel ID="pnlLocation" runat="server" Visible="False" meta:resourcekey="pnlLocationResource1">
-                                                <tr>
-                                                    <td class="td1align" valign="middle">
-                                                        <asp:Label ID="lblLocation" runat="server" Text="Location :" meta:resourcekey="lblLocationResource1"></asp:Label>
-                                                    </td>
-                                                    <td class="td2align" valign="middle">
-                                                        <asp:DropDownList ID="ddlLocation" runat="server" Width="168px" meta:resourcekey="ddlLocationResource1">
+                                            <asp:Panel ID="pnlLocation" runat="server" Visible="False">
+                                                  <div class="row">
+                        <div class="col2">
+                                                        <asp:Label ID="lblLocation" runat="server" Text="Location :"></asp:Label>
+                                                   </div>
+                                                                <div class="col4">
+                                                        <asp:DropDownList ID="ddlLocation" runat="server"  >
                                                         </asp:DropDownList>
-                                                        <asp:RequiredFieldValidator ID="rvLocation" runat="server" EnableClientScript="False"
-                                                            ControlToValidate="ddlLocation" ValidationGroup="vgView" Text="&lt;img src='../Images/icon/Exclamation.gif' title='Location is required' /&gt;" meta:resourcekey="rvLocationResource1"></asp:RequiredFieldValidator>
-                                                    </td>
-                                                    <td></td>
-                                                    <td></td>
-                                                </tr>
+                                                        <asp:RequiredFieldValidator ID="rvLocation" runat="server" EnableClientScript="False" CssClass="CustomValidator"
+                                                            ControlToValidate="ddlLocation" ValidationGroup="vgView" Text="&lt;img src='../Images/icon/Exclamation.gif' title='Location is required' /&gt;"></asp:RequiredFieldValidator>
+                                                    </div>
+                                                      </div>
                                             </asp:Panel>
-                                            <asp:Panel ID="pnlMachine" runat="server" Visible="False" meta:resourcekey="pnlMachineResource1">
-                                                <tr>
-                                                    <td class="td1align" valign="middle">
-                                                        <asp:Label ID="lblMachine" runat="server" Text="Machine :" meta:resourcekey="lblMachineResource1"></asp:Label>
-                                                    </td>
-                                                    <td class="td2align" valign="middle">
-                                                        <asp:DropDownList ID="ddlMachine" runat="server" Width="168px" meta:resourcekey="ddlMachineResource1">
+                                            <asp:Panel ID="pnlMachine" runat="server" Visible="False">
+                                                    <div class="row">
+                        <div class="col2">
+                                                        <asp:Label ID="lblMachine" runat="server" Text="Machine :"></asp:Label>
+                                                      </div>
+                                                                <div class="col4">
+                                                        <asp:DropDownList ID="ddlMachine" runat="server"  >
                                                         </asp:DropDownList>
                                                         <asp:RequiredFieldValidator ID="rvMachine" runat="server" EnableClientScript="False"
-                                                            ControlToValidate="ddlMachine" ValidationGroup="vgView" Text="&lt;img src='../Images/icon/Exclamation.gif' title='Machine is required' /&gt;" meta:resourcekey="rvMachineResource1"></asp:RequiredFieldValidator>
-                                                    </td>
-                                                    <td></td>
-                                                    <td></td>
-                                                </tr>
+                                                            ControlToValidate="ddlMachine" ValidationGroup="vgView" Text="&lt;img src='../Images/icon/Exclamation.gif' title='Machine is required' /&gt;"></asp:RequiredFieldValidator>
+                                                   </div>
+                                                        </div>
                                             </asp:Panel>
-                                            <asp:Panel ID="pnlDateFromTo" runat="server" Visible="False" meta:resourcekey="pnlDateFromToResource1">
-                                                <tr>
-                                                    <td class="td1align" valign="middle">
-                                                        <asp:Label ID="lblStartDate" runat="server" Text="Start Date :" meta:resourcekey="lblStartDateResource1"></asp:Label>
-                                                    </td>
-                                                    <td class="td2align" valign="middle">
-                                                        <table border="0" cellpadding="0" cellspacing="0">
-                                                            <tr>
-                                                                <td>
-                                                                    <uc:Calendar2 ID="calStartDate" runat="server" CalendarType="System" ValidationGroup="vgView" />
-                                                                </td>
-                                                                <td valign="middle">
-                                                                    <asp:CustomValidator ID="cvStartDate" runat="server" Text="&lt;img src='../Images/icon/Exclamation.gif' title='Start Date is required!' /&gt;"
+                                            <asp:Panel ID="pnlDateFromTo" runat="server" Visible="False">
+                                                 <div class="row">
+                        <div class="col2">
+                                                        <asp:Label ID="lblStartDate" runat="server" Text="Start Date :"></asp:Label>
+                                                     </div>
+                                                                <div class="col4">
+                                                                    <uc:Calendar2 ID="calStartDate" runat="server" CalendarType="System" />
+                                                                 
+                                                                    <asp:CustomValidator ID="cvStartDate" runat="server" Text="&lt;img src='../Images/icon/Exclamation.gif' title='Start Date is required!' /&gt;" CssClass="CustomValidator"
                                                                         ValidationGroup="vgView" OnServerValidate="Date_ServerValidate" EnableClientScript="False"
-                                                                        ControlToValidate="cvValid" meta:resourcekey="cvStartDateResource1"></asp:CustomValidator>
-                                                                </td>
-                                                                <td>
-                                                                    <asp:CustomValidator ID="cvCompareDates" runat="server" Text="&lt;img src='../Images/icon/Exclamation.gif' title='start date more than end date!' /&gt;"
+                                                                        ControlToValidate="cvValid"></asp:CustomValidator>
+                                                                
+                                                                    <asp:CustomValidator ID="cvCompareDates" runat="server" Text="&lt;img src='../Images/icon/Exclamation.gif' title='start date more than end date!' /&gt;" CssClass="CustomValidator"
                                                                         ValidationGroup="vgView" ErrorMessage="start date more than end date!" OnServerValidate="Date_ServerValidate"
-                                                                        EnableClientScript="False" ControlToValidate="cvValid" meta:resourcekey="cvCompareDatesResource1"></asp:CustomValidator>
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                    </td>
-                                                    <td class="td1align" valign="middle">
-                                                        <asp:Label ID="lblEndDate" runat="server" Text="End Date :" meta:resourcekey="lblEndDateResource1"></asp:Label>
-                                                    </td>
-                                                    <td class="td2align" valign="middle">
-                                                        <table border="0" cellpadding="0" cellspacing="0">
-                                                            <tr>
-                                                                <td>
-                                                                    <uc:Calendar2 ID="calEndDate" runat="server" CalendarType="System" ValidationGroup="vgView" />
-                                                                </td>
-                                                                <td valign="middle">
-                                                                    <asp:CustomValidator ID="cvEndDate" runat="server" Text="&lt;img src='../Images/icon/Exclamation.gif' title='End Date is required!' /&gt;"
+                                                                        EnableClientScript="False" ControlToValidate="cvValid"></asp:CustomValidator>
+                                                                </div>
+                                                                <div class="col2">
+                                                        <asp:Label ID="lblEndDate" runat="server" Text="End Date :"></asp:Label>
+                                                     </div>
+                                                                <div class="col4">
+                                                                    <uc:Calendar2 ID="calEndDate" runat="server" CalendarType="System" />
+                                                                
+                                                                    <asp:CustomValidator ID="cvEndDate" runat="server" Text="&lt;img src='../Images/icon/Exclamation.gif' title='End Date is required!' /&gt;" CssClass="CustomValidator"
                                                                         ValidationGroup="vgView" OnServerValidate="Date_ServerValidate" EnableClientScript="False"
-                                                                        ControlToValidate="cvValid" meta:resourcekey="cvEndDateResource1"></asp:CustomValidator>
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                    </td>
-                                                </tr>
+                                                                        ControlToValidate="cvValid"></asp:CustomValidator>
+                                                               </div>
+                                                     </div>
                                             </asp:Panel>
-                                        </table>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="4">
+                                     <div class="row">
+                        <div class="col2">
                                         <asp:ValidationSummary runat="server" ID="vsView" ValidationGroup="vgView" EnableClientScript="False"
-                                            CssClass="errorValidation" ShowSummary="False" meta:resourcekey="vsViewResource1" />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="borderButton">
-                                        <asp:LinkButton ID="btnViewreport" runat="server" Text="View Report" CssClass="GenButton glyphicon glyphicon-plus-sign" OnClick="btnViewreport_Click" ValidationGroup="vgView" meta:resourcekey="btnViewreportResource1"></asp:LinkButton>
-                                        <asp:LinkButton ID="btnEditReport" runat="server" Text="Edit Report" CssClass="GenButton glyphicon glyphicon-plus-sign" OnClick="btnEditReport_Click" Enabled="False" meta:resourcekey="btnEditReportResource1"></asp:LinkButton>
-                                        <asp:LinkButton ID="btnSetAsDefault" runat="server" Text="Set As Default" CssClass="GenButton glyphicon glyphicon-plus-sign" OnClick="btnSetAsDefault_Click" Enabled="False" meta:resourcekey="btnSetAsDefaultResource1"></asp:LinkButton>
-                                        <asp:LinkButton ID="btnCancel" runat="server" Text="Cancel" CssClass="GenButton glyphicon glyphicon-plus-sign" Visible="False" meta:resourcekey="btnCancelResource1"></asp:LinkButton>
-                                        <asp:TextBox ID="cvValid" runat="server" Text="02120" Visible="False" Width="10px" meta:resourcekey="cvValidResource1"></asp:TextBox>
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                </table>
+                                            CssClass="CustomValidator" ShowSummary="False" />
+                                               </div>
+                                                     </div>
+                                     <div class="row">
+                        <div class="col8">
+                                        <asp:LinkButton ID="btnViewreport" runat="server" CssClass="GenButton  glyphicon glyphicon-search" Text="View Report"
+                                            Enabled="False" OnClick="btnViewreport_Click"   ValidationGroup="vgView" ></asp:LinkButton>
+                           <a class="GenButton  glyphicon glyphicon-search" href="#popup1">Pop up</a>
+                            <%--This is link which opens popup and href should be same as popup id as mentioned above--%>
+                                        <asp:LinkButton ID="btnCancel" runat="server" CssClass="GenButton glyphicon glyphicon-remove-circle" Text="Cancel" Visible="False"></asp:LinkButton>
+                                    </div>
+                                         </div>
             </div>
         </ContentTemplate>
     </asp:UpdatePanel>
-    <table border="0" cellpadding="0" cellspacing="4" width="100%">
-        <tr>
-            <td>
+        <div class="row">
+                        <div class="col12" >
                 <cc2:StiWebDesigner ID="StiWebDesigner1" runat="server" OnSaveReport="StiWebDesigner1_SaveReport"
-                    Height="30px" Width="250px" BrowserTitle="" ExitUrl="" ImageFormat="Png" ImageQuality="Normal" LocalizationDirectory="" meta:resourcekey="StiWebDesigner1Resource1" ReportGuid="72ce1edf9928430b" ServerTimeout="00:10:00" ShowWizardOnStartup="False" ThemeName="Office2013" Visible="False" WebImageHost="Stimulsoft.Report.Web.StiWebDesignerImageHost" />
-            </td>
-        </tr>
-    </table>
+                    Height="30px" Width="250px"  />
+            </div>
+            </div>
+    <div id="popup1" class="overlay"> <%--The popup Div--%>
+        <a class="close" href="#">&times;</a> 
+        <div class="row">
+                        <div class="col12">
+                <cc1:StiWebViewerFx ID="StiWebViewerFx1" runat="server" Width="100%" Height="600px"
+                    Background="White" />
+           </div>
+            </div>
+        </div>
+    <script>
+
+        $('#menuTd1').bind("DOMSubtreeModified", function () {
+           
+            var colors = ["009ad7", "ffaa31", "68af27", "c22439", "005683", "622695", "d13f2a"];
+            $(".ReportBtns").each(function (i) {
+                $(this).css('background-color', '#' + colors[i % colors.length]);
+            });
+        });
+    </script>
 </asp:Content>
 
