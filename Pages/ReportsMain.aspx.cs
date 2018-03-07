@@ -689,31 +689,31 @@ public partial class Pages_ReportMain : BasePage
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     protected void Date_ServerValidate(Object source, ServerValidateEventArgs e)
     {
-        try
-        {
-            if (pnlDateFromTo.Visible)
-            {
-                if (source.Equals(cvStartDate)) { if (string.IsNullOrEmpty(calStartDate.getGDateDBFormat())) { e.IsValid = false; } else { e.IsValid = true; } }
-                if (source.Equals(cvEndDate)) { if (string.IsNullOrEmpty(calEndDate.getGDateDBFormat())) { e.IsValid = false; } else { e.IsValid = true; } }
-                if (source.Equals(cvCompareDates))
-                {
-                    try
-                    {
-                        if (!String.IsNullOrEmpty(calStartDate.getGDateDBFormat()) && !String.IsNullOrEmpty(calEndDate.getGDateDBFormat()))
-                        {
-                            int iStartDate = DTCs.ConvertDateTimeToInt(FormSession.DateType, calStartDate.getGDateDBFormat());
-                            int iEndDate = DTCs.ConvertDateTimeToInt(FormSession.DateType, calEndDate.getGDateDBFormat());
-                            if (iStartDate > iEndDate) { e.IsValid = false; } else { e.IsValid = true; }
-                        }
-                    }
-                    catch
-                    {
-                        e.IsValid = false;
-                    }
-                }
-            }
-        }
-        catch { e.IsValid = false; }
+        //try
+        //{
+        //    if (pnlDateFromTo.Visible)
+        //    {
+        //        if (source.Equals(cvStartDate)) { if (string.IsNullOrEmpty(calStartDate.getGDateDBFormat())) { e.IsValid = false; } else { e.IsValid = true; } }
+        //        if (source.Equals(cvEndDate)) { if (string.IsNullOrEmpty(calEndDate.getGDateDBFormat())) { e.IsValid = false; } else { e.IsValid = true; } }
+        //        if (source.Equals(cvCompareDates))
+        //        {
+        //            try
+        //            {
+        //                if (!String.IsNullOrEmpty(calStartDate.getGDateDBFormat()) && !String.IsNullOrEmpty(calEndDate.getGDateDBFormat()))
+        //                {
+        //                    int iStartDate = DTCs.ConvertDateTimeToInt(FormSession.DateType, calStartDate.getGDateDBFormat());
+        //                    int iEndDate = DTCs.ConvertDateTimeToInt(FormSession.DateType, calEndDate.getGDateDBFormat());
+        //                    if (iStartDate > iEndDate) { e.IsValid = false; } else { e.IsValid = true; }
+        //                }
+        //            }
+        //            catch
+        //            {
+        //                e.IsValid = false;
+        //            }
+        //        }
+        //    }
+        //}
+        //catch { e.IsValid = false; }
     }
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

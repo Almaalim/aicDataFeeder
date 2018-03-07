@@ -136,8 +136,9 @@ public partial class MainMasterPage : System.Web.UI.MasterPage
     {
         StringBuilder QMuen = new StringBuilder();
 
-        string lang = (FormSession.Language == "AR") ? "Ar" : "En";
-        string DescCol = (FormSession.Language == "AR") ? "MnuArabicDescription" : "MnuDescription";
+        //string lang = (FormSession.Language == "AR") ? "Ar" : "En";
+        string lang = FormSession.Language;
+        string DescCol = (FormSession.Language == "Ar") ? "MnuArabicDescription" : "MnuDescription";
         string LicPage = string.Empty; //LicDf.FindLicPage();
         string listPage = "'SubMenu'" + (string.IsNullOrEmpty(LicPage) ? "" : "," + LicPage);
 

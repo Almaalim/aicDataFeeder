@@ -1,4 +1,4 @@
-﻿﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MainMasterPage.master.cs" Inherits="MainMasterPage" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MainMasterPage.master.cs" Inherits="MainMasterPage" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
@@ -375,8 +375,8 @@
 
                                 <div class="clearfix"></div>
 
-                                <asp:LinkButton ID="lnkSetting" runat="server" CssClass="SettingBtn" Visible="false"></asp:LinkButton>
-                                <asp:Label ID="Label2" runat="server" Text="Label" CssClass="menu-subtitle">QuickLinks</asp:Label>
+                                <asp:LinkButton ID="lnkSetting" runat="server" CssClass="SettingBtn" Visible="False" meta:resourcekey="lnkSettingResource1"></asp:LinkButton>
+                                <asp:Label ID="Label2" runat="server" Text="QuickLinks" CssClass="menu-subtitle" meta:resourcekey="Label2Resource1"></asp:Label>
 
                                 <%--Menu Left Shortcuts--%>
                                 <ul id="FavForm" runat="server" class="apps">
@@ -403,7 +403,7 @@
                     </div>
                 </div>
                 <div id="divMenu" runat="server">
-                    <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" ShowStartingNode="false" />
+                    <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" ShowStartingNode="False" />
 
                     <%--<asp:Menu ID="Menu" runat="server" DataSourceID="SiteMapDataSource1" Orientation="Horizontal" OnMenuItemDataBound="OnMenuItemDataBound2">
                         <LevelMenuItemStyles>
@@ -413,15 +413,13 @@
                     </asp:Menu>--%>
 
                     <asp:Menu ID="Menu1" DataSourceID="xmlDataSource" runat="server" Orientation="Horizontal"
-                        StaticEnableDefaultPopOutImage="False" DynamicEnableDefaultPopOutImage="False"
-                        DynamicVerticalOffset="0"  OnMenuItemDataBound="Menu1_MenuItemDataBound"
-                        StaticSubMenuIndent="" RenderingMode="List">
+                        StaticEnableDefaultPopOutImage="False" DynamicEnableDefaultPopOutImage="False"  OnMenuItemDataBound="Menu1_MenuItemDataBound" RenderingMode="List" meta:resourcekey="Menu1Resource1">
                         <DataBindings>
                             <asp:MenuItemBinding DataMember="MenuItem" NavigateUrlField="NavigateUrl" TextField="Text"
-                                ToolTipField="ToolTip"  />
+                                ToolTipField="ToolTip" meta:resourcekey="MenuItemBindingResource1"  />
                         </DataBindings>
                         <Items>
-                            <asp:MenuItem Text="New Item" Value="New Item" ></asp:MenuItem>
+                            <asp:MenuItem Text="New Item" Value="New Item" meta:resourcekey="MenuItemResource1" ></asp:MenuItem>
                         </Items>
                     </asp:Menu>
 
@@ -449,26 +447,26 @@
                 <div class="UtilityEN">
 
                     <div class="breadcrumb glyphicon glyphicon-home">
-                            <asp:SiteMapPath ID="SiteMapPath22" runat="server"></asp:SiteMapPath>
+                            <asp:SiteMapPath ID="SiteMapPath22" runat="server" meta:resourcekey="SiteMapPath22Resource1"></asp:SiteMapPath>
                     </div>
 
                     <div class="UtilityLinks">
-                        <asp:Image ID="UserImg" runat="server" ImageUrl="~/CSS/Metro/Images/UserImg.png" CssClass="UserImg" />
-                                <asp:Label ID="lblWelcome" runat="server" Text="Welcome"  Visible="false"></asp:Label>
-                        <asp:Label ID="lblUserName" runat="server"  Text="admin"></asp:Label>
-                        <asp:LinkButton ID="LnkChangePassword" runat="server" OnClick="lnkChangePassword_Click">Change Password</asp:LinkButton>
+                        <asp:Image ID="UserImg" runat="server" ImageUrl="~/CSS/Metro/Images/UserImg.png" CssClass="UserImg" meta:resourcekey="UserImgResource1" />
+                                <asp:Label ID="lblWelcome" runat="server" Text="Welcome"  Visible="False" meta:resourcekey="lblWelcomeResource1"></asp:Label>
+                        <asp:Label ID="lblUserName" runat="server"  Text="admin" meta:resourcekey="lblUserNameResource1"></asp:Label>
+                        <asp:LinkButton ID="LnkChangePassword" runat="server" OnClick="lnkChangePassword_Click" meta:resourcekey="LnkChangePasswordResource1">Change Password</asp:LinkButton>
 
-                        <asp:LinkButton ID="lnkShortcut" runat="server" Style="color: #C3D8D5; text-decoration: none;" OnClick="lnkShortcut_Click">Add Quick Link</asp:LinkButton>
+                        <asp:LinkButton ID="lnkShortcut" runat="server" Style="color: #C3D8D5; text-decoration: none;" OnClick="lnkShortcut_Click" meta:resourcekey="lnkShortcutResource1">Add Quick Link</asp:LinkButton>
                         <%--<asp:UpdatePanel ID="UpdatePanel1" runat="server">
                                             <ContentTemplate>--%>
                        
-                        <asp:LinkButton ID="lnkHelp" runat="server" Style="color: #C3D8D5; text-decoration: none;">Help</asp:LinkButton>
+                        <asp:LinkButton ID="lnkHelp" runat="server" Style="color: #C3D8D5; text-decoration: none;" meta:resourcekey="lnkHelpResource1">Help</asp:LinkButton>
                         <%--</ContentTemplate>
                                         </asp:UpdatePanel>--%>
 
-                        <asp:LinkButton ID="LnkLogout" runat="server" OnClick="lnkLogout_Click" Style="color: #C3D8D5; text-decoration: none;">Logout</asp:LinkButton>
+                        <asp:LinkButton ID="LnkLogout" runat="server" OnClick="lnkLogout_Click" Style="color: #C3D8D5; text-decoration: none;" meta:resourcekey="LnkLogoutResource1">Logout</asp:LinkButton>
 
-                        <asp:LinkButton ID="lnkLanguage" runat="server" OnClick="lnkChangeLang_Click" Style="color: #C3D8D5; text-decoration: none;">Language</asp:LinkButton>
+                        <asp:LinkButton ID="lnkLanguage" runat="server" OnClick="lnkChangeLang_Click" Style="color: #C3D8D5; text-decoration: none;" meta:resourcekey="lnkLanguageResource1">Language</asp:LinkButton>
 
                     </div>
 
@@ -490,7 +488,7 @@
                             <!--SideMenu-->
                         </asp:ContentPlaceHolder>
                     </div>
-                    <asp:Label ID="lblHeading" runat="server" Font-Size="Medium"></asp:Label>
+                    <asp:Label ID="lblHeading" runat="server" Font-Size="Medium" meta:resourcekey="lblHeadingResource1"></asp:Label>
                     <%--<asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True"></asp:ScriptManager>--%>
                     <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
                     </asp:ContentPlaceHolder>
