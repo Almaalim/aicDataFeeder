@@ -117,157 +117,112 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="btnLoginResource1.Text" xml:space="preserve">
-    <value>تسجيل دخول</value>
+  <data name="Label2Resource1.Text" xml:space="preserve">
+    <value>روابط مختصرة</value>
   </data>
-  <data name="btnLoginResource1.ToolTip" xml:space="preserve">
+  <data name="Label2Resource1.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="btnLoginResource2.Text" xml:space="preserve">
-    <value>تسجيل دخول</value>
-  </data>
-  <data name="btnLoginResource2.ToolTip" xml:space="preserve">
+  <data name="lblHeadingResource1.Text" xml:space="preserve">
     <value />
   </data>
-  <data name="cvShowMsgResource1.ErrorMessage" xml:space="preserve">
+  <data name="lblHeadingResource1.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="cvShowMsgResource1.Text" xml:space="preserve">
+  <data name="lblUserNameResource1.Text" xml:space="preserve">
+    <value>admin</value>
+  </data>
+  <data name="lblUserNameResource1.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="cvShowMsgResource1.ToolTip" xml:space="preserve">
+  <data name="lblWelcomeResource1.Text" xml:space="preserve">
+    <value>مرحباً</value>
+  </data>
+  <data name="lblWelcomeResource1.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="cvtxtResource1.Text" xml:space="preserve">
-    <value>02120</value>
+  <data name="LnkChangePasswordResource1.Text" xml:space="preserve">
+    <value>تغيير كلمة المرور</value>
   </data>
-  <data name="cvtxtResource1.ToolTip" xml:space="preserve">
+  <data name="LnkChangePasswordResource1.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="Image1Resource1.AlternateText" xml:space="preserve">
+  <data name="lnkHelpResource1.Text" xml:space="preserve">
+    <value>مساعدة</value>
+  </data>
+  <data name="lnkHelpResource1.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="Image1Resource1.ToolTip" xml:space="preserve">
+  <data name="lnkLanguageResource1.Text" xml:space="preserve">
+    <value>اللغة</value>
+  </data>
+  <data name="lnkLanguageResource1.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="Image2Resource1.AlternateText" xml:space="preserve">
+  <data name="LnkLogoutResource1.Text" xml:space="preserve">
+    <value>تسجيل خروج</value>
+  </data>
+  <data name="LnkLogoutResource1.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="Image2Resource1.ToolTip" xml:space="preserve">
+  <data name="lnkSettingResource1.Text" xml:space="preserve">
     <value />
   </data>
-  <data name="Image3Resource1.AlternateText" xml:space="preserve">
+  <data name="lnkSettingResource1.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="Image3Resource1.ToolTip" xml:space="preserve">
+  <data name="lnkShortcutResource1.Text" xml:space="preserve">
+    <value>اضافة روابط مختصرة</value>
+  </data>
+  <data name="lnkShortcutResource1.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="Image4Resource1.AlternateText" xml:space="preserve">
+  <data name="Menu1Resource1.ScrollDownText" xml:space="preserve">
+    <value>أسفل</value>
+  </data>
+  <data name="Menu1Resource1.ScrollUpText" xml:space="preserve">
+    <value>أعلى</value>
+  </data>
+  <data name="Menu1Resource1.SkipLinkText" xml:space="preserve">
+    <value>Skip Navigation Links</value>
+  </data>
+  <data name="Menu1Resource1.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="Image4Resource1.ToolTip" xml:space="preserve">
+  <data name="MenuItemBindingResource1.FormatString" xml:space="preserve">
     <value />
   </data>
-  <data name="LblErrorMsgResource1.Text" xml:space="preserve">
-    <value>اسم المستخدم أو كلمة المرور غير صحيحة</value>
-  </data>
-  <data name="LblErrorMsgResource1.ToolTip" xml:space="preserve">
+  <data name="MenuItemBindingResource1.Text" xml:space="preserve">
     <value />
   </data>
-  <data name="lblPasswordResource1.Text" xml:space="preserve">
-    <value>كلمة المرور :</value>
-  </data>
-  <data name="lblPasswordResource1.ToolTip" xml:space="preserve">
+  <data name="MenuItemBindingResource1.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="lblPasswordResource2.Text" xml:space="preserve">
-    <value>كلمة المرور :</value>
-  </data>
-  <data name="lblPasswordResource2.ToolTip" xml:space="preserve">
+  <data name="MenuItemBindingResource1.Value" xml:space="preserve">
     <value />
   </data>
-  <data name="lbltxtLoginIDResource1.Text" xml:space="preserve">
-    <value>اسم المستخدم :</value>
+  <data name="MenuItemResource1.Text" xml:space="preserve">
+    <value>عنصر جديد</value>
   </data>
-  <data name="lbltxtLoginIDResource1.ToolTip" xml:space="preserve">
+  <data name="MenuItemResource1.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="lbltxtLoginIDResource2.Text" xml:space="preserve">
-    <value>اسم المستخدم :</value>
+  <data name="MenuItemResource1.Value" xml:space="preserve">
+    <value>New Item</value>
   </data>
-  <data name="lbltxtLoginIDResource2.ToolTip" xml:space="preserve">
+  <data name="SiteMapPath22Resource1.PathSeparator" xml:space="preserve">
+    <value> &gt; </value>
+  </data>
+  <data name="SiteMapPath22Resource1.SkipLinkText" xml:space="preserve">
+    <value>Skip Navigation Links</value>
+  </data>
+  <data name="SiteMapPath22Resource1.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="PageResource1.Title" xml:space="preserve">
-    <value>Data Feeder WEB - تسجيل الدخول</value>
-  </data>
-  <data name="PageResource2.Title" xml:space="preserve">
+  <data name="UserImgResource1.AlternateText" xml:space="preserve">
     <value />
   </data>
-  <data name="rfvtxtLoginIDResource1.ErrorMessage" xml:space="preserve">
-    <value />
-  </data>
-  <data name="rfvtxtLoginIDResource1.Text" xml:space="preserve">
-    <value>&lt;img src='Images/icon/Exclamation.gif' title='اسم المستخدم مطلوب!' /&gt;</value>
-  </data>
-  <data name="rfvtxtLoginIDResource1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="rfvtxtLoginIDResource2.ErrorMessage" xml:space="preserve">
-    <value />
-  </data>
-  <data name="rfvtxtLoginIDResource2.Text" xml:space="preserve">
-    <value>&lt;img src='Images/icon/Exclamation.gif' title='اسم المستخدم مطلوب!' /&gt;</value>
-  </data>
-  <data name="rfvtxtLoginIDResource2.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="rfvtxtPasswordResource1.ErrorMessage" xml:space="preserve">
-    <value />
-  </data>
-  <data name="rfvtxtPasswordResource1.Text" xml:space="preserve">
-    <value>&lt;img src='Images/icon/Exclamation.gif' title='كلمة المرور مطلوبة!' /&gt;</value>
-  </data>
-  <data name="rfvtxtPasswordResource1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="rfvtxtPasswordResource2.ErrorMessage" xml:space="preserve">
-    <value />
-  </data>
-  <data name="rfvtxtPasswordResource2.Text" xml:space="preserve">
-    <value>&lt;img src='Images/icon/Exclamation.gif' title='كلمة المرور مطلوبة!' /&gt;</value>
-  </data>
-  <data name="rfvtxtPasswordResource2.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="txtLoginIDResource2.Text" xml:space="preserve">
-    <value />
-  </data>
-  <data name="txtLoginIDResource2.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="txtLoginIDResource3.Text" xml:space="preserve">
-    <value />
-  </data>
-  <data name="txtLoginIDResource3.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="txtPasswordResource1.Text" xml:space="preserve">
-    <value />
-  </data>
-  <data name="txtPasswordResource1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="txtPasswordResource2.Text" xml:space="preserve">
-    <value />
-  </data>
-  <data name="txtPasswordResource2.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="vsShowMsgResource1.HeaderText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="vsShowMsgResource1.ToolTip" xml:space="preserve">
+  <data name="UserImgResource1.ToolTip" xml:space="preserve">
     <value />
   </data>
 </root>
