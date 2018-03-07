@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="CusConnString.aspx.cs" Inherits="Pages_CusConnString" %>
+﻿<%@ Page Title="" Language="C#" AutoEventWireup="true" CodeFile="CusConnString.aspx.cs" Inherits="Pages_CusConnString" %>
 
 <!DOCTYPE html>
 

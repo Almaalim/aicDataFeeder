@@ -414,14 +414,14 @@
 
                     <asp:Menu ID="Menu1" DataSourceID="xmlDataSource" runat="server" Orientation="Horizontal"
                         StaticEnableDefaultPopOutImage="False" DynamicEnableDefaultPopOutImage="False"
-                        DynamicVerticalOffset="0" meta:resourcekey="Menu1Resource1" OnMenuItemDataBound="Menu1_MenuItemDataBound"
+                        DynamicVerticalOffset="0"  OnMenuItemDataBound="Menu1_MenuItemDataBound"
                         StaticSubMenuIndent="" RenderingMode="List">
                         <DataBindings>
                             <asp:MenuItemBinding DataMember="MenuItem" NavigateUrlField="NavigateUrl" TextField="Text"
-                                ToolTipField="ToolTip" meta:resourcekey="MenuItemBindingResource1" />
+                                ToolTipField="ToolTip"  />
                         </DataBindings>
                         <Items>
-                            <asp:MenuItem Text="New Item" Value="New Item" meta:resourcekey="MenuItemResource1"></asp:MenuItem>
+                            <asp:MenuItem Text="New Item" Value="New Item" ></asp:MenuItem>
                         </Items>
                     </asp:Menu>
 
@@ -454,8 +454,8 @@
 
                     <div class="UtilityLinks">
                         <asp:Image ID="UserImg" runat="server" ImageUrl="~/CSS/Metro/Images/UserImg.png" CssClass="UserImg" />
-                                <asp:Label ID="lblWelcome" runat="server" Text="Welcome" meta:resourcekey="lblWelcomeResource1" Visible="false"></asp:Label>
-                        <asp:Label ID="lblUserName" runat="server" meta:resourcekey="lblUserNameResource1" Text="admin"></asp:Label>
+                                <asp:Label ID="lblWelcome" runat="server" Text="Welcome"  Visible="false"></asp:Label>
+                        <asp:Label ID="lblUserName" runat="server"  Text="admin"></asp:Label>
                         <asp:LinkButton ID="LnkChangePassword" runat="server" OnClick="lnkChangePassword_Click">Change Password</asp:LinkButton>
 
                         <asp:LinkButton ID="lnkShortcut" runat="server" Style="color: #C3D8D5; text-decoration: none;" OnClick="lnkShortcut_Click">Add Quick Link</asp:LinkButton>

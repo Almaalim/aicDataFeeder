@@ -44,7 +44,7 @@
                 </td>
                 <td align="center" width="85%">
                     <asp:LinkButton ID="btnCreateRole" runat="server" Enabled="False" OnClick="btnSideMenu_Click" PostBackUrl="~/Users/UserRole.aspx?ac=i"
-                        Text="<%$ Resources:Menu, btnCreate %>" meta:resourcekey="btnCreateRoleResource1"></asp:LinkButton>
+                        Text="<%$ Resources:Menu, btnCreate %>" ></asp:LinkButton>
                 </td>
             </tr>
             <tr>
@@ -53,7 +53,7 @@
                 </td>
                 <td align="center" width="85%">
                     <asp:LinkButton ID="btnUpdateRole" runat="server" Enabled="False" OnClick="btnSideMenu_Click" PostBackUrl="~/Users/UserRole.aspx?ac=u"
-                        Text="<%$ Resources:Menu, btnUpdate %>" meta:resourcekey="btnUpdateRoleResource1"></asp:LinkButton>
+                        Text="<%$ Resources:Menu, btnUpdate %>" ></asp:LinkButton>
                 </td>
             </tr>
             <tr>
@@ -62,7 +62,7 @@
                 </td>
                 <td align="center" width="85%">
                     <asp:LinkButton ID="btnDeleteRole" runat="server" Enabled="False" OnClick="btnSideMenu_Click" PostBackUrl="~/Users/UserRole.aspx?ac=d"
-                        Text="<%$ Resources:Menu, btnDelete %>" meta:resourcekey="btnDeleteRoleResource1"></asp:LinkButton>
+                        Text="<%$ Resources:Menu, btnDelete %>" ></asp:LinkButton>
                 </td>
             </tr>
         </table>

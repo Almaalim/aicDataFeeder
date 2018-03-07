@@ -8,11 +8,11 @@
         <div runat="server" id="MainTable">
             <div class="row">
                 <div class="col2">
-                    <asp:Label ID="lblTimes" runat="server" Text="Time :" ></asp:Label>
+                    <asp:Label ID="lblTimes" runat="server" Text="Time :" meta:resourcekey="lblTimesResource1" ></asp:Label>
                 </div>
                 <div class="col4">
                     <Almaalim:TimePicker ID="tpTimes" runat="server" FormatTime="HHmm" CssClass="TimeCss"
-                        TimePickerValidationGroup="" TimePickerValidationText="" />
+                        TimePickerValidationGroup="" TimePickerValidationText="" meta:resourcekey="tpTimesResource1" />
                 </div>
             </div>
             
@@ -22,25 +22,25 @@
                 <div class="col4">
 
                     <asp:ImageButton ID="btnAdd" runat="server"
-                        ImageUrl="~/images/Wizard_Image/add.png" OnClick="btnAdd_Click" ToolTip="Add" />
+                        ImageUrl="~/images/Wizard_Image/add.png" OnClick="btnAdd_Click" ToolTip="Add" meta:resourcekey="btnAddResource1" />
                     &nbsp;
                                                               
                     <asp:ImageButton ID="btnRemove" runat="server"
-                        ImageUrl="~/images/Wizard_Image/delete.png" OnClick="btnRemove_Click" ToolTip="Remove Time" />
+                        ImageUrl="~/images/Wizard_Image/delete.png" OnClick="btnRemove_Click" ToolTip="Remove Time" meta:resourcekey="btnRemoveResource1" />
                     
                     <asp:TextBox ID="txtCustomValid" runat="server" Text="02120" Visible="False"
-                        Width="10px" ></asp:TextBox>
+                        Width="10px" meta:resourcekey="txtCustomValidResource1" ></asp:TextBox>
                 </div>
             </div>
             <div class="row">
                 <div class="col2">
                 </div>
                 <div class="col4">
-                    <asp:ListBox ID="lstTimes" runat="server" Enabled="False" Height="200px" ></asp:ListBox>  
+                    <asp:ListBox ID="lstTimes" runat="server" Enabled="False" Height="200px" meta:resourcekey="lstTimesResource1" ></asp:ListBox>  
                     
                     <asp:CustomValidator ID="cvTimes" runat="server" CssClass="CustomValidator"
                         ControlToValidate="txtCustomValid" EnableClientScript="False" OnServerValidate="Times_ServerValidate"
-                        Text="&lt;img src='images/Exclamation.gif' title='Select Times' /&gt;" ></asp:CustomValidator>              
+                        Text="&lt;img src='../Images/icon/Exclamation.gif' title='Select Times' /&gt;" meta:resourcekey="cvTimesResource1" ></asp:CustomValidator>              
                 </div>
             </div>
         </div>

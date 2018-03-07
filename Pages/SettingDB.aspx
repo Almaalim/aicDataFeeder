@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MainMasterPage.master" AutoEventWireup="true" Theme="MetroStyle" CodeFile="SettingDB.aspx.cs" Inherits="Pages_SettingDB" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MainMasterPage.master" AutoEventWireup="true" Theme="MetroStyle" CodeFile="SettingDB.aspx.cs" Inherits="Pages_SettingDB" culture="auto" meta:resourcekey="PageResource1" uiculture="auto" %>
 
 <%@ Register Src="~/Control/SettingSideMenu.ascx" TagName="SettingSideMenu" TagPrefix="uc1" %>
 
@@ -21,132 +21,106 @@
                 <div class="row">
                     <div class="col12">
                         <asp:Button ID="btnConnDB" runat="server" Text="Database Connect" CssClass="ActionButton"
-                            OnClick="btnConnDB_Click" />
+                            OnClick="btnConnDB_Click" meta:resourcekey="btnConnDBResource1" />
                     </div>
                 </div>
                 <div class="row">
                     <div class="col12">
-                        <asp:ValidationSummary ID="vsSave" runat="server" CssClass="MsgValidation" EnableClientScript="False" ValidationGroup="vgSave" />
-                        <asp:ValidationSummary ID="vsShowMsg" runat="server" CssClass="MsgSuccess" EnableClientScript="False" ValidationGroup="vgShowMsg" />
+                        <asp:ValidationSummary ID="vsSave" runat="server" CssClass="MsgValidation" EnableClientScript="False" ValidationGroup="vgSave" meta:resourcekey="vsSaveResource1" />
+                        <asp:ValidationSummary ID="vsShowMsg" runat="server" CssClass="MsgSuccess" EnableClientScript="False" ValidationGroup="vgShowMsg" meta:resourcekey="vsShowMsgResource1" />
                     </div>
                 </div>
                 <div class="row">
-                    <%--<div class="col2">
-                        <span class="RequiredField">*</span>
-                   
-                        <asp:Label ID="lblTableName" runat="server" Text="Table Name :"></asp:Label>
-                    </div>
-
-                    <div class="col3">
-                        <asp:TextBox ID="txtTableName" runat="server"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="rfvtxtTableName" runat="server" ControlToValidate="txtTableName" CssClass="CustomValidator"
-                            EnableClientScript="False" Text="&lt;img src='../Images/icon/Exclamation.gif' title='Table Name is required!' /&gt;"
-                            ValidationGroup="vgSave"></asp:RequiredFieldValidator>
-                    </div>--%>
                     <div class="col2">
                         <span class="RequiredField">*</span>
-                        <asp:Label ID="lblEmpField" runat="server" Text="Employee Field :"></asp:Label>
+                        <asp:Label ID="lblEmpField" runat="server" Text="Employee Field :" meta:resourcekey="lblEmpFieldResource1"></asp:Label>
                     </div>
 
                     <div class="col3">
-                        <asp:DropDownList ID="ddlEmpField" runat="server"></asp:DropDownList>
+                        <asp:DropDownList ID="ddlEmpField" runat="server" meta:resourcekey="ddlEmpFieldResource1"></asp:DropDownList>
                         <asp:RequiredFieldValidator ID="rfvtxtEmpField" runat="server" ControlToValidate="ddlEmpField"
                             EnableClientScript="False" Text="&lt;img src='../Images/icon/Exclamation.gif' title='Employee Field is required!' /&gt;" CssClass="CustomValidator"
-                            ValidationGroup="vgSave"></asp:RequiredFieldValidator>
+                            ValidationGroup="vgSave" meta:resourcekey="rfvtxtEmpFieldResource1"></asp:RequiredFieldValidator>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col2">
                         <span class="RequiredField">*</span>
-                        <asp:Label ID="lblDateField" runat="server" Text="Date Field :"></asp:Label>
+                        <asp:Label ID="lblDateField" runat="server" Text="Date Field :" meta:resourcekey="lblDateFieldResource1"></asp:Label>
                     </div>
 
                     <div class="col3">
-                        <asp:DropDownList ID="ddlDateField" runat="server"></asp:DropDownList>
+                        <asp:DropDownList ID="ddlDateField" runat="server" meta:resourcekey="ddlDateFieldResource1"></asp:DropDownList>
                         <asp:RequiredFieldValidator ID="rfvtxtDateField" runat="server" ControlToValidate="ddlDateField" CssClass="CustomValidator"
                             EnableClientScript="False" Text="&lt;img src='../Images/icon/Exclamation.gif' title='Date Field is required!' /&gt;"
-                            ValidationGroup="vgSave"></asp:RequiredFieldValidator>
+                            ValidationGroup="vgSave" meta:resourcekey="rfvtxtDateFieldResource1"></asp:RequiredFieldValidator>
                     </div>
 
                     <div class="col2">
                         <span class="RequiredField">*</span>
-                        <asp:Label ID="lbltimeField" runat="server" Text="Time Field :"></asp:Label>
+                        <asp:Label ID="lbltimeField" runat="server" Text="Time Field :" meta:resourcekey="lbltimeFieldResource1"></asp:Label>
                     </div>
                     <div class="col3">
-                        <asp:DropDownList ID="ddlTimeField" runat="server"></asp:DropDownList>
+                        <asp:DropDownList ID="ddlTimeField" runat="server" meta:resourcekey="ddlTimeFieldResource1"></asp:DropDownList>
                         <asp:RequiredFieldValidator ID="rfvtxtTimeField" runat="server" ControlToValidate="ddlTimeField" CssClass="CustomValidator"
                             EnableClientScript="False" Text="&lt;img src='../Images/icon/Exclamation.gif' title='Time Field is required!' /&gt;"
-                            ValidationGroup="vgSave"></asp:RequiredFieldValidator>
+                            ValidationGroup="vgSave" meta:resourcekey="rfvtxtTimeFieldResource1"></asp:RequiredFieldValidator>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col2">
                         <span class="RequiredField">*</span>
-                        <asp:Label ID="lblInOutField" runat="server" Text="In/Out Field :"></asp:Label>
+                        <asp:Label ID="lblInOutField" runat="server" Text="In/Out Field :" meta:resourcekey="lblInOutFieldResource1"></asp:Label>
                     </div>
                     <div class="col3">
-                        <asp:DropDownList ID="ddlInOutField" runat="server"></asp:DropDownList>
+                        <asp:DropDownList ID="ddlInOutField" runat="server" meta:resourcekey="ddlInOutFieldResource1"></asp:DropDownList>
                         <asp:RequiredFieldValidator ID="rfvtxtInOutField" runat="server" ControlToValidate="ddlInOutField" CssClass="CustomValidator"
                             EnableClientScript="False" Text="&lt;img src='../Images/icon/Exclamation.gif' title='In/Out Field is required!' /&gt;"
-                            ValidationGroup="vgSave"></asp:RequiredFieldValidator>
+                            ValidationGroup="vgSave" meta:resourcekey="rfvtxtInOutFieldResource1"></asp:RequiredFieldValidator>
                     </div>
 
                     <div class="col2">
                         <span class="RequiredField">*</span>
-                        <asp:Label ID="lblMachineIdField" runat="server" Text="Machine ID Field :"></asp:Label>
+                        <asp:Label ID="lblMachineIdField" runat="server" Text="Machine ID Field :" meta:resourcekey="lblMachineIdFieldResource1"></asp:Label>
                     </div>
                     <div class="col3">
-                        <asp:DropDownList ID="ddlMachineIdField" runat="server"></asp:DropDownList>
+                        <asp:DropDownList ID="ddlMachineIdField" runat="server" meta:resourcekey="ddlMachineIdFieldResource1"></asp:DropDownList>
                         <asp:RequiredFieldValidator ID="rfvtxtMachineIdField" runat="server" ControlToValidate="ddlMachineIdField" CssClass="CustomValidator"
                             EnableClientScript="False" Text="&lt;img src='../Images/icon/Exclamation.gif' title='Machine ID is required!' /&gt;"
-                            ValidationGroup="vgSave"></asp:RequiredFieldValidator>
+                            ValidationGroup="vgSave" meta:resourcekey="rfvtxtMachineIdFieldResource1"></asp:RequiredFieldValidator>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col2">
                         <span class="RequiredField">*</span>
-                        <asp:Label ID="lblLocationField" runat="server" Text="Location Field :"></asp:Label>
+                        <asp:Label ID="lblLocationField" runat="server" Text="Location Field :" meta:resourcekey="lblLocationFieldResource1"></asp:Label>
                     </div>
                     <div class="col3">
-                        <asp:DropDownList ID="ddlLocationField" runat="server"></asp:DropDownList>
+                        <asp:DropDownList ID="ddlLocationField" runat="server" meta:resourcekey="ddlLocationFieldResource1"></asp:DropDownList>
                         <asp:RequiredFieldValidator ID="rfvtxtLocationField" runat="server" ControlToValidate="ddlLocationField" CssClass="CustomValidator"
                             EnableClientScript="False" Text="&lt;img src='../Images/icon/Exclamation.gif' title='Location Field is required!' /&gt;"
-                            ValidationGroup="vgSave"></asp:RequiredFieldValidator>
+                            ValidationGroup="vgSave" meta:resourcekey="rfvtxtLocationFieldResource1"></asp:RequiredFieldValidator>
                     </div>
 
                     <div class="col2">
-                        <asp:Label ID="lblSchemaName" runat="server" Text="Schema Name :"></asp:Label>
+                        <asp:Label ID="lblSchemaName" runat="server" Text="Schema Name :" meta:resourcekey="lblSchemaNameResource1"></asp:Label>
                     </div>
                     <div class="col3">
-                        <asp:TextBox ID="txtSchemaName" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtSchemaName" runat="server" meta:resourcekey="txtSchemaNameResource1"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="rfvtxtSchemaName" runat="server" ControlToValidate="txtSchemaName" CssClass="CustomValidator"
                             EnableClientScript="False" Text="&lt;img src='../Images/icon/Exclamation.gif' title='Schema Name is required!' /&gt;"
-                            ValidationGroup="vgSave"></asp:RequiredFieldValidator>
+                            ValidationGroup="vgSave" meta:resourcekey="rfvtxtSchemaNameResource1"></asp:RequiredFieldValidator>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col12">
-                        <asp:LinkButton ID="btnSave" runat="server" Text="Save" ValidationGroup="vgSave" CssClass="GenButton glyphicon glyphicon-floppy-disk" OnClick="btnSave_Click"></asp:LinkButton>
-                        <asp:TextBox ID="cvtxt" runat="server" Text="02120" Visible="False" Width="10px"></asp:TextBox>
+                        <asp:LinkButton ID="btnSave" runat="server" Text="Save" ValidationGroup="vgSave" CssClass="GenButton glyphicon glyphicon-floppy-disk" OnClick="btnSave_Click" meta:resourcekey="btnSaveResource1"></asp:LinkButton>
+                        <asp:TextBox ID="cvtxt" runat="server" Text="02120" Visible="False" Width="10px" meta:resourcekey="cvtxtResource1"></asp:TextBox>
                         <asp:CustomValidator ID="cvShowMsg" runat="server" Display="None" ValidationGroup="vgShowMsg" CssClass="CustomValidator"
-                            OnServerValidate="ShowMsg_ServerValidate" EnableClientScript="False" ControlToValidate="cvtxt">
-                        </asp:CustomValidator>
+                            OnServerValidate="ShowMsg_ServerValidate" EnableClientScript="False" ControlToValidate="cvtxt" meta:resourcekey="cvShowMsgResource1"></asp:CustomValidator>
                     </div>
                 </div>
             </div>
-            <%--<div id='divBackground'></div>
-            <div id='divPopup' class="divPopup" style="height: 500px; width: 680px;">
-                <div id='divPopupHead' class="divPopupHead">
-                    <asp:Label ID="lblNamePopup"
-                        runat="server" CssClass="lblNamePopup"></asp:Label>
-                </div>
-                <div id='divClosePopup' class="divClosePopup" onclick="hidePopup('divPopup')"><ahref='#'>X</a></div>
-                <div id='divPopupContent' class="divPopupContent">
-                    <center>
-                        <iframe id="ifrmPopup" runat="server" height="500px" width="670px" scrolling="no" frameborder="0" style="margin-left: 10px; background-color: #4E6877"></iframe>
-                    </center>
-                </div>
-            </div>--%>
 
         </ContentTemplate>
     </asp:UpdatePanel>
