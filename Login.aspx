@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/LoginMasterPage.master" AutoEventWireup="true" CodeFile="Login.aspx.cs" Inherits="Login"  %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/LoginMasterPage.master" AutoEventWireup="true" CodeFile="Login.aspx.cs" Inherits="Login" culture="auto" meta:resourcekey="PageResource2" uiculture="auto"  %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder2" runat="Server">
     <div id="pageDiv" runat="Server" class="LoginPanel">
@@ -7,13 +7,13 @@
             <div class="LoginLeft">
 
                 <asp:Image ID="Image1" runat="server" CssClass="loginLogoSAr"
-                    ImageUrl="~/images/Logo.png"  />
+                    ImageUrl="~/images/Logo.png" meta:resourcekey="Image1Resource1"  />
                 <asp:Image ID="Image2" runat="server" CssClass="loginLogoMAr"
-                    ImageUrl="~/images/LoginLogo.png"  />
+                    ImageUrl="~/images/LoginLogo.png" meta:resourcekey="Image2Resource1"  />
                 <asp:Image ID="Image3" runat="server" CssClass="loginLogoSEn"
-                    ImageUrl="~/images/LogoEn.png"  />
+                    ImageUrl="~/images/LogoEn.png" meta:resourcekey="Image3Resource1"  />
                 <asp:Image ID="Image4" runat="server" CssClass="loginLogoMEn"
-                    ImageUrl="~/images/LoginLogoEn.png"  />
+                    ImageUrl="~/images/LoginLogoEn.png" meta:resourcekey="Image4Resource1"  />
 
             </div>
 
@@ -35,57 +35,56 @@
                     <div class="col12">
                         <asp:Label ID="lbltxtLoginID" runat="server" Text="Login ID :"
                             
-                            Style="text-align: center; font-size: medium" Font-Bold="True"></asp:Label>
+                            Style="text-align: center; font-size: medium" Font-Bold="True" meta:resourcekey="lbltxtLoginIDResource2"></asp:Label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col12 UserName">
-                                            <asp:TextBox ID="txtLoginID" runat="server"  
+                                            <asp:TextBox ID="txtLoginID" runat="server" meta:resourcekey="txtLoginIDResource3"  
                                                   ></asp:TextBox>
                                        
                                             <asp:RequiredFieldValidator ID="rfvtxtLoginID" runat="server" ControlToValidate="txtLoginID" CssClass="CustomValidator"
                                                 EnableClientScript="False" Text="&lt;img src='Images/icon/Exclamation.gif' title='Login ID is required!' /&gt;"
-                                                ValidationGroup="Save" ></asp:RequiredFieldValidator>
+                                                ValidationGroup="Save" meta:resourcekey="rfvtxtLoginIDResource2" ></asp:RequiredFieldValidator>
                                       </div>
             </div>
             <div class="row">
                 <div class="col12">
                     <asp:Label ID="lblPassword" runat="server" Text="Password :"
                         Style="font-size: medium"
-                        Font-Bold="True"></asp:Label>
+                        Font-Bold="True" meta:resourcekey="lblPasswordResource2"></asp:Label>
                 </div>
             </div>
             <div class="row">
                 <div class="col12 PassWord">
-                    <asp:TextBox ID="txtPassword" runat="server"   TextMode="Password"
+                    <asp:TextBox ID="txtPassword" runat="server"   TextMode="Password" meta:resourcekey="txtPasswordResource2"
                          ></asp:TextBox>
 
                     <asp:RequiredFieldValidator ID="rfvtxtPassword" runat="server" ControlToValidate="txtPassword" CssClass="CustomValidator"
                         EnableClientScript="False" Text="&lt;img src='Images/icon/Exclamation.gif' title='Password is required!' /&gt;"
-                        ValidationGroup="Save" ></asp:RequiredFieldValidator>
+                        ValidationGroup="Save" meta:resourcekey="rfvtxtPasswordResource2" ></asp:RequiredFieldValidator>
                 </div>
             </div>
             <div class="row">
                 <div class="col12">
                     <asp:Button ID="btnLogin" runat="server" Text="login" CssClass="LoginBTN"
-                        OnClick="btnLogin_Click" ValidationGroup="Save" 
+                        OnClick="btnLogin_Click" ValidationGroup="Save" meta:resourcekey="btnLoginResource2" 
                          />
                 </div>
             </div>
             <div class="row">
                 <div class="col4">
-                    <asp:TextBox ID="cvtxt" runat="server" Text="02120" Visible="False" Width="10px" ></asp:TextBox>
+                    <asp:TextBox ID="cvtxt" runat="server" Text="02120" Visible="False" Width="10px" meta:resourcekey="cvtxtResource1" ></asp:TextBox>
                     <asp:CustomValidator ID="cvShowMsg" runat="server" Display="None"
                         ValidationGroup="ShowMsg" OnServerValidate="ShowMsg_ServerValidate"
-                        EnableClientScript="False" ControlToValidate="cvtxt">
-                    </asp:CustomValidator>
+                        EnableClientScript="False" ControlToValidate="cvtxt" meta:resourcekey="cvShowMsgResource1"></asp:CustomValidator>
 
                 </div>
             </div>
             <div class="row">
                 <div class="col12">
 
-                    <asp:ValidationSummary ID="vsShowMsg" runat="server" CssClass="MsgSuccess" EnableClientScript="False" ValidationGroup="vgShowMsg" />
+                    <asp:ValidationSummary ID="vsShowMsg" runat="server" CssClass="MsgSuccess" EnableClientScript="False" ValidationGroup="vgShowMsg" meta:resourcekey="vsShowMsgResource1" />
                 </div>
             </div>
         </div>
