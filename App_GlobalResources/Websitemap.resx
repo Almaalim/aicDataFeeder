@@ -117,163 +117,58 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="btnLoginResource1.Text" xml:space="preserve">
-    <value>تسجيل دخول</value>
+  <data name="Departments" xml:space="preserve">
+    <value>Departments</value>
   </data>
-  <data name="btnLoginResource1.ToolTip" xml:space="preserve">
-    <value />
+  <data name="EmailSetting" xml:space="preserve">
+    <value>Email Setting</value>
   </data>
-  <data name="btnLoginResource2.Text" xml:space="preserve">
-    <value>تسجيل دخول</value>
+  <data name="Employees" xml:space="preserve">
+    <value>Employees</value>
   </data>
-  <data name="btnLoginResource2.ToolTip" xml:space="preserve">
-    <value />
+  <data name="EmployeeVacation" xml:space="preserve">
+    <value>Employee Vacation</value>
   </data>
-  <data name="cvShowMsgResource1.ErrorMessage" xml:space="preserve">
-    <value />
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
   </data>
-  <data name="cvShowMsgResource1.Text" xml:space="preserve">
-    <value />
+  <data name="ImportDatabase" xml:space="preserve">
+    <value>Import Database</value>
   </data>
-  <data name="cvShowMsgResource1.ToolTip" xml:space="preserve">
-    <value />
+  <data name="LogErrors" xml:space="preserve">
+    <value>Log Errors</value>
   </data>
-  <data name="cvtxtResource1.Text" xml:space="preserve">
-    <value>02120</value>
+  <data name="Machine" xml:space="preserve">
+    <value>Machine</value>
   </data>
-  <data name="cvtxtResource1.ToolTip" xml:space="preserve">
-    <value />
+  <data name="MachineStatus" xml:space="preserve">
+    <value>Machine Status</value>
   </data>
-  <data name="Image1Resource1.AlternateText" xml:space="preserve">
-    <value />
+  <data name="Reports" xml:space="preserve">
+    <value>Reports</value>
   </data>
-  <data name="Image1Resource1.ToolTip" xml:space="preserve">
-    <value />
+  <data name="ScheduleImport" xml:space="preserve">
+    <value>Schedule Import</value>
   </data>
-  <data name="Image2Resource1.AlternateText" xml:space="preserve">
-    <value />
+  <data name="Setting" xml:space="preserve">
+    <value>Setting</value>
   </data>
-  <data name="Image2Resource1.ToolTip" xml:space="preserve">
-    <value />
+  <data name="SettingCompany" xml:space="preserve">
+    <value>Setting Company</value>
   </data>
-  <data name="Image3Resource1.AlternateText" xml:space="preserve">
-    <value />
+  <data name="SettingMachine" xml:space="preserve">
+    <value>Setting Machine</value>
   </data>
-  <data name="Image3Resource1.ToolTip" xml:space="preserve">
-    <value />
+  <data name="Users" xml:space="preserve">
+    <value>Users</value>
   </data>
-  <data name="Image4Resource1.AlternateText" xml:space="preserve">
-    <value />
+  <data name="Vacation" xml:space="preserve">
+    <value>Vacation</value>
   </data>
-  <data name="Image4Resource1.ToolTip" xml:space="preserve">
-    <value />
+  <data name="VacationType" xml:space="preserve">
+    <value>Vacation Type</value>
   </data>
-  <data name="LblErrorMsgResource1.Text" xml:space="preserve">
-    <value>اسم المستخدم أو كلمة المرور غير صحيحة</value>
-  </data>
-  <data name="LblErrorMsgResource1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="lblPasswordResource1.Text" xml:space="preserve">
-    <value>كلمة المرور :</value>
-  </data>
-  <data name="lblPasswordResource1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="lblPasswordResource2.Text" xml:space="preserve">
-    <value>كلمة المرور :</value>
-  </data>
-  <data name="lblPasswordResource2.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="lbltxtLoginIDResource1.Text" xml:space="preserve">
-    <value>اسم المستخدم :</value>
-  </data>
-  <data name="lbltxtLoginIDResource1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="lbltxtLoginIDResource2.Text" xml:space="preserve">
-    <value>اسم المستخدم :</value>
-  </data>
-  <data name="lbltxtLoginIDResource2.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="PageResource1.Title" xml:space="preserve">
-    <value>Data Feeder WEB - تسجيل الدخول</value>
-  </data>
-  <data name="PageResource2.Title" xml:space="preserve">
-    <value />
-  </data>
-  <data name="rfvtxtLoginIDResource1.ErrorMessage" xml:space="preserve">
-    <value />
-  </data>
-  <data name="rfvtxtLoginIDResource1.Text" xml:space="preserve">
-    <value>&lt;img src='Images/icon/Exclamation.gif' title='اسم المستخدم مطلوب!' /&gt;</value>
-  </data>
-  <data name="rfvtxtLoginIDResource1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="rfvtxtLoginIDResource2.ErrorMessage" xml:space="preserve">
-    <value />
-  </data>
-  <data name="rfvtxtLoginIDResource2.Text" xml:space="preserve">
-    <value>&lt;img src='Images/icon/Exclamation.gif' title='اسم المستخدم مطلوب!' /&gt;</value>
-  </data>
-  <data name="rfvtxtLoginIDResource2.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="rfvtxtPasswordResource1.ErrorMessage" xml:space="preserve">
-    <value />
-  </data>
-  <data name="rfvtxtPasswordResource1.Text" xml:space="preserve">
-    <value>&lt;img src='Images/icon/Exclamation.gif' title='كلمة المرور مطلوبة!' /&gt;</value>
-  </data>
-  <data name="rfvtxtPasswordResource1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="rfvtxtPasswordResource2.ErrorMessage" xml:space="preserve">
-    <value />
-  </data>
-  <data name="rfvtxtPasswordResource2.Text" xml:space="preserve">
-    <value>&lt;img src='Images/icon/Exclamation.gif' title='كلمة المرور مطلوبة!' /&gt;</value>
-  </data>
-  <data name="rfvtxtPasswordResource2.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="txtLoginIDResource2.Text" xml:space="preserve">
-    <value />
-  </data>
-  <data name="txtLoginIDResource2.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="txtLoginIDResource3.Text" xml:space="preserve">
-    <value />
-  </data>
-  <data name="txtLoginIDResource3.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="txtPasswordResource1.Text" xml:space="preserve">
-    <value />
-  </data>
-  <data name="txtPasswordResource1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="txtPasswordResource2.Text" xml:space="preserve">
-    <value />
-  </data>
-  <data name="txtPasswordResource2.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="vsShowMsgResource1.HeaderText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="vsShowMsgResource1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="lblLoginResource2.Text" xml:space="preserve">
-    <value>تسجيل الدخول</value>
-  </data>
-  <data name="lblSystemNameResource2.Text" xml:space="preserve">
-    <value>Attendance System</value>
+  <data name="WorkTime" xml:space="preserve">
+    <value>WorkTime</value>
   </data>
 </root>
