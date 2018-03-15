@@ -157,6 +157,17 @@ public partial class ChangePass : BasePage
                     e.IsValid = false;
                     return;
                 }
+
+                dt = DBCs.FetchData("SELECT UsrPassword FROM AppUsers WHERE UsrLoginID = '" + FormSession.LoginID + "'");
+                if (!DBCs.IsNullOrEmpty(dt))
+                {
+                    if (dt.Rows[0][0].ToString() == txtNewPass.Text)
+                    {
+                        MessageFun.ValidMsg(this, ref cvNewPass, true, General.Msg("The New password must be diffrent current password", "كلمة المرور الجديدة يجب ان لا تكون نفس كلمة المرور الحالية"));
+                        e.IsValid = false;
+                        return;
+                    }
+                }
             }
 
             if (source.Equals(cvConfirmPass))
