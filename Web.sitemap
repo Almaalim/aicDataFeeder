@@ -1,27 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
-  <siteMapNode url="pages/Home.aspx" title="Home"  description="Home Page">
-    <siteMapNode url="pages/Users.aspx" title="Users" description="Users Page" />
-    <siteMapNode url="pages/Employee.aspx" title="Employees" description="Employees Page" />
-    <siteMapNode url="pages/Department.aspx" title="Departments" description="Departments Page" />
-    <siteMapNode url="pages/VacationHome.aspx" title="Vacation" description="Vacation Page">
-      <siteMapNode url ="pages/VacationType.aspx" title="Vacation Type" description="Vacation Type Page"></siteMapNode>
-      <siteMapNode url ="pages/EmployeeVacation.aspx" title="Employee Vacation" description="Employee Vacation Page"></siteMapNode>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" enableLocalization="true" >
+  <siteMapNode url="pages/Home.aspx" title="$Resources:Websitemap, Home"  description="Home Page">
+    <siteMapNode url="pages/Users.aspx" title="$Resources:Websitemap,Users" description="Users Page" />
+    <siteMapNode url="pages/Employee.aspx" title="$Resources:Websitemap,Employees" description="Employees Page" />
+    <siteMapNode url="pages/Department.aspx" title="$Resources:Websitemap,Departments" description="Departments Page" />
+    <siteMapNode url="pages/VacationHome.aspx" title="$Resources:Websitemap,Vacation" description="Vacation Page">
+      <siteMapNode url ="pages/VacationType.aspx" title="$Resources:Websitemap,VacationType" description="Vacation Type Page"></siteMapNode>
+      <siteMapNode url ="pages/EmployeeVacation.aspx" title="$Resources:Websitemap,EmployeeVacation" description="Employee Vacation Page"></siteMapNode>
     </siteMapNode>
-    <siteMapNode url="pages/MachineHome.aspx" title="Machine" description="Machine Page">
-      <siteMapNode url ="pages/SettingMachine.aspx" title="Setting Machine" description="Setting Machine Page"></siteMapNode>
-      <siteMapNode url ="pages/MachinePing.aspx" title="Machine Status" description="Machine Status Page"></siteMapNode>
+    <siteMapNode url="pages/MachineHome.aspx" title="$Resources:Websitemap,Machine" description="Machine Page">
+      <siteMapNode url ="pages/SettingMachine.aspx" title="$Resources:Websitemap,SettingMachine" description="Setting Machine Page"></siteMapNode>
+      <siteMapNode url ="pages/MachinePing.aspx" title="$Resources:Websitemap,MachineStatus" description="Machine Status Page"></siteMapNode>
     </siteMapNode>
-    <siteMapNode url="pages/SettingHome.aspx" title="Setting" description="Setting Page">
-      <siteMapNode url ="pages/SettingDB.aspx" title="Import Database" description="Import Database Page"></siteMapNode>
-      <siteMapNode url ="pages/WorkTimeSetting.aspx" title="WorkTime" description="WorkTime Page"></siteMapNode>
-      <!--<siteMapNode url ="SettingScheduleImport.aspx.exclude" title="Vacation Type" description="Vacation Type Page"></siteMapNode>-->
-      <!--<siteMapNode url ="EmployeeVacation.aspx" title="Employee Vacation" description="Employee Vacation Page"></siteMapNode>-->
-      <siteMapNode url ="pages/SettingCompany.aspx" title="Setting Company" description="Setting Company Page"></siteMapNode>
-      <siteMapNode url ="pages/LogErrors.aspx" title="Log Errors" description="Log Errors Page"></siteMapNode>
-      <siteMapNode url ="pages/EmailSetting.aspx" title="Email Setting" description="Email Setting Page"></siteMapNode>
+    <siteMapNode url="pages/SettingHome.aspx" title="$Resources:Websitemap,Setting" description="Setting Page">
+      <siteMapNode url ="pages/SettingDB.aspx" title="$Resources:Websitemap,ImportDatabase" description="Import Database Page"></siteMapNode>
+      <siteMapNode url ="pages/WorkTimeSetting.aspx" title="$Resources:Websitemap,WorkTime" description="WorkTime Page"></siteMapNode>
+      <siteMapNode url ="SettingScheduleImport.aspx.exclude" title="$Resources:Websitemap,ScheduleImport" description="Setting Import Schedule"></siteMapNode>
+      <siteMapNode url ="pages/SettingCompany.aspx" title="$Resources:Websitemap,SettingCompany" description="Setting Company Page"></siteMapNode>
+      <siteMapNode url ="pages/LogErrors.aspx" title="$Resources:Websitemap,LogErrors" description="Log Errors Page"></siteMapNode>
+      <siteMapNode url ="pages/EmailSetting.aspx" title="$Resources:Websitemap,EmailSetting" description="Email Setting Page"></siteMapNode>
 
     </siteMapNode>
-    <siteMapNode url="pages/ReportsMain.aspx" title="Reports" description="Reports Page" />
+    <siteMapNode url="pages/ReportsMain.aspx" title="$Resources:Websitemap,Reports" description="Reports Page" />
   </siteMapNode>
 </siteMap>
