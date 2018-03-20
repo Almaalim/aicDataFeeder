@@ -246,6 +246,11 @@ public partial class Pages_ReportMain : BasePage
             FillPerm();
 
             FillDLL();
+            DateTime sDt = new DateTime(2018, 3, 1);
+            DateTime eDt = new DateTime(2018, 3, 12);
+
+            calStartDate.SetGDate(sDt, "dd/MM/yyyy");
+            calEndDate.SetGDate(eDt, "dd/MM/yyyy");
 
             //btnViewreport.Enabled = true;
 
@@ -448,7 +453,7 @@ public partial class Pages_ReportMain : BasePage
         DataTable RepDT = DBCs.FetchData(" SELECT * FROM Report WHERE RepID = '" + RepID + "'");
         if (!DBCs.IsNullOrEmpty(RepDT))
         {
-            RepTemp = RepDT.Rows[0]["RepTemp" + FormSession.Language].ToString();
+            RepProCs.RepTemp = RepDT.Rows[0]["RepTemp" + FormSession.Language].ToString();
             RepProCs.RepOrientation = RepDT.Rows[0]["RepOrientation"].ToString();
             //ViewState["RepOrientation"] = RepDT.Rows[0]["RepOrientation"].ToString();
 

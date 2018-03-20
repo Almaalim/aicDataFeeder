@@ -132,11 +132,11 @@
                             <asp:Label ID="lblStartDate" runat="server" Text="Start Date :"></asp:Label>
                         </div>
                         <div class="col4">
-                            <uc:Calendar2 ID="calStartDate" runat="server" CalendarType="System" ValidationRequired="true" ValidationGroup="vgView" CalTo="calEndDate" />
+                            <uc:Calendar2 ID="calStartDate" runat="server" CalendarType="System" ValidationGroup="vgView" /> <%--CalTo="calEndDate"--%>
 
-                            <asp:CustomValidator ID="cvStartDate" runat="server" Text="&lt;img src='../Images/icon/Exclamation.gif' title='Start Date is required!' /&gt;" CssClass="CustomValidator"
+                            <%--<asp:CustomValidator ID="cvStartDate" runat="server" Text="&lt;img src='../Images/icon/Exclamation.gif' title='Start Date is required!' /&gt;" CssClass="CustomValidator"
                                 ValidationGroup="vgView" OnServerValidate="Date_ServerValidate" EnableClientScript="False"
-                                ControlToValidate="cvValid"></asp:CustomValidator>  
+                                ControlToValidate="cvValid"></asp:CustomValidator>--%>  
 
                             <%--<asp:CustomValidator ID="cvCompareDates" runat="server" Text="&lt;img src='../Images/icon/Exclamation.gif' title='start date more than end date!' /&gt;" CssClass="CustomValidator"
                                 ValidationGroup="vgView" ErrorMessage="start date more than end date!" OnServerValidate="Date_ServerValidate"
@@ -146,11 +146,11 @@
                             <asp:Label ID="lblEndDate" runat="server" Text="End Date :"></asp:Label>
                         </div>
                         <div class="col4">
-                            <uc:Calendar2 ID="calEndDate" runat="server" CalendarType="System" ValidationRequired="true" ValidationGroup="vgView" />
+                            <uc:Calendar2 ID="calEndDate" runat="server" CalendarType="System" ValidationGroup="vgView" />
 
-                            <asp:CustomValidator ID="cvEndDate" runat="server" Text="&lt;img src='../Images/icon/Exclamation.gif' title='End Date is required!' /&gt;" CssClass="CustomValidator"
+                            <%--<asp:CustomValidator ID="cvEndDate" runat="server" Text="&lt;img src='../Images/icon/Exclamation.gif' title='End Date is required!' /&gt;" CssClass="CustomValidator"
                                 ValidationGroup="vgView" OnServerValidate="Date_ServerValidate" EnableClientScript="False"
-                                ControlToValidate="cvValid"></asp:CustomValidator>
+                                ControlToValidate="cvValid"></asp:CustomValidator>--%>
                         </div>
                     </div>
                 </asp:Panel>

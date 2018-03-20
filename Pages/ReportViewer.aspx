@@ -21,8 +21,8 @@
     <%--<cc1:StiWebViewerFx ID="StiWebViewerFx1" runat="server" Width="912px" Height="600px" Background="White" BrowserTitle="" CacheItemPriority="Low" ExitUrl="" ImageFormat="Png" ImageQuality="Normal" Localization="" LocalizationDirectory="" meta:resourcekey="StiWebViewerFx1Resource1"  ReportGuid="6bf1801628db4051" ServerTimeout="00:10:00" ThemeName="Office2013" />--%>
     <%--Report=""  WebImageHost="Stimulsoft.Report.WebFx.StiWebImageHost"--%>
 
-    <cc2:StiWebViewer ID="StiWebViewer1" runat="server" Width="600px" 
-        Height="800px" Background="White" ServerTimeOut="00:30:00"  />
+    <cc2:StiWebViewer ID="StiWebViewer1" runat="server" Width="912px" 
+        Height="600px" Background="White" ServerTimeOut="00:30:00"  />
     <%--onpreinit="StiWebViewerFx1_PreInit"--%>
 </asp:Content>
 

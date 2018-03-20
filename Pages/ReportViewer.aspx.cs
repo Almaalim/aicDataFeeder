@@ -47,7 +47,7 @@ public partial class Pages_ReportViewer : BasePage
                 }
             }
 
-            if (Session["RepProCs"] == null) { Response.Redirect(@"~/Pages_Report/Reports.aspx"); }
+            if (Session["RepProCs"] == null) { Response.Redirect(@"~/Pages/ReportsMain.aspx?ID=" + "1"); }
             ShowReport();
         }
         catch (Exception ex) { }
@@ -123,7 +123,7 @@ public partial class Pages_ReportViewer : BasePage
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     protected void btnBackToReportsPage_Click(object sender, EventArgs e)
     {
-        Response.Redirect(@"~/Pages_Report/Reports.aspx?ID=" + "");
+        Response.Redirect(@"~/Pages/ReportsMain.aspx?ID=" + "1");
     }
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
