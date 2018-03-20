@@ -260,7 +260,10 @@ body {
     float: none;
     clear: both;
 }
-
+#divMenu
+{
+    display:none;
+}
 .Logo {
     float: left;
     width: auto;
