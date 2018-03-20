@@ -412,4 +412,7 @@
   <data name="vsShowMsgResource1.ToolTip" xml:space="preserve">
     <value />
   </data>
+  <data name="TemplateFieldResource3.HeaderText" xml:space="preserve">
+    <value>نوع الحركة</value>
+  </data>
 </root>

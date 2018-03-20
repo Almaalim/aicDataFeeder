@@ -24,7 +24,7 @@
                         </div>
 
                         <div class="col2">
-                            <asp:TextBox ID="txtSearch" runat="server" Enabled="False" meta:resourcekey="txtSearchResource1"></asp:TextBox>
+                            <asp:TextBox ID="txtSearch" runat="server" Enabled="False" AutoCompleteType="Disabled" meta:resourcekey="txtSearchResource1"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="rvSearch" runat="server" CssClass="CustomValidator"
                                 ControlToValidate="txtSearch" EnableClientScript="False" ValidationGroup="vgSearch"
                                 Text="&lt;img src='../Images/icon/Exclamation.gif' title='You must enter a value to search!' /&gt;" meta:resourcekey="rvSearchResource1"></asp:RequiredFieldValidator>
@@ -68,7 +68,7 @@
                                     <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                 </asp:BoundField>
-                                <asp:CommandField ButtonType="Button" SelectText="select" ShowSelectButton="True" meta:resourcekey="CommandFieldResource1" />
+                                <asp:CommandField ButtonType="Button" SelectText="select" ShowSelectButton="false" meta:resourcekey="CommandFieldResource1" />
 
                             </Columns>
 
@@ -124,7 +124,7 @@
                                     <asp:Label ID="lblVtpNameAr" runat="server" Text="Vacation Name (Ar) :" meta:resourcekey="lblVtpNameArResource1"></asp:Label>
                                 </div>
                                 <div class="col3">
-                                    <asp:TextBox ID="txtVtpNameAr" runat="server" Enabled="False" meta:resourcekey="txtVtpNameArResource1"></asp:TextBox>
+                                    <asp:TextBox ID="txtVtpNameAr" runat="server" Enabled="False" AutoCompleteType="Disabled" meta:resourcekey="txtVtpNameArResource1"></asp:TextBox>
                                     <asp:CustomValidator ID="cvVtpNameAr" runat="server" ValidationGroup="vgSave" OnServerValidate="VtpName_ServerValidate"
                                         Text="&lt;img src='../Images/icon/Exclamation.gif' title='Vacation Name (Ar) is required!' /&gt;" CssClass="CustomValidator"
                                         EnableClientScript="False" ControlToValidate="cvtxt" meta:resourcekey="cvVtpNameArResource1"></asp:CustomValidator>
@@ -133,7 +133,7 @@
                                     <asp:Label ID="lblVtpNameEn" runat="server" Text="Vacation Name (En) :" meta:resourcekey="lblVtpNameEnResource1"></asp:Label>
                                 </div>
                                 <div class="col3">
-                                    <asp:TextBox ID="txtVtpNameEn" runat="server" Enabled="False" meta:resourcekey="txtVtpNameEnResource1"></asp:TextBox>
+                                    <asp:TextBox ID="txtVtpNameEn" runat="server" Enabled="False" AutoCompleteType="Disabled" meta:resourcekey="txtVtpNameEnResource1"></asp:TextBox>
                                     <asp:CustomValidator ID="cvVtpNameEn" runat="server" ValidationGroup="vgSave" OnServerValidate="VtpName_ServerValidate"
                                         Text="&lt;img src='../Images/icon/Exclamation.gif' title='Vacation Name (En) is required!' /&gt;" CssClass="CustomValidator"
                                         EnableClientScript="False" ControlToValidate="cvtxt" meta:resourcekey="cvVtpNameEnResource1"></asp:CustomValidator>
@@ -152,7 +152,7 @@
                                     <asp:Label ID="lblVtpDesc" runat="server" Text="Description :" meta:resourcekey="lblVtpDescResource1"></asp:Label>
                                 </div>
                                 <div class="col3">
-                                    <asp:TextBox ID="txtVtpDesc" runat="server"  Enabled="False" meta:resourcekey="txtVtpDescResource1"></asp:TextBox>
+                                    <asp:TextBox ID="txtVtpDesc" runat="server"  Enabled="False" AutoCompleteType="Disabled" meta:resourcekey="txtVtpDescResource1"></asp:TextBox>
                                     <asp:TextBox ID="txtVtpID" runat="server" Width="10px" Enabled="False" Visible="False" meta:resourcekey="txtVtpIDResource1"></asp:TextBox>
                                 </div>
                             </div>

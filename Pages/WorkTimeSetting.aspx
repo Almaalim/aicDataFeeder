@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MainMasterPage.master" AutoEventWireup="true"
-    CodeFile="WorkTimeSetting.aspx.cs" Inherits="Pages_WorkTimeSetting" culture="auto" meta:resourcekey="PageResource1" uiculture="auto" %>
+    CodeFile="WorkTimeSetting.aspx.cs" Inherits="Pages_WorkTimeSetting" Culture="auto" meta:resourcekey="PageResource1" UICulture="auto" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 <%@ Register Src="~/Control/SettingSideMenu.ascx" TagName="SettingSideMenu" TagPrefix="uc1" %>
@@ -30,7 +30,7 @@
                         </div>
 
                         <div class="col2">
-                            <asp:TextBox ID="txtSearch" runat="server" Enabled="False" meta:resourcekey="txtSearchResource1"></asp:TextBox>
+                            <asp:TextBox ID="txtSearch" runat="server" Enabled="False" AutoCompleteType="Disabled" meta:resourcekey="txtSearchResource1"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="rvSearch" runat="server" ControlToValidate="txtSearch" CssClass="CustomValidator"
                                 EnableClientScript="False" ValidationGroup="vgSearch" Text="&lt;img src='../Images/icon/Exclamation.gif' title='You must enter a value to search!' /&gt;" meta:resourcekey="rvSearchResource1"></asp:RequiredFieldValidator>
                             <ajaxToolkit:FilteredTextBoxExtender ID="eFilteredSearch" runat="server" Enabled="True"
@@ -61,7 +61,7 @@
                                     <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                 </asp:BoundField>
-                                <asp:BoundField DataField="WktID" Visible="False" ReadOnly="True" SortExpression="WktID" meta:resourcekey="BoundFieldResource3">
+                                <asp:BoundField DataField="WktID" ReadOnly="True" SortExpression="WktID" meta:resourcekey="BoundFieldResource3">
                                     <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                 </asp:BoundField>
@@ -69,7 +69,7 @@
                                     <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                 </asp:BoundField>
-                                <asp:CommandField ButtonType="Button" SelectText="select" ShowSelectButton="True" meta:resourcekey="CommandFieldResource1" />
+                                <asp:CommandField ButtonType="Button" SelectText="select" ShowSelectButton="true" meta:resourcekey="CommandFieldResource1" />
                             </Columns>
 
                         </asp:GridView>
@@ -81,19 +81,19 @@
                             <div class="col8">
                                 <asp:LinkButton ID="btnAdd" runat="server" Text="Add" CssClass="GenButton glyphicon glyphicon-plus-sign" OnClick="btnAdd_Click" meta:resourcekey="btnAddResource1"></asp:LinkButton>
                                 &nbsp;&nbsp;
-                                                <asp:LinkButton ID="btnEdit" runat="server" Text="Edit" CssClass="GenButton  glyphicon glyphicon-edit" Enabled="False"
-                                                    OnClick="btnEdit_Click" meta:resourcekey="btnEditResource1"></asp:LinkButton>
+                                <asp:LinkButton ID="btnEdit" runat="server" Text="Edit" CssClass="GenButton  glyphicon glyphicon-edit" Enabled="False"
+                                    OnClick="btnEdit_Click" meta:resourcekey="btnEditResource1"></asp:LinkButton>
                                 &nbsp;&nbsp;
-                                                <asp:LinkButton ID="btnDelete" runat="server" Text="Delete" CssClass="GenButton glyphicon glyphicon-remove" Enabled="False"
-                                                    OnClick="btnDelete_Click" meta:resourcekey="btnDeleteResource1"></asp:LinkButton>
+                                <asp:LinkButton ID="btnDelete" runat="server" Text="Delete" CssClass="GenButton glyphicon glyphicon-remove" Enabled="False"
+                                    OnClick="btnDelete_Click" meta:resourcekey="btnDeleteResource1"></asp:LinkButton>
                                 &nbsp;&nbsp;
-                                                <asp:LinkButton ID="btnSave" runat="server" Text="Save" CssClass="GenButton glyphicon glyphicon-floppy-disk" OnClick="btnSave_Click"
-                                                    ValidationGroup="vgSave" meta:resourcekey="btnSaveResource1"></asp:LinkButton>
+                                <asp:LinkButton ID="btnSave" runat="server" Text="Save" CssClass="GenButton glyphicon glyphicon-floppy-disk" OnClick="btnSave_Click"
+                                    ValidationGroup="VgSave" meta:resourcekey="btnSaveResource1"></asp:LinkButton>
                                 &nbsp;&nbsp;
-                                                <asp:LinkButton ID="btnCancel" runat="server" Text="Cancel" CssClass="GenButton glyphicon glyphicon-remove-circle" Enabled="False"
-                                                    OnClick="btnCancel_Click" meta:resourcekey="btnCancelResource1"></asp:LinkButton>
+                                <asp:LinkButton ID="btnCancel" runat="server" Text="Cancel" CssClass="GenButton glyphicon glyphicon-remove-circle" Enabled="False"
+                                    OnClick="btnCancel_Click" meta:resourcekey="btnCancelResource1"></asp:LinkButton>
                                 &nbsp;&nbsp;
-                                                <asp:TextBox ID="cvtxt" runat="server" Text="02120" Visible="False" Width="10px" meta:resourcekey="cvtxtResource1"></asp:TextBox>
+                                <asp:TextBox ID="cvtxt" runat="server" Text="02120" Visible="False" Width="10px" meta:resourcekey="cvtxtResource1"></asp:TextBox>
                                 <asp:CustomValidator ID="cvShowMsg" runat="server" Display="None" ValidationGroup="vgShowMsg" CssClass="CustomValidator"
                                     OnServerValidate="ShowMsg_ServerValidate" EnableClientScript="False" ControlToValidate="cvtxt" meta:resourcekey="cvShowMsgResource1"></asp:CustomValidator>
                             </div>
@@ -111,10 +111,10 @@
                         <div class="row">
                             <div class="col2">
                                 <span class="RequiredField">*</span>
-                                <asp:Label ID="lblWorkNameAr" runat="server" Text="Work Name (Ar):" meta:resourcekey="lblWorkNameArResource1" ></asp:Label>
+                                <asp:Label ID="lblWorkNameAr" runat="server" Text="Work Name (Ar):" meta:resourcekey="lblWorkNameArResource1"></asp:Label>
                             </div>
                             <div class="col3">
-                                <asp:TextBox ID="txtWorkNameAr" runat="server" meta:resourcekey="txtWorkNameArResource1"></asp:TextBox>
+                                <asp:TextBox ID="txtWorkNameAr" runat="server" AutoCompleteType="Disabled" meta:resourcekey="txtWorkNameArResource1"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="rfvWorkNameAr" runat="server" ValidationGroup="VgSave" ControlToValidate="txtWorkNameAr" CssClass="CustomValidator"
                                     EnableClientScript="False" Text="&lt;img src='../Images/icon/Exclamation.gif' title='Work Name (Ar) is required' /&gt;" meta:resourcekey="rfvWorkNameArResource1"></asp:RequiredFieldValidator>
                             </div>
@@ -123,7 +123,7 @@
                                 <asp:Label ID="lblWorkNameEn" runat="server" Text="Work Name (En) :" meta:resourcekey="lblWorkNameEnResource1"></asp:Label>
                             </div>
                             <div class="col3">
-                                <asp:TextBox ID="txtWorkNameEn" runat="server" meta:resourcekey="txtWorkNameEnResource1"></asp:TextBox>
+                                <asp:TextBox ID="txtWorkNameEn" runat="server" AutoCompleteType="Disabled" meta:resourcekey="txtWorkNameEnResource1"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="rfvWorkNameEn" runat="server" ValidationGroup="VgSave" ControlToValidate="txtWorkNameEn" CssClass="CustomValidator"
                                     EnableClientScript="False" Text="&lt;img src='../Images/icon/Exclamation.gif' title='Work Name (En) is required' /&gt;" meta:resourcekey="rfvWorkNameEnResource1"></asp:RequiredFieldValidator>
                             </div>
@@ -136,19 +136,19 @@
                             <div class="col10">
                                 <asp:CheckBox ID="chkEwrSat" runat="server" Enabled="False" Text="Saturday" meta:resourcekey="chkEwrSatResource1" />
                                 &nbsp;&nbsp;
-                                                            <asp:CheckBox ID="chkEwrSun" runat="server" Enabled="False" Text="Sunday" meta:resourcekey="chkEwrSunResource1" />
+                                <asp:CheckBox ID="chkEwrSun" runat="server" Enabled="False" Text="Sunday" meta:resourcekey="chkEwrSunResource1" />
                                 &nbsp;&nbsp;
-                                                            <asp:CheckBox ID="chkEwrMon" runat="server" Enabled="False" Text="Monday" meta:resourcekey="chkEwrMonResource1" />
+                                <asp:CheckBox ID="chkEwrMon" runat="server" Enabled="False" Text="Monday" meta:resourcekey="chkEwrMonResource1" />
                                 &nbsp;&nbsp;
-                                                            <asp:CheckBox ID="chkEwrTue" runat="server" Enabled="False" Text="Tuesday" meta:resourcekey="chkEwrTueResource1" />
+                                <asp:CheckBox ID="chkEwrTue" runat="server" Enabled="False" Text="Tuesday" meta:resourcekey="chkEwrTueResource1" />
                                 &nbsp;&nbsp;
-                                                            <asp:CheckBox ID="chkEwrWed" runat="server" Enabled="False" Text="Wednesday" meta:resourcekey="chkEwrWedResource1" />
+                                <asp:CheckBox ID="chkEwrWed" runat="server" Enabled="False" Text="Wednesday" meta:resourcekey="chkEwrWedResource1" />
                                 &nbsp;&nbsp;
-                                                            <asp:CheckBox ID="chkEwrThu" runat="server" Enabled="False" Text="Thursday" meta:resourcekey="chkEwrThuResource1" />
+                                <asp:CheckBox ID="chkEwrThu" runat="server" Enabled="False" Text="Thursday" meta:resourcekey="chkEwrThuResource1" />
                                 &nbsp;&nbsp;
-                                                            <asp:CheckBox ID="chkEwrFri" runat="server" Enabled="False" Text="Friday" meta:resourcekey="chkEwrFriResource1" />
+                                <asp:CheckBox ID="chkEwrFri" runat="server" Enabled="False" Text="Friday" meta:resourcekey="chkEwrFriResource1" />
                                 <asp:CustomValidator ID="cvSelectWorkDays" runat="server" Text="&lt;img src='../Images/icon/message_exclamation.png' title='Select Work Days!' /&gt;"
-                                    ValidationGroup="Users" ErrorMessage="Select Work Days" OnServerValidate="SelectWorkDays_ServerValidate" CssClass="CustomValidator"
+                                    ValidationGroup="VgSave" ErrorMessage="Select Work Days" OnServerValidate="SelectWorkDays_ServerValidate" CssClass="CustomValidator"
                                     EnableClientScript="False" ControlToValidate="cvtxt" meta:resourcekey="cvSelectWorkDaysResource1"></asp:CustomValidator>
                             </div>
                         </div>
@@ -171,17 +171,17 @@
                             <div class="col3">
                                 <uc:Calendar2 ID="calStartDate" runat="server" EnableTheming="True" />
 
-                                <asp:CustomValidator ID="cvCalStartDateEmpty" runat="server" Text="&lt;img src='images/Exclamation.gif' title='Start Date is required!' /&gt;"
+                                <asp:CustomValidator ID="cvCalStartDateEmpty" runat="server" Text="&lt;img src='../Images/icon/Exclamation.gif' title='Start Date is required!' /&gt;"
                                     ValidationGroup="VgSave" OnServerValidate="DateValidate_ServerValidate" EnableClientScript="False" CssClass="CustomValidator"
                                     ControlToValidate="cvtxt" meta:resourcekey="cvCalStartDateEmptyResource1"></asp:CustomValidator>
 
-                                <asp:CustomValidator ID="cvCompareDates" runat="server" Text="&lt;img src='images/message_exclamation.png' title='start date more than end date!' /&gt;"
+                                <asp:CustomValidator ID="cvCompareDates" runat="server" Text="&lt;img src='../Images/icon/message_exclamation.png' title='start date more than end date!' /&gt;"
                                     ValidationGroup="VgSave" ErrorMessage="start date more than end date!" OnServerValidate="DateValidate_ServerValidate" CssClass="CustomValidator"
                                     EnableClientScript="False" ControlToValidate="cvtxt" meta:resourcekey="cvCompareDatesResource1"></asp:CustomValidator>
                             </div>
 
                             <div class="col2">
-                                <asp:Label ID="lblEndDate" runat="server" Text="End Date :" meta:resourcekey="lblEndDateResource1" ></asp:Label>
+                                <asp:Label ID="lblEndDate" runat="server" Text="End Date :" meta:resourcekey="lblEndDateResource1"></asp:Label>
                             </div>
                             <div class="col3">
                                 <uc:Calendar2 ID="calEndDate" runat="server" EnableTheming="True" />
@@ -189,7 +189,7 @@
                         </div>
                         <div class="row">
                             <div class="col12 h3">
-                                <asp:Label ID="lblShift1" runat="server" Text="Shift (1) :" meta:resourcekey="lblShift1Resource1" ></asp:Label>
+                                <asp:Label ID="lblShift1" runat="server" Text="Shift (1) :" meta:resourcekey="lblShift1Resource1"></asp:Label>
                             </div>
                         </div>
                         <div class="row">
@@ -197,14 +197,20 @@
                                 <asp:Label ID="lblShift1NameAr" runat="server" Text="Shift Name (Ar) :" meta:resourcekey="lblShift1NameArResource1"></asp:Label>
                             </div>
                             <div class="col3">
-                                <asp:TextBox ID="txtShift1NameAr" runat="server" meta:resourcekey="txtShift1NameArResource1"></asp:TextBox>
+                                <asp:TextBox ID="txtShift1NameAr" runat="server" AutoCompleteType="Disabled" meta:resourcekey="txtShift1NameArResource1"></asp:TextBox>
+                                <asp:CustomValidator ID="cvArShift1Name" runat="server" Text="&lt;img src='../Images/icon/Exclamation.gif' title='Shift 1 Name Arabic is required!' /&gt;"
+                                    ValidationGroup="VgSave" OnServerValidate="Shift1Validate_ServerValidate" EnableClientScript="False"
+                                    ControlToValidate="cvtxt" meta:resourcekey="cvArShift1NameResource1" CssClass="CustomValidator"></asp:CustomValidator>
                             </div>
 
                             <div class="col2">
                                 <asp:Label ID="lblShift1NameEn" runat="server" Text="Shift Name (En) :" meta:resourcekey="lblShift1NameEnResource1"></asp:Label>
                             </div>
                             <div class="col3">
-                                <asp:TextBox ID="txtShift1NameEn" runat="server" meta:resourcekey="txtShift1NameEnResource1"></asp:TextBox>
+                                <asp:TextBox ID="txtShift1NameEn" runat="server" AutoCompleteType="Disabled" meta:resourcekey="txtShift1NameEnResource1"></asp:TextBox>
+                                <asp:CustomValidator ID="cvEnShift1Name" runat="server" Text="&lt;img src='../Images/icon/Exclamation.gif' title='Shift 1 Name English is required!' /&gt;"
+                                    ValidationGroup="VgSave" OnServerValidate="Shift1Validate_ServerValidate" EnableClientScript="False"
+                                    ControlToValidate="cvtxt" meta:resourcekey="cvEnShift1NameResource1" CssClass="CustomValidator"></asp:CustomValidator>
                             </div>
                         </div>
                         <div class="row">
@@ -266,7 +272,10 @@
                             </div>
 
                             <div class="col3">
-                                <asp:TextBox ID="txtShift2NameAr" runat="server" meta:resourcekey="txtShift2NameArResource1"></asp:TextBox>
+                                <asp:TextBox ID="txtShift2NameAr" runat="server" AutoCompleteType="Disabled" meta:resourcekey="txtShift2NameArResource1"></asp:TextBox>
+                                <asp:CustomValidator ID="cvArShift2Name" runat="server" Text="&lt;img src='../Images/icon/Exclamation.gif' title='Shift 2 Name Arabic is required!' /&gt;"
+                                    ValidationGroup="VgSave" OnServerValidate="Shift2Validate_ServerValidate" EnableClientScript="False"
+                                    ControlToValidate="cvtxt" meta:resourcekey="cvArShift2NameResource1" CssClass="CustomValidator"></asp:CustomValidator>
                                 <asp:CustomValidator ID="cvOrderShfit2" runat="server" Text="&lt;img src='../Images/icon/message_exclamation.png' title='Shifts must be ordered by time' /&gt;"
                                     ErrorMessage="Shifts must be ordered by time!" ValidationGroup="VgSave" OnServerValidate="Shift2Validate_ServerValidate" CssClass="CustomValidator"
                                     EnableClientScript="False" ControlToValidate="cvtxt" meta:resourcekey="cvOrderShfit2Resource1"></asp:CustomValidator>
@@ -277,7 +286,10 @@
                             </div>
 
                             <div class="col3">
-                                <asp:TextBox ID="txtShift2NameEn" runat="server" meta:resourcekey="txtShift2NameEnResource1"></asp:TextBox>
+                                <asp:TextBox ID="txtShift2NameEn" runat="server" AutoCompleteType="Disabled" meta:resourcekey="txtShift2NameEnResource1"></asp:TextBox>
+                                <asp:CustomValidator ID="cvEnShift2Name" runat="server" Text="&lt;img src='../Images/icon/Exclamation.gif' title='Shift 2 Name English is required!' /&gt;"
+                                    ValidationGroup="VgSave" OnServerValidate="Shift2Validate_ServerValidate" EnableClientScript="False"
+                                    ControlToValidate="cvtxt" meta:resourcekey="cvEnShift2NameResource1" CssClass="CustomValidator"></asp:CustomValidator>
                             </div>
                         </div>
                         <div class="row">
@@ -286,8 +298,7 @@
                             </div>
 
                             <div class="col3">
-                                <Almaalimtp:TimePicker ID="tpShift2In" runat="server" FormatTime="HHmm" CssClass="TimeCss"
-                                    TimePickerValidationGroup="VgSave" TimePickerValidationText="&lt;img src='../Images/icon/Exclamation.gif' title='Time Shift 2 Out is required!' /&gt;" meta:resourcekey="tpShift2InResource1" />
+                                <Almaalimtp:TimePicker ID="tpShift2In" runat="server" FormatTime="HHmm" CssClass="TimeCss" meta:resourcekey="tpShift2InResource1" />
                             </div>
 
                             <div class="col2">
@@ -295,8 +306,7 @@
                             </div>
 
                             <div class="col3">
-                                <Almaalimtp:TimePicker ID="tpShift2Out" runat="server" FormatTime="HHmm" CssClass="TimeCss"
-                                    TimePickerValidationGroup="VgSave" TimePickerValidationText="&lt;img src='../Images/icon/Exclamation.gif' title='Time Shift 2 In is required!' /&gt;" meta:resourcekey="tpShift2OutResource1" />
+                                <Almaalimtp:TimePicker ID="tpShift2Out" runat="server" FormatTime="HHmm" CssClass="TimeCss" meta:resourcekey="tpShift2OutResource1" />
                                 <asp:CustomValidator ID="cvShift2Time" runat="server" Text="&lt;img src='../Images/icon/message_exclamation.png' title='Enter correct Shift 2 Time' /&gt;"
                                     ErrorMessage="Enter correct Shift 2 Time!" ValidationGroup="VgSave" OnServerValidate="Shift2Validate_ServerValidate" CssClass="CustomValidator"
                                     EnableClientScript="False" ControlToValidate="cvtxt" meta:resourcekey="cvShift2TimeResource1"></asp:CustomValidator>
@@ -341,7 +351,10 @@
                             </div>
 
                             <div class="col3">
-                                <asp:TextBox ID="txtShift3NameAr" runat="server" meta:resourcekey="txtShift3NameArResource1"></asp:TextBox>
+                                <asp:TextBox ID="txtShift3NameAr" runat="server" AutoCompleteType="Disabled" meta:resourcekey="txtShift3NameArResource1"></asp:TextBox>
+                                <asp:CustomValidator ID="cvArShift3Name" runat="server" Text="&lt;img src='../Images/icon/Exclamation.gif' title='Shift 3 Name Arabic is required!' /&gt;"
+                                    ValidationGroup="VgSave" OnServerValidate="Shift3Validate_ServerValidate" EnableClientScript="False"
+                                    ControlToValidate="cvtxt" meta:resourcekey="cvArShift3NameResource1" CssClass="CustomValidator"></asp:CustomValidator>
                                 <asp:CustomValidator ID="cvOrderShfit3" runat="server" Text="&lt;img src='../Images/icon/message_exclamation.png' title='Shifts must be ordered by time' /&gt;"
                                     ErrorMessage="Shifts must be ordered by time!" ValidationGroup="VgSave" OnServerValidate="Shift3Validate_ServerValidate"
                                     EnableClientScript="False" ControlToValidate="cvtxt" meta:resourcekey="cvOrderShfit3Resource1"></asp:CustomValidator>
@@ -352,7 +365,10 @@
                             </div>
 
                             <div class="col3">
-                                <asp:TextBox ID="txtShift3NameEn" runat="server" meta:resourcekey="txtShift3NameEnResource1"></asp:TextBox>
+                                <asp:TextBox ID="txtShift3NameEn" runat="server" AutoCompleteType="Disabled" meta:resourcekey="txtShift3NameEnResource1"></asp:TextBox>
+                                <asp:CustomValidator ID="cvEnShift3Name" runat="server" Text="&lt;img src='../Images/icon/Exclamation.gif' title='Shift 3 Name English is required!' /&gt;"
+                                    ValidationGroup="VgSave" OnServerValidate="Shift3Validate_ServerValidate" EnableClientScript="False"
+                                    ControlToValidate="cvtxt" meta:resourcekey="cvEnShift3NameResource1" CssClass="CustomValidator"></asp:CustomValidator>
                             </div>
                         </div>
                         <div class="row">
@@ -361,8 +377,7 @@
                             </div>
 
                             <div class="col3">
-                                <Almaalimtp:TimePicker ID="tpShift3In" runat="server" FormatTime="HHmm" CssClass="TimeCss"
-                                    TimePickerValidationGroup="VgSave" TimePickerValidationText="&lt;img src='../Images/icon/Exclamation.gif' title='Time Shift 3 In is required!' /&gt;" meta:resourcekey="tpShift3InResource1" />
+                                <Almaalimtp:TimePicker ID="tpShift3In" runat="server" FormatTime="HHmm" CssClass="TimeCss" meta:resourcekey="tpShift3InResource1" />
                             </div>
 
                             <div class="col2">
@@ -370,8 +385,7 @@
                             </div>
 
                             <div class="col3">
-                                <Almaalimtp:TimePicker ID="tpShift3Out" runat="server" FormatTime="HHmm" CssClass="TimeCss"
-                                    TimePickerValidationGroup="VgSave" TimePickerValidationText="&lt;img src='../Images/icon/Exclamation.gif' title='Time Shift 3 Out is required!' /&gt;" meta:resourcekey="tpShift3OutResource1" />
+                                <Almaalimtp:TimePicker ID="tpShift3Out" runat="server" FormatTime="HHmm" CssClass="TimeCss" meta:resourcekey="tpShift3OutResource1" />
                                 <asp:CustomValidator ID="cvShift3Time" runat="server" Text="&lt;img src='../Images/icon/message_exclamation.png' title='Enter correct Shift 3 Time' /&gt;"
                                     ErrorMessage="Enter correct Shift 3 Time!" ValidationGroup="VgSave" OnServerValidate="Shift3Validate_ServerValidate" CssClass="CustomValidator"
                                     EnableClientScript="False" ControlToValidate="cvtxt" meta:resourcekey="cvShift3TimeResource1"></asp:CustomValidator>

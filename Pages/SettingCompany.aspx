@@ -15,7 +15,7 @@
                             <asp:Label ID="lblAppCompany" runat="server" Text="Company Name :" meta:resourcekey="lblAppCompanyResource1"></asp:Label>
                         </div>
                         <div class="col3">
-                            <asp:TextBox ID="txtAppCompany" runat="server" meta:resourcekey="txtAppCompanyResource1"></asp:TextBox>
+                            <asp:TextBox ID="txtAppCompany" runat="server" AutoCompleteType="Disabled" meta:resourcekey="txtAppCompanyResource1"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="rvtxtAppCompany" runat="server" ControlToValidate="txtAppCompany" CssClass="CustomValidator"
                                 EnableClientScript="False" Text="&lt;img src='../Images/icon/Exclamation.gif' title='Company Name is required!' /&gt;"
                                 ValidationGroup="vgSave" meta:resourcekey="rvtxtAppCompanyResource1"></asp:RequiredFieldValidator>
@@ -25,7 +25,7 @@
                             <asp:Label ID="lblAppDisplay" runat="server" Text="Display Name :" meta:resourcekey="lblAppDisplayResource1"></asp:Label>
                         </div>
                         <div class="col3">
-                            <asp:TextBox ID="txtAppDisplay" runat="server" meta:resourcekey="txtAppDisplayResource1"></asp:TextBox>
+                            <asp:TextBox ID="txtAppDisplay" runat="server" AutoCompleteType="Disabled" meta:resourcekey="txtAppDisplayResource1"></asp:TextBox>
                         </div>
                     </div>
                     <div class="row">
@@ -33,14 +33,14 @@
                             <asp:Label ID="lblAppAddress1" runat="server" Text="Address 1 :" meta:resourcekey="lblAppAddress1Resource1"></asp:Label>
                         </div>
                         <div class="col3">
-                            <asp:TextBox ID="txtAppAddress1" runat="server" meta:resourcekey="txtAppAddress1Resource1"></asp:TextBox>
+                            <asp:TextBox ID="txtAppAddress1" runat="server" AutoCompleteType="Disabled" meta:resourcekey="txtAppAddress1Resource1"></asp:TextBox>
                         </div>
 
                         <div class="col2">
                             <asp:Label ID="lblAppCity" runat="server" Text="City :" meta:resourcekey="lblAppCityResource1"></asp:Label>
                         </div>
                         <div class="col3">
-                            <asp:TextBox ID="txtAppCity" runat="server" meta:resourcekey="txtAppCityResource1"></asp:TextBox>
+                            <asp:TextBox ID="txtAppCity" runat="server" AutoCompleteType="Disabled" meta:resourcekey="txtAppCityResource1"></asp:TextBox>
                         </div>
                     </div>
                     <div class="row">
@@ -48,13 +48,13 @@
                             <asp:Label ID="lblAppCountry" runat="server" Text="Country :" meta:resourcekey="lblAppCountryResource1"></asp:Label>
                         </div>
                         <div class="col3">
-                            <asp:TextBox ID="txtAppCountry" runat="server" meta:resourcekey="txtAppCountryResource1"></asp:TextBox>
+                            <asp:TextBox ID="txtAppCountry" runat="server" AutoCompleteType="Disabled" meta:resourcekey="txtAppCountryResource1"></asp:TextBox>
                         </div>
                         <div class="col2">
                             <asp:Label ID="lblAppPOBox" runat="server" Text="P.O Box :" meta:resourcekey="lblAppPOBoxResource1"></asp:Label>
                         </div>
                         <div class="col3">
-                            <asp:TextBox ID="txtAppPOBox" runat="server" meta:resourcekey="txtAppPOBoxResource1"></asp:TextBox>
+                            <asp:TextBox ID="txtAppPOBox" runat="server" AutoCompleteType="Disabled" meta:resourcekey="txtAppPOBoxResource1"></asp:TextBox>
                         </div>
                     </div>
                     <div class="row">
@@ -62,13 +62,13 @@
                             <asp:Label ID="lblAppTelNo1" runat="server" Text="Phone No 1 :" meta:resourcekey="lblAppTelNo1Resource1"></asp:Label>
                         </div>
                         <div class="col3">
-                            <asp:TextBox ID="txtAppTelNo1" runat="server" meta:resourcekey="txtAppTelNo1Resource1"></asp:TextBox>
+                            <asp:TextBox ID="txtAppTelNo1" runat="server" AutoCompleteType="Disabled" meta:resourcekey="txtAppTelNo1Resource1"></asp:TextBox>
                         </div>
                         <div class="col2">
                             <asp:Label ID="lblAppTelNo2" runat="server" Text="Phone No 2 :" meta:resourcekey="lblAppTelNo2Resource1"></asp:Label>
                         </div>
                         <div class="col3">
-                            <asp:TextBox ID="txtAppTelNo2" runat="server" meta:resourcekey="txtAppTelNo2Resource1"></asp:TextBox>
+                            <asp:TextBox ID="txtAppTelNo2" runat="server" AutoCompleteType="Disabled" meta:resourcekey="txtAppTelNo2Resource1"></asp:TextBox>
                         </div>
                     </div>
                     <div class="row">
@@ -76,13 +76,13 @@
                             <asp:Label ID="lblAppFax" runat="server" Text="Fax No :" meta:resourcekey="lblAppFaxResource1"></asp:Label>
                         </div>
                         <div class="col3">
-                            <asp:TextBox ID="txtAppFax" runat="server" meta:resourcekey="txtAppFaxResource1"></asp:TextBox>
+                            <asp:TextBox ID="txtAppFax" runat="server" AutoCompleteType="Disabled" meta:resourcekey="txtAppFaxResource1"></asp:TextBox>
                         </div>
                         <div class="col2">
                             <asp:Label ID="lblAppUrl" runat="server" Text="URL :" meta:resourcekey="lblAppUrlResource1"></asp:Label>
                         </div>
                         <div class="col3">
-                            <asp:TextBox ID="txtAppUrl" runat="server" meta:resourcekey="txtAppUrlResource1"></asp:TextBox>
+                            <asp:TextBox ID="txtAppUrl" runat="server" AutoCompleteType="Disabled" meta:resourcekey="txtAppUrlResource1"></asp:TextBox>
                         </div>
                     </div>
                     <div class="row">
@@ -91,7 +91,7 @@
                             <asp:Label ID="lblAppEmail" runat="server" Text="Email :" meta:resourcekey="lblAppEmailResource1"></asp:Label>
                         </div>
                         <div class="col3">
-                            <asp:TextBox ID="txtAppEmail" runat="server" meta:resourcekey="txtAppEmailResource1"></asp:TextBox>
+                            <asp:TextBox ID="txtAppEmail" runat="server" AutoCompleteType="Disabled" meta:resourcekey="txtAppEmailResource1"></asp:TextBox>
                             <asp:RegularExpressionValidator ID="rvftxtAppEmail" runat="server" ControlToValidate="txtAppEmail"
                                 EnableClientScript="False" ErrorMessage="Enter Correct Email ID!" ValidationExpression="\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)"
                                 ValidationGroup="vgSave" meta:resourcekey="rvftxtAppEmailResource1"><img src="../Images/icon/Exclamation.gif" alt="" title="Enter Correct Email ID!" />

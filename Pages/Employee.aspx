@@ -30,7 +30,7 @@
                         </div>
 
                         <div class="col2">
-                            <asp:TextBox ID="txtSearch" runat="server" Enabled="False" meta:resourcekey="txtSearchResource1"></asp:TextBox>
+                            <asp:TextBox ID="txtSearch" runat="server" Enabled="False" AutoCompleteType="Disabled" meta:resourcekey="txtSearchResource1"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="rvSearch" runat="server" CssClass="CustomValidator"
                                 ControlToValidate="txtSearch" EnableClientScript="False" ValidationGroup="vgSearch"
                                 Text="&lt;img src='../Images/icon/Exclamation.gif' title='You must enter a value to search!' /&gt;" meta:resourcekey="rvSearchResource1"></asp:RequiredFieldValidator>
@@ -86,7 +86,7 @@
                                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                 </asp:TemplateField>
 
-                                <asp:CommandField ButtonType="Button" SelectText="select" ShowSelectButton="True" meta:resourcekey="CommandFieldResource1" />
+                                <asp:CommandField ButtonType="Button" SelectText="select" ShowSelectButton="false" meta:resourcekey="CommandFieldResource1" />
                             </Columns>
 
                         </asp:GridView>
@@ -142,7 +142,7 @@
                                     <asp:Label ID="lblEmpID" runat="server" Text="Employee ID :" meta:resourcekey="lblEmpIDResource1"></asp:Label>
                                 </div>
                                 <div class="col3">
-                                    <asp:TextBox ID="txtEmpID" runat="server" Enabled="False" meta:resourcekey="txtEmpIDResource1"></asp:TextBox>
+                                    <asp:TextBox ID="txtEmpID" runat="server" Enabled="False" AutoCompleteType="Disabled" meta:resourcekey="txtEmpIDResource1"></asp:TextBox>
                                     <asp:CustomValidator ID="cvEmpID" runat="server" ValidationGroup="vgSave" OnServerValidate="EmpID_ServerValidate"
                                         Text="&lt;img src='../Images/icon/Exclamation.gif' title='Employee ID is required!' /&gt;" CssClass="CustomValidator"
                                         EnableClientScript="False" ControlToValidate="cvtxt" meta:resourcekey="cvEmpIDResource1"></asp:CustomValidator>
@@ -164,7 +164,7 @@
                                     <asp:Label ID="lblEmpNameAr" runat="server" Text="Employee Name (Ar) :" meta:resourcekey="lblEmpNameArResource1"></asp:Label>
                                 </div>
                                 <div class="col3">
-                                    <asp:TextBox ID="txtEmpNameAr" runat="server" Enabled="False" meta:resourcekey="txtEmpNameArResource1"></asp:TextBox>
+                                    <asp:TextBox ID="txtEmpNameAr" runat="server" Enabled="False" AutoCompleteType="Disabled" meta:resourcekey="txtEmpNameArResource1"></asp:TextBox>
                                     <asp:CustomValidator ID="cvEmpNameAr" runat="server" ValidationGroup="vgSave" OnServerValidate="EmpName_ServerValidate"
                                         Text="&lt;img src='../Images/icon/Exclamation.gif' title='Employee Name (Ar) is required!' /&gt;" CssClass="CustomValidator"
                                         EnableClientScript="False" ControlToValidate="cvtxt" meta:resourcekey="cvEmpNameArResource1"></asp:CustomValidator>
@@ -173,7 +173,7 @@
                                     <asp:Label ID="lblEmpNameEn" runat="server" Text="Employee Name (En) :" meta:resourcekey="lblEmpNameEnResource1"></asp:Label>
                                 </div>
                                 <div class="col3">
-                                    <asp:TextBox ID="txtEmpNameEn" runat="server" Enabled="False" meta:resourcekey="txtEmpNameEnResource1"></asp:TextBox>
+                                    <asp:TextBox ID="txtEmpNameEn" runat="server" Enabled="False" AutoCompleteType="Disabled" meta:resourcekey="txtEmpNameEnResource1"></asp:TextBox>
                                     <asp:CustomValidator ID="cvEmpNameEn" runat="server" ValidationGroup="vgSave" OnServerValidate="EmpName_ServerValidate"
                                         Text="&lt;img src='../Images/icon/Exclamation.gif' title='Employee Name (En) is required!' /&gt;" CssClass="CustomValidator"
                                         EnableClientScript="False" ControlToValidate="cvtxt" meta:resourcekey="cvEmpNameEnResource1"></asp:CustomValidator>
@@ -185,7 +185,7 @@
                                     <asp:Label ID="lblEmpPositionAr" runat="server" Text="Position Name (Ar) :" meta:resourcekey="lblEmpPositionArResource1"></asp:Label>
                                 </div>
                                 <div class="col3">
-                                    <asp:TextBox ID="txtEmpPositionAr" runat="server" Enabled="False" meta:resourcekey="txtEmpPositionArResource1"></asp:TextBox>
+                                    <asp:TextBox ID="txtEmpPositionAr" runat="server" Enabled="False" AutoCompleteType="Disabled" meta:resourcekey="txtEmpPositionArResource1"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="rvEmpPositionAr" runat="server" ValidationGroup="vgSave" ControlToValidate="txtEmpPositionAr" CssClass="CustomValidator"
                                         EnableClientScript="False" Text="&lt;img src='../Images/icon/Exclamation.gif' title='Position Name (Ar) is required' /&gt;" meta:resourcekey="rvEmpPositionArResource1"></asp:RequiredFieldValidator>
                                 </div>
@@ -193,7 +193,7 @@
                                     <asp:Label ID="lblEmpPositionEn" runat="server" Text="Position Name (En) :" meta:resourcekey="lblEmpPositionEnResource1"></asp:Label>
                                 </div>
                                 <div class="col3">
-                                    <asp:TextBox ID="txtEmpPositionEn" runat="server" Enabled="False" meta:resourcekey="txtEmpPositionEnResource1"></asp:TextBox>
+                                    <asp:TextBox ID="txtEmpPositionEn" runat="server" Enabled="False" AutoCompleteType="Disabled" meta:resourcekey="txtEmpPositionEnResource1"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="rvEmpPositionEn" runat="server" ValidationGroup="vgSave" ControlToValidate="txtEmpPositionEn"
                                         EnableClientScript="False" Text="&lt;img src='../Images/icon/Exclamation.gif' title='Position Name (En) is required' /&gt;" CssClass="CustomValidator"
                                         Enabled="False" meta:resourcekey="rvEmpPositionEnResource1"></asp:RequiredFieldValidator>
@@ -213,7 +213,7 @@
                                     <asp:Label ID="lblUsrEmilID" runat="server" Text="E-Mail :" meta:resourcekey="lblUsrEmilIDResource1"></asp:Label>
                                 </div>
                                 <div class="col3">
-                                    <asp:TextBox ID="txtEmpEmail" runat="server" Enabled="False" meta:resourcekey="txtEmpEmailResource1"></asp:TextBox>
+                                    <asp:TextBox ID="txtEmpEmail" runat="server" Enabled="False" AutoCompleteType="Disabled" meta:resourcekey="txtEmpEmailResource1"></asp:TextBox>
                                     <asp:RegularExpressionValidator ID="rvEmailIDCorrect" runat="server" ErrorMessage="Please enter email in correct format"
                                         Text="&lt;img src='../Images/icon/Exclamation.gif' title='Please enter email in correct format!' /&gt;" CssClass="CustomValidator"
                                         ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ControlToValidate="txtEmpEmail"

@@ -16,7 +16,7 @@
                     </div>
 
                     <div class="col3">
-                        <asp:TextBox ID="txtEmailServer" runat="server" Width="200px" meta:resourcekey="txtEmailServerResource1"></asp:TextBox>
+                        <asp:TextBox ID="txtEmailServer" runat="server" Width="200px" AutoCompleteType="Disabled" meta:resourcekey="txtEmailServerResource1"></asp:TextBox>
                         <asp:RegularExpressionValidator ID="rvEmailServer" runat="server" ErrorMessage="Please enter IP server in correct format"
                             Text="&lt;img src='../Images/icon/Exclamation.gif' title='Please enter IP server in correct format!' /&gt;"
                             ValidationExpression="^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$"
@@ -28,7 +28,7 @@
                         <asp:Label ID="lblEmailPort" runat="server" Text="Email Port :" meta:resourcekey="lblEmailPortResource1"></asp:Label>
                     </div>
                     <div class="col3">
-                        <asp:TextBox ID="txtEmailPort" runat="server" Width="60px" TabIndex="1" meta:resourcekey="txtEmailPortResource1"></asp:TextBox>
+                        <asp:TextBox ID="txtEmailPort" runat="server" Width="60px" TabIndex="1" AutoCompleteType="Disabled" meta:resourcekey="txtEmailPortResource1"></asp:TextBox>
                     </div>
                 </div>
 
@@ -38,7 +38,7 @@
                         <asp:Label ID="lblSendEmailFrom" runat="server" Text="Send email from :" meta:resourcekey="lblSendEmailFromResource1"></asp:Label>
                     </div>
                     <div class="col3">
-                        <asp:TextBox ID="txtSendEmailFrom" runat="server" Width="200px" TabIndex="2" meta:resourcekey="txtSendEmailFromResource1"></asp:TextBox>
+                        <asp:TextBox ID="txtSendEmailFrom" runat="server" Width="200px" TabIndex="2" AutoCompleteType="Disabled" meta:resourcekey="txtSendEmailFromResource1"></asp:TextBox>
                         <asp:RegularExpressionValidator ID="rvEmailFrom" runat="server" ErrorMessage="Please enter email in correct format"
                             Text="&lt;img src='../Images/icon/Exclamation.gif' title='Please enter email in correct format!' /&gt;"
                             ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"

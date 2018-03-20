@@ -91,7 +91,7 @@
                                         <%# DisplayFun.GrdDisplayDate(Eval("EvrEndDate"), 'S')%>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:CommandField ButtonType="Button" SelectText="select" ShowSelectButton="True" meta:resourcekey="CommandFieldResource1" />
+                                <asp:CommandField ButtonType="Button" SelectText="select" ShowSelectButton="false" meta:resourcekey="CommandFieldResource1" />
                             </Columns>
 
                         </asp:GridView>

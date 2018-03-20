@@ -372,8 +372,8 @@ public partial class Pages_Users : BasePage
             txtUsrPassword.Attributes["value"] = dt.Rows[0]["UsrPassword"].ToString();
             txtUsrFullName.Text = dt.Rows[0]["UsrFullName"].ToString();
             
-            calUsrStartDate.SetGDate(dt.Rows[0]["UsrStartDate"], "S");
-            calUsrExpiryDate.SetGDate(dt.Rows[0]["UsrExpireDate"], "S");
+            calUsrStartDate.SetGDate(dt.Rows[0]["UsrStartDate"], "dd/MM/yyyy");
+            calUsrExpiryDate.SetGDate(dt.Rows[0]["UsrExpireDate"], "dd/MM/yyyy");
 
             ddlUsrStatus.SelectedIndex = ddlUsrStatus.Items.IndexOf(ddlUsrStatus.Items.FindByValue(Convert.ToInt16(dt.Rows[0]["UsrStatus"]).ToString()));
             ddlUsrLang.SelectedIndex = ddlUsrLang.Items.IndexOf(ddlUsrLang.Items.FindByValue(dt.Rows[0]["UsrLanguage"].ToString()));

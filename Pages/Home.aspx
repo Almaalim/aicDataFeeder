@@ -128,7 +128,6 @@
                         <asp:Literal ID="LitChartCountRecByMachine" runat="server" meta:resourcekey="LitChartCountRecByMachineResource1" ></asp:Literal>
                     </div>
                 </div>
-
             </div>
         </ContentTemplate>
     </asp:UpdatePanel>

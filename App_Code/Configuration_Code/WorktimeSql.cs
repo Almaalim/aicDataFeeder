@@ -45,13 +45,14 @@ public class WorktimeSql : DataLayerBase
             sqlCommand.Parameters.Add(new SqlParameter("@WktThu", BIT, 1, IN, false, 0, 0, "", DRV, pro.WktThu));
             sqlCommand.Parameters.Add(new SqlParameter("@WktFri", BIT, 1, IN, false, 0, 0, "", DRV, pro.WktFri));
             sqlCommand.Parameters.Add(new SqlParameter("@WktStartDate", DtDB, 14, IN, false, 0, 0, "", DRV, pro.WktStartDate));
-            sqlCommand.Parameters.Add(new SqlParameter("@WktEndDate", DtDB, 14, IN, false, 0, 0, "", DRV, pro.WktEndDate));
+            if (!String.IsNullOrEmpty(pro.WktEndDate))
+            { sqlCommand.Parameters.Add(new SqlParameter("@WktEndDate", DtDB, 14, IN, false, 0, 0, "", DRV, pro.WktEndDate)); }
             sqlCommand.Parameters.Add(new SqlParameter("@WktIsActive", BIT, 1, IN, false, 0, 0, "", DRV, pro.WktIsActive));
             sqlCommand.Parameters.Add(new SqlParameter("@WktShiftCount", IntDB, 10, IN, false, 0, 0, "", DRV, pro.WktShiftCount));
 
             //shift1
-            sqlCommand.Parameters.Add(new SqlParameter("@WktShift1From", DtDB, 10, IN, false, 0, 0, "", DRV, pro.WktShift1From));
-            sqlCommand.Parameters.Add(new SqlParameter("@WktShift1To", DtDB, 10, IN, false, 0, 0, "", DRV, pro.WktShift1To));
+            sqlCommand.Parameters.Add(new SqlParameter("@WktShift1From", DtDB, 14, IN, false, 0, 0, "", DRV, pro.WktShift1From));
+            sqlCommand.Parameters.Add(new SqlParameter("@WktShift1To", DtDB, 14, IN, false, 0, 0, "", DRV, pro.WktShift1To));
             sqlCommand.Parameters.Add(new SqlParameter("@WktShift1NameAr", VchDB, 100, IN, false, 0, 0, "", DRV, pro.WktShift1NameAr));
             sqlCommand.Parameters.Add(new SqlParameter("@WktShift1NameEn", VchDB, 100, IN, false, 0, 0, "", DRV, pro.WktShift1NameEn));
             sqlCommand.Parameters.Add(new SqlParameter("@WktShift1Grace", IntDB, 10, IN, false, 0, 0, "", DRV, pro.WktShift1Grace));
@@ -59,9 +60,9 @@ public class WorktimeSql : DataLayerBase
 
             //shift2
             if (pro.WktShift2From != null && pro.WktShift2From != new DateTime())
-            { sqlCommand.Parameters.Add(new SqlParameter("@WktShift2From", DtDB, 10, IN, false, 0, 0, "", DRV, pro.WktShift2From)); }
+            { sqlCommand.Parameters.Add(new SqlParameter("@WktShift2From", DtDB, 14, IN, false, 0, 0, "", DRV, pro.WktShift2From)); }
             if (pro.WktShift2To != null && pro.WktShift2To != new DateTime())
-            { sqlCommand.Parameters.Add(new SqlParameter("@WktShift2To", DtDB, 10, IN, false, 0, 0, "", DRV, pro.WktShift2To)); }
+            { sqlCommand.Parameters.Add(new SqlParameter("@WktShift2To", DtDB, 14, IN, false, 0, 0, "", DRV, pro.WktShift2To)); }
             sqlCommand.Parameters.Add(new SqlParameter("@WktShift2NameAr", VchDB, 100, IN, false, 0, 0, "", DRV, pro.WktShift2NameAr));
             sqlCommand.Parameters.Add(new SqlParameter("@WktShift2NameEn", VchDB, 100, IN, false, 0, 0, "", DRV, pro.WktShift2NameEn));
             sqlCommand.Parameters.Add(new SqlParameter("@WktShift2Grace", IntDB, 10, IN, false, 0, 0, "", DRV, pro.WktShift2Grace));
@@ -69,14 +70,14 @@ public class WorktimeSql : DataLayerBase
 
             //shift3
             if (pro.WktShift3From != null && pro.WktShift3From != new DateTime())
-            { sqlCommand.Parameters.Add(new SqlParameter("@WktShift3From", DtDB, 10, IN, false, 0, 0, "", DRV, pro.WktShift3From)); }
+            { sqlCommand.Parameters.Add(new SqlParameter("@WktShift3From", DtDB, 14, IN, false, 0, 0, "", DRV, pro.WktShift3From)); }
             if (pro.WktShift3To != null && pro.WktShift3To != new DateTime())
-            { sqlCommand.Parameters.Add(new SqlParameter("@WktShift3To", DtDB, 10, IN, false, 0, 0, "", DRV, pro.WktShift3To)); }
+            { sqlCommand.Parameters.Add(new SqlParameter("@WktShift3To", DtDB, 14, IN, false, 0, 0, "", DRV, pro.WktShift3To)); }
             sqlCommand.Parameters.Add(new SqlParameter("@WktShift3NameAr", VchDB, 100, IN, false, 0, 0, "", DRV, pro.WktShift3NameAr));
             sqlCommand.Parameters.Add(new SqlParameter("@WktShift3NameEn", VchDB, 100, IN, false, 0, 0, "", DRV, pro.WktShift3NameEn));
             sqlCommand.Parameters.Add(new SqlParameter("@WktShift3Grace", IntDB, 10, IN, false, 0, 0, "", DRV, pro.WktShift3Grace));
             sqlCommand.Parameters.Add(new SqlParameter("@WktShift3Duration", IntDB, 10, IN, false, 0, 0, "", DRV, pro.WktShift3Duration));
-            
+
             sqlCommand.Parameters.Add(new SqlParameter("@TransactionBy", VchDB, 50, IN, false, 0, 0, "", DRV, pro.TransactionBy));
             MainConnection.Open();
 
@@ -116,9 +117,10 @@ public class WorktimeSql : DataLayerBase
             sqlCommand.Parameters.Add(new SqlParameter("@WktThu", BIT, 1, IN, false, 0, 0, "", DRV, pro.WktThu));
             sqlCommand.Parameters.Add(new SqlParameter("@WktFri", BIT, 1, IN, false, 0, 0, "", DRV, pro.WktFri));
             sqlCommand.Parameters.Add(new SqlParameter("@WktStartDate", DtDB, 14, IN, false, 0, 0, "", DRV, pro.WktStartDate));
-            sqlCommand.Parameters.Add(new SqlParameter("@WktEndDate", DtDB, 14, IN, false, 0, 0, "", DRV, pro.WktEndDate));
-            sqlCommand.Parameters.Add(new SqlParameter("@WktIsActive", SqlDbType.Bit, 1, IN, false, 0, 0, "", DRV, pro.WktIsActive));
-            sqlCommand.Parameters.Add(new SqlParameter("@WktShiftCount", SqlDbType.Int, 10, IN, false, 0, 0, "", DRV, pro.WktShiftCount));
+            if (!String.IsNullOrEmpty(pro.WktEndDate))
+            { sqlCommand.Parameters.Add(new SqlParameter("@WktEndDate", DtDB, 14, IN, false, 0, 0, "", DRV, pro.WktEndDate)); }
+            sqlCommand.Parameters.Add(new SqlParameter("@WktIsActive", BIT, 1, IN, false, 0, 0, "", DRV, pro.WktIsActive));
+            sqlCommand.Parameters.Add(new SqlParameter("@WktShiftCount", IntDB, 10, IN, false, 0, 0, "", DRV, pro.WktShiftCount));
 
             //shift1
             sqlCommand.Parameters.Add(new SqlParameter("@WktShift1From", SqlDbType.DateTime, 10, IN, false, 0, 0, "", DRV, pro.WktShift1From));
@@ -131,24 +133,23 @@ public class WorktimeSql : DataLayerBase
 
             //shift2
             if (pro.WktShift2From != null && pro.WktShift2From != new DateTime())
-            { sqlCommand.Parameters.Add(new SqlParameter("@WktShift2From", SqlDbType.DateTime, 10, IN, false, 0, 0, "", DRV, pro.WktShift2From)); }
+            { sqlCommand.Parameters.Add(new SqlParameter("@WktShift2From", DtDB, 14, IN, false, 0, 0, "", DRV, pro.WktShift2From)); }
             if (pro.WktShift2To != null && pro.WktShift2To != new DateTime())
-            { sqlCommand.Parameters.Add(new SqlParameter("@WktShift2To", SqlDbType.DateTime, 10, IN, false, 0, 0, "", DRV, pro.WktShift2To)); }
-            sqlCommand.Parameters.Add(new SqlParameter("@WktShift2NameAr", SqlDbType.VarChar, 100, IN, false, 0, 0, "", DRV, pro.WktShift2NameAr));
-            sqlCommand.Parameters.Add(new SqlParameter("@WktShift2NameEn", SqlDbType.VarChar, 100, IN, false, 0, 0, "", DRV, pro.WktShift2NameEn));
-            sqlCommand.Parameters.Add(new SqlParameter("@WktShift2Grace", SqlDbType.Int, 10, IN, false, 0, 0, "", DRV, pro.WktShift2Grace));
-            sqlCommand.Parameters.Add(new SqlParameter("@WktShift2Duration", SqlDbType.Int, 10, IN, false, 0, 0, "", DRV, pro.WktShift2Duration));
-
+            { sqlCommand.Parameters.Add(new SqlParameter("@WktShift2To", DtDB, 14, IN, false, 0, 0, "", DRV, pro.WktShift2To)); }
+            sqlCommand.Parameters.Add(new SqlParameter("@WktShift2NameAr", VchDB, 100, IN, false, 0, 0, "", DRV, pro.WktShift2NameAr));
+            sqlCommand.Parameters.Add(new SqlParameter("@WktShift2NameEn", VchDB, 100, IN, false, 0, 0, "", DRV, pro.WktShift2NameEn));
+            sqlCommand.Parameters.Add(new SqlParameter("@WktShift2Grace", IntDB, 10, IN, false, 0, 0, "", DRV, pro.WktShift2Grace));
+            sqlCommand.Parameters.Add(new SqlParameter("@WktShift2Duration", IntDB, 10, IN, false, 0, 0, "", DRV, pro.WktShift2Duration));
 
             //shift3
             if (pro.WktShift3From != null && pro.WktShift3From != new DateTime())
-            { sqlCommand.Parameters.Add(new SqlParameter("@WktShift3From", SqlDbType.DateTime, 10, IN, false, 0, 0, "", DRV, pro.WktShift3From)); }
+            { sqlCommand.Parameters.Add(new SqlParameter("@WktShift3From", DtDB, 14, IN, false, 0, 0, "", DRV, pro.WktShift3From)); }
             if (pro.WktShift3To != null && pro.WktShift3To != new DateTime())
-            { sqlCommand.Parameters.Add(new SqlParameter("@WktShift3To", SqlDbType.DateTime, 10, IN, false, 0, 0, "", DRV, pro.WktShift3To)); }
-            sqlCommand.Parameters.Add(new SqlParameter("@WktShift3NameAr", SqlDbType.VarChar, 100, IN, false, 0, 0, "", DRV, pro.WktShift3NameAr));
-            sqlCommand.Parameters.Add(new SqlParameter("@WktShift3NameEn", SqlDbType.VarChar, 100, IN, false, 0, 0, "", DRV, pro.WktShift3NameEn));
-            sqlCommand.Parameters.Add(new SqlParameter("@WktShift3Grace", SqlDbType.Int, 10, IN, false, 0, 0, "", DRV, pro.WktShift3Grace));
-            sqlCommand.Parameters.Add(new SqlParameter("@WktShift3Duration", SqlDbType.Int, 10, IN, false, 0, 0, "", DRV, pro.WktShift3Duration));
+            { sqlCommand.Parameters.Add(new SqlParameter("@WktShift3To", DtDB, 14, IN, false, 0, 0, "", DRV, pro.WktShift3To)); }
+            sqlCommand.Parameters.Add(new SqlParameter("@WktShift3NameAr", VchDB, 100, IN, false, 0, 0, "", DRV, pro.WktShift3NameAr));
+            sqlCommand.Parameters.Add(new SqlParameter("@WktShift3NameEn", VchDB, 100, IN, false, 0, 0, "", DRV, pro.WktShift3NameEn));
+            sqlCommand.Parameters.Add(new SqlParameter("@WktShift3Grace", IntDB, 10, IN, false, 0, 0, "", DRV, pro.WktShift3Grace));
+            sqlCommand.Parameters.Add(new SqlParameter("@WktShift3Duration", IntDB, 10, IN, false, 0, 0, "", DRV, pro.WktShift3Duration));
 
             sqlCommand.Parameters.Add(new SqlParameter("@TransactionBy", VchDB, 50, IN, false, 0, 0, "", DRV, pro.TransactionBy));
 

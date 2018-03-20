@@ -352,8 +352,8 @@ public partial class EmployeeVacation : BasePage
             txtEmpID.Text = dt.Rows[0]["EmpID"].ToString();
             ddlVacType.SelectedIndex = ddlVacType.Items.IndexOf(ddlVacType.Items.FindByValue(Convert.ToInt16(dt.Rows[0]["VtpID"]).ToString()));
 
-            calStartDate.SetGDate(dt.Rows[0]["EvrStartDate"], "S");
-            calEndDate.SetGDate(dt.Rows[0]["EvrEndDate"], "S");
+            calStartDate.SetGDate(dt.Rows[0]["EvrStartDate"], "dd/MM/yyyy");
+            calEndDate.SetGDate(dt.Rows[0]["EvrEndDate"], "dd/MM/yyyy");
 
             txtPhoneNo.Text = dt.Rows[0]["EvrPhone"].ToString();
             txtAvailable.Text = dt.Rows[0]["EvrAvailability"].ToString();

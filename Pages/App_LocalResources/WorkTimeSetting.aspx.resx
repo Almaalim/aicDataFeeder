@@ -830,4 +830,31 @@
   <data name="vsShowMsgResource1.ToolTip" xml:space="preserve">
     <value />
   </data>
+  <data name="cvArShift1NameResource1.ErrorMessage" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cvArShift1NameResource1.Text" xml:space="preserve">
+    <value>&lt;img src='../Images/icon/Exclamation.gif' title='Shift 1 Name Arabic is required!' /&gt;</value>
+  </data>
+  <data name="cvArShift1NameResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cvArShift2NameResource1.ErrorMessage" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cvArShift2NameResource1.Text" xml:space="preserve">
+    <value>&lt;img src='../Images/icon/Exclamation.gif' title='Shift 2 Name Arabic is required!' /&gt;</value>
+  </data>
+  <data name="cvArShift2NameResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cvArShift3NameResource1.ErrorMessage" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cvArShift3NameResource1.Text" xml:space="preserve">
+    <value>&lt;img src='../Images/icon/Exclamation.gif' title='Shift 3 Name Arabic is required!' /&gt;</value>
+  </data>
+  <data name="cvArShift3NameResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
 </root>

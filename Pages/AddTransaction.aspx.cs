@@ -327,7 +327,7 @@ public partial class Pages_AddTransaction : BasePage
             dt = DBCs.FetchData(MainQuery + " AND EmpID = '" + pID + "'");
             if (DBCs.IsNullOrEmpty(dt)) { return; }
             txtEmpID.Text = dt.Rows[0]["EmpID"].ToString();
-            calTrnDate.SetGDate(dt.Rows[0]["TrnDate"], "S");
+            calTrnDate.SetGDate(dt.Rows[0]["TrnDate"], "dd/MM/yyyy");
             if (dt.Rows[0]["TrnTime"] != DBNull.Value) { tpTrnTime.SetTime(Convert.ToDateTime(dt.Rows[0]["TrnTime"])); }
             ddlTrnType.SelectedIndex = ddlTrnType.Items.IndexOf(ddlTrnType.Items.FindByValue(dt.Rows[0]["EmpStatus"].ToString()));
             
