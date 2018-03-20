@@ -25,7 +25,7 @@
                     </div>
 
                     <div class="col3">
-                        <asp:TextBox ID="txtServerName" runat="server" meta:resourcekey="txtServerNameResource1"></asp:TextBox>
+                        <asp:TextBox ID="txtServerName" runat="server" meta:resourcekey="txtServerNameResource1" AutoCompleteType="Disabled"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="rfvtxtTableName" runat="server" ControlToValidate="txtServerName" CssClass="CustomValidator"
                             EnableClientScript="False" Text="&lt;img src='../Images/icon/Exclamation.gif' title='Server Name is required!' /&gt;"
                             ValidationGroup="vgSave" meta:resourcekey="rfvtxtTableNameResource1"></asp:RequiredFieldValidator>
@@ -39,7 +39,7 @@
                     </div>
 
                     <div class="col3">
-                        <asp:TextBox ID="txtUserName" runat="server" meta:resourcekey="txtUserNameResource1"></asp:TextBox>
+                        <asp:TextBox ID="txtUserName" runat="server" meta:resourcekey="txtUserNameResource1" AutoCompleteType="Disabled"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="rfvtxtDateField" runat="server" ControlToValidate="txtUserName" CssClass="CustomValidator"
                             EnableClientScript="False" Text="&lt;img src='../Images/icon/Exclamation.gif' title='Username is required!' /&gt;"
                             ValidationGroup="vgSave" meta:resourcekey="rfvtxtDateFieldResource1"></asp:RequiredFieldValidator>

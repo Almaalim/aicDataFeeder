@@ -32,7 +32,7 @@
                         </div>
 
                         <div class="col2">
-                            <asp:TextBox ID="txtSearch" runat="server" Enabled="False" meta:resourcekey="txtSearchResource1"></asp:TextBox>
+                            <asp:TextBox ID="txtSearch" runat="server" Enabled="False" AutoCompleteType="Disabled" meta:resourcekey="txtSearchResource1"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="rvSearch" runat="server" ControlToValidate="txtSearch" CssClass="CustomValidator"
                                 EnableClientScript="False" ValidationGroup="vgSearch" Text="&lt;img src='Images/icon/Exclamation.gif' title='You must enter a value to search!' /&gt;" meta:resourcekey="rvSearchResource1"></asp:RequiredFieldValidator>
                             <ajaxToolkit:FilteredTextBoxExtender ID="eFilteredSearch" runat="server" Enabled="True"
@@ -87,7 +87,7 @@
                                     <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                 </asp:BoundField>
-                                <asp:CommandField ButtonType="Button" SelectText="select" ShowSelectButton="True" meta:resourcekey="CommandFieldResource1" />
+                                <asp:CommandField ButtonType="Button" SelectText="select" ShowSelectButton="false" meta:resourcekey="CommandFieldResource1" />
                             </Columns>
 
                         </asp:GridView>
@@ -143,7 +143,7 @@
                                 <asp:Label ID="lblIPAddress" runat="server" Text="IP Address:" meta:resourcekey="lblIPAddressResource1"></asp:Label>
                             </div>
                             <div class="col3">
-                                <asp:TextBox ID="txtIPAddress" runat="server" Enabled="False" meta:resourcekey="txtIPAddressResource1"></asp:TextBox>
+                                <asp:TextBox ID="txtIPAddress" runat="server" Enabled="False" AutoCompleteType="Disabled" meta:resourcekey="txtIPAddressResource1"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="rfvtxtIPAddress" runat="server" ControlToValidate="txtIPAddress" CssClass="CustomValidator"
                                     EnableClientScript="False" Text="&lt;img src='../Images/icon/Exclamation.gif' title='IP Address Type is required!' /&gt;"
                                     ValidationGroup="vgSave" meta:resourcekey="rfvtxtIPAddressResource1"></asp:RequiredFieldValidator>
@@ -164,7 +164,7 @@
                                 <asp:Label ID="lblPort" runat="server" Text="Port :" meta:resourcekey="lblPortResource1"></asp:Label>
                             </div>
                             <div class="col3">
-                                <asp:TextBox ID="txtPort" runat="server" Enabled="False" meta:resourcekey="txtPortResource1"></asp:TextBox>
+                                <asp:TextBox ID="txtPort" runat="server" Enabled="False" AutoCompleteType="Disabled" meta:resourcekey="txtPortResource1"></asp:TextBox>
                             </div>
                         </div>
                         <div class="row">
@@ -172,7 +172,7 @@
                                 <asp:Label ID="lblMachineNo" runat="server" Text="Machine No. :" meta:resourcekey="lblMachineNoResource1"></asp:Label>
                             </div>
                             <div class="col3">
-                                <asp:TextBox ID="txtMachineNo" runat="server" Enabled="False" meta:resourcekey="txtMachineNoResource1"  ></asp:TextBox>
+                                <asp:TextBox ID="txtMachineNo" runat="server" Enabled="False" AutoCompleteType="Disabled" meta:resourcekey="txtMachineNoResource1"  ></asp:TextBox>
                                 <asp:CustomValidator ID="cvMachineNo" runat="server" Text="&lt;img src='../Images/icon/message_exclamation.png' title='!' /&gt;" CssClass="CustomValidator"
                                     ValidationGroup="vgSave" ErrorMessage="this Machine No is already there please enter another No.!" OnServerValidate="MachineNo_ServerValidate"
                                     EnableClientScript="False" ControlToValidate="cvtxt" meta:resourcekey="cvMachineNoResource1"></asp:CustomValidator>
@@ -182,7 +182,7 @@
                                 <asp:Label ID="lblMacSerialNo" runat="server" Text="Machine Serial No. :" meta:resourcekey="lblMacSerialNoResource1"></asp:Label>
                             </div>
                             <div class="col3">
-                                <asp:TextBox ID="txtMacSerialNo" runat="server" Enabled="False" meta:resourcekey="txtMacSerialNoResource1"></asp:TextBox>
+                                <asp:TextBox ID="txtMacSerialNo" runat="server" Enabled="False" AutoCompleteType="Disabled" meta:resourcekey="txtMacSerialNoResource1"></asp:TextBox>
                                 <asp:CustomValidator ID="cvMacSerialNo" runat="server" Text="&lt;img src='../Images/icon/message_exclamation.png' title='!' /&gt;" CssClass="CustomValidator"
                                     ValidationGroup="vgSave" ErrorMessage="this Machine serial No. is already there please enter another No.!" OnServerValidate="MachineNo_ServerValidate"
                                     EnableClientScript="False" ControlToValidate="cvtxt" meta:resourcekey="cvMacSerialNoResource1"></asp:CustomValidator>
@@ -193,7 +193,7 @@
                                 <asp:Label ID="lblMacLocationAr" runat="server" Text="Machine Location (Ar) :" meta:resourcekey="lblMacLocationArResource1"></asp:Label>
                             </div>
                             <div class="col3">
-                                <asp:TextBox ID="txtMacLocationAr" runat="server" Enabled="False" meta:resourcekey="txtMacLocationArResource1"  ></asp:TextBox>
+                                <asp:TextBox ID="txtMacLocationAr" runat="server" Enabled="False" AutoCompleteType="Disabled" meta:resourcekey="txtMacLocationArResource1"  ></asp:TextBox>
                                 <asp:CustomValidator ID="cvLocationAr" runat="server" Text="&lt;img src='../Images/icon/message_exclamation.png' title='!' /&gt;"
                                     ValidationGroup="vgSave" ErrorMessage="this Location Ar is already there please enter another Name!" OnServerValidate="cvLocation_ServerValidate"
                                     EnableClientScript="False" ControlToValidate="cvtxt" meta:resourcekey="cvLocationArResource1"></asp:CustomValidator>
@@ -220,11 +220,11 @@
                                 <asp:Label ID="lblMacLocationEn" runat="server" Text="Machine Location (En) :" meta:resourcekey="lblMacLocationEnResource1"></asp:Label>
                             </div>
                             <div class="col3">
-                                <asp:TextBox ID="txtMacLocationEn" runat="server" Enabled="False" meta:resourcekey="txtMacLocationEnResource1"></asp:TextBox>
+                                <asp:TextBox ID="txtMacLocationEn" runat="server" Enabled="False" AutoCompleteType="Disabled" meta:resourcekey="txtMacLocationEnResource1"></asp:TextBox>
                                 <asp:CustomValidator ID="cvLocationEn" runat="server" Text="&lt;img src='../Images/icon/message_exclamation.png' title='!' /&gt;" CssClass="CustomValidator"
                                     ValidationGroup="vgSave" ErrorMessage="this Machine serial No. is already there please enter another No.!" OnServerValidate="MachineNo_ServerValidate"
                                     EnableClientScript="False" ControlToValidate="cvtxt" meta:resourcekey="cvLocationEnResource1"></asp:CustomValidator>
-                                <asp:TextBox ID="txtMachineID" runat="server" Width="10px" Enabled="False" Visible="False" meta:resourcekey="txtMachineIDResource1"></asp:TextBox>
+                                <asp:TextBox ID="txtMachineID" runat="server" Width="10px" Enabled="False" Visible="False" AutoCompleteType="Disabled" meta:resourcekey="txtMachineIDResource1"></asp:TextBox>
                             </div>
                         </div>
                         <div class="row">

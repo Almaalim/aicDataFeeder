@@ -106,7 +106,7 @@
                         <asp:Label ID="lblSchemaName" runat="server" Text="Schema Name :" meta:resourcekey="lblSchemaNameResource1"></asp:Label>
                     </div>
                     <div class="col3">
-                        <asp:TextBox ID="txtSchemaName" runat="server" meta:resourcekey="txtSchemaNameResource1"></asp:TextBox>
+                        <asp:TextBox ID="txtSchemaName" runat="server" AutoCompleteType="Disabled" meta:resourcekey="txtSchemaNameResource1"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="rfvtxtSchemaName" runat="server" ControlToValidate="txtSchemaName" CssClass="CustomValidator"
                             EnableClientScript="False" Text="&lt;img src='../Images/icon/Exclamation.gif' title='Schema Name is required!' /&gt;"
                             ValidationGroup="vgSave" meta:resourcekey="rfvtxtSchemaNameResource1"></asp:RequiredFieldValidator>

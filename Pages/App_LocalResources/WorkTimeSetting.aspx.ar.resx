@@ -830,4 +830,31 @@
   <data name="vsShowMsgResource1.ToolTip" xml:space="preserve">
     <value />
   </data>
+  <data name="cvArShift1NameResource1.ErrorMessage" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cvArShift1NameResource1.Text" xml:space="preserve">
+    <value>&lt;img src='../Images/icon/Exclamation.gif' title='اسم الوردية 1 (ع) اجباري!' /&gt;</value>
+  </data>
+  <data name="cvArShift1NameResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cvArShift2NameResource1.ErrorMessage" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cvArShift2NameResource1.Text" xml:space="preserve">
+    <value>&lt;img src='../images/Exclamation.gif' title='اسم الوردية 2 (ع) اجباري!' /&gt;</value>
+  </data>
+  <data name="cvArShift2NameResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cvArShift3NameResource1.ErrorMessage" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cvArShift3NameResource1.Text" xml:space="preserve">
+    <value>&lt;img src='../images/Exclamation.gif' title='اسم الوردية 3 (ع) اجباري!' /&gt;</value>
+  </data>
+  <data name="cvArShift3NameResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
 </root>

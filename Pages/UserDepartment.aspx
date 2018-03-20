@@ -288,7 +288,7 @@
                         </div>
 
                         <div class="col2">
-                            <asp:TextBox ID="txtSearch" runat="server" Enabled="False" meta:resourcekey="txtSearchResource1"></asp:TextBox>
+                            <asp:TextBox ID="txtSearch" runat="server" Enabled="False" AutoCompleteType="Disabled" meta:resourcekey="txtSearchResource1"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="rvSearch" runat="server" CssClass="CustomValidator"
                                 ControlToValidate="txtSearch" EnableClientScript="False" ValidationGroup="vgSearch"
                                 Text="&lt;img src='../Images/icon/Exclamation.gif' title='You must enter a value to search!' /&gt;" meta:resourcekey="rvSearchResource1"></asp:RequiredFieldValidator>

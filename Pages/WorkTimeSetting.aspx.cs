@@ -26,7 +26,7 @@ public partial class Pages_WorkTimeSetting : BasePage
     DateFun DTCs = new DateFun();
 
     string MainPer = "Set";
-    string MainQuery = "SELECT * FROM WorkingTime ";
+    string MainQuery = "SELECT * FROM WorkingTime WHERE WktID = WktID ";
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     protected void Page_Load(object sender, EventArgs e)
@@ -42,6 +42,7 @@ public partial class Pages_WorkTimeSetting : BasePage
             pnlSearch.Enabled = grdData.Enabled = FormSession.PermUsr.Contains("U" + MainPer);
 
             FillGrid(MainQuery);
+            DataItemEnabled(false, false, false);
             //PopulateData(MainQuery);
         }
     }
@@ -89,7 +90,7 @@ public partial class Pages_WorkTimeSetting : BasePage
 
             ProClass.WktIsActive = chkWktStatus.Checked;
             ProClass.WktStartDate = calStartDate.getGDateDBFormat();
-            ProClass.WktEndDate = calEndDate.getGDateDBFormat();
+            if (!string.IsNullOrEmpty(calEndDate.getGDate())) { ProClass.WktEndDate = calEndDate.getGDateDBFormat(); } else { ProClass.WktEndDate = calStartDate.getGDateDBFormat(); }
             ProClass.WktShiftCount = FindShiftCount();
 
             ////Shift 1
@@ -188,6 +189,10 @@ public partial class Pages_WorkTimeSetting : BasePage
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public void DataItemEnabled(bool pStatus, bool pShift2, bool pShift3)
     {
+        txtWorkNameAr.Enabled = pStatus;
+        txtWorkNameEn.Enabled = pStatus;
+        chkWktStatus.Enabled = pStatus;
+
         chkEwrSat.Enabled = pStatus;
         chkEwrSun.Enabled = pStatus;
         chkEwrMon.Enabled = pStatus;
@@ -195,8 +200,7 @@ public partial class Pages_WorkTimeSetting : BasePage
         chkEwrWed.Enabled = pStatus;
         chkEwrThu.Enabled = pStatus;
         chkEwrFri.Enabled = pStatus;
-
-        chkWktStatus.Enabled = pStatus;
+        
         calStartDate.SetEnabled(pStatus);
         calEndDate.SetEnabled(pStatus);
         FindShiftCount();
@@ -363,8 +367,8 @@ public partial class Pages_WorkTimeSetting : BasePage
             chkEwrThu.Checked = Convert.ToBoolean(dt.Rows[0]["WktThu"]);
             chkEwrFri.Checked = Convert.ToBoolean(dt.Rows[0]["WktFri"]);
 
-            calStartDate.SetGDate(dt.Rows[0]["WktStartDate"], "S");
-            calEndDate.SetGDate(dt.Rows[0]["WktEndDate"], "S");
+            calStartDate.SetGDate(dt.Rows[0]["WktStartDate"], "dd/MM/yyyy");
+            calEndDate.SetGDate(dt.Rows[0]["WktEndDate"], "dd/MM/yyyy");
 
             //Shift 1
             txtShift1NameAr.Text = dt.Rows[0]["WktShift1NameAr"].ToString();
@@ -450,7 +454,7 @@ public partial class Pages_WorkTimeSetting : BasePage
     {
         try
         {
-            //e.Row.Cells[5].Visible = false; //To hide ID column in grid view
+            e.Row.Cells[2].Visible = false; //To hide ID column in grid view
             //e.Row.Cells[6].Visible = false;
         }
         catch { }
@@ -758,6 +762,14 @@ public partial class Pages_WorkTimeSetting : BasePage
     {
         try
         {
+            if (source.Equals(cvEnShift1Name))
+            {
+                if (FormSession.Language == "En") { if (string.IsNullOrEmpty(txtShift1NameEn.Text)) { e.IsValid = false; } }
+            }
+            else if (source.Equals(cvArShift1Name))
+            {
+                if (FormSession.Language == "Ar") { if (string.IsNullOrEmpty(txtShift1NameAr.Text)) { e.IsValid = false; } }
+            }
             if (source.Equals(cvShift1Duration))
             {
                 if (txtShift1Duration.getTimeInSecond() <= 0) { e.IsValid = false; } else { e.IsValid = true; }
@@ -790,6 +802,14 @@ public partial class Pages_WorkTimeSetting : BasePage
         {
             if (chkShift2Set.Checked)
             {
+                if (source.Equals(cvEnShift2Name))
+                {
+                    if (FormSession.Language == "En") { if (string.IsNullOrEmpty(txtShift2NameEn.Text)) { e.IsValid = false; } }
+                }
+                else if (source.Equals(cvArShift2Name))
+                {
+                    if (FormSession.Language == "Ar") { if (string.IsNullOrEmpty(txtShift2NameAr.Text)) { e.IsValid = false; } }
+                }
                 if (source.Equals(cvShift2Duration))
                 {
                     if (txtShift2Duration.getTimeInSecond() <= 0) { e.IsValid = false; } else { e.IsValid = true; }
@@ -837,6 +857,14 @@ public partial class Pages_WorkTimeSetting : BasePage
         {
             if (chkShift3Set.Checked)
             {
+                if (source.Equals(cvEnShift3Name))
+                {
+                    if (FormSession.Language == "En") { if (string.IsNullOrEmpty(txtShift3NameEn.Text)) { e.IsValid = false; } }
+                }
+                else if (source.Equals(cvArShift3Name))
+                {
+                    if (FormSession.Language == "Ar") { if (string.IsNullOrEmpty(txtShift3NameAr.Text)) { e.IsValid = false; } }
+                }
                 if (source.Equals(cvShift3Duration))
                 {
                     if (txtShift3Duration.getTimeInSecond() <= 0) { e.IsValid = false; } else { e.IsValid = true; }
