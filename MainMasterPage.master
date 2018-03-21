@@ -204,6 +204,7 @@
                 var ParentColor = $(this).parent(".static").css('backgroundColor');
                 $(this).css("backgroundColor", ParentColor);
             });
+            $("#divMenu").toggle();
         }
         $(document).click(function (e) {
             var container = $(".taptap-menu-active, .taptap-main-wrapper-active");
