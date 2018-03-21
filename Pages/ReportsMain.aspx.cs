@@ -251,6 +251,7 @@ public partial class Pages_ReportMain : BasePage
 
             calStartDate.SetGDate(sDt, "dd/MM/yyyy");
             calEndDate.SetGDate(eDt, "dd/MM/yyyy");
+            lblSelectedreport.Text = General.Msg(ViewState["ReportNameEn"].ToString(), ViewState["ReportNameAr"].ToString());
 
             //btnViewreport.Enabled = true;
 

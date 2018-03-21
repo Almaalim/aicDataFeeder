@@ -38,9 +38,6 @@
 
                             </ItemTemplate>
                         </asp:DataList>
-                        </td>
-                                </tr>
-                            </table>
                     </div>
                 </div>
                 <div class="row">
@@ -56,6 +53,8 @@
                 </div>
                 <div class="row">
                     <div class="col12">
+                        <a class="GenButton  glyphicon glyphicon-search" href="#popup1"><%# General.Msg("Fill Parameters", "ادخال المحددات")%> Fill Parameters</a>
+                        <%--This is link which opens popup and href should be same as popup id as mentioned above  title="Fill Parameters"--%>
                         <asp:LinkButton ID="btnEditReport" runat="server" Text="Edit Report"
                             OnClick="btnEditReport_Click" Enabled="False" CssClass="GenButton  glyphicon glyphicon-edit"></asp:LinkButton>
                         <asp:LinkButton ID="btnSetAsDefault" runat="server" Text="Set As Default" CssClass="GenButton glyphicon glyphicon-plus-sign"
@@ -65,7 +64,6 @@
                         <asp:TextBox ID="cvValid" runat="server" Text="02120" Visible="False" Width="10px"></asp:TextBox>
                     </div>
                 </div>
-
                 <asp:Panel ID="pnlEmployee" runat="server" Visible="False">
                     <div class="row">
                         <div class="col2">
@@ -132,11 +130,12 @@
                             <asp:Label ID="lblStartDate" runat="server" Text="Start Date :"></asp:Label>
                         </div>
                         <div class="col4">
-                            <uc:Calendar2 ID="calStartDate" runat="server" CalendarType="System" ValidationGroup="vgView" /> <%--CalTo="calEndDate"--%>
+                            <uc:Calendar2 ID="calStartDate" runat="server" CalendarType="System" ValidationGroup="vgView" />
+                            <%--CalTo="calEndDate"--%>
 
                             <%--<asp:CustomValidator ID="cvStartDate" runat="server" Text="&lt;img src='../Images/icon/Exclamation.gif' title='Start Date is required!' /&gt;" CssClass="CustomValidator"
                                 ValidationGroup="vgView" OnServerValidate="Date_ServerValidate" EnableClientScript="False"
-                                ControlToValidate="cvValid"></asp:CustomValidator>--%>  
+                                ControlToValidate="cvValid"></asp:CustomValidator>--%>
 
                             <%--<asp:CustomValidator ID="cvCompareDates" runat="server" Text="&lt;img src='../Images/icon/Exclamation.gif' title='start date more than end date!' /&gt;" CssClass="CustomValidator"
                                 ValidationGroup="vgView" ErrorMessage="start date more than end date!" OnServerValidate="Date_ServerValidate"
@@ -163,8 +162,7 @@
                     <div class="col8">
                         <asp:LinkButton ID="btnViewreport" runat="server" CssClass="GenButton  glyphicon glyphicon-search" Text="View Report"
                             Enabled="False" OnClick="btnViewreport_Click" ValidationGroup="vgView"></asp:LinkButton>
-                        <a class="GenButton  glyphicon glyphicon-search" href="#popup1">Pop up</a>
-                        <%--This is link which opens popup and href should be same as popup id as mentioned above--%>
+
                         <asp:LinkButton ID="btnCancel" runat="server" CssClass="GenButton glyphicon glyphicon-remove-circle" Text="Cancel" Visible="False"></asp:LinkButton>
                     </div>
                 </div>
@@ -182,8 +180,10 @@
         <a class="close" href="#">&times;</a>
         <div class="row">
             <div class="col12">
-                <cc1:StiWebViewerFx ID="StiWebViewerFx1" runat="server" Width="100%" Height="600px"
-                    Background="White" />
+                <%--<cc1:StiWebViewerFx ID="StiWebViewerFx1" runat="server" Width="100%" Height="600px"
+                    Background="White" />--%>
+
+                
             </div>
         </div>
     </div>
