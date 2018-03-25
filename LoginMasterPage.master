@@ -20,6 +20,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <link href="CSS/Metro/Metro.css" rel="stylesheet" />
     <script type="text/javascript" src="../Scripts/jquery-1.7.1.min.js"></script>
+
+      <script type="text/javascript" src="Scripts/jquery-1.12.4.js"></script>
+      <script type="text/javascript" src="Scripts/jquery-1.12.4.min.js"></script>
+
     <script type="text/javascript">
         $(document).ready(function () {
             $("div[class*='col']").each(function () {
