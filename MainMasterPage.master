@@ -208,6 +208,7 @@
                 var ParentColor = $(this).parent(".static").css('backgroundColor');
                 $(this).css("backgroundColor", ParentColor);
             });
+            $("#divMenu").toggle();
         }
         $(document).click(function (e) {
             var container = $(".taptap-menu-active, .taptap-main-wrapper-active");
@@ -558,8 +559,8 @@
             </script>
     <div class="LoadingWrapper">
         <div class="Loader">
-            <!-- <div class="OuterCircle"></div>
-            <div class="MiddleCircle"></div>
+             <div class="OuterCircle"></div>
+            <div class="MiddleCircle"></div><!--
             <div class="InnerCircle"></div>
             <div class="MinHand"></div>
             <div class="HourHand"></div>-->

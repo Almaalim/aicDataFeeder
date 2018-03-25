@@ -130,23 +130,23 @@ body {
     }
 
 .OuterCircle {
-    background-image: url(../../images/ExtL.png);
-    width: 166px;
-    height: 167px;
+    background-image: url(../../images/E.png);
+    width: 164px;
+    height: 211px;
     display: block;
     top: 0;
-    right: 0;
-    animation: spin 3s linear infinite;
+    left: -100px;
+    animation: logo-anim-left 2s linear infinite;
 }
 
 .MiddleCircle {
-    background-image: url(../../images/MiddleL.png);
-    width: 120px;
-    height: 120px;
+    background-image: url(../../images/Z.png);
+    width: 176px;
+    height: 210px;
     display: block;
-    top: 22px;
-    right: 23px;
-    animation: spin1 2s linear infinite;
+    top: 0px;
+    left: 100px;
+    animation: logo-anim-right 2s linear infinite;
 }
 
 .InnerCircle {
@@ -214,7 +214,19 @@ body {
         transform: rotateY(360deg);
     }
 }
+@keyframes logo-anim-left {
+  from { top: 0; }
+  26% { top: 0; }
+  29% { top: 7px; }
+  40% { top: 0; }
+}
 
+@keyframes logo-anim-right {
+  from { top: -45px; }
+  25% { top: -50px; }
+  30% { top: 7px; }
+  40% { top: 0px; }
+}
 .FirstPager:before {
     font-family: 'Glyphicons Halflings';
     content: "\e076";
@@ -263,7 +275,10 @@ body {
     float: none;
     clear: both;
 }
-
+#divMenu
+{
+    display:none;
+}
 .Logo {
     float: right;
     width: auto;
