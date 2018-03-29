@@ -18,6 +18,10 @@
     <script type="text/javascript" src="../JScript/Grid.js"></script>
     <script type="text/javascript" src="../JScript/CheckKey.js"></script>
 
+
+          <script type="text/javascript" src="Scripts/jquery-1.12.4.js"></script>
+      <script type="text/javascript" src="Scripts/jquery-1.12.4.min.js"></script>
+
     <script type="text/javascript">
         function PostbackFunction() {
             (function () {
@@ -555,8 +559,8 @@
             </script>
     <div class="LoadingWrapper">
         <div class="Loader">
-            <!-- <div class="OuterCircle"></div>
-            <div class="MiddleCircle"></div>
+             <div class="OuterCircle"></div>
+            <div class="MiddleCircle"></div><!--
             <div class="InnerCircle"></div>
             <div class="MinHand"></div>
             <div class="HourHand"></div>-->
