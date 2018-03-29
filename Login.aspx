@@ -7,13 +7,13 @@
             <div class="LoginLeft">
 
                 <asp:Image ID="Image1" runat="server" CssClass="loginLogoSAr"
-                    ImageUrl="~/images/Logo.png" meta:resourcekey="Image1Resource1" />
+                    ImageUrl="" meta:resourcekey="Image1Resource1" /> <%--~/images/Logo.png--%>
                 <asp:Image ID="Image2" runat="server" CssClass="loginLogoMAr"
-                    ImageUrl="~/images/LoginLogo.png" meta:resourcekey="Image2Resource1" />
+                    ImageUrl="" meta:resourcekey="Image2Resource1" /> <%--~/images/LoginLogo.png--%>
                 <asp:Image ID="Image3" runat="server" CssClass="loginLogoSEn"
-                    ImageUrl="~/images/LogoEn.png" meta:resourcekey="Image3Resource1" />
+                    ImageUrl="" meta:resourcekey="Image3Resource1" /> <%--~/images/LogoEn.png--%>
                 <asp:Image ID="Image4" runat="server" CssClass="loginLogoMEn"
-                    ImageUrl="~/images/LoginLogoEn.png" meta:resourcekey="Image4Resource1" />
+                    ImageUrl="" meta:resourcekey="Image4Resource1" /> <%--~/images/LoginLogoEn.png--%>
 
             </div>
 

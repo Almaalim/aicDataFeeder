@@ -146,11 +146,11 @@ public partial class MainMasterPage : System.Web.UI.MasterPage
         //string RPerm = (General.IsNullOrEmpty(Session["ReportPermissions"])) ? "0" : Session["ReportPermissions"].ToString();
 
         QMuen.Append(" SELECT MnuNumber,MnuID,MnuPermissionID,MnuImageURL,MnuText" + lang + " as MnuText,MnuTextEn as MnuTextEn,(MnuServer + '' + MnuURL) as MnuURL,MnuParentID,MnuVisible,MnuOrder,MnuPermissionID AS MnuDepth ");
-        QMuen.Append(" FROM Menu WHERE MnuVisible = 'True' AND MnuType IN ('Menu') AND MenuPerm IN (" + MPerm + ") ");
+        QMuen.Append(" FROM Menu WHERE MnuVisible = 'True' AND MnuType IN ('Menu') AND MenuPerm IN (" + MPerm + ") AND ( CHARINDEX('General',VerID) > 0 OR CHARINDEX('" + FormSession.Version + "',VerID) > 0)");
 
         QMuen.Append(" UNION ALL ");
         QMuen.Append(" SELECT MnuNumber,MnuID,MnuPermissionID,MnuImageURL,MnuText" + lang + " as MnuText,MnuTextEn as MnuTextEn,(MnuServer + '' + MnuURL) as MnuURL,MnuParentID,MnuVisible,MnuOrder,MnuPermissionID AS MnuDepth ");
-        QMuen.Append(" FROM Menu WHERE MnuVisible = 'True' AND MnuType IN (" + listPage + ") AND MenuPerm IN (" + MPerm + ") AND ( CHARINDEX('General',VerID) > 0) "); // OR CHARINDEX('" + pgCs.Version + "',VerID) > 0)
+        QMuen.Append(" FROM Menu WHERE MnuVisible = 'True' AND MnuType IN (" + listPage + ") AND MenuPerm IN (" + MPerm + ") AND ( CHARINDEX('General',VerID) > 0 OR CHARINDEX('" + FormSession.Version + "',VerID) > 0) "); // OR CHARINDEX('" + pgCs.Version + "',VerID) > 0)
 
         //QMuen.Append(" UNION ALL ");
         //QMuen.Append(" SELECT MnuNumber,MnuID,MnuPermissionID,MnuImageURL,MnuText" + lang + " as MnuText,MnuTextEn as MnuTextEn,(MnuServer + '' + MnuURL) as MnuURL,MnuParentID,MnuVisible,MnuOrder,MnuPermissionID AS MnuDepth ");

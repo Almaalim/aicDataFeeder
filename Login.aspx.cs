@@ -4,14 +4,17 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Text;
 using System.Data.SqlClient;
+using System.Security.Cryptography;
+using System.Configuration;
 
 public partial class Login : System.Web.UI.Page
 {
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     DataTable dt;
-    DateFun DTCs = new DateFun(); 
+    DateFun DTCs = new DateFun();
     DBFun DBCs = new DBFun();
+    LicDf LCD = new LicDf();
     General Gens = new General();
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -21,13 +24,31 @@ public partial class Login : System.Web.UI.Page
         string Applang = Session["Language"] != null ? Applang = Session["Language"].ToString() : Applang = Gens.getAppLanguage();
         Page.Theme = "Theme" + Applang;
         System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(General.getCulture(Applang));
-        string s;
     }
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     protected void Page_Load(object sender, EventArgs e) 
     {
-        //string fg = CryptorEngine.Encrypt("admin", true);
+        //string ss = CryptorEngine.Encrypt("DF", true);
+        /*** Check Version ********************************************/
+        Session["ActiveVersion"] = LCD.FindActiveVersion(); // 
+        /******************************************************************/
+
+        Image1.ImageUrl = Page.ResolveUrl("~/images/Logo_" + Session["ActiveVersion"].ToString() + ".png");
+        Image2.ImageUrl = Page.ResolveUrl("~/images/LoginLogo_" + Session["ActiveVersion"].ToString() + ".png");
+        Image3.ImageUrl = Page.ResolveUrl("~/images/LogoEn_" + Session["ActiveVersion"].ToString() + ".png");
+        Image4.ImageUrl = Page.ResolveUrl("~/images/LoginLogoEn_" + Session["ActiveVersion"].ToString() + ".png");
+
+        /*** Check Connect ********************************************/
+        if (!DBCs.isConnect()) { MessageFun.ShowMsg(this, MessageFun.TypeMsg.Error, General.Msg("No connection to the database", "لا يوجد اتصال بقاعدة البيانات")); return; }
+        /******************************************************************/
+
+        /*** Check License ********************************************/
+        if (LCD.FetchLic("LC") != "1") { MessageFun.ShowMsg(this, MessageFun.TypeMsg.Error, General.Msg("There is no License to use this Application", "لا يوجد ترخيص لإستخدام هذا البرنامج")); return; }
+        /******************************************************************/
+
+        
+
         if (!IsPostBack) { txtLoginID.Text = txtPassword.Attributes["value"] = "admin"; }
 
         txtLoginID.Focus();

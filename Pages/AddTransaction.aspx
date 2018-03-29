@@ -197,6 +197,15 @@
                                 </div>
                             </div>
 
+                             <%--<div class="row">
+                                <div class="col2">
+                                    <span class="RequiredField">*</span>
+                                    <asp:Label ID="lblMachine" runat="server" Text="Machine :" meta:resourcekey="lblTrnTypeResource1"></asp:Label>
+                                </div>
+                                <div class="col3">
+
+                                </div>
+                            </div>--%>
                         </asp:Panel>
                     </div>
                 </div>

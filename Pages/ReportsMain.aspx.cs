@@ -50,6 +50,8 @@ public partial class Pages_ReportMain : BasePage
             btnEventsEnable(false);
             dltReport.RepeatColumns = 4;
 
+            //ScriptManager.RegisterStartupScript(CalendarUpdatePanel, typeof(string), "ShowPopup" + this.DivCal.ClientID, "if (document.getElementById('" + this.DivCal.ClientID + "') != 'undefined' && document.getElementById('" + this.DivCal.ClientID + "') != null) { document.getElementById('" + this.DivCal.ClientID + "').style.display = 'none'; }", true);
+
             //ShowPanels();
 
             //calDate.SetEnabled(true);
