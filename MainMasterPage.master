@@ -221,7 +221,7 @@
         });
         $(window).ready(function () {
             // Animate loader off screen
-            $(".LoadingWrapper").delay(1500).fadeOut("slow", 0);
+           // $(".LoadingWrapper").delay(1500).fadeOut("slow", 0);
 
         });
         $(document).ready(function () {
@@ -557,13 +557,23 @@
 
         });
             </script>
-    <div class="LoadingWrapper">
+    <div class="LoadingWrapper" id ="EazyAttendance" runat="server">
         <div class="Loader">
              <div class="OuterCircle"></div>
             <div class="MiddleCircle"></div><!--
             <div class="InnerCircle"></div>
             <div class="MinHand"></div>
             <div class="HourHand"></div>-->
+
+        </div>
+    </div>
+     <div class="LoadingWrapper" id ="DataFeeder" runat="server">
+        <div class="Loader">
+             <!--<div class="OuterCircle"></div>
+            <div class="MiddleCircle"></div>-->
+            <div class="InnerCircle"></div>
+            <div class="MinHand"></div>
+            <%--<div class="HourHand"></div>--%>
 
         </div>
     </div>
