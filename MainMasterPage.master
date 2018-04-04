@@ -404,7 +404,7 @@
                         <div class="icon">
                             <span class="ico-arrow-right"></span>
                         </div>
-                        <h1Attendance Management System</h1>
+                        <h1>Attendance Management System</h1>
                     </div>
                 </div>
                 <div id="divMenu" runat="server">
@@ -557,13 +557,23 @@
 
         });
             </script>
-    <div class="LoadingWrapper">
+    <div class="LoadingWrapper" id ="EZ" runat="server"> <%--EazyAttendance--%>
         <div class="Loader">
              <div class="OuterCircle"></div>
             <div class="MiddleCircle"></div><!--
             <div class="InnerCircle"></div>
             <div class="MinHand"></div>
             <div class="HourHand"></div>-->
+
+        </div>
+    </div>
+    <div class="LoadingWrapper" id ="DF" runat="server"> <%--DataFeeder--%>
+        <div class="Loader">
+             <!--<div class="OuterCircle"></div>
+            <div class="MiddleCircle"></div>-->
+            <div class="InnerCircle"></div>
+            <div class="MinHand"></div>
+            <%--<div class="HourHand"></div>--%>
 
         </div>
     </div>

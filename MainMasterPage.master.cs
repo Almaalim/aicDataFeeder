@@ -15,6 +15,7 @@ public partial class MainMasterPage : System.Web.UI.MasterPage
     AppUsersPro AppPro = new AppUsersPro();
     AppUsersSql AppSql = new AppUsersSql();
     DBFun DBCs = new DBFun();
+    LicDf LCD = new LicDf();
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -26,6 +27,12 @@ public partial class MainMasterPage : System.Web.UI.MasterPage
         FormSession.FillSession("", null);
         FillMenu();
         FillFavForm();
+
+        /*** Check Version ********************************************/
+        Session["ActiveVersion"] = LCD.FindActiveVersion(); // 
+        /******************************************************************/
+
+        if (Session["ActiveVersion"].ToString() == "EZ") { EZ.Visible = true; DF.Visible = false; } else { DF.Visible = true; EZ.Visible = false; }
 
         try { Response.AppendHeader("Refresh", Convert.ToString((Session.Timeout * 60) + 2) + "; URL=../Login.aspx"); }
         catch (Exception ex) { }

@@ -47,8 +47,6 @@ public partial class Login : System.Web.UI.Page
         if (LCD.FetchLic("LC") != "1") { MessageFun.ShowMsg(this, MessageFun.TypeMsg.Error, General.Msg("There is no License to use this Application", "لا يوجد ترخيص لإستخدام هذا البرنامج")); return; }
         /******************************************************************/
 
-        
-
         if (!IsPostBack) { txtLoginID.Text = txtPassword.Attributes["value"] = "admin"; }
 
         txtLoginID.Focus();
