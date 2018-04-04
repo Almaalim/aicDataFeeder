@@ -477,8 +477,8 @@ public partial class Pages_Users : BasePage
             {
                 if (!String.IsNullOrEmpty(calUsrStartDate.getGDateDBFormat()) && !String.IsNullOrEmpty(calUsrExpiryDate.getGDateDBFormat()))
                 {
-                    int iStartDate = DTCs.ConvertDateTimeToInt(FormSession.DateType, calUsrStartDate.getGDateDBFormat());
-                    int iEndDate = DTCs.ConvertDateTimeToInt(FormSession.DateType, calUsrExpiryDate.getGDateDBFormat());
+                    int iStartDate = DTCs.ConvertDateTimeToInt(calUsrStartDate.getGDate(), FormSession.DateType);
+                    int iEndDate = DTCs.ConvertDateTimeToInt(calUsrExpiryDate.getGDate(), FormSession.DateType);
                     if (iStartDate > iEndDate) { e.IsValid = false; } else { e.IsValid = true; }
                 }
             }

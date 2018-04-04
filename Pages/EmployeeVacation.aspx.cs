@@ -414,8 +414,8 @@ public partial class EmployeeVacation : BasePage
     {
         try
         {
-            e.Row.Cells[5].Visible = false; //To hide ID column in grid view
-            e.Row.Cells[6].Visible = false;
+            //e.Row.Cells[5].Visible = false; //To hide ID column in grid view
+            //e.Row.Cells[6].Visible = false;
         }
         catch { }
     }
@@ -494,8 +494,8 @@ public partial class EmployeeVacation : BasePage
             {
                 if (!String.IsNullOrEmpty(calStartDate.getGDateDBFormat()) && !String.IsNullOrEmpty(calEndDate.getGDateDBFormat()))
                 {
-                    int iStartDate = DTCs.ConvertDateTimeToInt(FormSession.DateType, calStartDate.getGDateDBFormat());
-                    int iEndDate = DTCs.ConvertDateTimeToInt(FormSession.DateType, calEndDate.getGDateDBFormat());
+                    int iStartDate = DTCs.ConvertDateTimeToInt(calStartDate.getGDate(), FormSession.DateType);
+                    int iEndDate = DTCs.ConvertDateTimeToInt(calEndDate.getGDate(), FormSession.DateType);
                     if (iStartDate > iEndDate) { e.IsValid = false; } else { e.IsValid = true; }
                 }
             }

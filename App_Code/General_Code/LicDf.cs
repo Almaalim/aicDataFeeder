@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Net;
 using System.Data;
+using Class_EZ_Lic;
 
 /// <summary>
 /// Summary description for LicDf
@@ -72,6 +73,12 @@ public class LicDf : DataLayerBase
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public string FetchLic(string Lic, string pSCon, string ClientName)
     {
+        //string ClientPCName = getClientPCName();
+        //string ClientPCName = "";
+        string ClientPCName = "NAGHASH.Almaalim.local";
+        
+        //return EZLic.FetchEZLic(Lic, General.ConnString, ClientPCName);
+        
         return "1";
     }
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

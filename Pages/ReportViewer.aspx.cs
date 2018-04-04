@@ -101,7 +101,7 @@ public partial class Pages_ReportViewer : BasePage
 
         StiReport HRep = new StiReport();
 
-        DataTable HDT = DBCs.FetchData(" SELECT * FROM Report WHERE RepType = 'Header' AND RepOrientation ='" + RepOrientation + "'");
+        DataTable HDT = DBCs.FetchData(" SELECT * FROM Report WHERE RepType = 'Header_" + FormSession.Version + "' AND RepOrientation ='" + RepOrientation + "'");
         if (!DBCs.IsNullOrEmpty(HDT))
         {
             string RepHeader = HDT.Rows[0]["RepTemp" + FormSession.Language].ToString();

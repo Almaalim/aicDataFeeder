@@ -111,30 +111,6 @@ public class FormCtrl
     }
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    static public bool PopulateDDLCollegeOfficer(DropDownList ddl, DataTable dt, string Text1, string Text2, string Value, string Msg)
-    {
-        try
-        {
-            if (IsNullOrEmpty(dt)) { return false; }
-
-            ddl.DataSource = null;
-            ddl.Items.Clear();
-
-            for (int i = 0; i < dt.Rows.Count; i++)
-            {
-                ListItem ls = new ListItem(General.DisplayCollegeType(dt.Rows[i][Text1]) + "\\ " + dt.Rows[i][Text2].ToString(), dt.Rows[i][Value].ToString());
-                ddl.Items.Add(ls);
-            }
-
-            ListItem lsMsg = new ListItem(Msg, Msg);
-            ddl.Items.Insert(0, lsMsg);
-
-            return true;
-        }
-        catch (Exception e1) { throw e1; }
-    }
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     static public bool IsNullOrEmpty(DataTable dt)
     {
         if (dt == null) { return true; }

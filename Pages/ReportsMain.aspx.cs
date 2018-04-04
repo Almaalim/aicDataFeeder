@@ -40,10 +40,28 @@ public partial class Pages_ReportMain : BasePage
         FormSession.FillSession("Reports", pageDiv);
         //---Common Code ----------------------------------------------------------------- //
 
+        if (ViewState["pnlshow"] != null)
+        {
+            if (!string.IsNullOrEmpty(hdnShow.Value))
+            {
+                //string ss = hdnShow.Value;
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "key", "hidePopup('','','" + pnlDateFromTo.ClientID + "');", true);
+                //hdnShow.Value = ss;
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "key1", "showPopup('" + DivPopup.ClientID + "','','" + pnlDateFromTo.ClientID + "','" + hdnShow.Value + "');", true);
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "key33", "hidePopup('','','" + pnlDateFromTo.ClientID + "');", true);
+            }
+        }
+
+
         if (!IsPostBack)
         {
             if (!FormSession.PermUsr.Contains("Reports")) { Response.Redirect(@"~/Login.aspx"); }
             MainMasterPage.ShowTitel(General.Msg("Reports", "التقارير"));
+
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "key55", "hidePopup('" + DivPopup.ClientID + "','','" + pnlDateFromTo.ClientID + "');", true);
             lblSelectedreport.Text = General.Msg("Please select Report", "من فضلك اختر التقرير");
 
             FillReports("1");
@@ -53,6 +71,8 @@ public partial class Pages_ReportMain : BasePage
             //ScriptManager.RegisterStartupScript(CalendarUpdatePanel, typeof(string), "ShowPopup" + this.DivCal.ClientID, "if (document.getElementById('" + this.DivCal.ClientID + "') != 'undefined' && document.getElementById('" + this.DivCal.ClientID + "') != null) { document.getElementById('" + this.DivCal.ClientID + "').style.display = 'none'; }", true);
 
             //ShowPanels();
+            calStartDate.SetEnabled(true);
+            calEndDate.SetEnabled(true);
 
             //calDate.SetEnabled(true);
             //calStartDate.SetEnabled(true);
@@ -169,9 +189,8 @@ public partial class Pages_ReportMain : BasePage
         Clear();
         //StiWebViewerFx1.Report = null;
 
-        //calDate.SetValidationEnabled(false);
-        //calStartDate.SetValidationEnabled(false);
-        //calEndDate.SetValidationEnabled(false);
+        calStartDate.SetValidationEnabled(false);
+        calEndDate.SetValidationEnabled(false);
 
         //ddlMonth.SelectedIndex = ddlMonth.Items.IndexOf(ddlMonth.Items.FindByValue(DTCs.FindCurrentMonth()));
         //ddlYear.SelectedIndex = ddlYear.Items.IndexOf(ddlYear.Items.FindByValue(DTCs.FindCurrentYear()));
@@ -239,7 +258,8 @@ public partial class Pages_ReportMain : BasePage
             ViewState["pnlPermissions"] = Convert.ToInt32(RepDT.Rows[0]["RepPanels"]);
 
             int pnlPermissions = Convert.ToInt32(RepDT.Rows[0]["RepPanels"]);
-            pnlDateFromTo.Visible = CheckBitWise(pnlPermissions, 1);
+            //pnlDateFromTo.Visible = CheckBitWise(pnlPermissions, 1);
+            if (CheckBitWise(pnlPermissions, 2)) { pnlshow = pnlDateFromTo.ClientID; /**/ calStartDate.SetValidationEnabled(true); /**/ calEndDate.SetValidationEnabled(true); }
             pnlEmployee.Visible = CheckBitWise(pnlPermissions, 2);
             pnlDepartment.Visible = rvDepartment.Enabled = CheckBitWise(pnlPermissions, 4);
             pnlLocation.Visible = rvLocation.Enabled = CheckBitWise(pnlPermissions, 8);
@@ -248,19 +268,16 @@ public partial class Pages_ReportMain : BasePage
             FillPerm();
 
             FillDLL();
-            DateTime sDt = new DateTime(2018, 3, 1);
-            DateTime eDt = new DateTime(2018, 3, 12);
 
-            calStartDate.SetGDate(sDt, "dd/MM/yyyy");
-            calEndDate.SetGDate(eDt, "dd/MM/yyyy");
             lblSelectedreport.Text = General.Msg(ViewState["ReportNameEn"].ToString(), ViewState["ReportNameAr"].ToString());
 
             //btnViewreport.Enabled = true;
 
             btnEventsEnable(true);
+            hdnShow.Value = pnlshow;
             ViewState["pnlshow"] = pnlshow;
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "key22", "showPopup('" + DivPopup.ClientID + "','','" + pnlDateFromTo.ClientID + "','" + pnlshow + "');", true);
         }
-        //}
     }
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -462,11 +479,9 @@ public partial class Pages_ReportMain : BasePage
 
             ///////////////// Fill Parameters to Report ///////////////////
 
-            if (pnlDateFromTo.Visible)
-            {
-                RepProCs.DateFrom = calStartDate.getGDateDBFormat();
-                RepProCs.DateTo = calEndDate.getGDateDBFormat();  //DTCs.GetGregDateTime(calEndDate.getGDateDBFormat(), 'S', "T");
-            }
+            if (pnlDateFromTo.Visible && !string.IsNullOrEmpty(calStartDate.getGDate())) { RepProCs.DateFrom = calStartDate.getGDateDefFormat(); }
+            if (pnlDateFromTo.Visible && !string.IsNullOrEmpty(calEndDate.getGDate())) { RepProCs.DateTo = calEndDate.getGDateDefFormat(); }
+                //DTCs.GetGregDateTime(calEndDate.getGDateDBFormat(), 'S', "T");
 
             if (pnlEmployee.Visible) { RepProCs.EmpID = ViewState["EmpID"].ToString(); }
             if (pnlDepartment.Visible) { RepProCs.DepID = ddlDepartment.SelectedValue; }
@@ -643,10 +658,10 @@ public partial class Pages_ReportMain : BasePage
     /*#############################################################################################################################*/
     #region StiWeb Events
 
-    //protected void StiWebDesigner1_PreInit(object sender, StiWebDesigner.StiPreInitEventArgs e)
-    //{
-    //    e.WebDesigner.Localization = FormSession.Language;
-    //}
+    protected void StiWebDesigner1_PreInit(object sender, StiWebDesigner.StiPreInitEventArgs e)
+    {
+        e.WebDesigner.Localization = FormSession.Language;
+    }
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //protected void StiWebViewerFx1_PreInit(object sender, Stimulsoft.Report.WebFx.StiWebViewerFx.StiPreInitEventArgs e)

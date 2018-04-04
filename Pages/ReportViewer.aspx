@@ -11,8 +11,11 @@
         <table width="100%">
             <tr>
                 <td align="center">
-                    <asp:LinkButton ID="btnBackToReports" runat="server" CssClass="GenButton" Height="18px"
-                        Text="Back" Width="70px" OnClick="btnBackToReportsPage_Click" meta:resourcekey="btnBackToReportsResource1"></asp:LinkButton>
+                    <%--<asp:LinkButton ID="" runat="server" CssClass="GenButton" Height="18px"
+                        Text="Back" Width="70px" OnClick="btnBackToReportsPage_Click" meta:resourcekey=""></asp:LinkButton>--%>
+
+                    <asp:LinkButton ID="btnBackToReports" runat="server" CssClass="GenButtonsmall backbtn" meta:resourcekey="btnBackToReportsResource1"
+                        OnClick="btnBackToReportsPage_Click"></asp:LinkButton>
                 </td>
             </tr>
         </table>
@@ -21,8 +24,7 @@
     <%--<cc1:StiWebViewerFx ID="StiWebViewerFx1" runat="server" Width="912px" Height="600px" Background="White" BrowserTitle="" CacheItemPriority="Low" ExitUrl="" ImageFormat="Png" ImageQuality="Normal" Localization="" LocalizationDirectory="" meta:resourcekey="StiWebViewerFx1Resource1"  ReportGuid="6bf1801628db4051" ServerTimeout="00:10:00" ThemeName="Office2013" />--%>
     <%--Report=""  WebImageHost="Stimulsoft.Report.WebFx.StiWebImageHost"--%>
 
-    <cc2:StiWebViewer ID="StiWebViewer1" runat="server" Width="912px" 
-        Height="600px" Background="White" ServerTimeOut="00:30:00"  />
+    <cc2:StiWebViewer ID="StiWebViewer1" runat="server" Width="912px" Height="600px" Background="White" ServerTimeOut="00:30:00"  />
     <%--onpreinit="StiWebViewerFx1_PreInit"--%>
 </asp:Content>
 

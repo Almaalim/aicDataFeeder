@@ -86,7 +86,7 @@ public class MachineSql : DataLayerBase
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public bool Delete(MachinePro pro)
     {
-        SqlCommand sqlCommand = new SqlCommand("dbo.[Machine_Delete]", MainConnection);
+        SqlCommand sqlCommand = new SqlCommand("dbo.[Machine_DELETE]", MainConnection);
         sqlCommand.CommandType = CommandType.StoredProcedure;
 
         try

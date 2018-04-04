@@ -72,17 +72,17 @@ public partial class Pages_SettingMachine : BasePage
 
     public void DataItemStatus(bool pStatus)
     {
-        txtMachineID.Enabled = false;
-        ddlMtpID.Enabled = false;
-        txtIPAddress.Enabled = false;
-        chkMacStatus.Enabled = false;
-        txtPort.Enabled = false;
-        txtMachineNo.Enabled = false;
-        txtMacSerialNo.Enabled = false;
-        txtMacLocationAr.Enabled = false;
-        txtMacLocationEn.Enabled = false;
-        ddlMacTrnType.Enabled = false;
-        chkExportData.Enabled = false;
+        txtMachineID.Enabled = pStatus;
+        ddlMtpID.Enabled = pStatus;
+        txtIPAddress.Enabled = pStatus;
+        chkMacStatus.Enabled = pStatus;
+        txtPort.Enabled = pStatus;
+        txtMachineNo.Enabled = pStatus;
+        txtMacSerialNo.Enabled = pStatus;
+        txtMacLocationAr.Enabled = pStatus;
+        txtMacLocationEn.Enabled = pStatus;
+        ddlMacTrnType.Enabled = pStatus;
+        chkExportData.Enabled = pStatus;
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

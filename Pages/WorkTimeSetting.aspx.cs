@@ -734,8 +734,8 @@ public partial class Pages_WorkTimeSetting : BasePage
             {
                 if (!String.IsNullOrEmpty(calStartDate.getGDateDBFormat()) && !String.IsNullOrEmpty(calEndDate.getGDateDBFormat()))
                 {
-                    int iStartDate = DTCs.ConvertDateTimeToInt(FormSession.DateType, calStartDate.getGDateDBFormat());
-                    int iEndDate = DTCs.ConvertDateTimeToInt(FormSession.DateType, calEndDate.getGDateDBFormat());
+                    int iStartDate = DTCs.ConvertDateTimeToInt(calStartDate.getGDate(), FormSession.DateType);
+                    int iEndDate = DTCs.ConvertDateTimeToInt(calEndDate.getGDate(), FormSession.DateType);
                     if (iStartDate > iEndDate) { e.IsValid = false; } else { e.IsValid = true; }
                 }
             }

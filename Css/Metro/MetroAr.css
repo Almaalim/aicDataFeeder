@@ -214,23 +214,46 @@ body {
         transform: rotateY(360deg);
     }
 }
+
 @keyframes logo-anim-left {
-  from { top: 0; }
-  26% { top: 0; }
-  29% { top: 7px; }
-  40% { top: 0; }
+    from {
+        top: 0;
+    }
+
+    26% {
+        top: 0;
+    }
+
+    29% {
+        top: 7px;
+    }
+
+    40% {
+        top: 0;
+    }
 }
 
 @keyframes logo-anim-right {
-  from { top: -45px; }
-  25% { top: -50px; }
-  30% { top: 7px; }
-  40% { top: 0px; }
+    from {
+        top: -45px;
+    }
+
+    25% {
+        top: -50px;
+    }
+
+    30% {
+        top: 7px;
+    }
+
+    40% {
+        top: 0px;
+    }
 }
+
 .FirstPager:before {
     font-family: 'Glyphicons Halflings';
     content: "\e076";
-    
 }
 
 .PreviousPager:before {
@@ -240,7 +263,6 @@ body {
 
 .NextPager:before {
     font-family: 'Glyphicons Halflings';
-    
     content: "\e071";
 }
 
@@ -275,10 +297,11 @@ body {
     float: none;
     clear: both;
 }
-#divMenu
-{
-    display:none;
+
+#divMenu {
+    display: none;
 }
+
 .Logo {
     float: right;
     width: auto;
@@ -295,10 +318,11 @@ body {
     float: left;
     margin-left: 80px;
 }
-.TabStripBottom
-{
-    display:none;
+
+.TabStripBottom {
+    display: none;
 }
+
 .UserDetails {
     margin-right: 3px;
     margin-left: 30px;
@@ -319,7 +343,7 @@ body {
     }
 
 .UserImg {
-        -webkit-border-radius: 99px;
+    -webkit-border-radius: 99px;
     -moz-border-radius: 99px;
     border-radius: 99px;
     margin-right: 10px;
@@ -334,11 +358,12 @@ li.static {
     margin-right: 3px;
     margin-bottom: 3px;
 }
-ul.level2.dynamic
-{
+
+ul.level2.dynamic {
     left: auto !important;
     right: 0 !important;
 }
+
 .wrap-title {
     float: right;
     margin-bottom: 5px;
@@ -523,7 +548,7 @@ ul.level2 > li {
 
 .UtilityLinks {
     float: left;
-        margin-left: 20px;
+    margin-left: 20px;
 }
 
 .UserDetails > a[id$="lnkSetting"]:before {
@@ -542,24 +567,24 @@ ul.level2 > li {
     }
 
 .reportsicon {
-        width: calc(25% - 14px) !important;
+    width: calc(25% - 14px) !important;
     height: 105px !important;
     font-size: 10px !important;
     text-align: right !important;
     text-shadow: 1px 1px 0px rgba(0, 0, 10, 0.5);
 }
-#lnkLanguage
-{
-    font-size:0px;
-}
-#lnkLanguage:after
-{
-    font-size:12px;
-    content:"English";
+
+#lnkLanguage {
+    font-size: 0px;
 }
 
+    #lnkLanguage:after {
+        font-size: 12px;
+        content: "English";
+    }
+
 .UtilityLinks a {
-        color: #333333 !important;
+    color: #333333 !important;
     margin-right: 10px;
     font-size: 12px;
     padding: 4px 7px;
@@ -580,7 +605,7 @@ ul.level2 > li {
     .UtilityLinks a:before {
         font-size: 13px;
         margin-left: 7px;
-        float:right;
+        float: right;
     }
 
 .Sep {
@@ -702,9 +727,11 @@ ul.level2 > li {
     padding-bottom: 30px;
     color: #fff;
 }
+
 .RequiredFieldDiv {
     padding-left: 20px !important;
 }
+
 .RequiredField {
     float: right;
     font-weight: bold;
@@ -865,12 +892,14 @@ a:active {
     width: 50%;
     float: left;
 }
+
 .flyoutWrap {
     display: inline-block;
     width: 19px;
     height: 19px;
     position: absolute;
 }
+
 .flyOutDiv {
     position: absolute;
     z-index: 999;
@@ -885,7 +914,7 @@ a:active {
     left: 0 !important;
     right: inherit !important;
     top: 25px !important;
-    height:auto !important;
+    height: auto !important;
 }
 
 fieldset > legend > select, fieldset > legend {
@@ -1219,17 +1248,17 @@ span.glyphicon.CalenderIco {
     color: #fff;
 }
 
-    .footer   a, .footer   span   {
+    .footer a, .footer span {
         display: inline-block;
         color: #fff;
         font-size: 15px;
     }
-    .footer div
-    {
-        color:#fff;
+
+    .footer div {
+        color: #fff;
     }
 
-    .footer   a {
+    .footer a {
         margin: 0px 20px 10px;
     }
 
@@ -1244,21 +1273,20 @@ span.glyphicon.CalenderIco {
     text-align: center;
     margin-top: 20px;
     margin-bottom: -10px;
-    color:#fff;
+    color: #fff;
 }
 
     .LoginFooterLink a, .LoginFooterLink img {
         display: inline-block;
-       
-    }
-    .LoginFooterLink
-    {
-        color:#474747;
     }
 
+.LoginFooterLink {
+    color: #474747;
+}
 
 
-.loginLogoSAr , .loginLogoMEn , .loginLogoSEn {
+
+.loginLogoSAr, .loginLogoMEn, .loginLogoSEn {
     display: none;
     width: 393px;
     height: 89px;
@@ -1285,10 +1313,11 @@ body.loginPage > #aspnetForm {
     height: 100%;
     width: 98vw;
 }
-#lblHeading
-{
-    display:none;
+
+#lblHeading {
+    display: none;
 }
+
 .loginPage > #aspnetForm > #MainDiv {
     display: table-cell;
     vertical-align: middle;
@@ -1382,7 +1411,7 @@ body.loginPage > #aspnetForm {
         margin-top: 20%;
     }
 
-.MsgValidation, .MsgSuccess, .errorValidation , .MsgError {
+.MsgValidation, .MsgSuccess, .errorValidation, .MsgError {
     word-break: break-word;
     padding: 15px 7px;
     color: #fff !important;
@@ -1402,18 +1431,18 @@ body.loginPage > #aspnetForm {
     font-size: 16px;
 }
 
-.MsgValidation, .errorValidation , .MsgError {
+.MsgValidation, .errorValidation, .MsgError {
     background-color: #ba2c1d;
     font-size: 12px;
     top: 0px;
     right: 0px;
 }
 
-    .MsgValidation li, .MsgSuccess li, .errorValidation li , .MsgError li {
+    .MsgValidation li, .MsgSuccess li, .errorValidation li, .MsgError li {
         list-style: none;
     }
 
-    .MsgSuccess ul, .MsgValidation ul, .errorValidation ul , .MsgError ul {
+    .MsgSuccess ul, .MsgValidation ul, .errorValidation ul, .MsgError ul {
         vertical-align: middle;
         display: table-cell;
         position: inherit;
@@ -1426,7 +1455,7 @@ body.loginPage > #aspnetForm {
         Padding-left: 10px;
     }
 
-    .MsgValidation:before, .MsgSuccess:before, .errorValidation:before , .MsgError:before {
+    .MsgValidation:before, .MsgSuccess:before, .errorValidation:before, .MsgError:before {
         width: 45px;
         color: rgba(255,255,255,1);
         text-align: center;
@@ -1532,7 +1561,7 @@ body.loginPage > #aspnetForm {
 }
 
 .NotificationsWrapper {
-     position: absolute;
+    position: absolute;
     background-color: #fff;
     width: 30%;
     z-index: 99;
@@ -1545,21 +1574,21 @@ body.loginPage > #aspnetForm {
     display: none;
     top: 37px;
     left: 0;
-   
     -webkit-box-shadow: 0px 0px 26px -3px rgba(0,0,0,0.75);
--moz-box-shadow: 0px 0px 26px -3px rgba(0,0,0,0.75);
-box-shadow: 0px 0px 26px -3px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 26px -3px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 26px -3px rgba(0,0,0,0.75);
 }
-.NotificationsPopup:before
-{
-    display:block;
-    content:"إعلام";
-    font-size:12px;
-    padding:7px;
-    text-align:right;
+
+.NotificationsPopup:before {
+    display: block;
+    content: "إعلام";
+    font-size: 12px;
+    padding: 7px;
+    text-align: right;
     background-color: #005683;
     color: #f9f9f9;
 }
+
 .NotificationsPopup {
     position: absolute;
     background-color: #fff;
@@ -1604,7 +1633,7 @@ box-shadow: 0px 0px 26px -3px rgba(0,0,0,0.75);
 }
 
 .NotificationsPopupClose {
-        display: inline-block;
+    display: inline-block;
     text-align: center;
     cursor: pointer;
     margin-left: 10px;
@@ -1613,25 +1642,27 @@ box-shadow: 0px 0px 26px -3px rgba(0,0,0,0.75);
     top: 0px;
     left: -11px;
     color: #fff;
-        font-size: 16px;
+    font-size: 16px;
     line-height: 30px;
     background-color: rgb(82, 82, 82);
     padding: 0px 8px;
 }
+
 .NotificationsMobile {
     position: relative;
     left: 0px !important;
-    top:0 !important;
+    top: 0 !important;
     width: calc(100% + 30px);
     margin-right: -15px;
 }
-    .NotificationsPopupClose:before {
-        font-style: normal;
-        font-weight: normal;
-        -webkit-font-smoothing: antialiased;
-        font-family: 'Glyphicons Halflings' !important;
-        content: "\e083";
-    }
+
+.NotificationsPopupClose:before {
+    font-style: normal;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    font-family: 'Glyphicons Halflings' !important;
+    content: "\e083";
+}
 
 .NotificationsPopup ul {
     -webkit-margin-before: 0;
@@ -1642,19 +1673,20 @@ box-shadow: 0px 0px 26px -3px rgba(0,0,0,0.75);
     margin: 25px 0px;
     padding: 0;
 }
-.tp_logobgHomeEN
-{
-    position:relative;
+
+.tp_logobgHomeEN {
+    position: relative;
 }
-    .NotificationsPopup ul li {
-        list-style-type: none;
-        margin: 3px 5px;
-        padding: 3px;
-        display: block;
-        border-top: 1px solid #ccc;
-        border-bottom: 1px solid #ccc;
-        font-size: 14px;
-    }
+
+.NotificationsPopup ul li {
+    list-style-type: none;
+    margin: 3px 5px;
+    padding: 3px;
+    display: block;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    font-size: 14px;
+}
 
 .NotificationsTime {
     float: left;
@@ -1663,7 +1695,7 @@ box-shadow: 0px 0px 26px -3px rgba(0,0,0,0.75);
 }
 
 .NotificationsIcon {
-       position: absolute;
+    position: absolute;
     left: 19px;
     top: 3px;
     cursor: pointer;
@@ -1671,23 +1703,21 @@ box-shadow: 0px 0px 26px -3px rgba(0,0,0,0.75);
 }
 
     .NotificationsIcon:before {
-           font-family: FontAwesome;
-    /* content: "\f27a"; */
-    content: "\f0f3";
-    color: #000;
-    display: inline-block;
-    padding: 3px 7px;
-    margin: 2px;
-    font-size: 15px;
-    transition: all 1000ms cubic-bezier(0.19, 1, 0.22, 1);
-    -webkit-border-radius: 99px;
-    -moz-border-radius: 99px;
-    border-radius: 99px;
+        font-family: FontAwesome;
+        /* content: "\f27a"; */
+        content: "\f0f3";
+        color: #000;
+        display: inline-block;
+        padding: 3px 7px;
+        margin: 2px;
+        font-size: 15px;
+        transition: all 1000ms cubic-bezier(0.19, 1, 0.22, 1);
+        -webkit-border-radius: 99px;
+        -moz-border-radius: 99px;
+        border-radius: 99px;
     }
 
     .NotificationsIcon:hover:before {
-      
-        
         -webkit-transform: rotateY(180deg);
         -ms-transform: rotateX(180deg);
         -moz-transform: rotateY(180deg);
@@ -1759,8 +1789,8 @@ box-shadow: 0px 0px 26px -3px rgba(0,0,0,0.75);
     margin-bottom: 5px !important;
     -webkit-animation: shadowFadeOut 0.1s;
     -moz-animation: shadowFadeOut 0.1s;
-    height:55px !important;
-        margin-top: 7px !important;
+    height: 55px !important;
+    margin-top: 7px !important;
 }
 
     .LoginBTN:hover {
@@ -1859,7 +1889,7 @@ box-shadow: 0px 0px 26px -3px rgba(0,0,0,0.75);
             margin: 7px;
         }
 
-.ico-cabinet:before, .ico-cabinet-2:before, .ico-file:before, .ico-file-2:before, .ico-file-3:before, .ico-files:before, .ico-phone:before, .ico-tablet:before, .ico-window:before, .ico-monitor:before, .ico-film:before, .ico-inbox:before, .ico-download:before, .ico-upload:before, .ico-inbox-2:before, .ico-cog:before, .ico-cogs:before, .ico-cog-2:before, .ico-warning:before, .ico-picture:before, .ico-pictures:before, .ico-pictures-2:before, .ico-alarm-clock:before, .ico-time:before, .ico-checkmark:before, .ico-cancel:before, .ico-eye:before, .ico-site-map:before, .ico-site-map-2:before, .ico-cloud:before, .ico-upload-2:before, .ico-chart:before, .ico-chart-2:before, .ico-chart-3:before, .ico-chart-4:before, .ico-chart-5:before, .ico-chart-6:before, .ico-location:before, .ico-download-2:before, .ico-folder:before, .ico-alarm:before, .ico-alarm-cancel:before, .ico-phone-2:before, .ico-phone-3:before, .ico-image:before, .ico-open:before, .ico-sale:before, .ico-direction:before, .ico-map:before, .ico-trashcan:before, .ico-vote:before, .ico-lab:before, .ico-locked:before, .ico-unlocked:before, .ico-locked-2:before, .ico-unlocked-2:before, .ico-magnifier:before, .ico-zoom-in:before, .ico-zoom-out:before, .ico-stack:before, .ico-stack-2:before, .ico-stack-3:before, .ico-archive:before, .ico-battery:before, .ico-battery-2:before, .ico-battery-3:before, .ico-battery-4:before, .ico-battery-5:before, .ico-megaphone:before, .ico-megaphone-2:before, .ico-patch:before, .ico-pil:before, .ico-injection:before, .ico-thermometer:before, .ico-lamp:before, .ico-lamp-2:before, .ico-lamp-3:before, .ico-cube:before, .ico-box:before, .ico-box-2:before, .ico-diamond:before, .ico-bag:before, .ico-money-bag:before, .ico-grid:before, .ico-grid-2:before, .ico-list:before, .ico-list-2:before, .ico-ruler:before, .ico-ruler-2:before, .ico-layout:before, .ico-layout-2:before, .ico-layout-3:before, .ico-layout-4:before, .ico-layout-5:before, .ico-layout-6:before, .ico-layout-7:before, .ico-layout-8:before, .ico-layout-9:before, .ico-layout-10:before, .ico-layout-11:before, .ico-layout-12:before, .ico-layout-13:before, .ico-layout-14:before, .ico-tools:before, .ico-screwdriver:before, .ico-paint:before, .ico-hammer:before, .ico-brush:before, .ico-pen:before, .ico-chat:before, .ico-comments:before, .ico-chat-2:before, .ico-chat-3:before, .ico-volume:before, .ico-volume-2:before, .ico-volume-3:before, .ico-equalizer:before, .ico-resize:before, .ico-resize-2:before, .ico-download-3:before, .ico-stats:before, .ico-stats-2:before, .ico-attachment:before, .ico-hourglass:before, .ico-pencil:before, .ico-pen-2:before, .ico-pin:before, .ico-pin-2:before, .ico-discout:before, .ico-edit:before, .ico-scissors:before, .ico-profile:before, .ico-rotate:before, .ico-rotate-2:before, .ico-reply:before, .ico-forward:before, .ico-retweet:before, .ico-shuffle:before, .ico-loop:before, .ico-crop:before, .ico-dollar:before, .ico-dollar-2:before, .ico-coins:before, .ico-pig:before, .ico-bookmark:before, .ico-bookmark-2:before, .ico-address-book:before, .ico-address-book-2:before, .ico-safe:before, .ico-envelope:before, .ico-envelope-2:before, .ico-heart:before, .ico-info:before, .ico-info-2:before, .ico-book:before, .ico-book-2:before, .ico-barcode:before, .ico-barcode-2:before, .ico-expand:before, .ico-collapse:before, .ico-pop-out:before, .ico-pop-in:before, .ico-cone:before, .ico-blocked:before, .ico-stop:before, .ico-keyboard:before, .ico-printer:before, .ico-checked:before, .ico-error:before, .ico-add:before, .ico-minus:before, .ico-alert:before, .ico-pictures-3:before, .ico-atom:before, .ico-eyedropper:before, .ico-globe:before, .ico-globe-2:before, .ico-shipping:before, .ico-ying-yang:before, .ico-compass:before, .ico-zip:before, .ico-zip-2:before, .ico-tags:before, .ico-heart-2:before, .ico-heart-3:before, .ico-usb:before, .ico-clipboard:before, .ico-clipboard-2:before, .ico-clipboard-3:before, .ico-switch:before, .ico-ruler-3:before, .ico-glass:before, .ico-music:before, .ico-search:before, .ico-envelope-3:before, .ico-heart-4:before, .ico-star:before, .ico-star-empty:before, .ico-user:before, .ico-film-2:before, .ico-th-large:before, .ico-ok:before, .ico-remove:before, .ico-zoom-in-2:before, .ico-zoom-out-2:before, .ico-off:before, .ico-signal:before, .ico-cog-3:before, .ico-trash:before, .ico-home:before, Home:before, .ico-file-4:before, .ico-time-2:before, .ico-road:before, .ico-download-alt:before, .ico-download-4:before, .ico-upload-3:before, .ico-inbox-3:before, .ico-play-circle:before, .ico-repeat:before, .ico-refresh:before, .ico-list-alt:before, .ico-lock:before, .ico-flag:before, .ico-volume-off:before, .ico-volume-down:before, .ico-volume-up:before, .ico-qrcode:before, .ico-barcode-3:before, .ico-tag:before, .ico-tags-2:before, .ico-book-3:before, .ico-bookmark-3:before, .ico-print:before, .ico-align-right:before, .ico-align-center:before, .ico-align-left:before, .ico-align-justify:before, .ico-list-3:before, .ico-indent-right:before, .ico-indent-left:before, .ico-facetime-video:before, .ico-picture-2:before, .ico-pencil-2:before, .ico-map-marker:before, .ico-adjust:before, .ico-tint:before, .ico-edit-2:before, .ico-share:before, .ico-check:before, .ico-move:before, .ico-step-backward:before, .ico-fast-backward:before, .ico-backward:before, .ico-play:before, .ico-pause:before, .ico-stop-2:before, .ico-forward-2:before, .ico-fast-forward:before, .ico-step-forward:before, .ico-eject:before, .ico-chevron-right:before, .ico-chevron-left:before, .ico-plus-sign:before, .ico-minus-sign:before, .ico-remove-sign:before, .ico-ok-sign:before, .ico-question-sign:before, .ico-info-sign:before, .ico-screenshot:before, .ico-remove-circle:before, .ico-ok-circle:before, .ico-ban-circle:before, .ico-arrow-right:before, .ico-arrow-left:before, .ico-arrow-up:before, .ico-arrow-down:before, .ico-share-alt:before, .ico-resize-full:before, .ico-resize-small:before, .ico-plus:before, .ico-minus-2:before, .ico-asterisk:before, .ico-exclamation-sign:before, .ico-eye-open:before, .ico-eye-close:before, .ico-warning-sign:before, .ico-plane:before, .ico-calendar:before, .ico-random:before, .ico-comment:before, .ico-magnet:before, .ico-chevron-up:before, .ico-chevron-down:before, .ico-retweet-2:before, .ico-shopping-cart:before, .ico-folder-close:before, .ico-folder-open:before, .ico-resize-vertical:before, .ico-resize-horizontal:before, .ico-bar-chart:before, .ico-cogs-2:before, .ico-comments-2:before, .ico-thumbs-up:before, .ico-thumbs-down:before, .ico-heart-empty:before, .ico-signout:before, .ico-pushpin:before, .ico-external-link:before, .ico-signin:before, .ico-trophy:before, .ico-upload-alt:before, .ico-lemon:before, .ico-phone-4:before, .ico-check-empty:before, .ico-bookmark-empty:before, .ico-phone-sign:before, .ico-facebook:before, .ico-github:before, .ico-unlock:before, .ico-credit:before, .ico-rss:before, .ico-hdd:before, .ico-bullhorn:before, .ico-bell:before, .ico-certificate:before, .ico-hand-left:before, .ico-hand-right:before, .ico-hand-up:before, .ico-hand-down:before, .ico-circle-arrow-right:before, .ico-circle-arrow-left:before, .ico-circle-arrow-up:before, .ico-circle-arrow-down:before, .ico-globe-3:before, .ico-wrench:before, .ico-tasks:before, .ico-filter:before, .ico-briefcase:before, .ico-fullscreen:before, .ico-group:before, .ico-link:before, .ico-cloud-2:before, .ico-beaker:before, .ico-copy:before, .ico-paper-clip:before, .ico-table:before, .ico-money:before, .ico-caret-down:before, .ico-caret-up:before, .ico-caret-right:before, .ico-caret-left:before, .ico-columns:before, .ico-sort:before, .ico-sort-down:before, .ico-sort-up:before, .ico-envelope-alt:before, .ico-undo:before, .ico-comment-alt:before, .ico-comments-alt:before, .ico-bolt:before, .ico-exchange:before, .ico-cloud-download:before, .ico-cloud-upload:before, .ico-file-alt:before, .ico-double-angle-right:before, .ico-double-angle-left:before, .ico-double-angle-up:before, .ico-double-angle-down:before, .ico-angle-right:before, .ico-angle-left:before, .ico-angle-up:before, .ico-angle-down:before, .ico-desktop:before, .ico-laptop:before, .ico-tablet-2:before, .ico-mobile:before, .ico-circle:before, .ico-reply-2:before, .ico-folder-close-alt:before, .ico-folder-open-alt:before, a.level2.mndynamicitemEN.dynamic:before, a.Users:before, .Settings:before, .Setting>a:before , a.Configuration:before, a.Employees:before, a.Transaction:before, a.Transaction:after, a.Wizard:before, a.ERSSwap:before, a.Reports:before, #lnkHomeTop:before, #LnkChangePassword:before, #lnkShortcut:before, #lnkERS:before, #lnkHelp:before, #LnkLogout:before, #lnkLanguage:before, .UserDetails > a[id$="lnkSetting"]:before, .img-search:before, a.Admin:before, a.Attendance:before, a.Requests:before, .MsgValidation:before, .Departments:before , .icon25:before , .Vacations:before , .LogErrors:before , a.ImportLog:before  , a.AddTransactions:before , a.ScheduleImport:before , .icon29:before , .icon28:before  {
+.ico-cabinet:before, .ico-cabinet-2:before, .ico-file:before, .ico-file-2:before, .ico-file-3:before, .ico-files:before, .ico-phone:before, .ico-tablet:before, .ico-window:before, .ico-monitor:before, .ico-film:before, .ico-inbox:before, .ico-download:before, .ico-upload:before, .ico-inbox-2:before, .ico-cog:before, .ico-cogs:before, .ico-cog-2:before, .ico-warning:before, .ico-picture:before, .ico-pictures:before, .ico-pictures-2:before, .ico-alarm-clock:before, .ico-time:before, .ico-checkmark:before, .ico-cancel:before, .ico-eye:before, .ico-site-map:before, .ico-site-map-2:before, .ico-cloud:before, .ico-upload-2:before, .ico-chart:before, .ico-chart-2:before, .ico-chart-3:before, .ico-chart-4:before, .ico-chart-5:before, .ico-chart-6:before, .ico-location:before, .ico-download-2:before, .ico-folder:before, .ico-alarm:before, .ico-alarm-cancel:before, .ico-phone-2:before, .ico-phone-3:before, .ico-image:before, .ico-open:before, .ico-sale:before, .ico-direction:before, .ico-map:before, .ico-trashcan:before, .ico-vote:before, .ico-lab:before, .ico-locked:before, .ico-unlocked:before, .ico-locked-2:before, .ico-unlocked-2:before, .ico-magnifier:before, .ico-zoom-in:before, .ico-zoom-out:before, .ico-stack:before, .ico-stack-2:before, .ico-stack-3:before, .ico-archive:before, .ico-battery:before, .ico-battery-2:before, .ico-battery-3:before, .ico-battery-4:before, .ico-battery-5:before, .ico-megaphone:before, .ico-megaphone-2:before, .ico-patch:before, .ico-pil:before, .ico-injection:before, .ico-thermometer:before, .ico-lamp:before, .ico-lamp-2:before, .ico-lamp-3:before, .ico-cube:before, .ico-box:before, .ico-box-2:before, .ico-diamond:before, .ico-bag:before, .ico-money-bag:before, .ico-grid:before, .ico-grid-2:before, .ico-list:before, .ico-list-2:before, .ico-ruler:before, .ico-ruler-2:before, .ico-layout:before, .ico-layout-2:before, .ico-layout-3:before, .ico-layout-4:before, .ico-layout-5:before, .ico-layout-6:before, .ico-layout-7:before, .ico-layout-8:before, .ico-layout-9:before, .ico-layout-10:before, .ico-layout-11:before, .ico-layout-12:before, .ico-layout-13:before, .ico-layout-14:before, .ico-tools:before, .ico-screwdriver:before, .ico-paint:before, .ico-hammer:before, .ico-brush:before, .ico-pen:before, .ico-chat:before, .ico-comments:before, .ico-chat-2:before, .ico-chat-3:before, .ico-volume:before, .ico-volume-2:before, .ico-volume-3:before, .ico-equalizer:before, .ico-resize:before, .ico-resize-2:before, .ico-download-3:before, .ico-stats:before, .ico-stats-2:before, .ico-attachment:before, .ico-hourglass:before, .ico-pencil:before, .ico-pen-2:before, .ico-pin:before, .ico-pin-2:before, .ico-discout:before, .ico-edit:before, .ico-scissors:before, .ico-profile:before, .ico-rotate:before, .ico-rotate-2:before, .ico-reply:before, .ico-forward:before, .ico-retweet:before, .ico-shuffle:before, .ico-loop:before, .ico-crop:before, .ico-dollar:before, .ico-dollar-2:before, .ico-coins:before, .ico-pig:before, .ico-bookmark:before, .ico-bookmark-2:before, .ico-address-book:before, .ico-address-book-2:before, .ico-safe:before, .ico-envelope:before, .ico-envelope-2:before, .ico-heart:before, .ico-info:before, .ico-info-2:before, .ico-book:before, .ico-book-2:before, .ico-barcode:before, .ico-barcode-2:before, .ico-expand:before, .ico-collapse:before, .ico-pop-out:before, .ico-pop-in:before, .ico-cone:before, .ico-blocked:before, .ico-stop:before, .ico-keyboard:before, .ico-printer:before, .ico-checked:before, .ico-error:before, .ico-add:before, .ico-minus:before, .ico-alert:before, .ico-pictures-3:before, .ico-atom:before, .ico-eyedropper:before, .ico-globe:before, .ico-globe-2:before, .ico-shipping:before, .ico-ying-yang:before, .ico-compass:before, .ico-zip:before, .ico-zip-2:before, .ico-tags:before, .ico-heart-2:before, .ico-heart-3:before, .ico-usb:before, .ico-clipboard:before, .ico-clipboard-2:before, .ico-clipboard-3:before, .ico-switch:before, .ico-ruler-3:before, .ico-glass:before, .ico-music:before, .ico-search:before, .ico-envelope-3:before, .ico-heart-4:before, .ico-star:before, .ico-star-empty:before, .ico-user:before, .ico-film-2:before, .ico-th-large:before, .ico-ok:before, .ico-remove:before, .ico-zoom-in-2:before, .ico-zoom-out-2:before, .ico-off:before, .ico-signal:before, .ico-cog-3:before, .ico-trash:before, .ico-home:before, Home:before, .ico-file-4:before, .ico-time-2:before, .ico-road:before, .ico-download-alt:before, .ico-download-4:before, .ico-upload-3:before, .ico-inbox-3:before, .ico-play-circle:before, .ico-repeat:before, .ico-refresh:before, .ico-list-alt:before, .ico-lock:before, .ico-flag:before, .ico-volume-off:before, .ico-volume-down:before, .ico-volume-up:before, .ico-qrcode:before, .ico-barcode-3:before, .ico-tag:before, .ico-tags-2:before, .ico-book-3:before, .ico-bookmark-3:before, .ico-print:before, .ico-align-right:before, .ico-align-center:before, .ico-align-left:before, .ico-align-justify:before, .ico-list-3:before, .ico-indent-right:before, .ico-indent-left:before, .ico-facetime-video:before, .ico-picture-2:before, .ico-pencil-2:before, .ico-map-marker:before, .ico-adjust:before, .ico-tint:before, .ico-edit-2:before, .ico-share:before, .ico-check:before, .ico-move:before, .ico-step-backward:before, .ico-fast-backward:before, .ico-backward:before, .ico-play:before, .ico-pause:before, .ico-stop-2:before, .ico-forward-2:before, .ico-fast-forward:before, .ico-step-forward:before, .ico-eject:before, .ico-chevron-right:before, .ico-chevron-left:before, .ico-plus-sign:before, .ico-minus-sign:before, .ico-remove-sign:before, .ico-ok-sign:before, .ico-question-sign:before, .ico-info-sign:before, .ico-screenshot:before, .ico-remove-circle:before, .ico-ok-circle:before, .ico-ban-circle:before, .ico-arrow-right:before, .ico-arrow-left:before, .ico-arrow-up:before, .ico-arrow-down:before, .ico-share-alt:before, .ico-resize-full:before, .ico-resize-small:before, .ico-plus:before, .ico-minus-2:before, .ico-asterisk:before, .ico-exclamation-sign:before, .ico-eye-open:before, .ico-eye-close:before, .ico-warning-sign:before, .ico-plane:before, .ico-calendar:before, .ico-random:before, .ico-comment:before, .ico-magnet:before, .ico-chevron-up:before, .ico-chevron-down:before, .ico-retweet-2:before, .ico-shopping-cart:before, .ico-folder-close:before, .ico-folder-open:before, .ico-resize-vertical:before, .ico-resize-horizontal:before, .ico-bar-chart:before, .ico-cogs-2:before, .ico-comments-2:before, .ico-thumbs-up:before, .ico-thumbs-down:before, .ico-heart-empty:before, .ico-signout:before, .ico-pushpin:before, .ico-external-link:before, .ico-signin:before, .ico-trophy:before, .ico-upload-alt:before, .ico-lemon:before, .ico-phone-4:before, .ico-check-empty:before, .ico-bookmark-empty:before, .ico-phone-sign:before, .ico-facebook:before, .ico-github:before, .ico-unlock:before, .ico-credit:before, .ico-rss:before, .ico-hdd:before, .ico-bullhorn:before, .ico-bell:before, .ico-certificate:before, .ico-hand-left:before, .ico-hand-right:before, .ico-hand-up:before, .ico-hand-down:before, .ico-circle-arrow-right:before, .ico-circle-arrow-left:before, .ico-circle-arrow-up:before, .ico-circle-arrow-down:before, .ico-globe-3:before, .ico-wrench:before, .ico-tasks:before, .ico-filter:before, .ico-briefcase:before, .ico-fullscreen:before, .ico-group:before, .ico-link:before, .ico-cloud-2:before, .ico-beaker:before, .ico-copy:before, .ico-paper-clip:before, .ico-table:before, .ico-money:before, .ico-caret-down:before, .ico-caret-up:before, .ico-caret-right:before, .ico-caret-left:before, .ico-columns:before, .ico-sort:before, .ico-sort-down:before, .ico-sort-up:before, .ico-envelope-alt:before, .ico-undo:before, .ico-comment-alt:before, .ico-comments-alt:before, .ico-bolt:before, .ico-exchange:before, .ico-cloud-download:before, .ico-cloud-upload:before, .ico-file-alt:before, .ico-double-angle-right:before, .ico-double-angle-left:before, .ico-double-angle-up:before, .ico-double-angle-down:before, .ico-angle-right:before, .ico-angle-left:before, .ico-angle-up:before, .ico-angle-down:before, .ico-desktop:before, .ico-laptop:before, .ico-tablet-2:before, .ico-mobile:before, .ico-circle:before, .ico-reply-2:before, .ico-folder-close-alt:before, .ico-folder-open-alt:before, a.level2.mndynamicitemEN.dynamic:before, a.Users:before, .Settings:before, .Setting > a:before, a.Configuration:before, a.Employees:before, a.Transaction:before, a.Transaction:after, a.Wizard:before, a.ERSSwap:before, a.Reports:before, #lnkHomeTop:before, #LnkChangePassword:before, #lnkShortcut:before, #lnkERS:before, #lnkHelp:before, #LnkLogout:before, #lnkLanguage:before, .UserDetails > a[id$="lnkSetting"]:before, .img-search:before, a.Admin:before, a.Attendance:before, a.Requests:before, .MsgValidation:before, .Departments:before, .icon25:before, .Vacations:before, .LogErrors:before, a.ImportLog:before, a.AddTransactions:before, a.ScheduleImport:before, .icon29:before, .icon28:before {
     font-family: 'icomoon';
     speak: none;
     font-style: normal;
@@ -1867,7 +1897,8 @@ box-shadow: 0px 0px 26px -3px rgba(0,0,0,0.75);
     line-height: 1;
     -webkit-font-smoothing: antialiased;
 }
-.Departments>a:before , a.Departments:before , .icon25:before {
+
+.Departments > a:before, a.Departments:before, .icon25:before {
     content: "\f1ad";
     font-family: FontAwesome !important;
 }
@@ -1935,21 +1966,24 @@ box-shadow: 0px 0px 26px -3px rgba(0,0,0,0.75);
 .ico-inbox-2:before {
     content: "\e200";
 }
-.icon12:before , .icon29:before 
-{
+
+.icon12:before, .icon29:before {
     font-family: 'Glyphicons Halflings' !important;
-     content: "\e169";
-}
-.ico-cog:before, .Setting>a:before , a.Configuration:before , a.Settings:before {
-    content: "\e20b";
-}
-.glyphicon-import:before , .ImportDatabase:before ,  a.ScheduleImport:before   {
     content: "\e169";
 }
- a.ImportLog:before  
- {
+
+.ico-cog:before, .Setting > a:before, a.Configuration:before, a.Settings:before {
+    content: "\e20b";
+}
+
+.glyphicon-import:before, .ImportDatabase:before, a.ScheduleImport:before {
+    content: "\e169";
+}
+
+a.ImportLog:before {
     content: "\e032";
 }
+
 .ico-cogs:before {
     content: "\e20c";
 }
@@ -2019,7 +2053,7 @@ a.Reports:before {
     font-family: FontAwesome !important;
 }
 
-.reportsicon:before , a.SideMenuItem.icon26:before , .ReportsGeneral:before {
+.reportsicon:before, a.SideMenuItem.icon26:before, .ReportsGeneral:before {
     content: "\f0f6";
     font-family: FontAwesome !important;
 }
@@ -2568,12 +2602,12 @@ a.Reports:before {
     content: "\e305";
 }
 
-.ico-error:before , .LogErrors:before , .icon15:before  {
+.ico-error:before, .LogErrors:before, .icon15:before {
     content: "\e306" !important;
     font-family: 'icomoon' !important;
 }
 
-.ico-add:before , a.AddTransactions:before , .icon28:before {
+.ico-add:before, a.AddTransactions:before, .icon28:before {
     content: "\e307";
     font-family: 'icomoon' !important;
 }
@@ -2740,7 +2774,7 @@ a.Reports:before {
     content: "\f014";
 }
 
-.ico-home:before, #lnkHomeTop:before , .Home:before {
+.ico-home:before, #lnkHomeTop:before, .Home:before {
     content: "\f015" !important;
 }
 
@@ -4092,7 +4126,6 @@ p {
 .taptap-contents-wrapper {
     width: 100% !important;
     height: 100%;
-    
 }
 
 .taptap-main-wrapper-active .UserDetails {
@@ -4448,365 +4481,380 @@ a.colord13f2a:before {
     padding: 5px;
 }
 
+    .GenButtonsmall.backbtn {
+        background-color: #428bca;
+        color: #fff;
+    }
+
+        .GenButtonsmall.backbtn img {
+            display: none;
+        }
+
+        .GenButtonsmall.backbtn:before {
+            content: "\e092";
+            font-family: 'Glyphicons Halflings';
+        }
+
 .rp_servlnk2:active, .rp_servlnk1:active {
     color: #fff;
     text-decoration: none;
 }
-#Menu a.level1
-{
-    background-image:none !important;
+
+#Menu a.level1 {
+    background-image: none !important;
 }
-.Machine>a:before , .icon14:before , .SettingCompany:before  {
+
+.Machine > a:before, .icon14:before, .SettingCompany:before {
     content: "\e20c" !important;
     font-family: 'icomoon' !important;
 }
-.Machines:before
-{
-        content: "\f085" !important;
-        font-family: 'FontAwesome' !important;
+
+.Machines:before {
+    content: "\f085" !important;
+    font-family: 'FontAwesome' !important;
 }
-.Branch:before , .icon268:before {
+
+.Branch:before, .icon268:before {
     content: "\f0e8";
     font-family: FontAwesome !important;
 }
 
-.Department:before , .icon119:before {
+.Department:before, .icon119:before {
     content: "\f0f7";
     font-family: FontAwesome !important;
 }
 
-.Vacation:before , .Holiday:before , .icon273:before , a.Vacations:before {
+.Vacation:before, .Holiday:before, .icon273:before, a.Vacations:before {
     content: "\f072";
     font-family: FontAwesome !important;
 }
 
-.VacationType:before , .icon6:before {
+.VacationType:before, .icon6:before {
     content: "\f1ba";
     font-family: FontAwesome !important;
 }
 
-.ExcuseType:before , .icon293:before {
+.ExcuseType:before, .icon293:before {
     content: "\f24a";
     font-family: FontAwesome !important;
 }
 
-.JobCategory:before , .icon43:before {
+.JobCategory:before, .icon43:before {
     content: "\e139";
     font-family: 'Glyphicons Halflings' !important;
 }
 
-.Nationality:before , .icon283:before {
+.Nationality:before, .icon283:before {
     content: "\e034";
     font-family: 'Glyphicons Halflings' !important;
 }
 
-.WorkTime:before , .icon13:before {
+.WorkTime:before, .icon13:before {
     content: "\e023";
     font-family: 'Glyphicons Halflings' !important;
 }
 
-.RotationShift:before , .icon319:before {
+.RotationShift:before, .icon319:before {
     content: "\e2c0";
     font-family: 'icomoon' !important;
 }
 
-.UnstyleShift:before , .icon512:before {
+.UnstyleShift:before, .icon512:before {
     content: "\f273";
     font-family: FontAwesome !important;
 }
 
-.AttendanceRule:before , .icon436:before {
+.AttendanceRule:before, .icon436:before {
     content: "\f0f6";
     font-family: FontAwesome !important;
 }
 
-.Schedule:before , .icon480:before {
+.Schedule:before, .icon480:before {
     content: "\f017";
     font-family: 'icomoon' !important;
 }
 
-.GeneralConfiguration:before , .icon300:before {
+.GeneralConfiguration:before, .icon300:before {
     content: "\f085";
     font-family: 'icomoon' !important;
 }
 
-.Notifications:before , .icon613:before {
+.Notifications:before, .icon613:before {
     content: "\e2dd";
     font-family: 'icomoon' !important;
 }
 
-.Employee:before, .EmployeeMaster:before , .icon400:before {
+.Employee:before, .EmployeeMaster:before, .icon400:before {
     content: "\f2c0";
     font-family: FontAwesome !important;
 }
 
-.EmployeeStatusToday:before , .icon615:before {
+.EmployeeStatusToday:before, .icon615:before {
     content: "\f26c";
     font-family: FontAwesome !important;
 }
 
-.EmployeeWorkTime:before , .icon385:before {
+.EmployeeWorkTime:before, .icon385:before {
     content: "\f252";
     font-family: FontAwesome !important;
 }
 
-.EmployeeJobAssignment:before , .icon24:before , .EmployeesData:before {
+.EmployeeJobAssignment:before, .icon24:before, .EmployeesData:before {
     content: "\f0ae";
     font-family: FontAwesome !important;
 }
 
-.EmployeeType:before , .icon475:before {
+.EmployeeType:before, .icon475:before {
     content: "\f2bd";
     font-family: FontAwesome !important;
 }
 
-.EmployeeVacation:before , .icon7:before {
+.EmployeeVacation:before, .icon7:before {
     content: "\f045";
     font-family: 'icomoon' !important;
 }
 
-.EmployeeCommission:before , .icon569:before {
+.EmployeeCommission:before, .icon569:before {
     content: "\e1e5";
     font-family: 'icomoon' !important;
 }
 
-.EmployeeExcusePeriod:before , .icon366:before {
+.EmployeeExcusePeriod:before, .icon366:before {
     content: "\f249";
     font-family: FontAwesome !important;
 }
 
-.EmployeeAttendanceRule:before , .icon441:before {
+.EmployeeAttendanceRule:before, .icon441:before {
     content: "\f036";
     font-family: FontAwesome !important;
 }
 
-.ActiveDirectoryEmployees:before , .icon562:before {
+.ActiveDirectoryEmployees:before, .icon562:before {
     content: "\f2bc";
     font-family: FontAwesome !important;
 }
 
-.EmployeesFingerPrints:before , .icon552:before {
+.EmployeesFingerPrints:before, .icon552:before {
     content: "\f0a6";
     font-family: FontAwesome !important;
 }
 
-.WorkTimeDefault:before , .icon583:before {
+.WorkTimeDefault:before, .icon583:before {
     content: "\f274";
     font-family: FontAwesome !important;
 }
 
-.AdministrativeLicenses:before , .icon567:before {
+.AdministrativeLicenses:before, .icon567:before {
     content: "\f2c2";
     font-family: FontAwesome !important;
 }
 
-.EmployeeExcuseDay:before , .icon575:before {
+.EmployeeExcuseDay:before, .icon575:before {
     content: "\f272";
     font-family: FontAwesome !important;
 }
 
-.EmployeeTransaction:before , .icon145:before , .icon608:before {
+.EmployeeTransaction:before, .icon145:before, .icon608:before {
     content: "\f0ec";
     font-family: FontAwesome !important;
 }
 
-.TodayTransaction:before , .icon154:before , .icon579:before {
+.TodayTransaction:before, .icon154:before, .icon579:before {
     content: "\f18d";
     font-family: FontAwesome !important;
 }
 
-.AddTransaction:before , .icon236:before {
+.AddTransaction:before, .icon236:before {
     content: "\f196";
     font-family: FontAwesome !important;
 }
 
-.PendingTransaction:before , .icon241:before {
+.PendingTransaction:before, .icon241:before {
     content: "\f192";
     font-family: FontAwesome !important;
 }
 
-.RoundPatrolTransaction:before , .icon324:before {
+.RoundPatrolTransaction:before, .icon324:before {
     content: "\f1ce";
     font-family: FontAwesome !important;
 }
 
-.AddTransactionWizard:before , .icon298:before {
+.AddTransactionWizard:before, .icon298:before {
     content: "\f055";
     font-family: FontAwesome !important;
 }
 
-.WorkTimeWizard:before , .icon390:before {
+.WorkTimeWizard:before, .icon390:before {
     content: "\f251";
     font-family: FontAwesome !important;
 }
 
-.VacationWizard:before , .icon371:before {
+.VacationWizard:before, .icon371:before {
     content: "\f000";
     font-family: FontAwesome !important;
 }
 
-.ExcuseWizard:before , .icon376:before {
+.ExcuseWizard:before, .icon376:before {
     content: "\f016";
     font-family: 'icomoon' !important;
 }
 
-.AutoInOutWizard:before , .icon405:before {
+.AutoInOutWizard:before, .icon405:before {
     content: "\f04b";
     font-family: FontAwesome !important;
 }
 
-.RequestApprovalLevel:before , .icon341:before {
+.RequestApprovalLevel:before, .icon341:before {
     content: "\f061";
     font-family: FontAwesome !important;
 }
 
-.RequestApproval:before , .icon357:before {
+.RequestApproval:before, .icon357:before {
     content: "\f26c";
     font-family: FontAwesome !important;
 }
 
-.EmployeeReport:before , .icon448:before {
+.EmployeeReport:before, .icon448:before {
     content: "\f2be";
     font-family: FontAwesome !important;
 }
 
-.DepartmentReport:before , .icon453:before {
+.DepartmentReport:before, .icon453:before {
     content: "\f1ad";
     font-family: FontAwesome !important;
 }
 
-.MachineReport:before , .icon9:before , .MachinesSetting:before  {
+.MachineReport:before, .icon9:before, .MachinesSetting:before {
     content: "\f013" !important;
     font-family: FontAwesome !important;
 }
 
-.HeaderReport:before , .icon559:before {
+.HeaderReport:before, .icon559:before {
     content: "\f003";
     font-family: FontAwesome !important;
 }
 
-.TodayReport:before , .icon566:before {
+.TodayReport:before, .icon566:before {
     content: "\f073";
     font-family: FontAwesome !important;
 }
 
-.AdministrativeReport:before , .icon461:before {
+.AdministrativeReport:before, .icon461:before {
     content: "\f29a";
     font-family: FontAwesome !important;
 }
 
-.ChartReport:before , .icon497:before {
+.ChartReport:before, .icon497:before {
     content: "\f1fe";
     font-family: FontAwesome !important;
 }
 
-.StatusSystem:before , .icon10:before , .MachineStatus:before {
+.StatusSystem:before, .icon10:before, .MachineStatus:before {
     content: "\f201";
     font-family: FontAwesome !important;
 }
 
-.Connectionstring:before , .icon599:before {
+.Connectionstring:before, .icon599:before {
     content: "\f0c1";
     font-family: FontAwesome !important;
 }
 
-.DepartmentsLevels:before , .icon18:before {
+.DepartmentsLevels:before, .icon18:before {
     content: "\f039";
     font-family: FontAwesome !important;
 }
 
-.RequestsEnabled:before , .icon606:before {
+.RequestsEnabled:before, .icon606:before {
     content: "\f02f";
     font-family: FontAwesome !important;
 }
 
-.ProcedureErrors:before , .icon603:before {
+.ProcedureErrors:before, .icon603:before {
     content: "\f071";
     font-family: FontAwesome !important;
 }
 
-.ActiveDirectorySetting:before , .icon601:before {
+.ActiveDirectorySetting:before, .icon601:before {
     content: "\f2ba";
     font-family: FontAwesome !important;
 }
 
-.EmailSetting:before , .icon17:before {
+.EmailSetting:before, .icon17:before {
     content: "\f2b6";
     font-family: FontAwesome !important;
 }
 
-.ASPNETErrors:before , .icon604:before {
+.ASPNETErrors:before, .icon604:before {
     content: "\f121";
     font-family: FontAwesome !important;
 }
 
-.MachineErrors:before , .icon605:before {
+.MachineErrors:before, .icon605:before {
     content: "\e107";
     font-family: 'Glyphicons Halflings' !important;
 }
 
-.AttendanceList:before , .icon383:before {
+.AttendanceList:before, .icon383:before {
     content: "\e032";
     font-family: 'Glyphicons Halflings' !important;
 }
 
-.MonthSummary:before , .icon609:before {
+.MonthSummary:before, .icon609:before {
     content: "\e057";
     font-family: 'Glyphicons Halflings' !important;
 }
 
-.EmployeeGaps:before , .icon550:before {
+.EmployeeGaps:before, .icon550:before {
     content: "\e058";
     font-family: 'Glyphicons Halflings' !important;
 }
 
-.EmployeeOvertimes:before , .icon607:before {
+.EmployeeOvertimes:before, .icon607:before {
     content: "\e170";
     font-family: 'Glyphicons Halflings' !important;
 }
 
-.EmployeeRequest:before , .icon381:before {
+.EmployeeRequest:before, .icon381:before {
     content: "\f234";
     font-family: FontAwesome !important;
 }
 
-.EmployeeVacationDays:before , .icon502:before {
+.EmployeeVacationDays:before, .icon502:before {
     content: "\e108";
     font-family: 'Glyphicons Halflings' !important;
 }
 
-.ExcuseRequest:before , .icon594:before {
+.ExcuseRequest:before, .icon594:before {
     content: "\e095";
     font-family: 'Glyphicons Halflings' !important;
 }
 
-.VacationRequest:before , .icon590:before
-{
+.VacationRequest:before, .icon590:before {
     content: "\e024";
     font-family: 'Glyphicons Halflings' !important;
 }
 
-.CommissionRequest:before , .icon591:before {
+.CommissionRequest:before, .icon591:before {
     content: "\f2d2";
     font-family: FontAwesome !important;
 }
 
-.ShiftSwapRequest:before , .icon596:before {
+.ShiftSwapRequest:before, .icon596:before {
     content: "\e110";
     font-family: 'Glyphicons Halflings' !important;
 }
 
-.ShiftSwapApproval:before , .icon346:before {
+.ShiftSwapApproval:before, .icon346:before {
     content: "\f087";
     font-family: 'icomoon' !important;
 }
 
-.JobAssignmentRequest:before , .icon592:before {
+.JobAssignmentRequest:before, .icon592:before {
     content: "\f047";
     font-family: 'icomoon' !important;
 }
 
-.ShiftExcuseRequest:before , .icon595:before {
+.ShiftExcuseRequest:before, .icon595:before {
     content: "\f03c";
     font-family: FontAwesome !important;
 }
@@ -4833,7 +4881,7 @@ a.SideMenuItem.icon23:before, a.level2.dynamic.ApplicationUsers:before {
     font-family: FontAwesome !important;
 }
 
-a.SideMenuItem.icon27:before, a.level2.dynamic.UsersDepartmentRelation:before , .UserDepartments:before ,  .icon180:before  {
+a.SideMenuItem.icon27:before, a.level2.dynamic.UsersDepartmentRelation:before, .UserDepartments:before, .icon180:before {
     content: "\e263" !important;
     font-family: 'icomoon' !important;
 }
@@ -4857,132 +4905,84 @@ a.level2.dynamic.JobCategory:before {
     content: "\f0e8";
     font-family: 'FontAwesome' !important;
 }
-.btnSearch
-{
-    border:0 !important;
-    background-color:transparent !important;
-    width:19px !important;
-    height:19px !important;
-    background-image:url(../../Images/Button_Icons/button_magnify.png) !important;
-    font-size:0 !important;
+
+.btnSearch {
+    border: 0 !important;
+    background-color: transparent !important;
+    width: 19px !important;
+    height: 19px !important;
+    background-image: url(../../Images/Button_Icons/button_magnify.png) !important;
+    font-size: 0 !important;
     -webkit-box-shadow: 1px 1px 1px 1px rgba(206,220,223,0) !important;
     -moz-box-shadow: 1px 1px 1px 1px rgba(206,220,223,0) !important;
     box-shadow: 1px 1px 1px 1px rgba(206,220,223,0) !important;
-    background-size:100%;
-    margin-top: 5px  !important;
-}
-.collapsePanelTitelHeader
-{
-    background-color:#005683;
-    color:#fff;
-    padding:15px 10px;
-    cursor:pointer;
-}
-.collapsePanelTitelLink
-{
-    font-size:18px;
-    color:#fff;
-}
-.collapsePanelTitelLabel
-{
-    display:none !important;
-}
-.collapsePanelImage
-{
-    float:left;
-    font-size:0;
-}
-.box {
-  width: 40%;
-  margin: 0 auto;
-  background: rgba(255,255,255,0.2);
-  padding: 35px;
-  border: 2px solid #fff;
-  border-radius: 20px/50px;
-  background-clip: padding-box;
-  text-align: center;
-}
-.overlay {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(0, 0, 0, 0.7);
-  transition: opacity 500ms;
-  visibility: hidden;
-  opacity: 0;
-}
-.overlay:target {
-  visibility: visible;
-  opacity: 1;
-  z-index: 9999;
-    padding-top: 10vh;
-    padding-left:15vW;
-    padding-right:15vW;
+    background-size: 100%;
+    margin-top: 5px !important;
 }
 
-.popup {
-  margin: 70px auto;
-  padding: 20px;
-  background: #fff;
-  border-radius: 5px;
-  width: 30%;
-  position: relative;
-  transition: all 5s ease-in-out;
+.collapsePanelTitelHeader {
+    background-color: #005683;
+    color: #fff;
+    padding: 15px 10px;
+    cursor: pointer;
 }
 
+.collapsePanelTitelLink {
+    font-size: 18px;
+    color: #fff;
+}
 
-.popup .close {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  transition: all 200ms;
-  font-size: 30px;
-  font-weight: bold;
-  text-decoration: none;
-  color: #333;
+.collapsePanelTitelLabel {
+    display: none !important;
 }
-.popup .close:hover {
-  color: #06D85F;
-}
-.popup .content {
-  max-height: 30%;
-  overflow: auto;
-}
-.close {
+
+.collapsePanelImage {
     float: left;
-    font-size: 21px;
-    font-weight: 700;
-    line-height: 1;
-    color: #000;
-    text-shadow: 0 1px 0 #fff;
-     opacity: 1; 
-    display: block;
-    filter: alpha(opacity=100);
-    margin-bottom: 10px;
-    background-color: #ffffff;
-    padding: 2px 7px 7px 7px;
-    -webkit-border-radius: 50px;
-    -moz-border-radius: 50px;
-    border-radius: 50px;
+    font-size: 0;
 }
+
+.box {
+    width: 40%;
+    margin: 0 auto;
+    background: rgba(255,255,255,0.2);
+    padding: 35px;
+    border: 2px solid #fff;
+    border-radius: 20px/50px;
+    background-clip: padding-box;
+    text-align: center;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+}
+
+    .overlay:target {
+        visibility: visible;
+        opacity: 1;
+        z-index: 9999;
+        padding-top: 10vh;
+        padding-left: 15vW;
+        padding-right: 15vW;
+    }
+
 @media (max-width:1540px) {
     li.static {
         height: 91px;
     }
-
-
 
     a.static {
         width: 90px;
         height: 90px;
         font-size: 11px;
     }
-
-
-
-
 
         a.static:before {
             width: 50px;
@@ -5106,10 +5106,11 @@ a.level2.dynamic.JobCategory:before {
         margin: 0;
         background-color: #fff;
     }
-    .reportsicon
-    {
-           width: calc(50% - 13px) !important;
+
+    .reportsicon {
+        width: calc(50% - 13px) !important;
     }
+
     .LoginLeft {
         float: none;
         width: 100%;
@@ -5126,7 +5127,6 @@ a.level2.dynamic.JobCategory:before {
     }
 
     #ft_padd {
-        
         margin: 0 auto;
     }
 
@@ -5172,10 +5172,11 @@ a.level2.dynamic.JobCategory:before {
         float: left;
         text-align: center;
     }
-    .UtilityLinks a:after
-    {
-         font-size: 0 !important;
-    }
+
+        .UtilityLinks a:after {
+            font-size: 0 !important;
+        }
+
         .UtilityLinks a:before {
             display: block;
             float: right;

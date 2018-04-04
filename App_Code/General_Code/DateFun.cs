@@ -395,14 +395,22 @@ public class DateFun
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public int ConvertDateTimeToInt(string pDateType, string pDate)
+    public int ConvertDateTimeToInt(string pDate, string pDateType)
     {
-        string[] PartDate = pDate.Split('/'); //(General.ToAnyFormat(pDateType, pDate)).Split('/');
-        string Y = PartDate[2];
-        string M = PartDate[1];
-        string D = PartDate[0];
+        string[] Dates = (ToDefFormat(pDate, pDateType)).Split('/');
+        string Y = Dates[2];
+        string M = Dates[1];
+        string D = Dates[0];
         return (Convert.ToInt32(Y) * 10000) + (Convert.ToInt32(M) * 100) + Convert.ToInt32(D);
     }
+    //public int ConvertDateTimeToInt(string pDateType, string pDate)
+    //{
+    //    string[] PartDate = pDate.Split('/'); //(General.ToAnyFormat(pDateType, pDate)).Split('/');
+    //    string Y = PartDate[2];
+    //    string M = PartDate[1];
+    //    string D = PartDate[0];
+    //    return (Convert.ToInt32(Y) * 10000) + (Convert.ToInt32(M) * 100) + Convert.ToInt32(D);
+    //}
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public string ToDefFormat(string pDate, string pDateType)

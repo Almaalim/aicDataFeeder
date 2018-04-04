@@ -41,12 +41,9 @@
                 <div class="row">
                     <div class="col12">
                         <asp:GridView ID="grdData" runat="server" AutoGenerateColumns="False" CssClass="GridTable"
-                            DataKeyNames="VtpID" Width="100%"
-                            GridLines="Horizontal" HorizontalAlign="Center" CellPadding="4"
-                            AllowPaging="True"
-                            OnDataBound="grdData_DataBound" OnSelectedIndexChanged="grdData_SelectedIndexChanged"
-                            OnRowDataBound="grdData_RowDataBound"
-                            OnSorting="grdData_Sorting" OnRowCreated="grdData_RowCreated"
+                            DataKeyNames="VtpID" Width="100%" GridLines="Horizontal" HorizontalAlign="Center" CellPadding="4"
+                            AllowPaging="True" OnDataBound="grdData_DataBound" OnSelectedIndexChanged="grdData_SelectedIndexChanged"
+                            OnRowDataBound="grdData_RowDataBound" OnSorting="grdData_Sorting" OnRowCreated="grdData_RowCreated"
                             OnPageIndexChanging="grdData_PageIndexChanging" ShowFooter="True" meta:resourcekey="grdDataResource1">
                             <Columns>
                                 <asp:BoundField DataField="VtpNameAr" HeaderText="Vacation Name (Ar)" SortExpression="VtpNameAr" meta:resourcekey="BoundFieldResource1">
