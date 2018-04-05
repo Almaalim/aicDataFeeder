@@ -407,6 +407,14 @@
                         <h1>Attendance Management System</h1>
                     </div>
                 </div>
+                <div id="divCustLogo_DF" runat="server" class="LogoDF">
+                    <div class="wrap-title">
+                        <div class="icon">
+                            <span class="ico-arrow-right"></span>
+                        </div>
+                        <h1>Attendance Management System</h1>
+                    </div>
+                </div>
                 <div id="divMenu" runat="server">
                     <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" ShowStartingNode="False" />
 

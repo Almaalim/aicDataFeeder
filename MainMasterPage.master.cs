@@ -32,7 +32,7 @@ public partial class MainMasterPage : System.Web.UI.MasterPage
         Session["ActiveVersion"] = LCD.FindActiveVersion(); // 
         /******************************************************************/
 
-        if (Session["ActiveVersion"].ToString() == "EZ") { EZ.Visible = true; DF.Visible = false; } else { DF.Visible = true; EZ.Visible = false; }
+        if (Session["ActiveVersion"].ToString() == "EZ") { EZ.Visible = divCustLogo.Visible = true; DF.Visible = divCustLogo_DF.Visible = false; } else { DF.Visible = divCustLogo_DF.Visible = true; EZ.Visible = divCustLogo.Visible = false; }
 
         try { Response.AppendHeader("Refresh", Convert.ToString((Session.Timeout * 60) + 2) + "; URL=../Login.aspx"); }
         catch (Exception ex) { }

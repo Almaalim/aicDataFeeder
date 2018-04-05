@@ -38,7 +38,7 @@ public partial class Login : System.Web.UI.Page
         Image2.ImageUrl = Page.ResolveUrl("~/images/LoginLogo_" + Session["ActiveVersion"].ToString() + ".png");
         Image3.ImageUrl = Page.ResolveUrl("~/images/LogoEn_" + Session["ActiveVersion"].ToString() + ".png");
         Image4.ImageUrl = Page.ResolveUrl("~/images/LoginLogoEn_" + Session["ActiveVersion"].ToString() + ".png");
-
+        string s = "";
         /*** Check Connect ********************************************/
         if (!DBCs.isConnect()) { MessageFun.ShowMsg(this, MessageFun.TypeMsg.Error, General.Msg("No connection to the database", "لا يوجد اتصال بقاعدة البيانات")); return; }
         /******************************************************************/

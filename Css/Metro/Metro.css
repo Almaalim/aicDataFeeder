@@ -309,12 +309,21 @@ body {
 {
     display:none;
 }
+
+.LogoDF {
+    float: left;
+    width: auto;
+    height: 82px;
+    width: 304px;
+    background: top right url(../../Images/LogoEn_DF.png) no-repeat;
+}
+
 .Logo {
     float: left;
     width: auto;
     height: 82px;
     width: 304px;
-    background: top right url(../../images/LogoEn.png) no-repeat;
+    background: top right url(../../images/LogoEn_EZ.png) no-repeat;
 }
 
     .Logo > img {

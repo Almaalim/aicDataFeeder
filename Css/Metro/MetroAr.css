@@ -307,7 +307,15 @@ body {
     width: auto;
     height: 82px;
     width: 304px;
-    background: top right url(../../images/Logo.png) no-repeat;
+    background: top right url(../../images/Logo_EZ.png) no-repeat;
+}
+
+.LogoDF {
+    float: right;
+    width: auto;
+    height: 82px;
+    width: 304px;
+    background: top right url(../../images/Logo_DF.png) no-repeat;
 }
 
     .Logo > img {
