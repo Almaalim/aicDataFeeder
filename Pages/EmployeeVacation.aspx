@@ -53,10 +53,10 @@
                                     <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                 </asp:BoundField>
-<%--                                <asp:BoundField DataField="EvrID" HeaderText="EvrID " SortExpression="EvrID" meta:resourcekey="BoundFieldResource2">
+                                <asp:BoundField DataField="EvrID" ReadOnly="True" SortExpression="EvrID" meta:resourcekey="BoundFieldResource8">
                                     <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                                </asp:BoundField>--%>
+                                </asp:BoundField>
                                 <asp:BoundField DataField="EmpNameAr" HeaderText="Employee Name (Ar)" SortExpression="EmpNameAr" meta:resourcekey="BoundFieldResource3">
                                     <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
@@ -73,14 +73,10 @@
                                     <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                 </asp:BoundField>
-                                <asp:BoundField DataField="VtpID" HeaderText="Vacation ID" ReadOnly="True" SortExpression="VtpID" meta:resourcekey="BoundFieldResource7">
+                                <%--<asp:BoundField DataField="VtpID" HeaderText="Vacation ID" ReadOnly="True" SortExpression="VtpID" meta:resourcekey="BoundFieldResource7">
                                     <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                                </asp:BoundField>
-                                <asp:BoundField DataField="EvrID" Visible="False" ReadOnly="True" SortExpression="EvrID" meta:resourcekey="BoundFieldResource8">
-                                    <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                                </asp:BoundField>
+                                </asp:BoundField>--%>
                                 <asp:TemplateField HeaderText="Start Date" SortExpression="EvrStartDate" meta:resourcekey="TemplateFieldResource1">
                                     <ItemTemplate>
                                         <%# DisplayFun.GrdDisplayDate(Eval("EvrStartDate"), 'S')%>
@@ -91,7 +87,7 @@
                                         <%# DisplayFun.GrdDisplayDate(Eval("EvrEndDate"), 'S')%>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:CommandField ButtonType="Button" SelectText="select" ShowSelectButton="false" meta:resourcekey="CommandFieldResource1" />
+                                <asp:CommandField ButtonType="Button" SelectText="select" ControlStyle-Width="50px" ShowSelectButton="true" meta:resourcekey="CommandFieldResource1" />
                             </Columns>
 
                         </asp:GridView>

@@ -17,7 +17,6 @@
 
             </div>
 
-
             <div class="LoginRight">
                 <div class="row">
                     <div class="col12 h2">

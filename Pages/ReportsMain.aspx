@@ -21,7 +21,7 @@
 
     <script type="text/javascript">
         function showPopup(dev1, dev2, dev3, devShow) {
-            hidePopup('', dev2, dev3);
+            hidePopup('', '', dev3);
             if (devShow != '') { document.getElementById(devShow).style.visibility = 'visible'; document.getElementById(devShow).style.display = 'block'; }
             if (dev1 != '') { document.getElementById(dev1).style.visibility = 'visible'; document.getElementById(dev1).style.display = 'block'; }
         }
@@ -105,6 +105,7 @@
                             <asp:Panel ID="pnlDateFromTo" runat="server" >
                                 <div class="row">
                                     <div class="col2">
+                                        <span class="requiredStar">*</span>
                                         <asp:Label ID="lblStartDate" runat="server" Text="Start Date :"></asp:Label>
                                     </div>
                                     <div class="col4">
@@ -120,6 +121,7 @@
                                             EnableClientScript="False" ControlToValidate="cvValid"></asp:CustomValidator>--%>
                                     </div>
                                     <div class="col2">
+                                        <span class="requiredStar">*</span>
                                         <asp:Label ID="lblEndDate" runat="server" Text="End Date :"></asp:Label>
                                     </div>
                                     <div class="col4">
@@ -155,6 +157,7 @@
                             <asp:Panel ID="pnlDepartment" runat="server" Visible="False">
                                 <div class="row">
                                     <div class="col2">
+                                        <span class="requiredStar">*</span>
                                         <asp:Label ID="lblDepartment" runat="server" Text="Department :"></asp:Label>
                                     </div>
                                     <div class="col4">
@@ -181,6 +184,7 @@
                             <asp:Panel ID="pnlMachine" runat="server" Visible="False">
                                 <div class="row">
                                     <div class="col2">
+                                        <span class="requiredStar">*</span>
                                         <asp:Label ID="lblMachine" runat="server" Text="Machine :"></asp:Label>
                                     </div>
                                     <div class="col4">

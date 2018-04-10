@@ -437,8 +437,8 @@ public partial class Pages_SettingMachine : BasePage
     {
         try
         {
-            e.Row.Cells[5].Visible = false; //To hide ID column in grid view
-            e.Row.Cells[6].Visible = false;
+            //e.Row.Cells[5].Visible = false; //To hide ID column in grid view
+            //e.Row.Cells[6].Visible = false;
         }
         catch { }
     }

@@ -61,7 +61,7 @@
                                     <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                 </asp:BoundField>
-                                <asp:BoundField DataField="MacID" Visible="False" ReadOnly="True" SortExpression="MacID" meta:resourcekey="BoundFieldResource3">
+                                <asp:BoundField DataField="MacID" ReadOnly="True" SortExpression="MacID" meta:resourcekey="BoundFieldResource3">
                                     <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                 </asp:BoundField>
@@ -85,7 +85,7 @@
                                     <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                 </asp:BoundField>
-                                <asp:CommandField ButtonType="Button" SelectText="select" ShowSelectButton="false" meta:resourcekey="CommandFieldResource1" />
+                                <asp:CommandField ButtonType="Button" SelectText="select" ControlStyle-Width="50px" ShowSelectButton="true" meta:resourcekey="CommandFieldResource1" />
                             </Columns>
 
                         </asp:GridView>

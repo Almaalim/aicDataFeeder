@@ -205,40 +205,7 @@ public partial class Pages_ReportMain : BasePage
         //lblTitleReport.Text = RepProCs.RepName;
         //txtDescReport.Text = RepProCs.RepDesc;
 
-        //int RepPanels = Convert.ToInt32(RepProCs.RepPanels);
-
-        //if (CheckBitWise(RepPanels, 1))
-        //{
-        //    pnlshow = pnlDate.ClientID;
-        //    calDate.SetValidationEnabled(true);
-        //}
-
-        //if (CheckBitWise(RepPanels, 2))
-        //{
-        //    pnlshow = pnlDateFromTo.ClientID;
-        //    calStartDate.SetValidationEnabled(true);
-        //    calEndDate.SetValidationEnabled(true);
-        //}
-
-        //pnlWorkTime.Visible = CheckBitWise(RepPanels, 4);
-        //pnlMachine.Visible = CheckBitWise(RepPanels, 8);
-        //pnlEmployee.Visible = CheckBitWise(RepPanels, 16);
-        //pnlDepartmnets.Visible = CheckBitWise(RepPanels, 32); /**/ if (pnlDepartmnets.Visible) { FillTree("0"); }
-        //pnlCategory.Visible = CheckBitWise(RepPanels, 64);
-        //pnlUsers.Visible = CheckBitWise(RepPanels, 128);
-        //pnlMonth.Visible = CheckBitWise(RepPanels, 256);
-        //if (CheckBitWise(RepPanels, 512))
-        //{
-        //    pnlshow = pnlDate.ClientID;
-        //    calDate.SetEnabled(false);
-        //    calDate.SetValidationEnabled(true);
-        //    calDate.SetTodayDate();
-        //}
-        //pnlVacType.Visible = CheckBitWise(RepPanels, 1024);
-        //pnlExcType.Visible = CheckBitWise(RepPanels, 2048);
-        //pnlDaysCount.Visible = CheckBitWise(RepPanels, 4096);
-
-        
+        //int RepPanels = Convert.ToInt32(RepProCs.RepPanels);       
         
         btnEditReport.Enabled = btnSetAsDefault.Enabled = btnViewreport.Enabled = false;
 
@@ -259,7 +226,7 @@ public partial class Pages_ReportMain : BasePage
 
             int pnlPermissions = Convert.ToInt32(RepDT.Rows[0]["RepPanels"]);
             //pnlDateFromTo.Visible = CheckBitWise(pnlPermissions, 1);
-            if (CheckBitWise(pnlPermissions, 2)) { pnlshow = pnlDateFromTo.ClientID; /**/ calStartDate.SetValidationEnabled(true); /**/ calEndDate.SetValidationEnabled(true); }
+            if (CheckBitWise(pnlPermissions, 1)) { pnlshow = pnlDateFromTo.ClientID; /**/ calStartDate.SetValidationEnabled(true); /**/ calEndDate.SetValidationEnabled(true); }
             pnlEmployee.Visible = CheckBitWise(pnlPermissions, 2);
             pnlDepartment.Visible = rvDepartment.Enabled = CheckBitWise(pnlPermissions, 4);
             pnlLocation.Visible = rvLocation.Enabled = CheckBitWise(pnlPermissions, 8);

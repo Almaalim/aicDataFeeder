@@ -57,17 +57,18 @@
 
                 <div class="row">
                     <div class="col2">
-                        <asp:CheckBox ID="chkEmailCredential" runat="server" Text="Enable Credentials" meta:resourcekey="chkEmailCredentialResource1" />
+                        
                     </div>
-                    <div class="col3">
+                    <div class="col4">
+                        <asp:CheckBox ID="chkEmailCredential" runat="server" Text="Enable Credentials" meta:resourcekey="chkEmailCredentialResource1" />
                     </div>
 
                 </div>
                 <div class="row">
                     <div class="col2">
-                        <asp:CheckBox ID="chkEnableSSL" runat="server" Text="Enable SSL" meta:resourcekey="chkEnableSSLResource1" />
                     </div>
-                    <div class="col3">
+                    <div class="col4">
+                        <asp:CheckBox ID="chkEnableSSL" runat="server" Text="Enable SSL" meta:resourcekey="chkEnableSSLResource1" />
                     </div>
 
                 </div>

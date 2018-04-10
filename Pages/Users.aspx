@@ -75,7 +75,7 @@
                                     <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                 </asp:BoundField>
-                                <asp:CommandField ButtonType="Button" SelectText="select" ShowSelectButton="false" meta:resourcekey="CommandFieldResource1" />
+                                <asp:CommandField ButtonType="Button" SelectText="Select" ControlStyle-Width="50px" ShowSelectButton="true" meta:resourcekey="CommandFieldResource1" />
                             </Columns>
 
                         </asp:GridView>

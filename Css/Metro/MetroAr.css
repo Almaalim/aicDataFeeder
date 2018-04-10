@@ -4914,6 +4914,12 @@ a.level2.dynamic.JobCategory:before {
     font-family: 'FontAwesome' !important;
 }
 
+/*.btnSelectGrid {
+    background-image: url(../../Images/icon/CheckAll.png);
+    width: 16px;
+    height: 16px;
+}*/
+
 .btnSearch {
     border: 0 !important;
     background-color: transparent !important;

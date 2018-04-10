@@ -214,7 +214,7 @@
     <value>New</value>
   </data>
   <data name="CommandFieldResource1.SelectText" xml:space="preserve">
-    <value>select</value>
+    <value>Select</value>
   </data>
   <data name="CommandFieldResource1.UpdateText" xml:space="preserve">
     <value>Update</value>
