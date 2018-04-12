@@ -375,4 +375,7 @@
   <data name="lblSectionsResource1.Text" xml:space="preserve">
     <value>Sections External :</value>
   </data>
+  <data name="ViewTransListItemResource.Text" xml:space="preserve">
+    <value>View Transaction</value>
+  </data>
 </root>

@@ -1769,7 +1769,7 @@ body.loginPage > #aspnetForm {
     }
 
     .LoginLanguageBtn:after {
-        content: "ع";
+        content: "E";
         display: block;
         color: #fff;
         font-size: 14px;
