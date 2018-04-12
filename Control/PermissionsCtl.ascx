@@ -76,6 +76,7 @@
                 <asp:ListItem Text="Add"    Value="IEmp" meta:resourcekey="AddListItemResource"></asp:ListItem>
                 <asp:ListItem Text="Update" Value="UEmp" meta:resourcekey="UpdateListItemResource"></asp:ListItem>
                 <asp:ListItem Text="Delete" Value="DEmp" meta:resourcekey="DeleteListItemResource"></asp:ListItem>
+                <asp:ListItem Text="View Transaction" Value="VTEmp" meta:resourcekey="ViewTransListItemResource"></asp:ListItem>
             </asp:CheckBoxList>
         </td>
     </tr>
